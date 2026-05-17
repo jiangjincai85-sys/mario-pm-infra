@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8张卡片搞定多项目管理 · Mario Claw</title>
+<style>
+  :root {
+    --bg: #080b12;
+    --surface: #111520;
+    --surface2: #171c28;
+    --border: #1e2433;
+    --border-act: #2d3550;
+    --text: #e8ecf2;
+    --text2: #9aa0b5;
+    --text3: #5e6578;
+    --accent: #5b8af7;
+    --accent2: #3dd6c8;
+    --green: #34d399;
+    --yellow: #fbbf24;
+    --orange: #f97316;
+    --red: #f87171;
+    --purple: #a78bfa;
+    --pink: #f472b6;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.92); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes slideRight {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(91,138,247,0.3); }
+    50% { box-shadow: 0 0 0 12px rgba(91,138,247,0); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .reveal { animation: fadeUp 0.6s ease-out both; }
+  .reveal-d1 { animation-delay: 0.1s; }
+  .reveal-d2 { animation-delay: 0.2s; }
+  .reveal-d3 { animation-delay: 0.3s; }
+  .reveal-d4 { animation-delay: 0.4s; }
+  .reveal-d5 { animation-delay: 0.5s; }
+  .reveal-d6 { animation-delay: 0.6s; }
+
+  /* ===== V: VISUAL HOOK ===== */
+  .hero-v {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(91,138,247,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 30% 70%, rgba(61,214,200,0.04) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 70% 30%, rgba(167,139,250,0.03) 0%, transparent 60%);
+  }
+  .hero-v::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%235b8af7' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(91,138,247,0.1);
+    border: 1px solid rgba(91,138,247,0.2);
+    padding: 6px 18px;
+    border-radius: 100px;
+    font-size: 0.82em;
+    color: var(--accent);
+    margin-bottom: 28px;
+    position: relative;
+    animation: fadeUp 0.5s ease-out;
+  }
+  .hero-badge .dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  .hero-v .big-number {
+    font-size: clamp(4em, 12vw, 8em);
+    font-weight: 900;
+    letter-spacing: -3px;
+    line-height: 1;
+    position: relative;
+    animation: fadeUp 0.6s ease-out 0.1s both;
+    background: linear-gradient(180deg, #fff 20%, #5b8af7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .hero-v h1 {
+    font-size: clamp(1.4em, 3vw, 2em);
+    font-weight: 600;
+    position: relative;
+    animation: fadeUp 0.6s ease-out 0.2s both;
+    margin-bottom: 6px;
+  }
+  .hero-v .sub {
+    font-size: 1em;
+    color: var(--text2);
+    position: relative;
+    animation: fadeUp 0.6s ease-out 0.3s both;
+    margin-bottom: 40px;
+  }
+  .hero-v .sub em {
+    color: var(--accent2);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* KPI Row in Hero */
+  .hero-kpis {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    animation: fadeUp 0.6s ease-out 0.4s both;
+    margin-bottom: 48px;
+  }
+  .hero-kpi {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 28px;
+    min-width: 140px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .hero-kpi:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(91,138,247,0.08);
+  }
+  .hero-kpi .kpi-val {
+    font-size: 2.2em;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+  .hero-kpi .kpi-val.c1 { color: var(--accent); }
+  .hero-kpi .kpi-val.c2 { color: var(--accent2); }
+  .hero-kpi .kpi-val.c3 { color: var(--purple); }
+  .hero-kpi .kpi-val.c4 { color: var(--green); }
+  .hero-kpi .kpi-label {
+    font-size: 0.78em;
+    color: var(--text2);
+    margin-top: 6px;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: float 2s ease-in-out infinite;
+    color: var(--text3);
+    font-size: 0.8em;
+  }
+
+  /* ===== CONTAINER ===== */
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ===== I: INFO SKELETON (3s) ===== */
+  .section {
+    margin-bottom: 64px;
+  }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.7em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .conclusion-title {
+    font-size: 1.7em;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 24px;
+    line-height: 1.3;
+  }
+  .conclusion-title .hl { color: var(--accent); }
+  .conclusion-title .hl2 { color: var(--accent2); }
+
+  /* Badge */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 0.72em;
+    font-weight: 700;
+  }
+  .badge-splus { background: rgba(248,113,113,0.12); color: var(--red); border: 1px solid rgba(248,113,113,0.2); }
+  .badge-high { background: rgba(249,115,22,0.12); color: var(--orange); border: 1px solid rgba(249,115,22,0.2); }
+  .badge-mid { background: rgba(61,214,200,0.12); color: var(--accent2); border: 1px solid rgba(61,214,200,0.2); }
+  .badge-done { background: rgba(52,211,153,0.12); color: var(--green); border: 1px solid rgba(52,211,153,0.15); }
+  .badge-todo { background: rgba(251,191,36,0.12); color: var(--yellow); border: 1px solid rgba(251,191,36,0.2); }
+
+  /* Status lights */
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8em;
+    font-weight: 600;
+  }
+  .status::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .status-good::before { background: var(--green); }
+  .status-warn::before { background: var(--yellow); }
+  .status-unk::before { background: var(--text3); }
+
+  /* Cards */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    transition: all 0.25s;
+  }
+  .card:hover {
+    border-color: var(--border-act);
+    background: var(--surface2);
+  }
+
+  /* ===== S: STRUCTURE (10s) ===== */
+
+  /* Architecture Flow */
+  .arch-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 20px 0;
+  }
+  .arch-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    position: relative;
+  }
+  .arch-row:hover { border-color: var(--border-act); transform: translateX(4px); }
+  .arch-row .layer-num {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.1em;
+    flex-shrink: 0;
+  }
+  .arch-row.l1 .layer-num { background: rgba(52,211,153,0.12); color: var(--green); }
+  .arch-row.l2 .layer-num { background: rgba(91,138,247,0.12); color: var(--accent); }
+  .arch-row.l3 .layer-num { background: rgba(249,115,22,0.12); color: var(--orange); }
+  .arch-row.l4 .layer-num { background: rgba(167,139,250,0.12); color: var(--purple); }
+  .arch-row.l5 .layer-num { background: rgba(244,114,182,0.12); color: var(--pink); }
+  .arch-row .layer-info { flex: 1; }
+  .arch-row .layer-name { font-weight: 700; font-size: 0.95em; }
+  .arch-row .layer-desc { font-size: 0.78em; color: var(--text2); }
+  .arch-row .layer-tag {
+    font-size: 0.68em;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .tag-now { background: rgba(52,211,153,0.12); color: var(--green); }
+  .tag-next { background: rgba(251,191,36,0.12); color: var(--yellow); }
+  .tag-later { background: rgba(94,101,120,0.12); color: var(--text3); }
+
+  /* Connector line */
+  .arch-connect {
+    width: 2px;
+    height: 16px;
+    background: linear-gradient(to bottom, var(--border), rgba(30,36,51,0));
+    margin-left: 32px;
+  }
+
+  /* Insight Grid */
+  .insight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 700px) { .insight-grid { grid-template-columns: 1fr; } }
+
+  .insight-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .insight-card:hover {
+    border-color: var(--border-act);
+    transform: translateY(-2px);
+  }
+  .insight-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+  }
+  .insight-card.i1::after { background: var(--accent); }
+  .insight-card.i2::after { background: var(--accent2); }
+  .insight-card.i3::after { background: var(--orange); }
+  .insight-card.i4::after { background: var(--purple); }
+  .insight-card .insight-num {
+    font-size: 0.68em;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .insight-card.i2 .insight-num { color: var(--accent2); }
+  .insight-card.i3 .insight-num { color: var(--orange); }
+  .insight-card.i4 .insight-num { color: var(--purple); }
+  .insight-card h3 { font-size: 1em; font-weight: 700; margin-bottom: 6px; line-height: 1.4; }
+  .insight-card p { font-size: 0.85em; color: var(--text2); line-height: 1.5; }
+  .insight-card .conf-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7em;
+    font-weight: 600;
+    margin-left: 6px;
+  }
+  .conf-h { background: rgba(52,211,153,0.12); color: var(--green); }
+  .conf-m { background: rgba(251,191,36,0.12); color: var(--yellow); }
+
+  /* ===== T: TABLE & NARRATIVE (30s) ===== */
+
+  .proj-table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+  }
+  .proj-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88em;
+    min-width: 700px;
+  }
+  .proj-table thead th {
+    background: var(--surface2);
+    text-align: left;
+    padding: 14px 16px;
+    font-size: 0.72em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text3);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .proj-table tbody td {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(30,36,51,0.6);
+    vertical-align: middle;
+  }
+  .proj-table tbody tr:last-child td { border-bottom: none; }
+  .proj-table tbody tr { transition: background 0.2s; }
+  .proj-table tbody tr:hover { background: rgba(91,138,247,0.03); }
+  .proj-table .proj-name { font-weight: 700; white-space: nowrap; }
+
+  /* Flow diagram */
+  .flow-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 20px 0;
+  }
+  .flow-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 22px;
+    text-align: center;
+  }
+  .flow-box.active-box {
+    border-color: rgba(91,138,247,0.4);
+    background: rgba(91,138,247,0.06);
+  }
+  .flow-box .f-title { font-weight: 700; font-size: 0.9em; }
+  .flow-box .f-sub { font-size: 0.72em; color: var(--text3); margin-top: 2px; }
+  .flow-arrow {
+    font-size: 1.5em;
+    color: var(--accent);
+    font-weight: 300;
+  }
+
+  /* ===== A: ACTION (5s) ===== */
+
+  .action-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 700px) { .action-grid { grid-template-columns: 1fr; } }
+
+  .action-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    gap: 16px;
+    transition: all 0.3s;
+  }
+  .action-card:hover { border-color: var(--border-act); }
+  .action-card .step-circle {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.1em;
+    flex-shrink: 0;
+    background: rgba(91,138,247,0.1);
+    color: var(--accent);
+    border: 2px solid rgba(91,138,247,0.2);
+  }
+  .action-card .step-content { flex: 1; }
+  .action-card .step-title { font-weight: 700; margin-bottom: 4px; }
+  .action-card .step-desc { font-size: 0.82em; color: var(--text2); }
+
+  /* Final CTA */
+  .cta-bar {
+    background: linear-gradient(135deg, rgba(91,138,247,0.1), rgba(61,214,200,0.06));
+    border: 1px solid rgba(91,138,247,0.2);
+    border-radius: 20px;
+    padding: 36px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  .cta-bar .cta-title {
+    font-size: 1.3em;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .cta-checks {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .cta-check {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-size: 0.85em;
+    color: var(--text2);
+    white-space: nowrap;
+  }
+  .cta-check::before {
+    content: '☐ ';
+    color: var(--accent);
+  }
+
+  /* Risk bar */
+  .risk-strip {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .risk-item {
+    flex: 1;
+    min-width: 220px;
+    background: rgba(251,191,36,0.05);
+    border: 1px solid rgba(251,191,36,0.15);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 0.82em;
+  }
+  .risk-item .risk-label { color: var(--yellow); font-weight: 600; margin-bottom: 4px; }
+  .risk-item .risk-mitigation { color: var(--text2); }
+
+  /* Divider */
+  hr { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 40px 0 60px;
+    color: var(--text3);
+    font-size: 0.78em;
+  }
+
+  /* Tab system */
+  .tabs { display: flex; gap: 4px; margin-bottom: 20px; background: var(--surface); padding: 4px; border-radius: 12px; border: 1px solid var(--border); }
+  .tab-btn {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    background: transparent;
+    color: var(--text2);
+    border-radius: 9px;
+    font-size: 0.85em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  .tab-btn.active { background: var(--accent); color: #fff; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; animation: fadeUp 0.4s ease-out; }
+</style>
+</head>
+<body>
+
+<!-- ==================== V: VISUAL HOOK (0.5s) ==================== -->
+<section class="hero-v">
+  <div class="hero-badge"><span class="dot"></span>Mario Claw · Deep Research · W20</div>
+  <div class="big-number">8</div>
+  <h1>张卡片就能搞定多项目管理</h1>
+  <p class="sub">不用建系统，不用学工具，<em>你正常聊天，我自动维护</em></p>
+
+  <div class="hero-kpis">
+    <div class="hero-kpi reveal">
+      <div class="kpi-val c1">8</div>
+      <div class="kpi-label">活跃项目</div>
+    </div>
+    <div class="hero-kpi reveal reveal-d1">
+      <div class="kpi-val c2">0</div>
+      <div class="kpi-label">你的额外操作</div>
+    </div>
+    <div class="hero-kpi reveal reveal-d2">
+      <div class="kpi-val c3">5层</div>
+      <div class="kpi-label">管理架构</div>
+    </div>
+    <div class="hero-kpi reveal reveal-d3">
+      <div class="kpi-val c4">4步骤</div>
+      <div class="kpi-label">本周落地</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">↓ 往下看具体方案</div>
+</section>
+
+<div class="container">
+
+<!-- ==================== I: INFO SKELETON (3s) ==================== -->
+<section class="section reveal">
+  <div class="section-label">📌 一句话结论</div>
+  <div class="conclusion-title">
+    把 <span class="hl">8 个项目</span>的信息从历史对话里萃取出来，<br/>
+    做成 <span class="hl">8 张上下文卡片</span>，每次聊到哪个项目，<br/>
+    <span class="hl2">我自动加载、自动更新，你完全不用管</span>。
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('tab-why')">🎯 为什么做</button>
+    <button class="tab-btn" onclick="switchTab('tab-what')">📋 做什么</button>
+    <button class="tab-btn" onclick="switchTab('tab-how')">🚀 怎么做</button>
+  </div>
+
+  <!-- Tab 1: Why -->
+  <div id="tab-why" class="tab-panel active">
+    <div class="insight-grid">
+      <div class="insight-card i1">
+        <div class="insight-num">洞察 1</div>
+        <h3>信息都在，只是组织方式不对<span class="conf-tag conf-h">高置信</span></h3>
+        <p>你的大脑知道所有项目状态，我的记忆存了所有对话——但信息按<span style="color:var(--accent)">时间维度</span>存，你按<span style="color:var(--accent2)">项目维度</span>查。就像电脑存了所有文件，但没按项目建文件夹。</p>
+      </div>
+      <div class="insight-card i2">
+        <div class="insight-num">洞察 2</div>
+        <h3>操作成本为零，才能持续<span class="conf-tag conf-h">高置信</span></h3>
+        <p>任何需要你额外填写的基建，最终都会被放弃。Linear CEO 说"最好的工具是你感觉不到在用的那个"。<span style="color:var(--accent2)">你正常说话，我自动处理</span>——这才是唯一可持续的方式。</p>
+      </div>
+      <div class="insight-card i3">
+        <div class="insight-num">洞察 3</div>
+        <h3>8 张卡片就够了，不需要一整套系统<span class="conf-tag conf-h">高置信</span></h3>
+        <p>你的真实需求是「下次聊到这个项目时，AI 记得上下文」——不是「我需要一个项目管理系统」。Claude Projects 的 "Project Knowledge" 就是一个文件级单元。</p>
+      </div>
+      <div class="insight-card i4">
+        <div class="insight-num">洞察 4</div>
+        <h3>信息已在历史里，缺的是萃取机制<span class="conf-tag conf-m">中置信</span></h3>
+        <p>你 18 个月的知识库已有完整项目信息。我不需要你花 2 小时填写——<span style="color:var(--purple)">我从历史记录萃取初版，你审核修正</span>，零冷启动成本。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab 2: What -->
+  <div id="tab-what" class="tab-panel">
+    <div class="proj-table-wrap">
+      <table class="proj-table">
+        <thead>
+          <tr><th>项目</th><th>优先级</th><th>负责人</th><th>当前阶段</th><th>信息完整度</th><th>状态</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="proj-name">🏆 三农项目</td>
+            <td><span class="badge badge-splus">S+</span></td>
+            <td>蒋金才</td>
+            <td>测试→执行？</td>
+            <td style="color:var(--red)">⚠ 低</td>
+            <td><span class="status status-unk">待确认</span></td>
+          </tr>
+          <tr>
+            <td class="proj-name">🏆 业务规模翻倍</td>
+            <td><span class="badge badge-splus">S+</span></td>
+            <td>蒋金才</td>
+            <td>W20-W36 · 523→1047万</td>
+            <td style="color:var(--red)">⚠ 低</td>
+            <td><span class="status status-unk">待确认</span></td>
+          </tr>
+          <tr>
+            <td class="proj-name">🏥 医疗项目</td>
+            <td><span class="badge badge-high">高</span></td>
+            <td>刘亚男</td>
+            <td>放量中 · ROI=20.16</td>
+            <td style="color:var(--green)">✓ 高</td>
+            <td><span class="status status-good">健康</span></td>
+          </tr>
+          <tr>
+            <td class="proj-name">🎤 才艺直播</td>
+            <td><span class="badge badge-high">高</span></td>
+            <td>蒋金才？</td>
+            <td>扩量中</td>
+            <td style="color:var(--yellow)">中</td>
+            <td><span class="status status-good">活跃</span></td>
+          </tr>
+          <tr>
+            <td class="proj-name">🐂 磁力金牛</td>
+            <td><span class="badge badge-high">高</span></td>
+            <td>王聪</td>
+            <td>持续运营</td>
+            <td style="color:var(--yellow)">中</td>
+            <td><span class="status status-warn">⚠ 月签率不达标</span></td>
+          </tr>
+          <tr>
+            <td class="proj-name">🎨 动漫2期</td>
+            <td><span class="badge badge-mid">中</span></td>
+            <td>马越</td>
+            <td>冲刺</td>
+            <td style="color:var(--red)">⚠ 低</td>
+            <td><span class="status status-good">活跃</span></td>
+          </tr>
+          <tr>
+            <td class="proj-name">📚 泛知识</td>
+            <td><span class="badge badge-mid">中</span></td>
+            <td>南雪妮</td>
+            <td>持续运营</td>
+            <td style="color:var(--green)">✓ 高</td>
+            <td><span class="status status-good">健康</span></td>
+          </tr>
+          <tr>
+            <td class="proj-name">🎮 小游戏</td>
+            <td><span class="badge badge-mid">中</span></td>
+            <td>贾婕</td>
+            <td>增长中</td>
+            <td style="color:var(--red)">⚠ 低</td>
+            <td><span class="status status-unk">待确认</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:12px;font-size:0.78em;color:var(--yellow);">⚠ 标黄的「待确认」字段需要你审核补充，大概 15 分钟</p>
+  </div>
+
+  <!-- Tab 3: How -->
+  <div id="tab-how" class="tab-panel">
+    <div class="flow-row">
+      <div class="flow-box">
+        <div class="f-title">💬 你说</div>
+        <div class="f-sub">「看下医疗项目」</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box active-box">
+        <div class="f-title">🤖 我自动加载</div>
+        <div class="f-sub">医疗项目完整上下文</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">
+        <div class="f-title">💬 你聊</div>
+        <div class="f-sub">「ROI 更新到 22 了」</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box active-box">
+        <div class="f-title">🤖 我自动更新</div>
+        <div class="f-sub">卡片 KPI 实时刷新</div>
+      </div>
+    </div>
+
+    <div class="action-grid" style="margin-top:20px;">
+      <div class="action-card">
+        <div class="step-circle">1</div>
+        <div class="step-content">
+          <div class="step-title">AI 萃取初版卡片 <span class="badge badge-done" style="margin-left:8px;">AI执行</span></div>
+          <div class="step-desc">从 18 个月历史记录里提取每个项目的信息，生成 8 张 YAML 卡片</div>
+        </div>
+      </div>
+      <div class="action-card">
+        <div class="step-circle">2</div>
+        <div class="step-content">
+          <div class="step-title">你审核修正 <span class="badge badge-todo" style="margin-left:8px;">约15分钟</span></div>
+          <div class="step-desc">补上「待确认」字段：业务方、当前阶段、真实优先级</div>
+        </div>
+      </div>
+      <div class="action-card">
+        <div class="step-circle">3</div>
+        <div class="step-content">
+          <div class="step-title">写入 workspace <span class="badge badge-done" style="margin-left:8px;">AI执行</span></div>
+          <div class="step-desc">卡片存入 projects/ 目录，成为我的持久化上下文</div>
+        </div>
+      </div>
+      <div class="action-card">
+        <div class="step-circle">4</div>
+        <div class="step-content">
+          <div class="step-title">实战验证 <span class="badge badge-todo" style="margin-left:8px;">正常聊天</span></div>
+          <div class="step-desc">聊一个真实项目，验证卡片自动加载和更新是否正常</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ==================== S: STRUCTURE (10s) ==================== -->
+<section class="section reveal">
+  <div class="section-label">🏗️ 架构 · 五层管理基础设施</div>
+  <div class="conclusion-title" style="font-size:1.2em;margin-bottom:20px;">
+    本周聚焦 <span class="hl">L1+L2</span>，其他渐进
+  </div>
+
+  <div class="arch-stack">
+    <div class="arch-row l1">
+      <div class="layer-num">L1</div>
+      <div class="layer-info">
+        <div class="layer-name">信息层 · 项目字典</div>
+        <div class="layer-desc">8 张项目卡片，每张包含 KPI/干系人/阶段/决策历史 — 对标 Porter 价值链「支持活动」</div>
+      </div>
+      <div class="layer-tag tag-now">✅ 本周</div>
+    </div>
+    <div class="arch-connect"></div>
+    <div class="arch-row l2">
+      <div class="layer-num">L2</div>
+      <div class="layer-info">
+        <div class="layer-name">状态层 · 上下文驱动</div>
+        <div class="layer-desc">你说项目名 → 自动加载卡片；你更新数据 → 自动回写 — 对标 张翔「小循环」</div>
+      </div>
+      <div class="layer-tag tag-now">✅ 本周</div>
+    </div>
+    <div class="arch-connect"></div>
+    <div class="arch-row l3">
+      <div class="layer-num">L3</div>
+      <div class="layer-info">
+        <div class="layer-name">度量层 · KPI追踪 + 红黄绿灯</div>
+        <div class="layer-desc">自动追踪 KPI 变化，异常告警 — 对标 Drucker「衡量即管理」</div>
+      </div>
+      <div class="layer-tag tag-next">📅 下周</div>
+    </div>
+    <div class="arch-connect"></div>
+    <div class="arch-row l4">
+      <div class="layer-num">L4</div>
+      <div class="layer-info">
+        <div class="layer-name">节奏层 · 周会支撑 + 异常告警</div>
+        <div class="layer-desc">周五前自动生成项目状态汇总，识别最高杠杆干预点 — 对标 Grove「高杠杆管理」</div>
+      </div>
+      <div class="layer-tag tag-later">📅 后续</div>
+    </div>
+    <div class="arch-connect"></div>
+    <div class="arch-row l5">
+      <div class="layer-num">L5</div>
+      <div class="layer-info">
+        <div class="layer-name">决策层 · Type1/2 决策追溯</div>
+        <div class="layer-desc">区分重大决策和日常操作，建立完整决策链 — 对标 Bezos「决策分类」</div>
+      </div>
+      <div class="layer-tag tag-later">📅 后续</div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ==================== T: NARRATIVE (30s) ==================== -->
+<section class="section reveal">
+  <div class="section-label">🧠 理论根基 · 五位大师的思想</div>
+  <div class="conclusion-title" style="font-size:1.2em;">
+    这张基建图背后，站着 <span class="hl">五位管理者</span> 的智慧
+  </div>
+
+  <div class="insight-grid">
+    <div class="insight-card i1">
+      <div class="insight-num">Peter Drucker</div>
+      <h3>「衡量即管理」→ 每个项目必须有可量化 KPI</h3>
+      <p>不是"医疗项目在推进"，而是"医疗 ROI 从 18 → 20.16"。<span style="color:var(--accent)">状态必须数字化。</span></p>
+    </div>
+    <div class="insight-card i2">
+      <div class="insight-num">Andy Grove (Intel)</div>
+      <h3>「高杠杆管理」→ 帮你识别最值得花时间的项目</h3>
+      <p>你的时间有限，7-8 个项目不能平均用力。<span style="color:var(--accent2)">基建告诉你此时此刻哪个项目最需要你。</span></p>
+    </div>
+    <div class="insight-card i3">
+      <div class="insight-num">Jeff Bezos</div>
+      <h3>「Type 1 ≠ Type 2」→ 决策分级记录</h3>
+      <p>不可逆的重大决策（Type1）需要完整记录背景依据；可调整的操作决策（Type2）记录结论即可。<span style="color:var(--orange)">不让小决策占满你的记录。</span></p>
+    </div>
+    <div class="insight-card i4">
+      <div class="insight-num">Shreyas Doshi (Stripe)</div>
+      <h3>「LNO 框架」→ 区分杠杆任务、中性任务、负担</h3>
+      <p>业务规模翻倍专项是 L（杠杆，做好一个方法论三个项目复用）；特效师跟进已是 O（负担）。<span style="color:var(--purple)">帮你做减法。</span></p>
+    </div>
+    <div class="insight-card i1">
+      <div class="insight-num">张翔</div>
+      <h3>「小循环」→ 每个项目都在「发现→方案→执行→验证」的闭环里</h3>
+      <p>你不是只要知道进度，你要知道<span style="color:var(--accent)">闭环转到哪一步了、卡在哪了</span>。这是你老板给你的尺子。</p>
+    </div>
+    <div class="insight-card i2">
+      <div class="insight-num">行业对标</div>
+      <h3>「Linear × Claude Projects」→ 最佳实践的交叉验证</h3>
+      <p>Linear：「最好的工具是你感觉不到在用的」<br/>Claude Projects：「一个文件级上下文单元就够了」<br/><span style="color:var(--accent2)">两者指向同一个答案：轻量、AI 驱动、零摩擦。</span></p>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- ==================== A: ACTION (5s) ==================== -->
+<section class="section reveal">
+  <div class="section-label">🚀 行动收口</div>
+
+  <div class="cta-bar">
+    <div class="cta-title">本周结束时的验收标准</div>
+    <div class="cta-checks">
+      <div class="cta-check">8 个项目各有 1 张卡片</div>
+      <div class="cta-check">说「看下医疗」→ 自动加载上下文</div>
+      <div class="cta-check">数据更新后卡片自动刷新</div>
+      <div class="cta-check">周五周会前可快速回顾</div>
+    </div>
+  </div>
+
+  <div class="risk-strip">
+    <div class="risk-item">
+      <div class="risk-label">⚠ 风险：初版信息不准</div>
+      <div class="risk-mitigation">→ 你审核修正 + 后续对话持续校准</div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-label">⚠ 风险：项目太多维护不过来</div>
+      <div class="risk-mitigation">→ 先聚焦 active 项目，paused 只保留骨架</div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-label">⚠ 风险：信息安全</div>
+      <div class="risk-mitigation">→ 卡片存本地 workspace，不自动推送到外部</div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div class="footer">
+  Mario Claw · VISTA 方法论 · 基于 Drucker / Grove / Bezos / Doshi / 张翔 · 2026-W20 · 为蒋金才定制
+</div>
+
+<script>
+function switchTab(tabId) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('reveal'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.section').forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
