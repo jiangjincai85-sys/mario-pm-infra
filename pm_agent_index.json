@@ -1,0 +1,110 @@
+{
+  "_schema": "1.0",
+  "_description": "主Agent(MarioClaw AI) → PMAgent 交接索引。主Agent每次建设新内容后更新此文件，PMAgent每次巡检时读取以理解系统全貌。",
+  
+  "meta": {
+    "version": "1.0",
+    "created": "2026-05-24T18:06:00",
+    "last_handoff": "2026-05-24T18:06:00",
+    "handoff_by": "MarioClaw AI (主Agent)",
+    "handoff_to": "PMAgent v1.1 (后台Agent)",
+    "protocol": "主Agent建设→写入此索引→PMAgent读取→纳入巡检范围"
+  },
+
+  "system_overview": {
+    "purpose": "项目管理基础设施 — 21个项目 + 27个知识页面 + 27个脚本 + 13个部署目标",
+    "runtime": "macOS 25.5 / Python 3 / zsh",
+    "deploy_platform": "GitHub Pages (jiangjincai85-sys.github.io/mario-pm-infra/)",
+    "scheduler": "scripts/scheduler_daemon.py (launchd后台常驻)",
+    "agent_schedule": "PMAgent 每30分钟巡检一次"
+  },
+
+  "knowledge_pages": [
+    {"id": "pm-agent-evolution", "title": "从Skill到Agent进化故事", "path": "knowledge-base/pm-agent-evolution/index.html", "deploy_as": "pm-agent-evolution.html", "created": "2026-05-24", "purpose": "VISTA方法论呈现Agent进化全貌"},
+    {"id": "pm-project-health", "title": "项目健康仪表盘", "path": "knowledge-base/pm-project-health/index.html", "deploy_as": "pm-project-health.html", "created": "2026-05-24", "purpose": "21项目健康分可视化", "data_source": "pm_project_scores.json"},
+    {"id": "project-data-pipeline", "title": "项目数据流水线架构", "path": "knowledge-base/project-data-pipeline/index.html", "deploy_as": "project-plan.html", "created": "2026-05-17", "purpose": "数据流水线设计文档"},
+    {"id": "project-management-skill-vista", "title": "项目管理Skill VISTA呈现", "path": "knowledge-base/project-management-skill-vista/index.html", "deploy_as": "skill-vista.html", "created": "2026-05-18", "purpose": "Skill功能全景"},
+    {"id": "project-management-for-newcomers", "title": "新人友好介绍", "path": "knowledge-base/project-management-for-newcomers/index.html", "deploy_as": "pm-intro.html", "created": "2026-05-19", "purpose": "零门槛项目管理系统介绍"},
+    {"id": "output-tracking-diagnosis", "title": "产出追踪诊断", "path": "knowledge-base/output-tracking-diagnosis/index.html", "deploy_as": "tracking-diagnosis.html", "created": "2026-05-20", "purpose": "产出追踪问题诊断"},
+    {"id": "output-tracking-strategy", "title": "产出追踪策略", "path": "knowledge-base/output-tracking-strategy/index.html", "deploy_as": "tracking-strategy.html", "created": "2026-05-20", "purpose": "三层追踪方案设计"},
+    {"id": "output-tracking-audit", "title": "产出追踪审计", "path": "knowledge-base/output-tracking-audit/index.html", "deploy_as": "tracking-audit.html", "created": "2026-05-21", "purpose": "产出追踪落地审计"},
+    {"id": "agent-monitor", "title": "Agent监控看板", "path": "knowledge-base/agent-monitor/index.html", "deploy_as": null, "created": "2026-05-22", "purpose": "Agent运行状态监控"},
+    {"id": "ai-outlook", "title": "AI向外看系统", "path": "knowledge-base/ai-outlook/index.html", "deploy_as": null, "created": "2026-05-20", "purpose": "每日情报采集系统"},
+    {"id": "scrapling-deep-research", "title": "Scrapling深度调研", "path": "knowledge-base/scrapling-deep-research/index.html", "deploy_as": null, "created": "2026-05-17", "purpose": "爬虫库技术调研"},
+    {"id": "vista-methodology", "title": "VISTA方法论", "path": "knowledge-base/vista-methodology/index.html", "deploy_as": null, "created": "2026-05-15", "purpose": "内容呈现方法论"},
+    {"id": "weekly-report-optimization", "title": "周报优化设计", "path": "knowledge-base/weekly-report-optimization/index.html", "deploy_as": null, "created": "2026-05-16", "purpose": "周报可视化优化"},
+    {"id": "personification-report", "title": "人格化转型汇报", "path": "knowledge-base/人格化转型汇报/index.html", "deploy_as": null, "created": "2026-05-19", "purpose": "汇报风格转型设计"}
+  ],
+
+  "scripts": [
+    {"id": "pm_agent", "path": "scripts/pm_agent.py", "size_kb": 31, "purpose": "PMAgent主脚本：感知→决策→行动→自检→评分", "schedule": "每30分钟", "produces": ["pm_agent_health.json", "pm_agent_audit.jsonl", "pm_project_scores.json"]},
+    {"id": "sync_projects_data", "path": "scripts/sync_projects_data.py", "size_kb": 20, "purpose": "项目数据同步+13文件GitHub Pages部署", "schedule": "on-demand + Agent自动重试"},
+    {"id": "scheduler_daemon", "path": "scripts/scheduler_daemon.py", "size_kb": 4, "purpose": "定时任务调度器（launchd常驻）"},
+    {"id": "gen_monitor_dashboard", "path": "scripts/gen_monitor_dashboard.py", "size_kb": 49, "purpose": "监控数据生成+看板"},
+    {"id": "classify_tool_calls", "path": "scripts/classify_tool_calls.py", "size_kb": 12, "purpose": "工具调用分类→项目归属"},
+    {"id": "session_log", "path": "scripts/session_log.py", "size_kb": 10, "purpose": "会话日志记录"},
+    {"id": "reclassify", "path": "scripts/reclassify.py", "size_kb": 9, "purpose": "工具调用重分类"},
+    {"id": "gen_project_stats", "path": "scripts/gen_project_stats.py", "size_kb": 9, "purpose": "项目统计生成"},
+    {"id": "daily_report", "path": "scripts/daily_report.py", "size_kb": 9, "purpose": "日报生成器"},
+    {"id": "generate_formal_report", "path": "scripts/generate_formal_report.py", "size_kb": 9, "purpose": "正式报告生成"}
+  ],
+
+  "data_files": {
+    "primary": [
+      {"file": "output/projects-data.json", "size_kb": 99, "purpose": "项目主数据库（21项目+51产出追踪+14不确定项）", "schema": "project[] + meta"},
+      {"file": "output/pm_project_scores.json", "size_kb": 5, "purpose": "每项目健康分（PMAgent自动生成）", "schema": "summary + projects[]"},
+      {"file": "output/pm_agent_health.json", "size_kb": 2, "purpose": "Agent巡检报告", "schema": "perceive + decide + act + self_check + project_health"},
+      {"file": "output/pm_agent_audit.jsonl", "size_kb": 5, "purpose": "Agent操作审计（append-only）", "schema": "JSONL每行一条记录"},
+      {"file": "output/pm_agent_config.json", "size_kb": 3, "purpose": "Agent规则配置（trust_level + rules）", "schema": "trust_level + rules[]"},
+      {"file": "output/pm_agent_index.json", "size_kb": 0, "purpose": "本文件：主Agent→PMAgent交接索引", "schema": "knowledge_pages + scripts + data_files"}
+    ],
+    "secondary": [
+      {"file": "output/monitor-data.json", "size_kb": 30, "purpose": "运行时监控数据（skill/subagent使用频次）"},
+      {"file": "output/kanban-data.json", "size_kb": 12, "purpose": "看板数据"},
+      {"file": "output/monitor-dashboard.html", "size_kb": 13, "purpose": "监控仪表盘HTML"},
+      {"file": "output/pm-kanban.html", "size_kb": 13, "purpose": "项目管理看板HTML"},
+      {"file": "output/kanban.html", "size_kb": 29, "purpose": "主看板HTML"}
+    ]
+  },
+
+  "deploy_targets": {
+    "platform": "GitHub Pages",
+    "repo": "jiangjincai85-sys.github.io/mario-pm-infra",
+    "branch": "gh-pages",
+    "files": [
+      "index.html (pm-kanban.html)",
+      "projects-data.json",
+      "monitor-data.json",
+      "monitor.html (monitor-dashboard.html)",
+      "project-plan.html",
+      "skill-vista.html",
+      "pm-intro.html",
+      "tracking-diagnosis.html",
+      "tracking-strategy.html",
+      "tracking-audit.html",
+      "pm-agent-evolution.html",
+      "pm-project-health.html",
+      "pm_project_scores.json"
+    ]
+  },
+
+  "pending_handoffs": [
+    {
+      "type": "data_gap",
+      "severity": "🟡",
+      "item": "已完成项目 usage_frequency 全部为空",
+      "detail": "VISTA(4项)/Scrapling(5项) 产出追踪缺少真实使用数据",
+      "action": "需手动补充 usage_frequency 字段或标注为'待追踪'",
+      "impact": "健康分从100虚高→70真实"
+    },
+    {
+      "type": "knowledge_gap",
+      "severity": "🟢",
+      "item": "13个 knowledge-base 目录无 HTML（MOC/索引占位）",
+      "detail": "00-overview~06-integration, BP共建, Cards, MOCs, Projects 等为结构占位",
+      "action": "无需处理，是 Obsidian 笔记结构"
+    }
+  ],
+
+  "_maintenance_note": "主Agent每次新增/修改知识页面、脚本、数据文件时，应更新本文件的相关条目。PMAgent巡检时对比本索引与实际文件系统，发现不一致则发出信号。"
+}

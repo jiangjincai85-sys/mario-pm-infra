@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>项目健康仪表盘 · PMAgent</title>
+<style>
+  :root {
+    --bg: #0a0a12;
+    --card: #12121c;
+    --border: #1e1e30;
+    --text: #c8c8d0;
+    --text-dim: #7a7a88;
+    --green: #00c853;
+    --yellow: #ffb300;
+    --red: #ff3d3d;
+    --accent: #6c5ce7;
+    --accent2: #00b894;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, "SF Pro Display", "Segoe UI", sans-serif;
+    background: var(--bg); color: var(--text);
+    min-height: 100vh; padding: 24px 20px;
+  }
+  .container { max-width: 900px; margin:0 auto; }
+
+  /* Header */
+  .header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 24px; flex-wrap: wrap; gap: 12px;
+  }
+  .header h1 { font-size: 22px; font-weight: 700; }
+  .header .live {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #00c85315; color: var(--green); padding: 4px 12px;
+    border-radius: 20px; font-size: 12px; font-weight: 600;
+  }
+  .live-dot {
+    width: 7px; height: 7px; background: var(--green);
+    border-radius: 50%; animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; } 50% { opacity: 0.3; }
+  }
+
+  /* KPI Cards */
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 12px; margin-bottom: 24px;
+  }
+  @media (max-width:600px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } }
+  .kpi {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px; text-align: center;
+  }
+  .kpi .num { font-size: 32px; font-weight: 800; }
+  .kpi .label { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+  .kpi.green .num { color: var(--green); }
+  .kpi.yellow .num { color: var(--yellow); }
+  .kpi.red .num { color: var(--red); }
+  .kpi.accent .num { color: var(--accent2); }
+
+  /* Filter Tabs */
+  .tabs {
+    display: flex; gap: 4px; margin-bottom: 16px;
+    background: var(--card); border-radius: 10px; padding: 4px;
+    border: 1px solid var(--border);
+  }
+  .tab {
+    flex: 1; text-align: center; padding: 8px 12px;
+    border-radius: 8px; cursor: pointer; font-size: 13px;
+    font-weight: 600; color: var(--text-dim); transition: all 0.2s;
+    border: none; background: none;
+  }
+  .tab.active { background: var(--accent); color: #fff; }
+  .tab:hover:not(.active) { color: var(--text); }
+
+  /* Score Table */
+  .score-table {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+  }
+  .score-table .row {
+    display: flex; align-items: center; padding: 10px 16px;
+    border-bottom: 1px solid var(--border); cursor: pointer;
+    transition: background 0.15s; gap: 12px; font-size: 13px;
+  }
+  .score-table .row:last-child { border-bottom: none; }
+  .score-table .row:hover { background: #ffffff04; }
+  .score-table .row.expanded { background: #6c5ce710; }
+  .col-name { flex: 3; min-width: 0; }
+  .col-name .title { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .col-name .sub { font-size: 11px; color: var(--text-dim); }
+  .col-score { flex: 0 0 56px; text-align: right; font-size: 16px; font-weight: 700; }
+  .col-bar { flex: 2; display: flex; align-items: center; }
+  .bar-track { flex: 1; height: 6px; background: #1e1e30; border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; transition: width 0.6s ease; }
+  .bar-fill.green { background: var(--green); }
+  .bar-fill.yellow { background: var(--yellow); }
+  .bar-fill.red { background: var(--red); }
+  .col-status { flex: 0 0 64px; text-align: center; font-size: 11px; }
+  .status-tag {
+    display: inline-block; padding: 2px 8px; border-radius: 10px;
+    font-weight: 600; font-size: 11px;
+  }
+  .status-tag.active { background: #6c5ce720; color: #9d8eff; }
+  .status-tag.done { background: #00c85315; color: #00e676; }
+  .col-details { display: none; margin-top: 2px; }
+  .row.expanded .col-details { display: block; }
+  .detail-badges {
+    display: flex; flex-wrap: wrap; gap: 4px; padding: 4px 0 8px 0;
+    font-size: 11px;
+  }
+  .badge {
+    padding: 2px 8px; border-radius: 10px; font-weight: 600;
+    background: #ff3d3d15; color: var(--red);
+  }
+  .badge.warn { background: #ffb30015; color: var(--yellow); }
+
+  /* Empty state */
+  .empty { text-align: center; padding: 40px; color: var(--text-dim); }
+
+  /* Footer */
+  .footer { text-align: center; margin-top: 24px; font-size: 11px; color: var(--text-dim); }
+
+  /* Legend */
+  .legend {
+    display: flex; gap: 16px; margin-bottom: 12px; font-size: 11px;
+    color: var(--text-dim);
+  }
+  .legend span { display: flex; align-items: center; gap: 4px; }
+  .legend .d { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .legend .d.g { background: var(--green); }
+  .legend .d.y { background: var(--yellow); }
+  .legend .d.r { background: var(--red); }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>📊 项目健康仪表盘</h1>
+    <div class="live"><span class="live-dot"></span> Agent 巡检中</div>
+  </div>
+
+  <!-- KPI -->
+  <div class="kpi-row" id="kpi-row"></div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <span><span class="d g"></span> ≥80 健康</span>
+    <span><span class="d y"></span> 60–79 关注</span>
+    <span><span class="d r"></span> &lt;60 介入</span>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-filter="all">全部</button>
+    <button class="tab" data-filter="进行中">进行中</button>
+    <button class="tab" data-filter="已完成">已完成</button>
+  </div>
+
+  <!-- Score Table -->
+  <div class="score-table" id="score-table"></div>
+
+  <div class="footer">
+    数据来源: pm_project_scores.json · 更新于 <span id="updated-at">--</span> · PMAgent v1.1
+  </div>
+</div>
+
+<script>
+const SCORES_URL = "https://jiangjincai85-sys.github.io/mario-pm-infra/pm_project_scores.json";
+
+let allProjects = [];
+let currentFilter = "all";
+
+async function loadData() {
+  try {
+    const resp = await fetch(SCORES_URL);
+    const data = await resp.json();
+    allProjects = data.projects || [];
+    document.getElementById("updated-at").textContent = 
+      new Date(data.updated_at).toLocaleString("zh-CN");
+    render();
+  } catch(e) {
+    document.getElementById("score-table").innerHTML = 
+      '<div class="empty">⚠️ 数据加载失败，请确保 scores 文件已部署</div>';
+  }
+}
+
+function render() {
+  renderKPI();
+  renderTable();
+}
+
+function renderKPI() {
+  const filtered = getFiltered();
+  const scores = filtered.filter(p => p.score !== null).map(p => p.score);
+  const avg = scores.length ? (scores.reduce((a,b)=>a+b,0) / scores.length).toFixed(1) : 0;
+  const green = filtered.filter(p => p.grade === "🟢").length;
+  const yellow = filtered.filter(p => p.grade === "🟡").length;
+  const red = filtered.filter(p => p.grade === "🔴").length;
+
+  document.getElementById("kpi-row").innerHTML = `
+    <div class="kpi accent"><div class="num">${filtered.length}</div><div class="label">项目总数</div></div>
+    <div class="kpi accent"><div class="num">${avg}</div><div class="label">平均健康分</div></div>
+    <div class="kpi green"><div class="num">${green}</div><div class="label">🟢 健康</div></div>
+    <div class="kpi ${yellow > 0 ? 'yellow' : ''}"><div class="num">${yellow}</div><div class="label">🟡 关注</div></div>
+  `;
+}
+
+function getFiltered() {
+  if (currentFilter === "all") return allProjects;
+  return allProjects.filter(p => {
+    const s = p.status || "";
+    if (currentFilter === "进行中") return s === "进行中";
+    if (currentFilter === "已完成") return s.includes("完成");
+    return true;
+  });
+}
+
+function renderTable() {
+  const filtered = getFiltered();
+  // Sort: lowest score first (concerns at top)
+  const sorted = [...filtered].sort((a,b) => {
+    const sa = a.score ?? 999;
+    const sb = b.score ?? 999;
+    return sa - sb;
+  });
+
+  const table = document.getElementById("score-table");
+  if (sorted.length === 0) {
+    table.innerHTML = '<div class="empty">暂无匹配项目</div>';
+    return;
+  }
+
+  table.innerHTML = sorted.map(p => {
+    const sc = p.score;
+    const grade = p.grade;
+    const scoreColor = sc === null ? "var(--text-dim)" : 
+      (grade === "🟢" ? "var(--green)" : grade === "🟡" ? "var(--yellow)" : "var(--red)");
+    const barColor = grade === "🟢" ? "green" : grade === "🟡" ? "yellow" : "red";
+    const statusClass = (p.status||"").includes("完成") ? "done" : "active";
+    const details = (p.details || []).filter(d => d).join(", ");
+
+    return `
+      <div class="row" onclick="toggleDetails(this)">
+        <div class="col-name">
+          <div class="title">${p.name}</div>
+          ${details ? `<div class="sub">${details}</div>` : ''}
+        </div>
+        <div class="col-bar">
+          <div class="bar-track">
+            <div class="bar-fill ${barColor}" style="width:${sc ?? 0}%"></div>
+          </div>
+        </div>
+        <div class="col-score" style="color:${scoreColor}">${sc ?? '–'}</div>
+        <div class="col-status">
+          <span class="status-tag ${statusClass}">${p.status}</span>
+        </div>
+      </div>`;
+  }).join("");
+}
+
+function toggleDetails(row) {
+  row.classList.toggle("expanded");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadData();
+  
+  // Tab switching
+  document.getElementById("tabs").addEventListener("click", e => {
+    if (e.target.classList.contains("tab")) {
+      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+      e.target.classList.add("active");
+      currentFilter = e.target.dataset.filter;
+      render();
+    }
+  });
+
+  // Auto-refresh every 5 min
+  setInterval(loadData, 300000);
+});
+</script>
+</body>
+</html>

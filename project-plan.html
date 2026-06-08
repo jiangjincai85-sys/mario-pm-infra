@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>项目知识流水线 · 技术方案</title>
+<style>
+:root {
+  --bg: #0f1117;
+  --card: #1a1d2e;
+  --accent1: #34d399;
+  --accent2: #f97316;
+  --accent3: #8b5cf6;
+  --accent4: #f43f5e;
+  --accent5: #38bdf8;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --border: #2d3148;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.6; }
+.page { max-width:960px; margin:0 auto; padding:24px 20px; }
+
+/* V - 视觉钩子 */
+.hero { text-align:center; padding:40px 20px; margin-bottom:32px; border-radius:16px; background:linear-gradient(135deg, #1a1d2e 0%, #0f1117 100%); border:1px solid var(--border); }
+.hero-badge { display:inline-block; font-size:0.75rem; padding:4px 12px; border-radius:999px; background:var(--accent3); color:#fff; margin-bottom:12px; font-weight:600; }
+.hero h1 { font-size:1.8rem; font-weight:800; margin-bottom:8px; color:#fff; }
+.hero h1 em { font-style:normal; color:var(--accent1); }
+.hero-sub { font-size:1rem; color:var(--text-muted); }
+
+/* I - 信息骨架 */
+.kpi-row { display:flex; gap:12px; margin-bottom:28px; flex-wrap:wrap; }
+.kpi-card { flex:1; min-width:140px; background:var(--card); border-radius:12px; padding:16px; border:1px solid var(--border); }
+.kpi-card .num { font-size:1.6rem; font-weight:800; margin-bottom:2px; }
+.kpi-card .num.green { color:var(--accent1); }
+.kpi-card .num.orange { color:var(--accent2); }
+.kpi-card .num.purple { color:var(--accent3); }
+.kpi-card .num.red { color:var(--accent4); }
+.kpi-card .num.blue { color:var(--accent5); }
+.kpi-card .label { font-size:0.75rem; color:var(--text-muted); }
+
+/* S - 结构展开 */
+.section { margin-bottom:28px; }
+.section-title { font-size:1.1rem; font-weight:700; margin-bottom:14px; padding-left:8px; border-left:3px solid var(--accent1); }
+.section-title.orange { border-color:var(--accent2); }
+.section-title.purple { border-color:var(--accent3); }
+.section-title.red { border-color:var(--accent4); }
+.section-title.blue { border-color:var(--accent5); }
+
+.arch-flow { background:var(--card); border-radius:12px; padding:20px; border:1px solid var(--border); }
+.arch-row { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+.arch-label { font-size:0.8rem; font-weight:600; padding:6px 12px; border-radius:8px; min-width:80px; text-align:center; }
+.arch-label.src { background:#1a2e1a; color:var(--accent1); }
+.arch-label.mid { background:#1a2e3a; color:var(--accent5); }
+.arch-label.out { background:#2e1a2e; color:var(--accent3); }
+.arch-arrow { color:var(--text-muted); font-size:1rem; }
+.arch-desc { font-size:0.85rem; color:var(--text); }
+
+/* 三层卡片 */
+.layer-card { background:var(--card); border-radius:12px; padding:18px; border:1px solid var(--border); margin-bottom:14px; }
+.layer-card h3 { font-size:0.95rem; font-weight:700; margin-bottom:8px; }
+.layer-card h3 .tag { font-size:0.65rem; padding:2px 8px; border-radius:4px; margin-left:6px; font-weight:500; }
+.layer-card h3 .tag.green { background:#1a2e1a; color:var(--accent1); }
+.layer-card h3 .tag.orange { background:#2e1a1a; color:var(--accent2); }
+.layer-card h3 .tag.purple { background:#1a2e3a; color:var(--accent3); }
+.layer-card ul { list-style:none; padding:0; }
+.layer-card li { font-size:0.85rem; padding:4px 0; color:var(--text); }
+.layer-card li::before { content:"→ "; color:var(--accent1); font-weight:600; }
+.layer-card li.warn::before { content:"⚠ "; color:var(--accent4); }
+.layer-card .why { font-size:0.75rem; color:var(--text-muted); margin-top:6px; padding-top:6px; border-top:1px solid var(--border); }
+
+/* 对比表 */
+.compare-table { width:100%; border-collapse:collapse; font-size:0.8rem; margin-bottom:14px; }
+.compare-table th { background:var(--card); padding:8px 12px; text-align:left; color:var(--text-muted); font-weight:600; border-bottom:2px solid var(--border); }
+.compare-table td { padding:8px 12px; border-bottom:1px solid var(--border); }
+.compare-table td.good { color:var(--accent1); }
+.compare-table td.bad { color:var(--accent4); }
+.compare-table td.mid { color:var(--accent2); }
+
+/* 产出追踪雷达 */
+.tracking-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin-bottom:14px; }
+.tracking-item { background:var(--card); border-radius:10px; padding:12px; border:1px solid var(--border); text-align:center; }
+.tracking-item .icon { font-size:1.4rem; margin-bottom:4px; }
+.tracking-item .name { font-size:0.85rem; font-weight:600; }
+.tracking-item .status { font-size:0.65rem; margin-top:2px; }
+.tracking-item .status.ok { color:var(--accent1); }
+.tracking-item .status.partial { color:var(--accent2); }
+.tracking-item .status.no { color:var(--accent4); }
+
+/* A - 行动收口 */
+.action-card { background:var(--card); border-radius:12px; padding:18px; border:1px solid var(--accent1); margin-bottom:14px; }
+.action-card h3 { color:var(--accent1); font-weight:700; margin-bottom:8px; }
+.step-row { display:flex; align-items:center; gap:8px; margin-bottom:6px; }
+.step-num { font-size:0.75rem; font-weight:700; background:var(--accent1); color:#000; width:24px; height:24px; border-radius:6px; display:flex; align-items:center; justify-content:center; }
+.step-text { font-size:0.85rem; }
+.step-time { font-size:0.65rem; color:var(--text-muted); margin-left:auto; }
+
+/* 生活类比 */
+.analogy { background:linear-gradient(135deg, #1a2e1a 0%, #1a1d2e 100%); border-radius:12px; padding:16px; border:1px solid var(--accent1); margin-bottom:14px; }
+.analogy h4 { color:var(--accent1); font-weight:700; font-size:0.9rem; margin-bottom:6px; }
+.analogy p { font-size:0.85rem; color:var(--text); }
+.analogy em { font-style:normal; color:var(--accent1); font-weight:600; }
+
+/* JSON结构预览 */
+.json-preview { background:#0a0c14; border-radius:10px; padding:14px; border:1px solid var(--border); font-family:monospace; font-size:0.75rem; color:#a3b8d0; overflow-x:auto; white-space:pre; line-height:1.4; }
+.json-preview .key { color:var(--accent5); }
+.json-preview .str { color:var(--accent1); }
+.json-preview .comment { color:var(--text-muted); opacity:0.5; }
+
+/* 闭环图 */
+.loop-diagram { background:var(--card); border-radius:12px; padding:18px; border:1px solid var(--border); margin-bottom:14px; }
+.loop-row { display:flex; gap:6px; align-items:center; margin-bottom:8px; }
+.loop-node { font-size:0.8rem; font-weight:600; padding:6px 14px; border-radius:8px; text-align:center; }
+.loop-node.v { background:#1a2e1a; color:var(--accent1); }
+.loop-node.i { background:#2e2e1a; color:var(--accent2); }
+.loop-node.s { background:#1a1a2e; color:var(--accent3); }
+.loop-node.t { background:#1a2e2e; color:var(--accent5); }
+.loop-node.a { background:#2e1a1a; color:var(--accent4); }
+.loop-arrow { font-size:1rem; color:var(--text-muted); }
+
+/* 渐入动画 */
+@keyframes fadeInUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+.hero, .kpi-card, .section, .layer-card, .action-card, .analogy, .loop-diagram, .tracking-item { animation: fadeInUp 0.4s ease-out both; }
+.kpi-card:nth-child(2) { animation-delay:0.05s; }
+.kpi-card:nth-child(3) { animation-delay:0.1s; }
+.kpi-card:nth-child(4) { animation-delay:0.15s; }
+.kpi-card:nth-child(5) { animation-delay:0.2s; }
+.kpi-card:nth-child(6) { animation-delay:0.25s; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ═══ V · 视觉钩子 ═══ -->
+<div class="hero">
+  <div class="hero-badge">📋 技术方案 · VISTA呈现</div>
+  <h1>项目做完不是终点<br><em>数据沉淀才是起点</em></h1>
+  <div class="hero-sub">把散落各处的项目信息，变成任何人都能秒查秒出的知识流水线</div>
+</div>
+
+<!-- ═══ I · 信息骨架 ═══ -->
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="num green">1</div>
+    <div class="label">统一数据源<br>（projects-data.json）</div>
+  </div>
+  <div class="kpi-card">
+    <div class="num purple">3</div>
+    <div class="label">数据层<br>源文件+结构+追踪</div>
+  </div>
+  <div class="kpi-card">
+    <div class="num orange">6</div>
+    <div class="label">产出类型全覆盖<br>skill→脚本→看板→文档</div>
+  </div>
+  <div class="kpi-card">
+    <div class="num red">❌→✅</div>
+    <div class="label">核心闭环<br>散落→秒出→可溯源→可复盘</div>
+  </div>
+  <div class="kpi-card">
+    <div class="num blue">40分钟</div>
+    <div class="label">实施耗时<br>建完即通</div>
+  </div>
+</div>
+
+<!-- ═══ 生活类比 ═══ -->
+<div class="analogy">
+  <h4>🧠 一句话理解这个方案</h4>
+  <p>
+    现在的项目信息就像<em>堆在抽屉里的发票</em>——每张都有用，但需要的时候你得翻遍所有抽屉才能找到一张。<br>
+    这个方案要做的事就是：<em>把所有发票按类别贴到一张大表上</em>，上面还标注了"这张发票是从哪个店拿的"（源文件追溯）和"这张发票用了几次报销"（产出追踪）。<br>
+    以后谁要查，看这张表就行，不用翻抽屉了。
+  </p>
+</div>
+
+<!-- ═══ S · 结构展开 ═══ -->
+<div class="section">
+  <div class="section-title">流水线架构：从源头到输出</div>
+  <div class="arch-flow">
+    <div class="arch-row">
+      <div class="arch-label src">源头</div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-desc">你给我的 Docs链接、会议纪要、Excel、Word、Kim消息</div>
+    </div>
+    <div class="arch-row">
+      <div class="arch-label src">识别</div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-desc">我判断这些信息属于哪个项目 + 属于什么类型（决策/风险/待办/KPI）</div>
+    </div>
+    <div class="arch-row">
+      <div class="arch-label mid">写入</div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-desc">直接追加到 projects-data.json（不用改Markdown表格）</div>
+    </div>
+    <div class="arch-row">
+      <div class="arch-label mid">同步</div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-desc">脚本自动生成 .md 卡片 + 合并监控数据 + 部署公网</div>
+    </div>
+    <div class="arch-row">
+      <div class="arch-label out">输出</div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-desc">你说"查人力挂账" → 我秒出完整信息 + 源文件追溯 + 产出使用情况</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 闭环示意 ═══ -->
+<div class="section">
+  <div class="section-title orange">完整闭环：项目全生命周期</div>
+  <div class="loop-diagram">
+    <div class="loop-row">
+      <div class="loop-node v">📎 给我源文件</div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-node i">🔍 识别+提取</div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-node s">📝 写入JSON</div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-node t">📊 按需秒出</div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-node a">🔄 复盘优化</div>
+    </div>
+    <div style="text-align:center;font-size:0.8rem;color:var(--text-muted);margin-top:8px;">
+      项目启动 → 信息沉淀 → 项目推进 → 项目完成 → 产出追踪 → 复盘迭代 → 又是新的项目
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 三层详解 ═══ -->
+<div class="section">
+  <div class="section-title purple">中台三层：一个JSON解决所有问题</div>
+
+  <div class="layer-card">
+    <h3>第一层 · 源文件追溯 <span class="tag green">溯源层</span></h3>
+    <ul>
+      <li>记录你给我的每一个 Docs链接、Excel、Word、会议纪要</li>
+      <li>每条源文件带"关键信息摘要"——一眼就知道这文件讲了什么</li>
+      <li>记录获取日期——知道数据是否过期</li>
+      <li class="warn">没有这层 → 数据是"无根之木"，不知道信不信</li>
+    </ul>
+    <div class="why">为什么重要：就像发票上的店名和日期，有了它你才能回去验证、更新、补充。别人看到数据，可以追溯到底是从哪个会议纪要里提炼出来的。</div>
+  </div>
+
+  <div class="layer-card">
+    <h3>第二层 · 结构化字段 <span class="tag orange">内容层</span></h3>
+    <ul>
+      <li><strong>decisions[]</strong> — 决策日志（你做了什么决定、为什么、什么时候）</li>
+      <li><strong>risks[]</strong> — 风险追踪（什么可能出问题、有多大影响、怎么应对）</li>
+      <li><strong>todos[]</strong> — 待办清单（要做什么、什么时候做、优先级多高）</li>
+      <li><strong>kpi{}</strong> — 核心指标（项目目标是什么、现在进展到哪）</li>
+      <li>所有项目必须填完这8个字段，空也写[]——绝不允许缺字段</li>
+    </ul>
+    <div class="why">为什么重要：就像超市货架的分区标签——每个类别都在固定位置，找东西不用翻遍整个仓库。</div>
+  </div>
+
+  <div class="layer-card">
+    <h3>第三层 · 产出追踪 <span class="tag purple">复盘层</span></h3>
+    <ul>
+      <li>项目做完后产出的所有东西（skill、脚本、看板、文档）都记录在这里</li>
+      <li>每个产出带"使用次数"——知道这个产出有没有人用</li>
+      <li>每个产出带"使用趋势"——知道是越来越多人用还是没人用了</li>
+      <li>数据来源是monitor.db——自动统计，不用手动数</li>
+    </ul>
+    <div class="why">为什么重要：项目做完不是终点。产出用了多少次，才是判断"这个项目值不值"的依据。用得少→优化门槛；用得多→重点迭代。</div>
+  </div>
+</div>
+
+<!-- ═══ 产出追踪 ═══ -->
+<div class="section">
+  <div class="section-title red">6种产出类型全覆盖</div>
+  <div class="tracking-grid">
+    <div class="tracking-item">
+      <div class="icon">🛠</div>
+      <div class="name">Skill</div>
+      <div class="status ok">✅ 已追踪</div>
+    </div>
+    <div class="tracking-item">
+      <div class="icon">🤖</div>
+      <div class="name">Subagent</div>
+      <div class="status partial">⚠️ 需映射</div>
+    </div>
+    <div class="tracking-item">
+      <div class="icon">📜</div>
+      <div class="name">脚本</div>
+      <div class="status partial">⚠️ 需映射</div>
+    </div>
+    <div class="tracking-item">
+      <div class="icon">📊</div>
+      <div class="name">看板</div>
+      <div class="status no">❌ 待追踪</div>
+    </div>
+    <div class="tracking-item">
+      <div class="icon">📄</div>
+      <div class="name">文档</div>
+      <div class="status partial">⚠️ 需映射</div>
+    </div>
+    <div class="tracking-item">
+      <div class="icon">🧠</div>
+      <div class="name">记忆</div>
+      <div class="status no">❌ 待追踪</div>
+    </div>
+  </div>
+  <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:14px;">
+    追踪精度分层：<span style="color:var(--accent1)">精确</span>（Skill/Subagent每次调用都记录） → <span style="color:var(--accent2)">可追踪</span>（脚本/文档通过命令调用记录） → <span style="color:var(--accent4)">难追踪</span>（看板公网访问没日志）
+  </div>
+</div>
+
+<!-- ═══ 现状对比 ═══ -->
+<div class="section">
+  <div class="section-title">做完前 vs 做完后</div>
+  <table class="compare-table">
+    <tr><th>场景</th><th>现在</th><th>做完后</th></tr>
+    <tr><td>你说"查人力挂账"</td><td class="bad">翻.md文件→拼1分钟→输出</td><td class="good">读JSON→秒出完整信息+源文件追溯</td></tr>
+    <tr><td>其他会话提到项目</td><td class="bad">信息散落，随会话结束丢失</td><td class="good">自动追加到JSON→下次可查</td></tr>
+    <tr><td>Skill要项目数据</td><td class="bad">无法获取</td><td class="good">json.load()→直接用</td></tr>
+    <tr><td>验证数据准确性</td><td class="bad">不知道来源</td><td class="good">看source_materials→回到源头验证</td></tr>
+    <tr><td>项目复盘</td><td class="bad">只知道做了什么，不知道产出用了多少</td><td class="good">output_tracking→使用频次+优化方向</td></tr>
+    <tr><td>贾婕要项目进展</td><td class="bad">看不到</td><td class="good">读公网JSON→随时可查</td></tr>
+  </table>
+</div>
+
+<!-- ═══ JSON结构预览 ═══ -->
+<div class="section">
+  <div class="section-title blue">projects-data.json · 结构预览</div>
+  <div class="json-preview"><span class="key">{</span>
+  <span class="key">"meta"</span>: { <span class="key">"version"</span>: <span class="str">"1.0"</span>, <span class="key">"total_projects"</span>: <span class="str">10</span> },
+  <span class="key">"projects"</span>: [
+    <span class="key">{</span>
+      <span class="key">"project_id"</span>: <span class="str">"project-expansion-headcount"</span>,
+      <span class="key">"name"</span>: <span class="str">"人力挂账推动专项"</span>,
+      <span class="key">"priority"</span>: <span class="str">"S+"</span>,
+      <span class="key">"status"</span>: <span class="str">"进行中"</span>,
+      <span class="key">"owner"</span>: <span class="str">"贾婕 / 张津闻"</span>,
+      <span class="key">"definition"</span>: <span class="str">"推动Q2/Q3人力挂账..."</span>,<span class="comment">  // 一句话定义</span>
+
+      <span class="comment">  // 第一层：源文件追溯</span>
+      <span class="key">"source_materials"</span>: [
+        { <span class="key">"type"</span>: <span class="str">"docs_link"</span>, <span class="key">"url"</span>: <span class="str">"docs.corp.kuaishou.com/..."</span>,
+          <span class="key">"title"</span>: <span class="str">"人力挂账会议纪要"</span>,
+          <span class="key">"key_info"</span>: <span class="str">"外呼和社群整合走一封邮件"</span> },
+        { <span class="key">"type"</span>: <span class="str">"local_file"</span>, <span class="key">"path"</span>: <span class="str">"knowledge-base/挂账邮件/..."</span>,
+          <span class="key">"title"</span>: <span class="str">"挂账邮件模板"</span> }
+      ],
+
+      <span class="comment">  // 第二层：结构化字段</span>
+      <span class="key">"decisions"</span>: [{ <span class="key">"date"</span>, <span class="key">"content"</span>, <span class="key">"background"</span> }],
+      <span class="key">"risks"</span>: [{ <span class="key">"risk"</span>, <span class="key">"impact"</span>, <span class="key">"mitigation"</span> }],
+      <span class="key">"todos"</span>: [{ <span class="key">"content"</span>, <span class="key">"priority"</span>, <span class="key">"deadline"</span>, <span class="key">"status"</span> }],
+      <span class="key">"kpi"</span>: { <span class="str">"Q2目标"</span>: <span class="str">"4个"</span>, <span class="str">"当前进度"</span>: <span class="str">"推进中"</span> },
+
+      <span class="comment">  // 第三层：产出追踪</span>
+      <span class="key">"output_tracking"</span>: [
+        { <span class="key">"output_type"</span>: <span class="str">"skill"</span>, <span class="key">"output_name"</span>: <span class="str">"xxx"</span>,
+          <span class="key">"usage_count"</span>: <span class="str">3</span>, <span class="key">"usage_trend"</span>: <span class="str">"稳定"</span> }
+      ],
+
+      <span class="comment">  // 不确定标记（每晚10点日清扫描）</span>
+      <span class="key">"uncertain_items"</span>: [
+        { <span class="key">"type"</span>: <span class="str">"todo"</span>, <span class="key">"content"</span>: <span class="str">"特效师挂账邮件5/22前发出"</span>,
+          <span class="key">"reason"</span>: <span class="str">"时间可能推迟，业务方尚未确认"</span>,
+          <span class="key">"flagged_at"</span>: <span class="str">"2026-05-18"</span>,
+          <span class="key">"status"</span>: <span class="str">"待确认"</span> }
+      ],
+
+      <span class="key">"monitor_stats"</span>: { <span class="str">"calls"</span>, <span class="str">"errors"</span> },
+      <span class="key">"query_keywords"</span>: [<span class="str">"人力挂账"</span>, <span class="str">"挂账邮件"</span>, <span class="str">"特效师"</span>]
+    <span class="key">}</span>
+  ]
+<span class="key">}</span></div>
+</div>
+
+<!-- ═══ 关键设计决策 ═══ -->
+<div class="section">
+  <div class="section-title orange">关键设计决策</div>
+  <div class="layer-card">
+    <h3>JSON 是主真相源，.md 是衍生品</h3>
+    <ul>
+      <li>AI 写入 JSON → 脚本自动生成 .md（人类可读）→ Git追踪变化</li>
+      <li>为什么：JSON结构固定，追加字段不用拼接Markdown表格</li>
+      <li>为什么：.md由JSON生成，格式永远一致，不会出现表格格式混乱</li>
+      <li>任何skill读JSON比解析.md快100倍</li>
+    </ul>
+  </div>
+  <div class="layer-card">
+    <h3>上游写入协议：信息一出现就沉淀</h3>
+    <ul>
+      <li>你给了一个Docs链接 → 写入 source_materials[] + 提取内容到对应字段</li>
+      <li>你说"本周要发邮件" → 写入 todos[] + 更新 last_updated</li>
+      <li>你说"企微客服卡点" → 写入 risks[]</li>
+      <li>你说"费用科目统一" → 写入 decisions[]</li>
+      <li>信息不再随会话结束丢失</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══ T · 叙事支撑 ═══ -->
+<div class="section">
+  <div class="section-title">数据来源：哪里来的、怎么合并</div>
+  <table class="compare-table">
+    <tr><th>数据来源</th><th>填充什么</th><th>怎么做到</th></tr>
+    <tr><td>10个.md卡片</td><td>项目基础信息+决策+风险+待办</td><td>解析Markdown→写入JSON</td></tr>
+    <tr><td>project-registry.json</td><td>产出skill列表+分类规则</td><td>读取注册表</td></tr>
+    <tr><td>monitor.db</td><td>skill使用次数+项目调用统计</td><td>查询use_skill COUNT</td></tr>
+    <tr><td>monitor-data.json</td><td>skill使用频次+趋势数据</td><td>合并监控数据</td></tr>
+    <tr><td>各会话对话</td><td>新决策/风险/待办</td><td>上游写入协议</td></tr>
+    <tr><td>你给的Docs/Excel/Word</td><td>源文件追溯</td><td>记录URL+关键摘要</td></tr>
+  </table>
+</div>
+
+<!-- ═══ 复盘示例 ═══ -->
+<div class="section">
+  <div class="section-title purple">复盘时能输出什么</div>
+  <div class="layer-card">
+    <h3>你说"复盘内容呈现VISTA项目"</h3>
+    <ul>
+      <li>秒出项目状态、耗时、完成日期</li>
+      <li>秒出3个产出skill的使用频次和趋势</li>
+      <li>秒出源文件追溯（哪个会话讨论了VISTA方法论）</li>
+      <li>自动给出优化方向：频次低→降门槛；频次高→重点迭代</li>
+    </ul>
+    <div class="why">从"项目做完了就结束"变成"项目做完→看产出使用→决定优化方向→持续迭代"。</div>
+  </div>
+</div>
+
+<!-- ═══ 不确定标记 + 日清 ═══ -->
+<div class="section">
+  <div class="section-title red">❓ 不确定标记 + 每晚10点日清</div>
+  
+  <div class="analogy">
+    <h4>🧠 一句话理解</h4>
+    <p>
+      项目信息里有些东西是<em>确定的</em>（比如"AI创想家5月18日准出"），有些是<em>不确定的</em>（比如"特效师挂账5/22前发邮件"——时间可能推迟、业务方还没确认）。<br>
+      不确定的标记出来，每天晚上10点我给你一份清单，你来确认或推翻。如果当天没有不确定的内容，我也会告诉你"没有"。
+    </p>
+  </div>
+
+  <div class="layer-card">
+    <h3>不确定标记（uncertain_items） <span class="tag orange">标记层</span></h3>
+    <ul>
+      <li><strong>type</strong> — 不确定的类别：data（数据不确定）| decision（决策未定）| source（来源未验证）| kpi（指标待确认）| todo（时间可能变）</li>
+      <li><strong>content</strong> — 不确定的具体内容</li>
+      <li><strong>reason</strong> — 为什么不确定</li>
+      <li><strong>flagged_at</strong> — 标记日期</li>
+      <li><strong>status</strong> — 待确认 | 已确认 | 已推翻</li>
+    </ul>
+    <div class="why">为什么重要：项目中有很多"可能"的信息。不标记→假消息当成真消息用→出错。标记→你每天确认→信息越来越准确。</div>
+  </div>
+
+  <div class="layer-card">
+    <h3>每晚10点日清 <span class="tag green">定时任务</span></h3>
+    <ul>
+      <li>⏰ 每天晚上22:00自动执行</li>
+      <li>扫描所有项目的 uncertain_items → 输出"待确认事项"</li>
+      <li>扫描所有项目的 todos → 输出"今明两天到期的紧急待办"</li>
+      <li>扫描所有项目的 risks → 输出"🔴高风险事项"</li>
+      <li>扫描超过3天没更新的项目 → 输出"⚠️数据可能过期"</li>
+      <li>如果什么都没有 → 输出"✅ 今天没有需要清理的内容"</li>
+    </ul>
+    <div class="why">这就是"日清"——每天睡前扫一遍，把不确定的确认掉、把紧急的提醒掉、把过期的更新掉。日清日结，信息永远干净。</div>
+  </div>
+
+  <div class="loop-diagram">
+    <div class="loop-row" style="justify-content:center;">
+      <div class="loop-node v">📝标记不确定</div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-node i">⏰每晚10点日清</div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-node s">📋给你清单</div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-node t">✅你确认/推翻</div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-node a">🔄信息越来越准</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ A · 行动收口 ═══ -->
+<div class="section">
+  <div class="section-title blue">🚀 实施步骤</div>
+  <div class="action-card">
+    <h3>6步做完，40分钟闭环全通</h3>
+    <div class="step-row">
+      <div class="step-num">1</div>
+      <div class="step-text">编写 sync_projects_data.py：解析10个.md → 生成 projects-data.json</div>
+      <div class="step-time">15分钟</div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">2</div>
+      <div class="step-text">补充 source_materials：为每个项目回填你给的源文件/链接</div>
+      <div class="step-time">10分钟</div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">3</div>
+      <div class="step-text">合并监控数据：从registry/stats/monitor合并产出追踪</div>
+      <div class="step-time">5分钟</div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">4</div>
+      <div class="step-text">从JSON反向生成统一格式的.md卡片</div>
+      <div class="step-time">5分钟</div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">5</div>
+      <div class="step-text">部署到GitHub Pages（公网可访问）</div>
+      <div class="step-time">2分钟</div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">6</div>
+      <div class="step-text">验证：读取JSON → 测试"查人力挂账"秒出效果</div>
+      <div class="step-time">3分钟</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 底部 ═══ -->
+<div style="text-align:center;padding:20px;font-size:0.7rem;color:var(--text-muted);border-top:1px solid var(--border);margin-top:20px;">
+  项目知识流水线 · 技术方案 v3<br>
+  含源文件追溯 + 结构化字段 + 产出追踪三层<br>
+  2026-05-18 · Mario Claw
+</div>
+
+</div>
+</body>
+</html>

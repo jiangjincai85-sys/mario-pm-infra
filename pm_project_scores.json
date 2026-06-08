@@ -1,0 +1,320 @@
+{
+  "updated_at": "2026-05-31T13:04:53.534447",
+  "summary": {
+    "total": 25,
+    "average_score": 79.7,
+    "distribution": {
+      "🟢": 12,
+      "🟡": 11,
+      "🔴": 0,
+      "⬜": 2
+    }
+  },
+  "projects": [
+    {
+      "project_id": "project-expansion-headcount",
+      "name": "人力挂账推动专项",
+      "status": "进行中",
+      "score": 86,
+      "grade": "🟢",
+      "details": [
+        "5个待办 (-5)",
+        "2个风险 (-4)",
+        "无产出记录 (-5)"
+      ],
+      "message": "健康"
+    },
+    {
+      "project_id": "business-scale-doubling",
+      "name": "业务规模翻倍专项",
+      "status": "进行中",
+      "score": 84,
+      "grade": "🟢",
+      "details": [
+        "7个待办 (-7)",
+        "2个风险 (-4)",
+        "无产出记录 (-5)"
+      ],
+      "message": "健康"
+    },
+    {
+      "project_id": "project-optimization",
+      "name": "项目优化专项",
+      "status": "进行中",
+      "score": 70,
+      "grade": "🟡",
+      "details": [
+        "过期14天 (-15)",
+        "4个待办 (-4)",
+        "3个风险 (-6)",
+        "无产出记录 (-5)"
+      ],
+      "message": "需关注"
+    },
+    {
+      "project_id": "claude-monitor",
+      "name": "ClaudeCode监控",
+      "status": "进行中",
+      "score": 84,
+      "grade": "🟢",
+      "details": [
+        "过期13天 (-15)",
+        "1个待办 (-1)"
+      ],
+      "message": "健康"
+    },
+    {
+      "project_id": "vista-content",
+      "name": "内容呈现优化（VISTA）",
+      "status": "已完成",
+      "score": 80,
+      "grade": "🟢",
+      "details": [
+        "2项产出无追踪 (-20)"
+      ],
+      "message": "保值"
+    },
+    {
+      "project_id": "ai-avatar",
+      "name": "AI分身体系",
+      "status": "进行中",
+      "score": 83,
+      "grade": "🟢",
+      "details": [
+        "过期14天 (-15)",
+        "2个待办 (-2)"
+      ],
+      "message": "健康"
+    },
+    {
+      "project_id": "ai-learning",
+      "name": "AI知识学习",
+      "status": "已取消（被AI向外看取代）",
+      "score": null,
+      "grade": "⬜",
+      "details": [],
+      "message": "非标准状态"
+    },
+    {
+      "project_id": "scrapling-research",
+      "name": "Scrapling爬虫研究",
+      "status": "已完成",
+      "score": 70,
+      "grade": "🟡",
+      "details": [
+        "5项产出全部无追踪 (-30)"
+      ],
+      "message": "注意"
+    },
+    {
+      "project_id": "team-org",
+      "name": "团队组织架构（完整版）",
+      "status": "已完成（完整版）",
+      "score": 85,
+      "grade": "🟢",
+      "details": [
+        "无产出记录 (-15)"
+      ],
+      "message": "保值"
+    },
+    {
+      "project_id": "wangjian-handover",
+      "name": "经营管理会基建交接——王坚专项",
+      "status": "进行中",
+      "score": 79,
+      "grade": "🟡",
+      "details": [
+        "过期13天 (-15)",
+        "4个待办 (-4)",
+        "1个风险 (-2)"
+      ],
+      "message": "需关注"
+    },
+    {
+      "project_id": "wangjian-wednesday-handover",
+      "name": "经营管理会基建交接——王坚专项（周三版）",
+      "status": "进行中",
+      "score": 72,
+      "grade": "🟡",
+      "details": [
+        "过期13天 (-15)",
+        "4个风险 (-8)",
+        "无产出记录 (-5)"
+      ],
+      "message": "需关注"
+    },
+    {
+      "project_id": "bp-cooperation",
+      "name": "BP共建专项",
+      "status": "进行中",
+      "score": 94,
+      "grade": "🟢",
+      "details": [
+        "6个待办 (-6)"
+      ],
+      "message": "健康"
+    },
+    {
+      "project_id": "fentiao-active-calculation",
+      "name": "粉条活跃数据计算专项",
+      "status": "进行中",
+      "score": 80,
+      "grade": "🟢",
+      "details": [
+        "过期11天 (-15)",
+        "3个待办 (-3)",
+        "1个风险 (-2)"
+      ],
+      "message": "健康"
+    },
+    {
+      "project_id": "wuxi-migration",
+      "name": "无锡高价值四组迁移专项",
+      "status": "进行中",
+      "score": 73,
+      "grade": "🟡",
+      "details": [
+        "过期11天 (-15)",
+        "4个待办 (-4)",
+        "4个风险 (-8)"
+      ],
+      "message": "需关注"
+    },
+    {
+      "project_id": "project-management-system",
+      "name": "项目管理体系",
+      "status": "进行中",
+      "score": 84,
+      "grade": "🟢",
+      "details": [
+        "过期11天 (-15)",
+        "1个待办 (-1)"
+      ],
+      "message": "健康"
+    },
+    {
+      "project_id": "weekly-report-dashboard",
+      "name": "经营周报看板体系",
+      "status": "进行中",
+      "score": 76,
+      "grade": "🟡",
+      "details": [
+        "过期11天 (-15)",
+        "2个待办 (-2)",
+        "其中1个逾期 (-5)",
+        "1个风险 (-2)"
+      ],
+      "message": "需关注"
+    },
+    {
+      "project_id": "ai-guard-forge",
+      "name": "AI监工（Forge）",
+      "status": "进行中",
+      "score": 67,
+      "grade": "🟡",
+      "details": [
+        "过期11天 (-15)",
+        "4个待办 (-4)",
+        "2个风险 (-4)",
+        "1个待确认 (-5)",
+        "无产出记录 (-5)"
+      ],
+      "message": "需关注"
+    },
+    {
+      "project_id": "ai-agent-handbook",
+      "name": "AI员工手册（agents-best-practices）",
+      "status": "进行中",
+      "score": 77,
+      "grade": "🟡",
+      "details": [
+        "过期10天 (-15)",
+        "3个待办 (-3)",
+        "无产出记录 (-5)"
+      ],
+      "message": "需关注"
+    },
+    {
+      "project_id": "one-click-html",
+      "name": "一键出图（html-anything）",
+      "status": "进行中",
+      "score": 77,
+      "grade": "🟡",
+      "details": [
+        "过期11天 (-15)",
+        "3个待办 (-3)",
+        "无产出记录 (-5)"
+      ],
+      "message": "需关注"
+    },
+    {
+      "project_id": "ai-native-lang",
+      "name": "AI专属语言（zerolang）",
+      "status": "跟踪观察",
+      "score": null,
+      "grade": "⬜",
+      "details": [],
+      "message": "非标准状态"
+    },
+    {
+      "project_id": "pm-agent",
+      "name": "项目管理 Agent",
+      "status": "进行中",
+      "score": 92,
+      "grade": "🟢",
+      "details": [
+        "4个待办 (-4)",
+        "2个风险 (-4)"
+      ],
+      "message": "健康"
+    },
+    {
+      "project_id": "persona-exploration",
+      "name": "人格化探索专项",
+      "status": "进行中",
+      "score": 84,
+      "grade": "🟢",
+      "details": [
+        "8个待办 (-8)",
+        "4个风险 (-8)"
+      ],
+      "message": "健康"
+    },
+    {
+      "project_id": "zhanghongyu-newmedia-adgrowth",
+      "name": "张洪瑜新媒体外部新媒体投流增长专项",
+      "status": "进行中",
+      "score": 86,
+      "grade": "🟢",
+      "details": [
+        "4个待办 (-4)",
+        "1个待确认 (-5)",
+        "无产出记录 (-5)"
+      ],
+      "message": "健康"
+    },
+    {
+      "project_id": "smart-data-pipeline",
+      "name": "智能跑数分析专项",
+      "status": "进行中",
+      "score": 79,
+      "grade": "🟡",
+      "details": [
+        "6个待办 (-6)",
+        "3个待确认 (-15)"
+      ],
+      "message": "需关注"
+    },
+    {
+      "project_id": "personality-transform",
+      "name": "泛知识人格化转型",
+      "status": "已完成",
+      "score": 70,
+      "grade": "🟡",
+      "details": [
+        "4项产出全部无追踪 (-30)"
+      ],
+      "message": "注意"
+    }
+  ]
+}

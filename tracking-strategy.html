@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>产出追踪体系 · 深度分析报告</title>
+<style>
+:root{--bg:#080d16;--s:#111827;--s2:#1a2740;--b:#1e3250;--bl:#2d4a70;--t:#e8edf5;--t2:#8899b4;--t3:#4a5870;--green:#34d399;--blue:#5b8af7;--amber:#f59e0b;--red:#f87171;--cyan:#22d3ee;--purple:#a78bfa;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Noto Sans SC',sans-serif;background:var(--bg);color:var(--t);min-height:100vh;line-height:1.7}
+
+.hero{position:relative;padding:64px 48px;text-align:center;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 30% 30%,rgba(91,138,247,.06),transparent 60%),radial-gradient(ellipse at 70% 70%,rgba(52,211,153,.04),transparent 60%)}
+.hero .tag{display:inline-block;font-size:.65rem;padding:4px 12px;border-radius:999;background:rgba(91,138,247,.15);color:var(--blue);font-weight:700;margin-bottom:12px;letter-spacing:.05em}
+.hero h1{font-size:2em;font-weight:900;margin-bottom:8px;letter-spacing:-.02em;position:relative}
+.hero .sub{font-size:.95em;color:var(--t2);max-width:700px;margin:0 auto;position:relative}
+.hero .big-num{font-size:4.5em;font-weight:900;line-height:1.1;margin:16px 0 4px;position:relative}
+.hero .big-num .n1{color:var(--green)}
+.hero .big-num .n2{color:var(--amber)}
+.hero .big-num .n3{color:var(--red)}
+.hero .big-label{font-size:.78em;color:var(--t3);position:relative}
+
+.section{padding:32px 48px;max-width:960px;margin:0 auto}
+.section h2{font-size:1.25em;font-weight:800;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.section h3{font-size:.9em;font-weight:700;margin:20px 0 10px;color:var(--t)}
+.section p{font-size:.85rem;color:var(--t2);margin-bottom:10px;line-height:1.7}
+
+.insight{background:var(--s2);border-left:3px solid var(--blue);border-radius:0 var(--r) var(--r) 0;padding:16px 20px;margin:16px 0}
+.insight .ih{font-size:.75rem;font-weight:700;color:var(--blue);margin-bottom:6px}
+.insight .ic{font-size:.8rem;color:var(--t2);line-height:1.7}
+.insight .conf{font-size:.6rem;color:var(--t3);margin-top:4px}
+
+.flow-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:20px 0}
+.flow-item{background:var(--s);border:1px solid var(--b);border-radius:var(--r);padding:12px 16px;text-align:center;font-size:.75rem}
+.flow-item .icon{font-size:1.2em;margin-bottom:2px}
+.flow-item .l1{font-weight:700;color:var(--t)}
+.flow-item .l2{color:var(--t3);font-size:.6rem}
+.flow-arrow{font-size:.8em;color:var(--t3)}
+
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:16px 0}
+.card{background:var(--s);border:1px solid var(--b);border-radius:var(--r);padding:20px;transition:all .2s}
+.card:hover{transform:translateY(-2px)}
+.card .num{font-size:.6rem;color:var(--t3);margin-bottom:6px}
+.card .title{font-size:.85em;font-weight:700;margin-bottom:8px;color:var(--t)}
+.card .desc{font-size:.75rem;color:var(--t2);line-height:1.6}
+.card .stat{font-size:.7rem;color:var(--cyan);margin-top:8px;font-weight:600}
+
+.compare{width:100%;border-collapse:collapse;margin:16px 0;font-size:.78rem}
+.compare th{text-align:left;padding:10px 12px;background:var(--s2);border:1px solid var(--b);font-size:.7rem;color:var(--t3);font-weight:700}
+.compare td{padding:10px 12px;border:1px solid var(--b);color:var(--t2)}
+.compare .g{color:var(--green);font-weight:600}
+.compare .a{color:var(--amber)}
+.compare .r{color:var(--red)}
+
+.phase{background:var(--s);border-radius:var(--r);padding:20px;margin:16px 0;border-top:3px solid var(--blue)}
+.phase .ph{font-size:.7rem;color:var(--blue);font-weight:700;margin-bottom:8px;letter-spacing:.03em}
+.phase .pt{font-size:.9em;font-weight:700;color:var(--t);margin-bottom:6px}
+.phase .pd{font-size:.78rem;color:var(--t2);line-height:1.6}
+
+.gap-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.gap-card{background:var(--s);border:1px solid var(--b);border-radius:var(--r);padding:16px}
+.gap-card .gl{font-size:.65rem;font-weight:700;margin-bottom:4px}
+.gap-card .gd{font-size:.7rem;color:var(--t2);line-height:1.5}
+
+.goal{background:linear-gradient(135deg,var(--s),var(--s2));border:2px solid var(--green);border-radius:var(--r);padding:24px;margin:16px 0;text-align:center}
+.goal .gh{font-size:.7rem;color:var(--green);font-weight:700;margin-bottom:8px;letter-spacing:.03em}
+.goal .gt{font-size:1.15em;font-weight:800;color:var(--t);margin-bottom:6px}
+.goal .gd{font-size:.78rem;color:var(--t2);max-width:600px;margin:0 auto;line-height:1.6}
+
+.footer{text-align:center;padding:32px;font-size:.6rem;color:var(--t3);border-top:1px solid var(--b);margin-top:20px}
+
+@media(max-width:768px){
+  .hero{padding:40px 20px}
+  .hero h1{font-size:1.4em}
+  .hero .big-num{font-size:3em}
+  .section{padding:24px 20px}
+  .cards{grid-template-columns:1fr}
+  .gap-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════ V · 视觉钩子 ════════════ -->
+<div class="hero">
+  <div class="tag">🧠 深度思考 · 四层分析</div>
+  <h1>产出追踪体系<br/>从"监控工具"到"复盘账本"</h1>
+  <div class="sub">不是问"现在有多少在用"——是问"下次复盘时，我们能从数据里看到什么规律"</div>
+  <div class="big-num">
+    <span class="n1">28</span>
+    <span style="color:var(--t3)"> 个产出</span>
+    &nbsp;→&nbsp;
+    <span class="n2">5</span>
+    <span style="color:var(--t3)"> 类可追踪</span>
+    &nbsp;→&nbsp;
+    <span class="n3">1</span>
+    <span style="color:var(--t3)"> 个目标</span>
+  </div>
+  <div class="big-label">从"收集数据"到"可以复盘"的完整体系</div>
+</div>
+
+<!-- ════════════ I · 信息骨架 ════════════ -->
+<div class="section">
+  <h2><span style="font-size:1.1em">📋</span> 一句话定义</h2>
+  
+  <div class="goal" style="text-align:left;border-color:var(--blue)">
+    <div class="gh">核心命题</div>
+    <div class="gt" style="font-size:1.05em">你做的每个项目，产出的每个东西，到底有没有人用？</div>
+    <div class="gd">
+      这个问题的答案，不是现在就需要——是每次复盘时，能从系统里拉出数据看趋势。<br/>
+      就像记账不是为了每天盯着看，是为了月底知道钱花哪了、下个月怎么调。
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ S · 结构展开：第一部分 - 现状+原因 ════════════ -->
+<div class="section">
+  <h2><span style="font-size:1.1em">🔍</span> 一、现状 · 四个核心认知</h2>
+
+  <div class="insight" style="border-color:var(--green)">
+    <div class="ih" style="color:var(--green)">认知1 · 用户要的不是"监控"，是"账本"</div>
+    <div class="ic">
+      你说的很清楚："收集起来，后续或许再去评价复盘提升"。<br/>
+      这是<strong>会计思维</strong>——定期记一笔、存好凭证、期末盘点。不是运维监控思维（告警、实时、完整性）。<br/>
+      按监控系统设计就会过度工程化，按账本系统设计则系统已基本可用。
+    </div>
+    <div class="conf">置信度：高 · 来源于用户原话</div>
+  </div>
+
+  <div class="insight" style="border-color:var(--amber)">
+    <div class="ih" style="color:var(--amber)">认知2 · 最大缺口不是"追踪不到"，是"看不到趋势"</div>
+    <div class="ic">
+      之前每次 sync 都在覆盖 <code style="background:rgba(0,0,0,.3);padding:1px 6px;border-radius:3px">usage_count</code>，历史上今天之前的数字全都丢了。<br/>
+      今天刚修复：加了 <code style="background:rgba(0,0,0,.3);padding:1px 6px;border-radius:3px">usage_history[]</code> 时间序列数组。<br/>
+      对复盘来说，"从0涨到15"比"现在是15"有价值100倍。
+    </div>
+    <div class="conf">置信度：高 · 已证实并修复</div>
+  </div>
+
+  <div class="insight" style="border-color:var(--purple)">
+    <div class="ih" style="color:var(--purple)">认知3 · dashboard 永远无法被 AI 追踪，也不需要</div>
+    <div class="ic">
+      HTML 看板、可视化页面——这些是<strong>给人看的</strong>。AI 不会"使用"一个看板页面。<br/>
+      试图追踪 dashboard 的 AI 使用量，就像给一本书装"AI 阅读计数器"——概念上就不对。<br/>
+      这类产出应该用另一套评价标准（被讨论次数、决策中被引用次数、是否沉淀为模板）。
+    </div>
+    <div class="conf">置信度：高 · 架构约束，非工程问题</div>
+  </div>
+
+  <div class="insight" style="border-color:var(--red)">
+    <div class="ih" style="color:var(--red)">认知4 · "假阴性"比"假阳性"伤害更大</div>
+    <div class="ic">
+      当看板显示"scrapling-agent → 0次"时，你的第一反应是"这东西白做了"。<br/>
+      但事实可能是在其他会话里已经用了很多次。假阴性让你对系统失去信任。<br/>
+      <strong>宁可标注"不确定"，也不要自信地显示"0"。</strong>
+    </div>
+    <div class="conf">置信度：中 · 推断，取决于实际跨会话使用频率</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2><span style="font-size:1.1em">🕳️</span> 二、根因分析 · 为什么会有82%的"不可追踪"</h2>
+
+  <div class="cards">
+    <div class="card" style="border-left:3px solid var(--green)">
+      <div class="num">根因 1 · 数据源</div>
+      <div class="title">monitor.db 是单机会话日志，不是全局追踪器</div>
+      <div class="desc">
+        它记录的是"这台机器上发生过什么"。你在其他机器/其他会话中调用了某个 skill，本机的 monitor.db 完全不知道。<br/><br/>
+        <strong>这不是 bug，是架构设计决定的。</strong>要全局追踪需要集中化数据库，目前不具备这个基础设施。
+      </div>
+      <div class="stat">影响：skill/subagent 类目的假阴性</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--red)">
+      <div class="num">根因 2 · 数据源</div>
+      <div class="title">dashboard 产出没有 AI 使用日志</div>
+      <div class="desc">
+        HTML 页面部署到 GitHub Pages，没有访问分析。<br/>
+        即使加了 Google Analytics，也只能追踪<strong>人类浏览</strong>，不是 AI 的"使用"——AI 根本不会打开浏览器去看一个看板。
+      </div>
+      <div class="stat">影响：7个 dashboard 产出永久无法追踪</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--amber)">
+      <div class="num">根因 3 · 流程</div>
+      <div class="title">sync 脚本覆盖写，丢掉历史数据</div>
+      <div class="desc">
+        每次运行 sync 都直接用最新值覆盖 <code>usage_count</code>。昨天0次、今天3次——昨天的0次记录就永远消失了。<br/><br/>
+        <strong>今天已修复</strong>：新增 <code>usage_history[]</code> 每次追加，保留最近90天。
+      </div>
+      <div class="stat" style="color:var(--green)">影响：✅ 已消除</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--blue)">
+      <div class="num">根因 4 · 呈现</div>
+      <div class="title">看板上"不可追踪"标签制造了系统故障的错觉</div>
+      <div class="desc">
+        28个产出中，真正"系统应该追踪但追踪不到"的只有4个（跨会话断层）。<br/>
+        其余的都是"正常状态"——新产出还没人用、dashboard 不应该被追踪、归档文档不需要被反复打开。<br/><br/>
+        但看板上全部标注"不可追踪"，让人以为系统坏了。
+      </div>
+      <div class="stat">影响：用户对系统失去信任</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ S · 结构展开：第二部分 - 方案 ════════════ -->
+<div class="section">
+  <h2><span style="font-size:1.1em">🔧</span> 三、方案 · 四阶段渐进改进</h2>
+
+  <div class="phase">
+    <div class="ph">阶段 1 · 已完成 ✅</div>
+    <div class="pt">扩展追踪覆盖 + 时间序列记录</div>
+    <div class="pd">
+      · sync 脚本新增 3 个追踪函数：knowledge_doc → read_file 匹配、memory → search_memory 匹配、script → execute_command 匹配<br/>
+      · 所有产出追加 <code>usage_history[]</code> 时间序列数组，每次 sync 记一笔<br/>
+      · 追踪覆盖从 2 类（skill/subagent）扩展到 5 类
+    </div>
+  </div>
+
+  <div class="phase" style="border-color:var(--amber)">
+    <div class="ph" style="color:var(--amber)">阶段 2 · 建议立即做</div>
+    <div class="pt">看板标签语义改造</div>
+    <div class="pd">
+      把二元的"可追踪/不可追踪"改成三级标签：<br/>
+      🟢 <strong>活跃</strong> — 有使用数据，趋势可见<br/>
+      🟡 <strong>已产出</strong> — 存在但暂无使用记录（正常的积累期）<br/>
+      ⚪ <strong>被动产出</strong> — dashboard/记忆等，AI无法直接使用的类型<br/>
+      🔴 <strong>待确认</strong> — 跨会话数据不可得，使用情况不确定<br/><br/>
+      <em>目的：告诉用户的不是"系统坏了"，而是"这是正常状态"。</em>
+    </div>
+  </div>
+
+  <div class="phase" style="border-color:var(--purple)">
+    <div class="ph" style="color:var(--purple)">阶段 3 · 建议本月做</div>
+    <div class="pt">看板增加趋势视图 + 月度复盘模板</div>
+    <div class="pd">
+      · 在看板上展示 usage_history 的迷你趋势图（过去30天的使用次数折线）<br/>
+      · 新增"月度产出复盘"视图：按项目汇总，显示每个产出的 30天趋势 + 使用率排名<br/>
+      · 自动标记"连续30天零使用"的产出为"休眠"（提醒考虑归档）<br/><br/>
+      <em>目的：让"复盘的原材料"在需要时自动呈现，不需要手动翻数据。</em>
+    </div>
+  </div>
+
+  <div class="phase" style="border-color:var(--red);border-width:1px">
+    <div class="ph" style="color:var(--red)">阶段 4 · 长期规划（等基础设施成熟）</div>
+    <div class="pt">集中化使用追踪数据库</div>
+    <div class="pd">
+      · 所有 AI 会话写入同一个追踪 DB（或定期合并多个 monitor.db）<br/>
+      · 彻底消除跨会话/跨设备的假阴性<br/>
+      · 可以在任意会话中查询"这个 skill 被所有会话共用了多少次"
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2><span style="font-size:1.1em">📐</span> 方案总览一表</h2>
+
+  <table class="compare">
+    <tr>
+      <th>阶段</th>
+      <th>要做什么</th>
+      <th>解决什么问题</th>
+      <th>复杂度</th>
+      <th>状态</th>
+    </tr>
+    <tr>
+      <td class="g">阶段1</td>
+      <td>扩展追踪覆盖 + 时间序列</td>
+      <td>只能追2类 → 能追5类；历史数据丢失 → 时间序列保留</td>
+      <td class="g">⭐⭐ 低</td>
+      <td class="g">✅ 已完成</td>
+    </tr>
+    <tr>
+      <td class="a">阶段2</td>
+      <td>看板标签语义改造</td>
+      <td>"不可追踪"制造恐慌 → 用户一眼分得清正常/异常</td>
+      <td class="g">⭐ 极低</td>
+      <td class="a">📝 建议立即</td>
+    </tr>
+    <tr>
+      <td class="a">阶段3</td>
+      <td>趋势视图 + 月度复盘模板</td>
+      <td>复盘时手动翻数据 → 自动呈现趋势和排名</td>
+      <td class="a">⭐⭐⭐ 中</td>
+      <td class="a">📝 建议本月</td>
+    </tr>
+    <tr>
+      <td class="r">阶段4</td>
+      <td>集中化追踪数据库</td>
+      <td>跨会话假阴性 → 全局精准追踪</td>
+      <td class="r">⭐⭐⭐⭐ 高</td>
+      <td class="r">⏳ 长期规划</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ════════════ T · 叙事支撑 ════════════ -->
+<div class="section">
+  <h2><span style="font-size:1.1em">🎯</span> 四、打算达到的效果</h2>
+
+  <div class="goal">
+    <div class="gh">最终目标</div>
+    <div class="gt">每次复盘时，能拉出每个项目的"产出效果账本"</div>
+    <div class="gd">
+      不是实时监控，不是告警，不是"现在有没有异常"——<br/>
+      是月度/季度复盘时，系统自动呈现：<br/>
+      这个项目做了什么产出 → 每个产出的使用趋势怎么样 → 哪些值得保留、哪些该归档
+    </div>
+  </div>
+
+  <h3>具体效果指标</h3>
+
+  <div class="gap-row">
+    <div class="gap-card" style="border-top:2px solid var(--green)">
+      <div class="gl" style="color:var(--green)">效果 1</div>
+      <div class="gd">
+        <strong>追踪覆盖率达 83%</strong><br/>
+        28个产出中，5类（skill/subagent/script/knowledge_doc/memory）共22个可自动追踪<br/>
+        仅7个 dashboard 类标记为"被动产出（无需追踪）"
+      </div>
+    </div>
+
+    <div class="gap-card" style="border-top:2px solid var(--blue)">
+      <div class="gl" style="color:var(--blue)">效果 2</div>
+      <div class="gd">
+        <strong>每个产出有 ≥30天的使用趋势</strong><br/>
+        usage_history 每天自动记一笔，一个月后自然形成趋势图<br/>
+        不需要手动收集，复盘时直接拉数据
+      </div>
+    </div>
+
+    <div class="gap-card" style="border-top:2px solid var(--purple)">
+      <div class="gl" style="color:var(--purple)">效果 3</div>
+      <div class="gd">
+        <strong>看板标签一眼看清状态</strong><br/>
+        不再有"系统坏了"的误解<br/>
+        用户看到"已产出"知道是正常的，"待确认"知道需要手动核实
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2><span style="font-size:1.1em">🔄</span> 终局：一个完整的"做→追→复→优"飞轮</h2>
+
+  <div class="flow-row">
+    <div class="flow-item">
+      <div class="icon">🛠</div>
+      <div class="l1">做项目</div>
+      <div class="l2">产生各种产出物</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <div class="icon">📝</div>
+      <div class="l1">记录产出</div>
+      <div class="l2">output_tracking 登记</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <div class="icon">📊</div>
+      <div class="l1">自动追踪</div>
+      <div class="l2">每天 sync 记一笔</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <div class="icon">🔍</div>
+      <div class="l1">周期性复盘</div>
+      <div class="l2">看趋势、找规律</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <div class="icon">🚀</div>
+      <div class="l1">优化迭代</div>
+      <div class="l2">保留好的、停掉坏的</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item" style="border:2px solid var(--green)">
+      <div class="icon">🔄</div>
+      <div class="l1">越来越好</div>
+      <div class="l2">下次做得更好</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="goal">
+    <div class="gh">一句话总结</div>
+    <div class="gt">产出追踪的本质不是监控，是记账。</div>
+    <div class="gd">
+      记账不是为了天天看——是为了期末盘点时，知道什么值得继续、什么该停下来。<br/>
+      系统已经能记账了。下一步是让账单在复盘时自动呈现，而不是让你去翻账本。
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  产出追踪体系深度分析 · 四层思考框架 · 2026-05-20<br/>
+  理解→洞察→整理→输出 | 现状+原因 → 方案 → 预期效果
+</div>
+</body>
+</html>

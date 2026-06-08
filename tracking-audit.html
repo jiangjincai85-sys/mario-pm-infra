@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>产出追踪体系 · 四维诊断</title>
+<style>
+:root{--bg:#080d16;--s:#111827;--s2:#1a2740;--b:#1e3250;--t:#e8edf5;--t2:#8899b4;--t3:#4a5870;--g:#34d399;--blu:#5b8af7;--a:#f59e0b;--r:#f87171;--p:#a78bfa;--rad:12px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Noto Sans SC',sans-serif;background:var(--bg);color:var(--t);line-height:1.7;font-size:15px}
+.page{max-width:960px;margin:0 auto;padding:48px 24px}
+
+h1{font-size:1.8em;font-weight:900;margin-bottom:4px;letter-spacing:-.01em}
+h2{font-size:1.15em;font-weight:800;margin:32px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--b);display:flex;align-items:center;gap:8px}
+h3{font-size:.9em;font-weight:700;margin:16px 0 8px}
+.sub{color:var(--t3);font-size:.82em;margin-bottom:32px}
+
+/* ── 目标卡片 ── */
+.goals{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.goal{border-radius:var(--rad);padding:24px;background:var(--s);border:1px solid var(--b);position:relative;overflow:hidden}
+.goal::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%}
+.goal.g1::before{background:var(--blu)}
+.goal.g2::before{background:var(--p)}
+.goal .gt{font-size:.65rem;font-weight:700;letter-spacing:.03em;margin-bottom:6px}
+.goal .gh{font-size:1em;font-weight:800;margin-bottom:8px;color:var(--t)}
+.goal .gd{font-size:.75em;color:var(--t2);line-height:1.6}
+.g1 .gt{color:var(--blu)}.g2 .gt{color:var(--p)}
+
+/* ── 表格 ── */
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.78rem}
+th{text-align:left;padding:10px 12px;background:var(--s2);border:1px solid var(--b);font-size:.65rem;color:var(--t3);font-weight:700;white-space:nowrap}
+td{padding:10px 12px;border:1px solid var(--b);color:var(--t2);vertical-align:top;line-height:1.55}
+td strong{color:var(--t)}
+.g{color:var(--g);font-weight:600}.a{color:var(--a);font-weight:600}.r{color:var(--r);font-weight:600}.b{color:var(--blu);font-weight:600}.p{color:var(--p)}
+
+/* ── 状态标签 ── */
+.tag{display:inline-block;font-size:.6rem;padding:2px 8px;border-radius:999;font-weight:700}
+.tag-done{background:rgba(52,211,153,.15);color:var(--g)}
+.tag-prog{background:rgba(91,138,247,.15);color:var(--blu)}
+.tag-todo{background:rgba(245,158,11,.15);color:var(--a)}
+.tag-block{background:rgba(248,113,113,.15);color:var(--r)}
+
+/* ── 汇总条 ── */
+.bar{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}
+.bar-item{background:var(--s);border:1px solid var(--b);border-radius:var(--rad);padding:18px;text-align:center}
+.bar-item .bv{font-size:1.5em;font-weight:900;margin-bottom:2px}
+.bar-item .bl{font-size:.6rem;color:var(--t3);font-weight:600;letter-spacing:.03em}
+
+/* ── 行动阶段 ── */
+.phase{border-radius:var(--rad);padding:20px 24px;margin:12px 0;background:var(--s);border-left:4px solid}
+.phase.p1{border-color:var(--g)}.phase.p2{border-color:var(--a)}.phase.p3{border-color:var(--p)}
+.phase .ph{font-size:.65rem;font-weight:700;margin-bottom:4px;letter-spacing:.03em}
+.phase .pt{font-size:.85em;font-weight:700;color:var(--t);margin-bottom:6px}
+.phase .pd{font-size:.75em;color:var(--t2);line-height:1.6}
+.p1 .ph{color:var(--g)}.p2 .ph{color:var(--a)}.p3 .ph{color:var(--p)}
+
+/* ── 脚注 ── */
+.note{font-size:.7rem;color:var(--t3);padding:16px;background:var(--s2);border-radius:var(--rad);margin-top:24px;line-height:1.6}
+
+@media(max-width:768px){.goals,.bar{grid-template-columns:1fr}.page{padding:24px 16px}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>📊 产出追踪体系 · 四维诊断</h1>
+<div class="sub">目标 → 现状（原因）→ 动作 → 达成情况 | 2026-05-20 | 14 个项目 · 28 个产出</div>
+
+<!-- ═══════ 目标 ═══════ -->
+<h2>一、目标</h2>
+
+<div class="goals">
+  <div class="goal g1">
+    <div class="gt">目标 1 · 项目维度</div>
+    <div class="gh">每个项目做完的东西，到底有没有被用起来？</div>
+    <div class="gd">
+      做项目 → 有产出 → 自动追踪使用数据 → 攒趋势 → 月度/季度复盘时看哪些值得继续、哪些该停掉。<br/><br/>
+      <em>"记账不是为了天天看，是期末盘点时知道什么值得继续。"</em>
+    </div>
+  </div>
+  <div class="goal g2">
+    <div class="gt">目标 2 · 会话维度</div>
+    <div class="gh">每天每场会话实际干了什么？</div>
+    <div class="gd">
+      用了哪些 skill → 搜了什么链接 → 找了什么数据 → 产出了什么文件。<br/><br/>
+      像日记一样自动存档，回头翻的时候知道自己时间花在哪了。
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ 现状 + 原因 ═══════ -->
+<h2>二、现状 · 原因 · 动作 · 达成</h2>
+
+<table>
+<tr>
+  <th style="width:18%">维度</th>
+  <th style="width:28%">现状</th>
+  <th style="width:22%">原因</th>
+  <th style="width:18%">动作</th>
+  <th style="width:14%">达成</th>
+</tr>
+
+<!-- 项目追踪 -->
+<tr>
+  <td rowspan="4" style="background:var(--s2)"><strong>项目产出<br/>追踪范围</strong></td>
+  <td>只能追踪 <strong>skill</strong> 和 <strong>subagent</strong> 两类</td>
+  <td>sync 脚本只匹配了 use_skill / use_subagent 调用</td>
+  <td>新增 3 个追踪函数：knowledge_doc→read_file、memory→search_memory、script→execute_command</td>
+  <td><span class="tag tag-done">✅ 5类</span></td>
+</tr>
+<tr>
+  <td>每次 sync <strong>覆盖写</strong>，历史数据全部丢失</td>
+  <td>sync 直接用最新值覆盖 usage_count，昨天的数据不保留</td>
+  <td>新增 usage_history[] 数组，每次追加 {date, count}</td>
+  <td><span class="tag tag-done">✅ 时间序列</span></td>
+</tr>
+<tr>
+  <td>7 个 dashboard 产出标注 <strong>"不可追踪"</strong>，像系统坏了</td>
+  <td>HTML 看板是给人看的，AI 根本不会"使用"一个看板页面。标签制造了误解</td>
+  <td>诊断报告已说明这是正常状态。后续改三级标签</td>
+  <td><span class="tag tag-prog">🟡 已诊断</span></td>
+</tr>
+<tr>
+  <td>跨会话/跨设备使用数据 <strong>不可得</strong></td>
+  <td>monitor.db 是本机的，其他机器/其他会话调用了也不会记录</td>
+  <td>标注为"待确认"，长期规划集中化 DB</td>
+  <td><span class="tag tag-todo">⏳ 长期</span></td>
+</tr>
+
+<!-- 会话日志 -->
+<tr>
+  <td rowspan="3" style="background:var(--s2)"><strong>会话活动<br/>存档</strong></td>
+  <td>Claude Code 会话 <strong>无日志</strong>，用完就没了</td>
+  <td>monitor.db 数据在但没被整理出来</td>
+  <td>写 session_log.py，从 monitor.db 提取 → 生成 markdown</td>
+  <td><span class="tag tag-done">✅ 6份日志</span></td>
+</tr>
+<tr>
+  <td>CodeFlicker 会话 <strong>无日志</strong></td>
+  <td>CodeFlicker 没有 monitor.db 等效机制</td>
+  <td>会话结束时手动生成日志</td>
+  <td><span class="tag tag-prog">🟡 半自动</span></td>
+</tr>
+<tr>
+  <td>日志是独立的，<strong>不知道在哪看</strong></td>
+  <td>没有入口，没人提醒</td>
+  <td>INDEX.md 索引 + 加入每日 sync 自动生成</td>
+  <td><span class="tag tag-done">✅ 已索引</span></td>
+</tr>
+
+<!-- 看板 -->
+<tr>
+  <td rowspan="3" style="background:var(--s2)"><strong>看板呈现</strong></td>
+  <td>看板数据 <strong>浏览器缓存</strong>，刷新后还是旧数据</td>
+  <td>GitHub Pages 默认缓存HTML/JSON</td>
+  <td>fetch URL 加 ?_t=时间戳 绕过缓存</td>
+  <td><span class="tag tag-done">✅ 已修复</span></td>
+</tr>
+<tr>
+  <td>看板 <strong>无密码保护</strong>，公开可访问</td>
+  <td>GitHub Pages 是公开的</td>
+  <td>SHA-256 客户端密码门，本地免密，网页需 mario2026</td>
+  <td><span class="tag tag-done">✅ 已加锁</span></td>
+</tr>
+<tr>
+  <td>看板标签 <strong>制造误解</strong></td>
+  <td>"不可追踪"标签让人以为系统坏了，实际大部分正常</td>
+  <td>方案已出（三级标签），待看板改造</td>
+  <td><span class="tag tag-todo">📝 下阶段</span></td>
+</tr>
+
+<!-- 自动化 -->
+<tr>
+  <td rowspan="2" style="background:var(--s2)"><strong>自动化<br/>运行</strong></td>
+  <td>看板数据只靠手动更新</td>
+  <td>之前没有定时任务</td>
+  <td>scheduled task: 每天 9:00 + 21:00 auto sync + deploy + 日志</td>
+  <td><span class="tag tag-done">✅ 2次/天</span></td>
+</tr>
+<tr>
+  <td>CodeFlicker 定时任务 <strong>可能不稳定</strong></td>
+  <td>历史踩坑：ask/agent 模式、execute_command 可用性波动</td>
+  <td>加入 sync 脚本自身的错误处理，部署失败不影响本地数据</td>
+  <td><span class="tag tag-prog">🟡 监控中</span></td>
+</tr>
+</table>
+
+<!-- ═══════ 汇总 ═══════ -->
+<h2>三、达成总览</h2>
+
+<div class="bar">
+  <div class="bar-item">
+    <div class="bv" style="color:var(--g)">7</div>
+    <div class="bl">✅ 已完成</div>
+  </div>
+  <div class="bar-item">
+    <div class="bv" style="color:var(--blu)">3</div>
+    <div class="bl">🟡 进行中/半自动</div>
+  </div>
+  <div class="bar-item">
+    <div class="bv" style="color:var(--a)">1</div>
+    <div class="bl">📝 下阶段</div>
+  </div>
+  <div class="bar-item">
+    <div class="bv" style="color:var(--t3)">1</div>
+    <div class="bl">⏳ 长期规划</div>
+  </div>
+</div>
+
+<!-- ═══════ 下阶段动作 ═══════ -->
+<h2>四、下阶段动作</h2>
+
+<div class="phase p1">
+  <div class="ph">阶段 1 · 本周可做</div>
+  <div class="pt">看板标签语义改造</div>
+  <div class="pd">
+    把"可追踪/不可追踪"二元标签 → 改成四级：<strong>活跃</strong>（有趋势）· <strong>积累中</strong>（新产出）· <strong>被动产出</strong>（dashboard）· <strong>待确认</strong>（跨会话盲区）。<br/>
+    目的：消除"系统坏了"的误解，让人一眼就懂。
+  </div>
+</div>
+
+<div class="phase p2">
+  <div class="ph">阶段 2 · 本月可做</div>
+  <div class="pt">看板增加趋势视图</div>
+  <div class="pd">
+    利用已有的 usage_history[] 数据，在看板上渲染迷你趋势折线图。每个产出卡片下面一行小图：过去 30 天的使用次数变化。<br/>
+    目的：复盘时不需要手动翻 JSON，一眼看出增长/衰退。
+  </div>
+</div>
+
+<div class="phase p3">
+  <div class="ph">阶段 3 · 持续优化</div>
+  <div class="pt">CodeFlicker 会话日志自动化</div>
+  <div class="pd">
+    调研 CodeFlicker hooks 机制（SessionStart/Stop），在会话结束时自动调用 session_log.py 或生成等效日志。<br/>
+    目的：把 CodeFlicker 的日志盲区消除，和 Claude Code 体验一致。
+  </div>
+</div>
+
+<!-- ═══════ 一句话 ═══════ -->
+<div class="note">
+  <strong>一句话总结</strong>：产出追踪体系的核心已经跑通了——数据在自动攒（每天2次 sync + 5类追踪 + 时间序列 + 日志），看板可查（密码保护 + 缓存修复）。还剩看板标签和趋势视图两个呈现层的改进，能让复盘体验从"翻 JSON"变成"看图说话"。
+</div>
+
+</div>
+</body>
+</html>

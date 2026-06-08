@@ -1,0 +1,1066 @@
+{
+  "meta": {
+    "generated_at": "2026-05-18T00:47:43.062198",
+    "version": "1.0",
+    "description": "Mario Claw 监控数据 — 其他 skill 或应用可直接读取此文件获取 AI 助手操作数据",
+    "data_source": "monitor.db (SQLite)",
+    "how_to_use": "fetch('monitor-data.json') 或读取文件，所有字段均有中文和英文双语标注"
+  },
+  "kpi": {
+    "total_sessions": 183,
+    "total_calls": 931,
+    "total_errors": 5,
+    "total_error_rate": 0.5,
+    "today_sessions": 0,
+    "today_calls": 30,
+    "today_errors": 0,
+    "today_error_rate": 0.0,
+    "today_hot_tool": "命令",
+    "today_hot_count": 21,
+    "project_calls": 67,
+    "non_project_calls": 33,
+    "uncategorized_calls": 831
+  },
+  "sessions": [
+    {
+      "session_id": "60795ab8-9bc7-4623-8235-cbfc43e47a40",
+      "model": "glm-5",
+      "model_zh": "glm-5",
+      "started_at": "2026-05-17T21:02:52.576962",
+      "tool_calls": 65,
+      "errors": 4,
+      "status": "进行中"
+    },
+    {
+      "session_id": "d666edb4-595e-4092-b33c-41dd236e3f5a",
+      "model": "glm-5",
+      "model_zh": "glm-5",
+      "started_at": "2026-05-17T21:01:42.407232",
+      "tool_calls": 17,
+      "errors": 1,
+      "status": "进行中"
+    },
+    {
+      "session_id": "scheduled-task-evo-evening-practice-1778850000052",
+      "model": "GLM_5_1",
+      "model_zh": "GLM_5_1",
+      "started_at": "2026-05-16T11:10:09.471",
+      "tool_calls": 13,
+      "errors": 0,
+      "status": "已完成"
+    },
+    {
+      "session_id": "pgxl9uawr6shmdg1i2uw",
+      "model": "GLM_4_7_TOC",
+      "model_zh": "GLM_4_7_TOC",
+      "started_at": "2026-05-16T11:06:36.431",
+      "tool_calls": 0,
+      "errors": 0,
+      "status": "进行中"
+    },
+    {
+      "session_id": "scheduled-task-clawbook-patrol-hot-1778752800027",
+      "model": "GLM_4_7_TOC",
+      "model_zh": "GLM_4_7_TOC",
+      "started_at": "2026-05-16T10:54:25.875",
+      "tool_calls": 0,
+      "errors": 0,
+      "status": "进行中"
+    },
+    {
+      "session_id": "scheduled-task-clawbook-til-learn-1778896800071",
+      "model": "GLM_4_7_TOC",
+      "model_zh": "GLM_4_7_TOC",
+      "started_at": "2026-05-16T10:54:24.891",
+      "tool_calls": 0,
+      "errors": 0,
+      "status": "进行中"
+    },
+    {
+      "session_id": "scheduled-task-clawbook-patrol-stuck-1778875200023",
+      "model": "GLM_4_7_TOC",
+      "model_zh": "GLM_4_7_TOC",
+      "started_at": "2026-05-16T09:24:09.224",
+      "tool_calls": 0,
+      "errors": 0,
+      "status": "进行中"
+    },
+    {
+      "session_id": "scheduled-task-clawbook-patrol-hot-1778871600034",
+      "model": "GPT_5_4_TOC",
+      "model_zh": "GPT_5_4_TOC",
+      "started_at": "2026-05-16T09:20:07.577",
+      "tool_calls": 0,
+      "errors": 0,
+      "status": "进行中"
+    },
+    {
+      "session_id": "scheduled-task-clawbook-patrol-hot-1778882400025",
+      "model": "AUTO",
+      "model_zh": "AUTO",
+      "started_at": "2026-05-16T06:00:01.167",
+      "tool_calls": 12,
+      "errors": 0,
+      "status": "已完成"
+    },
+    {
+      "session_id": "skill-review-1778871777446-g5pv5h",
+      "model": "AUTO",
+      "model_zh": "AUTO",
+      "started_at": "2026-05-16T03:02:58.318",
+      "tool_calls": 0,
+      "errors": 0,
+      "status": "已完成"
+    }
+  ],
+  "tools": [
+    {
+      "name": "execute_command",
+      "name_zh": "命令",
+      "count": 252,
+      "avg_duration_ms": 3,
+      "color": "#4caf50"
+    },
+    {
+      "name": "read_file",
+      "name_zh": "读取",
+      "count": 132,
+      "avg_duration_ms": 2,
+      "color": "#2196f3"
+    },
+    {
+      "name": "user_prompt",
+      "name_zh": "用户输入",
+      "count": 94,
+      "avg_duration_ms": 0,
+      "color": "#ff6b35"
+    },
+    {
+      "name": "write_todo",
+      "name_zh": "待办",
+      "count": 90,
+      "avg_duration_ms": 3,
+      "color": "#30d158"
+    },
+    {
+      "name": "list_files",
+      "name_zh": "列表",
+      "count": 51,
+      "avg_duration_ms": 2,
+      "color": "#607d8b"
+    },
+    {
+      "name": "Bash",
+      "name_zh": "命令",
+      "count": 35,
+      "avg_duration_ms": 2353,
+      "color": "#4caf50"
+    },
+    {
+      "name": "search_memory",
+      "name_zh": "记忆搜索",
+      "count": 33,
+      "avg_duration_ms": 2,
+      "color": "#5856d6"
+    },
+    {
+      "name": "update_memory",
+      "name_zh": "记忆",
+      "count": 29,
+      "avg_duration_ms": 4,
+      "color": "#5856d6"
+    },
+    {
+      "name": "search_file",
+      "name_zh": "文件搜索",
+      "count": 29,
+      "avg_duration_ms": 2,
+      "color": "#00bcd4"
+    },
+    {
+      "name": "grep_search",
+      "name_zh": "代码搜索",
+      "count": 25,
+      "avg_duration_ms": 1,
+      "color": "#009688"
+    },
+    {
+      "name": "replace_in_file",
+      "name_zh": "replace_in_file",
+      "count": 24,
+      "avg_duration_ms": 2,
+      "color": "#888"
+    },
+    {
+      "name": "browser_agent",
+      "name_zh": "browser_agent",
+      "count": 23,
+      "avg_duration_ms": 4,
+      "color": "#888"
+    },
+    {
+      "name": "WebFetch",
+      "name_zh": "抓取",
+      "count": 20,
+      "avg_duration_ms": 11052,
+      "color": "#9c27b0"
+    },
+    {
+      "name": "write_to_file",
+      "name_zh": "write_to_file",
+      "count": 18,
+      "avg_duration_ms": 2,
+      "color": "#888"
+    },
+    {
+      "name": "use_skill",
+      "name_zh": "技能",
+      "count": 15,
+      "avg_duration_ms": 2,
+      "color": "#e91e63"
+    },
+    {
+      "name": "search_web",
+      "name_zh": "搜索",
+      "count": 15,
+      "avg_duration_ms": 2,
+      "color": "#00bcd4"
+    },
+    {
+      "name": "Read",
+      "name_zh": "读取",
+      "count": 12,
+      "avg_duration_ms": 16,
+      "color": "#2196f3"
+    },
+    {
+      "name": "WebSearch",
+      "name_zh": "搜索",
+      "count": 9,
+      "avg_duration_ms": 11451,
+      "color": "#00bcd4"
+    },
+    {
+      "name": "multi_replace_in_file",
+      "name_zh": "multi_replace_in_file",
+      "count": 7,
+      "avg_duration_ms": 2,
+      "color": "#888"
+    },
+    {
+      "name": "use_subagent",
+      "name_zh": "use_subagent",
+      "count": 4,
+      "avg_duration_ms": 3,
+      "color": "#888"
+    },
+    {
+      "name": "Edit",
+      "name_zh": "编辑",
+      "count": 4,
+      "avg_duration_ms": 33,
+      "color": "#ff5722"
+    },
+    {
+      "name": "switch_mode",
+      "name_zh": "switch_mode",
+      "count": 2,
+      "avg_duration_ms": 10,
+      "color": "#888"
+    },
+    {
+      "name": "mermaid",
+      "name_zh": "mermaid",
+      "count": 2,
+      "avg_duration_ms": 2,
+      "color": "#888"
+    },
+    {
+      "name": "create_plan",
+      "name_zh": "create_plan",
+      "count": 2,
+      "avg_duration_ms": 2,
+      "color": "#888"
+    },
+    {
+      "name": "fetch_web",
+      "name_zh": "fetch_web",
+      "count": 1,
+      "avg_duration_ms": 8,
+      "color": "#888"
+    },
+    {
+      "name": "ask_user_questions",
+      "name_zh": "ask_user_questions",
+      "count": 1,
+      "avg_duration_ms": 3,
+      "color": "#888"
+    },
+    {
+      "name": "TaskUpdate",
+      "name_zh": "TaskUpdate",
+      "count": 1,
+      "avg_duration_ms": 8,
+      "color": "#888"
+    },
+    {
+      "name": "TaskCreate",
+      "name_zh": "TaskCreate",
+      "count": 1,
+      "avg_duration_ms": 26,
+      "color": "#888"
+    }
+  ],
+  "projects": [
+    {
+      "project_id": "claude-monitor",
+      "name": "ClaudeCode 监控",
+      "calls": 50,
+      "errors": 1,
+      "status": "进行中",
+      "priority": "高",
+      "color": "#2196f3"
+    },
+    {
+      "project_id": "non-project",
+      "name": "其他（非项目）",
+      "calls": 33,
+      "errors": 4,
+      "status": "",
+      "priority": "",
+      "color": "#888888"
+    },
+    {
+      "project_id": "community-roi",
+      "name": "community-roi",
+      "calls": 17,
+      "errors": 0,
+      "status": "",
+      "priority": "",
+      "color": "#888"
+    }
+  ],
+  "trend_7d": [
+    {
+      "date": "2026-05-12",
+      "calls": 20,
+      "errors": 0,
+      "sessions": 30
+    },
+    {
+      "date": "2026-05-13",
+      "calls": 228,
+      "errors": 0,
+      "sessions": 23
+    },
+    {
+      "date": "2026-05-14",
+      "calls": 283,
+      "errors": 0,
+      "sessions": 31
+    },
+    {
+      "date": "2026-05-15",
+      "calls": 224,
+      "errors": 0,
+      "sessions": 28
+    },
+    {
+      "date": "2026-05-16",
+      "calls": 94,
+      "errors": 0,
+      "sessions": 13
+    },
+    {
+      "date": "2026-05-17",
+      "calls": 52,
+      "errors": 5,
+      "sessions": 2
+    },
+    {
+      "date": "2026-05-18",
+      "calls": 30,
+      "errors": 0,
+      "sessions": 0
+    }
+  ],
+  "recent_calls": [
+    {
+      "timestamp": "2026-05-18T00:27:31.020531",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: grep '\"event\":\"PostToolUse\"' ~/.codeflicker/hooks.jsonl | head -3 | python3 -...",
+      "duration_ms": 82,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:27:24.051415",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: grep \"Stop\" ~/.codeflicker/hooks.jsonl | python3 -c \"import sys,json; [print(...",
+      "duration_ms": 70,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:27:23.887028",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: grep -i \"PostToolUse\\|PreToolUse\\|tool_call\" ~/.codeflicker/hooks.jsonl | hea...",
+      "duration_ms": 38,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:27:23.754450",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: cat ~/.codeflicker/hooks.jsonl | python3 -c \"import sys,json; events=set(); [...",
+      "duration_ms": 115,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:27:10.212337",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: cat ~/.codeflicker/audit-logs/audit-2026-05-18.jsonl | python3 -c \"import sys...",
+      "duration_ms": 63,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:27:10.044728",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: head -20 ~/.codeflicker/hooks.jsonl | python3 -c \"import sys,json; [print(jso...",
+      "duration_ms": 92,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:27:09.734346",
+      "tool": "TaskUpdate",
+      "tool_zh": "TaskUpdate",
+      "summary": "TaskUpdate: taskId=1, status=in_progress",
+      "duration_ms": 8,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:27:02.599734",
+      "tool": "TaskCreate",
+      "tool_zh": "TaskCreate",
+      "summary": "TaskCreate: subject=修改聚合脚本读取 CodeFlicker 数据源, description=将监控系统的数据源从 ~/.claude/monitor-logs 改为 ~/., activeForm=修改聚合脚本读取 ",
+      "duration_ms": 26,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:26:08.152427",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: wc -l ~/.codeflicker/hooks.jsonl ~/.codeflicker/audit-logs/*.jsonl 2>/dev/nul...",
+      "duration_ms": 83,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:26:08.114361",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: head -5 ~/.codeflicker/hooks.jsonl 2>/dev/null",
+      "duration_ms": 40,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:26:08.114265",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: head -3 ~/.codeflicker/audit-logs/audit-2026-05-18.jsonl 2>/dev/null",
+      "duration_ms": 43,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:25:52.799326",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: find /Users/jiangjincai -type d -iname \"*myflick*\" -o -iname \"*flick*\" 2>/dev...",
+      "duration_ms": 21226,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:25:49.664091",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: find /Users/jiangjincai -type f \\( -name \"*.db\" -o -name \"*.jsonl\" -o -name \"...",
+      "duration_ms": 18129,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:16:46.978515",
+      "tool": "Read",
+      "tool_zh": "读取",
+      "summary": "读取文件: /Users/jiangjincai/.claude/hooks/aggregate.py",
+      "duration_ms": 5,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:16:42.303631",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: find ~/.claude -name \"*.py\" -type f 2>/dev/null | xargs grep -l \"monitor.db\\|...",
+      "duration_ms": 120,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:16:42.259847",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: ls -la ~/.claude/hooks/*.py ~/.claude/scripts/*.py 2>/dev/null | head -20",
+      "duration_ms": 54,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:16:27.655821",
+      "tool": "Read",
+      "tool_zh": "读取",
+      "summary": "读取文件: /Users/jiangjincai/.claude/hooks/log_event.py",
+      "duration_ms": 9,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:16:20.736685",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: grep -A 50 \"PreToolUse\\|PostToolUse\" ~/.claude/settings.json 2>/dev/null | he...",
+      "duration_ms": 36,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:16:14.085811",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: grep -A 20 \"hooks\" ~/.claude/settings.json 2>/dev/null | head -30",
+      "duration_ms": 39,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:15:55.828699",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: sqlite3 ~/.claude/monitor.db \"SELECT session_id, started_at, model, total_too...",
+      "duration_ms": 31,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:15:55.701676",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: sqlite3 ~/.claude/monitor.db \"SELECT project_id, COUNT(*) as cnt, COUNT(DISTI...",
+      "duration_ms": 62,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:12:35.393638",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: grep -n \"pa-group\\|pa-divider\\|其他（非项目）\\|其他项目（暂未活动）\" /Users/jiangjincai/Deskto...",
+      "duration_ms": 51,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:12:35.393380",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: grep -n \"项目活动概览\" /Users/jiangjincai/Desktop/工作项目/workspace/knowledge-base/age...",
+      "duration_ms": 47,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:12:28.060414",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: cd /Users/jiangjincai/Desktop/工作项目/workspace && python3 scripts/gen_monitor_d...",
+      "duration_ms": 105,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:12:22.617358",
+      "tool": "Edit",
+      "tool_zh": "编辑",
+      "summary": "修改文件: /Users/jiangjincai/Desktop/工作项目/workspace/scripts/gen_monitor_dashboard.py (0→0字符)",
+      "duration_ms": 7,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:11:55.922103",
+      "tool": "Read",
+      "tool_zh": "读取",
+      "summary": "读取文件: /Users/jiangjincai/Desktop/工作项目/workspace/scripts/gen_monitor_dashboard.py",
+      "duration_ms": 7,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:11:45.298735",
+      "tool": "Edit",
+      "tool_zh": "编辑",
+      "summary": "修改文件: /Users/jiangjincai/Desktop/工作项目/workspace/scripts/gen_monitor_dashboard.py (0→0字符)",
+      "duration_ms": 77,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:00:12.233725",
+      "tool": "Read",
+      "tool_zh": "读取",
+      "summary": "读取文件: /Users/jiangjincai/Desktop/工作项目/workspace/projects/claude-monitor.md",
+      "duration_ms": 23,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:00:12.233579",
+      "tool": "Read",
+      "tool_zh": "读取",
+      "summary": "读取文件: /Users/jiangjincai/Desktop/工作项目/workspace/projects/business-scale-doubling.md",
+      "duration_ms": 8,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-18T00:00:01.328796",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: ls -la /Users/jiangjincai/Desktop/工作项目/workspace/projects/ 2>/dev/null | head...",
+      "duration_ms": 40,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-17T23:59:35.835044",
+      "tool": "Read",
+      "tool_zh": "读取",
+      "summary": "读取文件: /Users/jiangjincai/Desktop/工作项目/workspace/scripts/gen_monitor_dashboard.py",
+      "duration_ms": 72,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-17T23:59:32.587689",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: find /Users/jiangjincai -type f -name \"gen_monitor_dashboard.py\" 2>/dev/null ...",
+      "duration_ms": 19005,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "uncategorized"
+    },
+    {
+      "timestamp": "2026-05-17T21:34:09.252343",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: cat /Users/jiangjincai/.claude/projects/-Users-jiangjincai/d666edb4-595e-4092...",
+      "duration_ms": 35,
+      "status": "success",
+      "session_id": "d666edb4-595...",
+      "project_id": "claude-monitor"
+    },
+    {
+      "timestamp": "2026-05-17T21:33:58.478135",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: grep -A5 \"scrapling\" /Users/jiangjincai/.claude/projects/-Users-jiangjincai/d...",
+      "duration_ms": 47,
+      "status": "success",
+      "session_id": "d666edb4-595...",
+      "project_id": "claude-monitor"
+    },
+    {
+      "timestamp": "2026-05-17T21:33:48.174455",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: gh search repos scrapling --sort stars --limit 5 --json name,owner,stargazers...",
+      "duration_ms": 1322,
+      "status": "success",
+      "session_id": "d666edb4-595...",
+      "project_id": "claude-monitor"
+    },
+    {
+      "timestamp": "2026-05-17T21:33:46.723498",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: find /Users/jiangjincai -maxdepth 3 -type d -iname \"*scrapling*\" 2>/dev/null ...",
+      "duration_ms": 167,
+      "status": "success",
+      "session_id": "d666edb4-595...",
+      "project_id": "claude-monitor"
+    },
+    {
+      "timestamp": "2026-05-17T21:33:46.702337",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: grep -r \"scrapling\" /Users/jiangjincai/.claude/ 2>/dev/null | head -20 || ech...",
+      "duration_ms": 141,
+      "status": "success",
+      "session_id": "d666edb4-595...",
+      "project_id": "claude-monitor"
+    },
+    {
+      "timestamp": "2026-05-17T21:32:19.343607",
+      "tool": "WebFetch",
+      "tool_zh": "抓取",
+      "summary": "抓取网页: https://school.oceanengine.com",
+      "duration_ms": 12710,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "non-project"
+    },
+    {
+      "timestamp": "2026-05-17T21:28:28.454169",
+      "tool": "WebFetch",
+      "tool_zh": "抓取",
+      "summary": "抓取网页: https://www.tiktok.com/transparency/en/recommendation-system-2024",
+      "duration_ms": 11632,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "non-project"
+    },
+    {
+      "timestamp": "2026-05-17T21:28:23.136653",
+      "tool": "WebFetch",
+      "tool_zh": "抓取",
+      "summary": "抓取网页: https://e.kuaishou.com/kwai/platform/article/detail?id=1659399498661896",
+      "duration_ms": 6328,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "non-project"
+    },
+    {
+      "timestamp": "2026-05-17T21:28:22.876373",
+      "tool": "WebFetch",
+      "tool_zh": "抓取",
+      "summary": "抓取网页: https://e.kuaishou.com/kwai/platform/article/detail?id=1659399498661898",
+      "duration_ms": 6052,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "non-project"
+    },
+    {
+      "timestamp": "2026-05-17T21:28:09.656778",
+      "tool": "WebFetch",
+      "tool_zh": "抓取",
+      "summary": "抓取网页: https://oceanengine.com",
+      "duration_ms": 11391,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "non-project"
+    },
+    {
+      "timestamp": "2026-05-17T21:28:06.935961",
+      "tool": "WebFetch",
+      "tool_zh": "抓取",
+      "summary": "抓取网页: https://e.kuaishou.com",
+      "duration_ms": 7235,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "non-project"
+    },
+    {
+      "timestamp": "2026-05-17T21:27:02.848765",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: ls -la /Users/jiangjincai/.claude/projects/-Users-jiangjincai/memory/",
+      "duration_ms": 44,
+      "status": "success",
+      "session_id": "d666edb4-595...",
+      "project_id": "claude-monitor"
+    },
+    {
+      "timestamp": "2026-05-17T21:27:02.848512",
+      "tool": "Bash",
+      "tool_zh": "命令",
+      "summary": "执行命令: grep -r \"爬虫\" /Users/jiangjincai/.claude/projects/-Users-jiangjincai/memory/ 2...",
+      "duration_ms": 58,
+      "status": "success",
+      "session_id": "d666edb4-595...",
+      "project_id": "claude-monitor"
+    },
+    {
+      "timestamp": "2026-05-17T21:26:54.807340",
+      "tool": "WebSearch",
+      "tool_zh": "搜索",
+      "summary": "搜索: 磁力引擎 快手流量推荐机制 官方文档 site:e.kuaishou.com",
+      "duration_ms": 14416,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "non-project"
+    },
+    {
+      "timestamp": "2026-05-17T21:26:47.580432",
+      "tool": "WebSearch",
+      "tool_zh": "搜索",
+      "summary": "搜索: 巨量引擎 抖音流量分发机制 官方文档 site:oceanengine.com",
+      "duration_ms": 7192,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "non-project"
+    },
+    {
+      "timestamp": "2026-05-17T21:26:32.035189",
+      "tool": "WebFetch",
+      "tool_zh": "抓取",
+      "summary": "抓取网页: https://techblog.bytedance.net",
+      "duration_ms": 60336,
+      "status": "failure",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "non-project"
+    },
+    {
+      "timestamp": "2026-05-17T21:24:08.503449",
+      "tool": "WebFetch",
+      "tool_zh": "抓取",
+      "summary": "抓取网页: https://95152.douyin.com",
+      "duration_ms": 7885,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "non-project"
+    },
+    {
+      "timestamp": "2026-05-17T21:24:06.435361",
+      "tool": "WebFetch",
+      "tool_zh": "抓取",
+      "summary": "抓取网页: https://www.infoq.cn/article/bytebeat-recommendation-system",
+      "duration_ms": 5801,
+      "status": "success",
+      "session_id": "60795ab8-9bc...",
+      "project_id": "non-project"
+    }
+  ],
+  "project_cards": {
+    "ai-avatar": {
+      "name": "AI分身体系",
+      "status": "进行中",
+      "priority": "高",
+      "summary": "",
+      "metrics": {
+        "------": "------",
+        "已有分身": "4",
+        "覆盖场景": "用户运营 / 汇报审查 / 数据验证 / 能力诊断",
+        "待扩展场景": "TBD"
+      }
+    },
+    "ai-learning": {
+      "name": "AI知识学习",
+      "status": "待启动",
+      "priority": "高",
+      "summary": "",
+      "metrics": {
+        "------": "------",
+        "来源覆盖": "0/4",
+        "每日阅读量": "0"
+      }
+    },
+    "business-scale-doubling": {
+      "name": "业务规模翻倍专项",
+      "status": "进行中",
+      "priority": "高",
+      "summary": "",
+      "metrics": {}
+    },
+    "claude-monitor": {
+      "name": "ClaudeCode 监控",
+      "status": "进行中",
+      "priority": "高",
+      "summary": "",
+      "metrics": {
+        "------": "------",
+        "累计工具调用": "17",
+        "今日调用": "17",
+        "本周调用": "17",
+        "报错数": "1",
+        "最后活动": "2026-05-17T21:34:09.252343",
+        "使用工具": "读取、编辑、命令"
+      }
+    },
+    "project-expansion-headcount": {
+      "name": "人力挂账推动专项",
+      "status": "进行中",
+      "priority": "S+",
+      "summary": "",
+      "metrics": {}
+    },
+    "project-optimization": {
+      "name": "项目优化专项",
+      "status": "进行中",
+      "priority": "高",
+      "summary": "",
+      "metrics": {}
+    },
+    "scrapling-research": {
+      "name": "Scrapling 爬虫研究",
+      "status": "进行中",
+      "priority": "高",
+      "summary": "",
+      "metrics": {
+        "------": "------",
+        "学习文档": "1 篇（15 章）",
+        "Demo 脚本": "2 个（全部通过）",
+        "应用场景": "0 个（待挖掘）"
+      }
+    },
+    "team-org": {
+      "name": "团队组织架构",
+      "status": "已完成",
+      "priority": "高",
+      "summary": "",
+      "metrics": {
+        "------": "------",
+        "组别": "高价值项目运营二组、四组",
+        "总人数": "13",
+        "架构层级": "3 层（负责人→项目督导→成员）",
+        "文件": "组织架构图 HTML（已公网部署）"
+      }
+    },
+    "vista-content-presentation": {
+      "name": "内容呈现优化（VISTA）",
+      "status": "已完成",
+      "priority": "高",
+      "summary": "",
+      "metrics": {
+        "------": "------",
+        "耗时": "1 天",
+        "Skill 文件数": "5（1 入口 + 3 参考 + 1 模板）",
+        "迭代版本": "V1→V2→V3→V4",
+        "公网地址": "✅ 可访问"
+      }
+    }
+  },
+  "project_registry": {
+    "claude-monitor": "ClaudeCode 监控",
+    "vista-content": "内容呈现优化（VISTA）",
+    "ai-avatar": "AI分身体系",
+    "ai-learning": "AI知识学习",
+    "scrapling-research": "Scrapling 爬虫研究",
+    "double-business": "业务规模翻倍专项",
+    "project-unknown": "项目工作（待确认）",
+    "non-project": "其他（非项目）",
+    "uncategorized": "未分类",
+    "business-scale-doubling": "业务规模翻倍专项",
+    "project-expansion-headcount": "人力挂账推动专项",
+    "project-optimization": "项目优化专项",
+    "team-org": "团队组织架构",
+    "vista-content-presentation": "内容呈现优化（VISTA）"
+  },
+  "skill_usage": [
+    {
+      "skill": "evo-meta-execution",
+      "count": 3,
+      "origin_project": "未知项目",
+      "origin_project_name": "未知项目"
+    },
+    {
+      "skill": "clawbook",
+      "count": 3,
+      "origin_project": "ai-learning",
+      "origin_project_name": "AI知识学习"
+    },
+    {
+      "skill": "docs-shuttle",
+      "count": 2,
+      "origin_project": "未知项目",
+      "origin_project_name": "未知项目"
+    },
+    {
+      "skill": "weekly-report-visualization",
+      "count": 1,
+      "origin_project": "double-business",
+      "origin_project_name": "业务规模翻倍专项"
+    },
+    {
+      "skill": "web-online",
+      "count": 1,
+      "origin_project": "vista-content",
+      "origin_project_name": "内容呈现优化（VISTA）"
+    },
+    {
+      "skill": "svg-flowchart-designer",
+      "count": 1,
+      "origin_project": "vista-content",
+      "origin_project_name": "内容呈现优化（VISTA）"
+    },
+    {
+      "skill": "settings",
+      "count": 1,
+      "origin_project": "未知项目",
+      "origin_project_name": "未知项目"
+    },
+    {
+      "skill": "self-evolving",
+      "count": 1,
+      "origin_project": "未知项目",
+      "origin_project_name": "未知项目"
+    },
+    {
+      "skill": "scheduled-tasks",
+      "count": 1,
+      "origin_project": "未知项目",
+      "origin_project_name": "未知项目"
+    },
+    {
+      "skill": "liubei-daily-intel",
+      "count": 1,
+      "origin_project": "double-business",
+      "origin_project_name": "业务规模翻倍专项"
+    }
+  ]
+}

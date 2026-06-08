@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>从 Skill 到 Agent：项目管理工具进化</title>
+<style>
+  :root {
+    --bg: #080810;
+    --bg-card: #101018;
+    --bg-card-hover: #181828;
+    --text: #e8e8f0;
+    --text-dim: #7a7a92;
+    --accent: #6c5ce7;
+    --accent2: #a29bfe;
+    --accent3: #00b894;
+    --accent4: #ff6b6b;
+    --accent5: #fdcb6e;
+    --accent6: #74b9ff;
+    --border: #1e1e32;
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden;
+  }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 40px 24px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: 
+      radial-gradient(ellipse at 30% 20%, rgba(108,92,231,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 60%, rgba(0,184,148,0.1) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 80%, rgba(253,203,110,0.08) 0%, transparent 50%);
+    animation: heroGlow 12s ease-in-out infinite alternate;
+  }
+  @keyframes heroGlow {
+    0% { transform: translate(0,0) rotate(0deg); opacity: 0.6; }
+    100% { transform: translate(3%,3%) rotate(3deg); opacity: 1; }
+  }
+  .hero > * { position: relative; z-index: 1; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 20px; background: rgba(108,92,231,0.12);
+    border: 1px solid rgba(108,92,231,0.3); border-radius: 100px;
+    font-size: 13px; color: var(--accent2); letter-spacing: 1px; margin-bottom: 32px;
+  }
+  .hero-badge .dot { width: 8px; height: 8px; background: var(--accent3); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .hero h1 {
+    font-size: clamp(2.6rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.15;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff 0%, var(--accent2) 40%, var(--accent3) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero h1 .evo {
+    display: inline-block; position: relative;
+  }
+  .hero-sub { font-size: 1.05rem; color: var(--text-dim); max-width: 620px; margin: 20px auto 40px; }
+  .hero-kpi { display: flex; gap: 40px; flex-wrap: wrap; justify-content: center; }
+  .hero-kpi-item { text-align: center; }
+  .hero-kpi-item .num { font-size: 2.2rem; font-weight: 800; }
+  .hero-kpi-item .num.purple { color: var(--accent2); }
+  .hero-kpi-item .num.green { color: var(--accent3); }
+  .hero-kpi-item .num.yellow { color: var(--accent5); }
+  .hero-kpi-item .num.blue { color: var(--accent6); }
+  .hero-kpi-item .label { font-size: 0.8rem; color: var(--text-dim); margin-top: 4px; }
+
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0 24px; height: 56px; display: flex; align-items: center;
+    background: rgba(8,8,16,0.88); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand { font-weight: 700; font-size: 14px; color: var(--accent2); }
+  .nav-links { display: flex; gap: 20px; list-style: none; font-size: 13px; margin-left: auto; }
+  .nav-links a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+
+  /* SECTIONS */
+  .section { max-width: 1100px; margin: 0 auto; padding: 80px 24px; }
+  .section-header { margin-bottom: 48px; text-align: center; }
+  .section-tag {
+    display: inline-block; padding: 4px 14px;
+    background: rgba(108,92,231,0.12); border: 1px solid rgba(108,92,231,0.2);
+    border-radius: 100px; font-size: 12px; color: var(--accent2);
+    letter-spacing: 2px; margin-bottom: 12px;
+  }
+  .section-header h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 700; margin-bottom: 10px; }
+  .section-header p { color: var(--text-dim); max-width: 600px; margin: 0 auto; font-size: 0.92rem; }
+
+  /* CARDS */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .card-grid-2 { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
+  .card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px;
+    transition: all 0.3s ease; position: relative; overflow: hidden;
+  }
+  .card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .card.purple::before { background: var(--accent); }
+  .card.green::before { background: var(--accent3); }
+  .card.yellow::before { background: var(--accent5); }
+  .card.red::before { background: var(--accent4); }
+  .card.blue::before { background: var(--accent6); }
+  .card:hover { background: var(--bg-card-hover); transform: translateY(-2px); }
+  .card:hover::before { opacity: 1; }
+  .card-icon { font-size: 1.6rem; margin-bottom: 12px; display: block; }
+  .card h3 { font-size: 1.05rem; margin-bottom: 6px; }
+  .card p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; }
+
+  /* COMPARISON */
+  .comparison {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    margin: 32px 0; border-radius: var(--radius); overflow: hidden;
+  }
+  .comparison-col {
+    background: var(--bg-card); padding: 36px 32px; border: 1px solid var(--border);
+  }
+  .comparison-col:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+  .comparison-col:last-child { border-radius: 0 var(--radius) var(--radius) 0); }
+  .comparison-col h3 { font-size: 1.1rem; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+  .comparison-col ul { list-style: none; }
+  .comparison-col li { padding: 8px 0; font-size: 0.88rem; color: var(--text-dim); display: flex; align-items: flex-start; gap: 8px; }
+  .comparison-col li .check { color: var(--accent3); font-weight: 700; }
+  .comparison-col li .cross { color: var(--accent4); font-weight: 700; }
+  .comparison-divider {
+    width: 2px; background: linear-gradient(180deg, var(--accent) 0%, var(--accent3) 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .comparison-divider .vs {
+    background: var(--bg); color: var(--accent2); font-weight: 800; font-size: 0.9rem;
+    padding: 8px 4px; border-radius: 4px;
+  }
+
+  /* EVOLUTION TIMELINE */
+  .timeline { position: relative; padding-left: 40px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 15px; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(180deg, var(--accent) 0%, var(--accent3) 100%);
+  }
+  .timeline-item { position: relative; margin-bottom: 40px; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -33px; top: 8px;
+    width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--accent2);
+    background: var(--bg);
+  }
+  .timeline-item.active::before { background: var(--accent3); border-color: var(--accent3); box-shadow: 0 0 12px rgba(0,184,148,0.3); }
+  .timeline-item.future::before { background: var(--bg-card); border-color: var(--border); }
+  .timeline-date { font-size: 0.75rem; color: var(--accent2); letter-spacing: 1px; margin-bottom: 4px; }
+  .timeline-item.active .timeline-date { color: var(--accent3); }
+  .timeline-item.future .timeline-date { color: var(--text-dim); }
+  .timeline-item h4 { font-size: 1rem; margin-bottom: 4px; }
+  .timeline-item p { font-size: 0.85rem; color: var(--text-dim); }
+  .timeline-item.future h4, .timeline-item.future p { opacity: 0.5; }
+
+  /* TRUST LEVEL BAR */
+  .trust-levels { display: flex; gap: 2px; margin: 32px 0; }
+  .trust-level {
+    flex: 1; padding: 20px 16px; text-align: center; border-radius: var(--radius-sm);
+    background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .trust-level.active {
+    background: rgba(0,184,148,0.08); border-color: rgba(0,184,148,0.3);
+  }
+  .trust-level .lvl { font-size: 1.4rem; font-weight: 800; margin-bottom: 4px; }
+  .trust-level.active .lvl { color: var(--accent3); }
+  .trust-level .lvl-name { font-size: 0.8rem; font-weight: 600; margin-bottom: 6px; }
+  .trust-level .lvl-desc { font-size: 0.75rem; color: var(--text-dim); line-height: 1.4; }
+  .trust-level.future { opacity: 0.45; }
+
+  /* PROCESS FLOW */
+  .process-flow {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    justify-content: center; margin: 32px 0;
+  }
+  .process-step {
+    flex: 1; min-width: 180px; max-width: 240px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 24px 20px; text-align: center;
+    position: relative;
+  }
+  .process-step::after {
+    content: '→'; position: absolute; right: -20px; top: 50%;
+    transform: translateY(-50%); color: var(--accent2); font-size: 1.4rem;
+    font-weight: 700; z-index: 1;
+  }
+  .process-step:last-child::after { display: none; }
+  .process-step .step-num {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(108,92,231,0.15); color: var(--accent2);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 12px; font-weight: 700; font-size: 0.85rem;
+  }
+  .process-step h4 { font-size: 0.9rem; margin-bottom: 4px; }
+  .process-step p { font-size: 0.78rem; color: var(--text-dim); line-height: 1.5; }
+
+  /* SIGNAL GRID */
+  .signal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+  .signal-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 18px 20px;
+  }
+  .signal-icon { font-size: 1.3rem; width: 36px; text-align: center; flex-shrink: 0; }
+  .signal-info h4 { font-size: 0.88rem; margin-bottom: 2px; }
+  .signal-info p { font-size: 0.78rem; color: var(--text-dim); }
+
+  /* CODE */
+  .code-block {
+    background: rgba(0,0,0,0.4); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 20px; margin: 16px 0;
+    font-family: 'SF Mono', Monaco, monospace; font-size: 0.82rem; line-height: 1.6;
+    overflow-x: auto; white-space: pre;
+  }
+  .code-block .kw { color: var(--accent2); }
+  .code-block .str { color: var(--accent3); }
+  .code-block .cmt { color: var(--text-dim); font-style: italic; }
+  .code-block .num { color: var(--accent5); }
+
+  /* TABLE */
+  .data-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.86rem; }
+  .data-table th { text-align: left; padding: 12px 16px; background: rgba(255,255,255,0.03); border-bottom: 2px solid var(--border); font-weight: 600; color: var(--text-dim); font-size: 0.78rem; letter-spacing: 0.5px; }
+  .data-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  .data-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .badge {
+    display: inline-block; padding: 2px 10px; border-radius: 100px;
+    font-size: 0.72rem; font-weight: 600;
+  }
+  .badge-auto { background: rgba(0,184,148,0.12); color: var(--accent3); }
+  .badge-manual { background: rgba(253,203,110,0.12); color: var(--accent5); }
+  .badge-review { background: rgba(108,92,231,0.12); color: var(--accent2); }
+
+  /* ARCHITECTURE BLOCK */
+  .arch-block {
+    display: flex; align-items: stretch; gap: 0; margin: 24px 0;
+    border-radius: var(--radius); overflow: hidden;
+  }
+  .arch-layer {
+    flex: 1; padding: 20px; text-align: center;
+    font-size: 0.82rem; border: 1px solid var(--border);
+  }
+  .arch-layer.existing { background: rgba(108,92,231,0.04); }
+  .arch-layer.new { background: rgba(0,184,148,0.06); }
+  .arch-layer .layer-label {
+    font-size: 0.7rem; letter-spacing: 1px; color: var(--text-dim); margin-bottom: 8px;
+  }
+  .arch-layer.new .layer-label { color: var(--accent3); }
+  .arch-layer h4 { font-size: 0.88rem; margin-bottom: 6px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .comparison { grid-template-columns: 1fr; }
+    .comparison-col:first-child, .comparison-col:last-child { border-radius: var(--radius); }
+    .process-flow { flex-direction: column; align-items: center; }
+    .process-step { max-width: 100%; }
+    .process-step::after { content: '↓'; right: 50%; top: auto; bottom: -28px; transform: translateX(50%); }
+    .hero-kpi { gap: 24px; }
+    .hero-kpi-item .num { font-size: 1.6rem; }
+    .trust-levels { flex-direction: column; }
+    .section { padding: 48px 16px; }
+  }
+
+  /* FOOTER */
+  .footer { text-align: center; padding: 48px 24px; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.8rem; }
+  .footer .status { color: var(--accent3); font-weight: 600; }
+
+  /* ANIMATIONS */
+  .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- 导航 -->
+<nav class="nav">
+  <div class="nav-brand">PMAgent</div>
+  <ul class="nav-links">
+    <li><a href="#what">是什么</a></li>
+    <li><a href="#how">怎么工作</a></li>
+    <li><a href="#why">为什么这样做</a></li>
+    <li><a href="#evolution">进化路线</a></li>
+  </ul>
+</nav>
+
+<!-- ── V: 视觉钩子 ── -->
+<section class="hero">
+  <div class="hero-badge"><span class="dot"></span> 2026 年 5 月 24 日 · 进化完成</div>
+  <h1>
+    从<span style="color:var(--accent2)"> Skill</span> 到<br/>
+    <span style="color:var(--accent3)">Agent</span>
+  </h1>
+  <p class="hero-sub">
+    原来你要说「查项目」它才动。现在每 30 分钟自己巡检一次，发现异常自己处理，
+    搞不定的才找你。就像把一本手册，变成了一个不用睡觉的助手。
+  </p>
+  <div class="hero-kpi">
+    <div class="hero-kpi-item"><div class="num purple">21</div><div class="label">管理项目数</div></div>
+    <div class="hero-kpi-item"><div class="num green">6</div><div class="label">巡检信号</div></div>
+    <div class="hero-kpi-item"><div class="num yellow">Level 1</div><div class="label">当前信任级别</div></div>
+    <div class="hero-kpi-item"><div class="num blue">82%</div><div class="label">基建就绪度</div></div>
+  </div>
+</section>
+
+<!-- ── I: 信息骨架 ── -->
+<section class="section" id="what">
+  <div class="section-header fade-in">
+    <div class="section-tag">INFO SKELETON · 3 秒就知道怎么回事</div>
+    <h2>Skill 变成 Agent，变了什么？</h2>
+    <p>不是「功能更多了」，是角色变了——从工具变成了队友</p>
+  </div>
+
+  <div class="comparison fade-in">
+    <div class="comparison-col">
+      <h3>📋 以前是 Skill</h3>
+      <ul>
+        <li><span class="cross">✕</span> 你说「查项目」才去查</li>
+        <li><span class="cross">✕</span> 发现异常不会主动说</li>
+        <li><span class="cross">✕</span> 不会自己修问题</li>
+        <li><span class="cross">✕</span> 不知道自己做得好不好</li>
+        <li><span class="cross">✕</span> 坏了就是坏了，没人知道</li>
+      </ul>
+    </div>
+    <div class="comparison-col">
+      <h3>🤖 现在是 Agent</h3>
+      <ul>
+        <li><span class="check">✓</span> 每 30 分钟自动巡检 6 项指标</li>
+        <li><span class="check">✓</span> 异常即时写入健康报告</li>
+        <li><span class="check">✓</span> 低风险问题自己修（如重试失败同步）</li>
+        <li><span class="check">✓</span> 每次行动写审计日志，可回溯</li>
+        <li><span class="check">✓</span> 监控自己的健康，坏了能发现</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card-grid fade-in" style="margin-top: 24px;">
+    <div class="card purple">
+      <span class="card-icon">👁️</span>
+      <h3>自主感知</h3>
+      <p>不用人告诉它发生了什么。它自己看数据、自己判断异常。</p>
+    </div>
+    <div class="card green">
+      <span class="card-icon">🧠</span>
+      <h3>规则决策</h3>
+      <p>不是拍脑袋。每条行动都来自规则匹配——条件触发、级别过滤、冷却限制。</p>
+    </div>
+    <div class="card yellow">
+      <span class="card-icon">🖐️</span>
+      <h3>安全行动</h3>
+      <p>只做你允许的事。低风险自己修，中风险等一周再开，高风险永远上报。</p>
+    </div>
+    <div class="card blue">
+      <span class="card-icon">📝</span>
+      <h3>可审计</h3>
+      <p>所有行动写入 JSONL 日志。任何时候问「Agent 过去 24 小时干了什么」，一条命令全出来。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── S: 结构展开 ── -->
+<section class="section" id="how" style="padding-top: 20px;">
+  <div class="section-header fade-in">
+    <div class="section-tag">STRUCTURE · 10 秒看清怎么运转</div>
+    <h2>Agent 的四个阶段</h2>
+    <p>每次运行 4 步走，全程耗时不到 5 秒</p>
+  </div>
+
+  <div class="process-flow fade-in">
+    <div class="process-step">
+      <div class="step-num">1</div>
+      <h4>感知 Perceive</h4>
+      <p>检查 6 个信号：sync链路、部署状态、数据可读、项目过期、产出退化、不确定堆积</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">2</div>
+      <h4>决策 Decide</h4>
+      <p>7 条规则匹配 → 按信任级别过滤 → 冷却期检查 → 生成行动清单</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">3</div>
+      <h4>行动 Act</h4>
+      <p>执行行动（重试/标记/诊断/日志）→ 每次行动前后写审计记录</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">4</div>
+      <h4>自检 Self Check</h4>
+      <p>检查自身文件完整性、写入权限、日志大小 → 输出健康报告</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 48px; margin-bottom: 20px; font-size: 1rem; color: var(--text-dim); text-align: center;">巡检的 6 个信号</h3>
+  <div class="signal-grid fade-in">
+    <div class="signal-item">
+      <div class="signal-icon">🔗</div>
+      <div class="signal-info">
+        <h4>sync 链路检查</h4>
+        <p>读 scheduler 日志最后更新时间 → 超过 2 小时没产出 = 🔴 中断</p>
+      </div>
+    </div>
+    <div class="signal-item">
+      <div class="signal-icon">🌐</div>
+      <div class="signal-info">
+        <h4>GitHub Pages 存活</h4>
+        <p>HTTP 请求看板页面 → 不是 200 = 🔴 部署挂了</p>
+      </div>
+    </div>
+    <div class="signal-item">
+      <div class="signal-icon">📦</div>
+      <div class="signal-info">
+        <h4>数据可读性</h4>
+        <p>尝试加载 projects-data.json → 解析失败 = 🔴 数据坏了</p>
+      </div>
+    </div>
+    <div class="signal-item">
+      <div class="signal-icon">📅</div>
+      <div class="signal-info">
+        <h4>项目过期检测</h4>
+        <p>逐个项目比对 last_updated → 进行中但 > 7 天未更新 = 🟡</p>
+      </div>
+    </div>
+    <div class="signal-item">
+      <div class="signal-icon">📉</div>
+      <div class="signal-info">
+        <h4>产出退化检测</h4>
+        <p>读取 output_tracking.runtime_health → ⚠️退化 = 🟡</p>
+      </div>
+    </div>
+    <div class="signal-item">
+      <div class="signal-icon">❓</div>
+      <div class="signal-info">
+        <h4>不确定项堆积</h4>
+        <p>统计所有项目的 uncertain_items → > 5 个待确认 = 🟡 需 review</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 48px; margin-bottom: 20px; font-size: 1rem; color: var(--text-dim); text-align: center;">当前规则配置（trust_level = 1）</h3>
+  <table class="data-table fade-in">
+    <thead>
+      <tr>
+        <th>规则 ID</th>
+        <th>触发条件</th>
+        <th>严重度</th>
+        <th>需要的信任级别</th>
+        <th>动作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>sync-failure</td>
+        <td>sync 链路中断</td>
+        <td>🔴</td>
+        <td>Level 1</td>
+        <td><span class="badge badge-auto">自动重试 sync</span></td>
+      </tr>
+      <tr>
+        <td>deploy-down</td>
+        <td>部署挂了</td>
+        <td>🔴</td>
+        <td>Level 2</td>
+        <td><span class="badge badge-review">收集诊断信息</span></td>
+      </tr>
+      <tr>
+        <td>json-corrupted</td>
+        <td>数据文件损坏</td>
+        <td>🔴</td>
+        <td>Level 0</td>
+        <td><span class="badge badge-manual">只记日志</span></td>
+      </tr>
+      <tr>
+        <td>stale-project-mark</td>
+        <td>项目 > 7 天未更新</td>
+        <td>🟡</td>
+        <td>Level 2</td>
+        <td><span class="badge badge-review">自动标记不确定</span></td>
+      </tr>
+      <tr>
+        <td>output-degraded-log</td>
+        <td>产出质量退化</td>
+        <td>🟡</td>
+        <td>Level 1</td>
+        <td><span class="badge badge-auto">自动收集诊断</span></td>
+      </tr>
+      <tr>
+        <td>uncertain-pileup-alert</td>
+        <td>不确定项堆积</td>
+        <td>🟡</td>
+        <td>Level 2</td>
+        <td><span class="badge badge-manual">只记日志</span></td>
+      </tr>
+      <tr>
+        <td>any-red-alert</td>
+        <td>任何红色告警</td>
+        <td>🔴</td>
+        <td>Level 0</td>
+        <td><span class="badge badge-manual">全局日志记录</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ── T: 叙事支撑 ── -->
+<section class="section" id="why" style="padding-top: 20px;">
+  <div class="section-header fade-in">
+    <div class="section-tag">NARRATIVE · 为什么这样设计</div>
+    <h2>三条设计原理</h2>
+    <p>不是拍脑袋想的，每条都有明确的原因</p>
+  </div>
+
+  <div class="card-grid card-grid-2 fade-in">
+    <div class="card purple">
+      <span class="card-icon">🔍</span>
+      <h3>原理一：观察者模式</h3>
+      <p style="margin-bottom: 12px;">Agent 不替代任何现有东西——只是在已有的数据流水线上加一双眼睛。</p>
+      <p style="font-size:0.8rem; color: var(--accent2);">为什么不重写？因为现有系统是你的业务代码，Agent 是你的运维。它们解耦了，Agent 坏了不影响项目数据，数据格式变了 Agent 报错但不会破坏数据。</p>
+    </div>
+    <div class="card green">
+      <span class="card-icon">🪜</span>
+      <h3>原理二：信任阶梯</h3>
+      <p style="margin-bottom: 12px;">不是「信任 vs 不信任」的二选一，是一把可以逐级拧开的阀门。</p>
+      <p style="font-size:0.8rem; color: var(--accent3);">为什么分级？因为信任不是一次给的，是挣来的。Agent 每正确处置 100 次，你就拧开一级。搞砸了就拧回去——不是关掉，是降级。</p>
+    </div>
+    <div class="card yellow">
+      <span class="card-icon">🪞</span>
+      <h3>原理三：自我指涉</h3>
+      <p style="margin-bottom: 12px;">Agent 管理项目，也管理自己——它的代码作为第 21 个项目存在于看板里。</p>
+      <p style="font-size:0.8rem; color: var(--accent5);">为什么自举？两个好处：1) Agent 崩了不波及其他项目（原理一保证）2) 你看看板能看到 Agent 的表现数据，就像看其他项目一样，不需要专门的监控面板。</p>
+    </div>
+    <div class="card blue">
+      <span class="card-icon">⚙️</span>
+      <h3>核心技术：比对而非 AI</h3>
+      <p style="margin-bottom: 12px;">Agent 不靠大模型推理。每一行代码都是确定性的——定义正常值 → 读取实际值 → 比对。</p>
+      <p style="font-size:0.8rem; color: var(--accent6);">为什么不做 AI？因为数据已经是结构化的 JSON，不需要「理解」，只需要「比对」。纯 Python 标准库就够了——json.load() + datetime + requests.head()。</p>
+    </div>
+  </div>
+
+  <div class="section-header fade-in" style="margin-top: 64px;">
+    <h3 style="font-size: 1.2rem;">信任级别分级</h3>
+    <p>当前在第 1 级，稳定一周后升级</p>
+  </div>
+
+  <div class="trust-levels fade-in">
+    <div class="trust-level" style="opacity:0.5">
+      <div class="lvl">0</div>
+      <div class="lvl-name">纯感知</div>
+      <div class="lvl-desc">只观察写日志，不执行</div>
+    </div>
+    <div class="trust-level active">
+      <div class="lvl">1</div>
+      <div class="lvl-name">低风险修复<br/><span style="font-size:0.7rem;color:var(--accent3)">← 当前</span></div>
+      <div class="lvl-desc">重试失败同步<br/>收集诊断信息</div>
+    </div>
+    <div class="trust-level future">
+      <div class="lvl">2</div>
+      <div class="lvl-name">中度处置</div>
+      <div class="lvl-desc">标记不确定项<br/>推送到 Kim 告警</div>
+    </div>
+    <div class="trust-level future">
+      <div class="lvl">3</div>
+      <div class="lvl-name">自主决策</div>
+      <div class="lvl-desc">调优先级建议<br/>跨项目冲突检测</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── A: 行动收口 ── -->
+<section class="section" id="evolution" style="padding-top: 20px;">
+  <div class="section-header fade-in">
+    <div class="section-tag">ACTION · 接下来做什么</div>
+    <h2>进化路线图</h2>
+    <p>从今天开始，Agent 在后台自主运行，你只需要观察和升级</p>
+  </div>
+
+  <div class="timeline fade-in">
+    <div class="timeline-item active">
+      <div class="timeline-date">2026-05-24 · 今天</div>
+      <h4>✅ Level 1 启动</h4>
+      <p>Agent 已在 scheduler daemon 挂载，每 30 分钟自动巡检。首跑成功：6 信号、2 规则命中、sync 自动重试。</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2026-05-24 ~ 05-31</div>
+      <h4>📊 稳定观察期</h4>
+      <p>观察误报率和漏报率。你可以随时查看 <code>output/pm_agent_health.json</code> 和 <code>output/pm_agent_audit.jsonl</code> 了解 Agent 在做什么。</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2026-06-01 ~ 06-07</div>
+      <h4>🔼 升级到 Level 2</h4>
+      <p>改一行配置 <code>"trust_level": 2</code>，解锁：自动标记过期项目、不确定项堆积告警。</p>
+    </div>
+    <div class="timeline-item future">
+      <div class="timeline-date">2026-06-14</div>
+      <h4>📋 Agent 运行周报</h4>
+      <p>Agent 自动生成自己的运行报告：本周发现异常数、自动修复成功/失败数、误报分析。</p>
+    </div>
+    <div class="timeline-item future">
+      <div class="timeline-date">2026-06-30</div>
+      <h4>🚀 Level 3：跨项目协调</h4>
+      <p>Agent 开始识别跨项目冲突、自动建议优先级调整、产出协同机会分析。</p>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 40px; padding: 32px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);" class="fade-in">
+    <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 16px;">怎么知道 Agent 在干什么？</p>
+    <div class="code-block" style="display: inline-block; text-align: left;">
+<span class="cmt"># 最新巡检结果</span>
+cat output/pm_agent_health.json | python3 -m json.tool
+
+<span class="cmt"># 所有历史行动</span>
+tail -20 output/pm_agent_audit.jsonl
+
+<span class="cmt"># 升级信任级别</span>
+<span class="cmt"># 编辑 output/pm_agent_config.json，改 trust_level</span>
+
+<span class="cmt"># 看板（Agent 自己也是第 21 个项目）</span>
+open https://jiangjincai85-sys.github.io/mario-pm-infra/
+    </div>
+  </div>
+</section>
+
+<div class="footer">
+  <p>PMAgent v1.0 · <span class="status">当前运行中 · Trust Level 1</span></p>
+  <p style="margin-top: 4px;">项目 #21 · 受自己管理 · 每 30 分钟自动巡检</p>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

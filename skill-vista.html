@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>项目管理 Skill · 现状全景</title>
+<style>
+:root{--bg:#0f1117;--card:#1a1d2e;--a1:#34d399;--a2:#f97316;--a3:#8b5cf6;--a4:#f43f5e;--a5:#38bdf8;--t:#e2e8f0;--m:#94a3b8;--b:#2d3148}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--t);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+.page{max-width:960px;margin:0 auto;padding:24px 20px}
+
+.hero{text-align:center;padding:36px 20px;margin-bottom:28px;border-radius:16px;background:linear-gradient(135deg,#1a2e1a 0%,#0f1117 100%);border:1px solid var(--a1)}
+.hero-badge{display:inline-block;font-size:0.75rem;padding:4px 12px;border-radius:999px;background:var(--a1);color:#000;margin-bottom:10px;font-weight:700}
+.hero h1{font-size:1.6rem;font-weight:800;color:#fff;margin-bottom:6px}
+.hero h1 em{font-style:normal;color:var(--a1)}
+.hero-sub{font-size:0.9rem;color:var(--m)}
+
+.kpi-row{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap}
+.kpi{flex:1;min-width:120px;background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--b);text-align:center}
+.kpi .n{font-size:1.5rem;font-weight:800}
+.kpi .l{font-size:0.7rem;color:var(--m)}
+
+.sec{margin-bottom:24px}
+.sec-t{font-size:1rem;font-weight:700;margin-bottom:12px;padding-left:8px;border-left:3px solid var(--a1)}
+.sec-t.o{border-color:var(--a2)}.sec-t.p{border-color:var(--a3)}.sec-t.r{border-color:var(--a4)}.sec-t.b{border-color:var(--a5)}
+
+.card{background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--b);margin-bottom:12px}
+.card h3{font-size:0.9rem;font-weight:700;margin-bottom:6px}
+.card h3 .tag{font-size:0.6rem;padding:2px 8px;border-radius:4px;margin-left:6px;font-weight:500}
+.card h3 .tag.g{background:#1a2e1a;color:var(--a1)}.card h3 .tag.o{background:#2e1a1a;color:var(--a2)}.card h3 .tag.p{background:#1a2e3a;color:var(--a3)}.card h3 .tag.r{background:#2e1a2e;color:var(--a4)}
+.card ul{list-style:none;padding:0}
+.card li{font-size:0.8rem;padding:3px 0}.card li::before{content:"→ ";color:var(--a1);font-weight:600}
+.card li.w::before{content:"⚠ ";color:var(--a4)}
+.card .why{font-size:0.7rem;color:var(--m);margin-top:6px;padding-top:6px;border-top:1px solid var(--b)}
+
+.tbl{width:100%;border-collapse:collapse;font-size:0.75rem;margin-bottom:12px}
+.tbl th{background:var(--card);padding:6px 10px;text-align:left;color:var(--m);font-weight:600;border-bottom:2px solid var(--b)}
+.tbl td{padding:6px 10px;border-bottom:1px solid var(--b)}
+.tbl td.g{color:var(--a1)}.tbl td.o{color:var(--a2)}.tbl td.r{color:var(--a4)}
+
+.flow{background:var(--card);border-radius:10px;padding:14px;border:1px solid var(--b)}
+.frow{display:flex;align-items:center;gap:6px;margin-bottom:8px;flex-wrap:wrap}
+.fnode{font-size:0.75rem;font-weight:600;padding:5px 12px;border-radius:6px;text-align:center}
+.fnode.g{background:#1a2e1a;color:var(--a1)}.fnode.o{background:#2e2e1a;color:var(--a2)}.fnode.p{background:#1a1a2e;color:var(--a3)}.fnode.r{background:#1a2e2e;color:var(--a5)}
+.farr{font-size:0.9rem;color:var(--m)}
+
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
+.gitem{background:var(--card);border-radius:8px;padding:10px;border:1px solid var(--b);text-align:center}
+.gitem .icon{font-size:1.2rem;margin-bottom:2px}
+.gitem .name{font-size:0.8rem;font-weight:600}
+.gitem .st{font-size:0.6rem;margin-top:2px}
+.gitem .st.g{color:var(--a1)}.gitem .st.o{color:var(--a2)}.gitem .st.r{color:var(--a4)}
+
+.trigger-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
+.trigger{background:var(--card);border-radius:8px;padding:8px;border:1px solid var(--b);font-size:0.75rem}
+.trigger .kw{font-weight:700;color:var(--a1)}
+.trigger .act{color:var(--m);font-size:0.65rem;margin-top:2px}
+
+.analogy{background:linear-gradient(135deg,#1a2e1a,#1a1d2e);border-radius:10px;padding:14px;border:1px solid var(--a1);margin-bottom:12px}
+.analogy h4{color:var(--a1);font-weight:700;font-size:0.85rem;margin-bottom:4px}
+.analogy p{font-size:0.8rem;color:var(--t)}
+.analogy em{font-style:normal;color:var(--a1);font-weight:600}
+
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.hero,.kpi,.sec,.card,.gitem,.trigger,.analogy,.flow{animation:fadeInUp 0.4s ease-out both}
+.kpi:nth-child(2){animation-delay:0.05s}.kpi:nth-child(3){animation-delay:0.1s}.kpi:nth-child(4){animation-delay:0.15s}.kpi:nth-child(5){animation-delay:0.2s}.kpi:nth-child(6){animation-delay:0.25s}
+
+.foot{text-align:center;padding:16px;font-size:0.65rem;color:var(--m);border-top:1px solid var(--b);margin-top:16px}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- V -->
+<div class="hero">
+  <div class="hero-badge">🛠 项目管理 Skill</div>
+  <h1>从"散落10个文件"到<em>"1个JSON秒查秒出"</em></h1>
+  <div class="hero-sub">项目管理不再只是看板——而是上游采集→中台沉淀→下游秒出→日清日结的完整流水线</div>
+</div>
+
+<!-- I -->
+<div class="kpi-row">
+  <div class="kpi"><div class="n" style="color:var(--a1)">10</div><div class="l">项目全覆盖</div></div>
+  <div class="kpi"><div class="n" style="color:var(--a3)">3层</div><div class="l">源文件+结构+追踪</div></div>
+  <div class="kpi"><div class="n" style="color:var(--a2)">6条</div><div class="l">不确定待确认</div></div>
+  <div class="kpi"><div class="n" style="color:var(--a4)">22:00</div><div class="l">每晚日清</div></div>
+  <div class="kpi"><div class="n" style="color:var(--a5)">21个</div><div class="l">产出skill追踪</div></div>
+  <div class="kpi"><div class="n" style="color:var(--a1)">秒出</div><div class="l">查项目0延迟</div></div>
+</div>
+
+<!-- 生活类比 -->
+<div class="analogy">
+  <h4>🧠 一句话理解</h4>
+  <p>
+    这个 skill 就像一个<em>超级秘书</em>：<br>
+    你给它任何文件/链接/消息，它帮你整理成一张大表（projects-data.json），标注来源和是否确定。<br>
+    你要查任何项目，它<em>1秒从表里捞出完整信息</em>，还告诉你数据是从哪来的。<br>
+    每晚10点它自动扫一遍，给你一份清单：<em>哪些不确定需要你确认、哪些明天到期、哪些有风险</em>。<br>
+    如果当天什么都没有，它也会告诉你"没有需要清理的"。
+  </p>
+</div>
+
+<!-- S - 核心能力 -->
+<div class="sec">
+  <div class="sec-t">5大核心能力</div>
+  <div class="grid3">
+    <div class="gitem"><div class="icon">📥</div><div class="name">上游采集</div><div class="st g">✅ 已上线</div></div>
+    <div class="gitem"><div class="icon">📝</div><div class="name">中台沉淀</div><div class="st g">✅ 已上线</div></div>
+    <div class="gitem"><div class="icon">🔍</div><div class="name">下游秒出</div><div class="st g">✅ 已上线</div></div>
+    <div class="gitem"><div class="icon">❓</div><div class="name">不确定标记</div><div class="st g">✅ 已上线</div></div>
+    <div class="gitem"><div class="icon">🧹</div><div class="name">每晚日清</div><div class="st g">✅ 已上线</div></div>
+    <div class="gitem"><div class="icon">🔄</div><div class="name">产出追踪</div><div class="st o">⚠️ Skill已追踪<br>看板待追踪</div></div>
+  </div>
+</div>
+
+<!-- 流水线 -->
+<div class="sec">
+  <div class="sec-t o">完整流水线</div>
+  <div class="flow">
+    <div class="frow">
+      <div class="fnode g">📎 给我源文件</div>
+      <div class="farr">→</div>
+      <div class="fnode g">📥 识别+写入JSON</div>
+      <div class="farr">→</div>
+      <div class="fnode p">📝 中台沉淀</div>
+      <div class="farr">→</div>
+      <div class="fnode o">🔍 按需秒出</div>
+      <div class="farr">→</div>
+      <div class="fnode r">❓ 标记不确定</div>
+    </div>
+    <div class="frow">
+      <div class="fnode r">🧹 每晚10点日清</div>
+      <div class="farr">→</div>
+      <div class="fnode g">✅ 你确认/推翻</div>
+      <div class="farr">→</div>
+      <div class="fnode p">📊 产出追踪</div>
+      <div class="farr">→</div>
+      <div class="fnode o">🔄 复盘迭代</div>
+      <div class="farr">→</div>
+      <div class="fnode g">🚀 新项目</div>
+    </div>
+  </div>
+</div>
+
+<!-- 三层详解 -->
+<div class="sec">
+  <div class="sec-t p">中台三层 · 一个JSON解决所有问题</div>
+
+  <div class="card">
+    <h3>第一层 · 源文件追溯 <span class="tag g">溯源层</span></h3>
+    <ul>
+      <li>你给的每个 Docs链接、Excel、会议纪要都记录在这里</li>
+      <li>每条带"关键信息摘要"——一眼知道文件讲了什么</li>
+      <li>带获取日期——知道数据是否过期</li>
+      <li class="w">没有这层 → 数据是"无根之木"，不知道信不信</li>
+    </ul>
+    <div class="why">像发票上的店名和日期——能追溯、能验证、能更新</div>
+  </div>
+
+  <div class="card">
+    <h3>第二层 · 结构化字段 <span class="tag o">内容层</span></h3>
+    <ul>
+      <li><strong>decisions[]</strong> — 决策日志（做了什么决定、为什么、什么时候）</li>
+      <li><strong>risks[]</strong> — 风险追踪（什么可能出问题、多大影响、怎么应对）</li>
+      <li><strong>todos[]</strong> — 待办清单（要做什么、什么时候做、优先级）</li>
+      <li><strong>kpi{}</strong> — 核心指标（目标是什么、进展到哪）</li>
+      <li>所有项目必须填完这8个字段，空也写[]</li>
+    </ul>
+    <div class="why">像超市货架分区标签——每个类别在固定位置，找东西不用翻仓库</div>
+  </div>
+
+  <div class="card">
+    <h3>第三层 · 产出追踪 <span class="tag p">复盘层</span></h3>
+    <ul>
+      <li>项目做完后产出的所有东西（skill、脚本、看板、文档）都记录在这里</li>
+      <li>每个产出带"使用次数"——知道有没有人用</li>
+      <li>每个产出带"使用趋势"——知道是在增长还是没人用了</li>
+      <li>数据来源是monitor.db——自动统计，不用手动数</li>
+    </ul>
+    <div class="why">项目做完不是终点。产出用了多少次，才是判断"值不值"的依据</div>
+  </div>
+
+  <div class="card">
+    <h3>不确定标记 + 日清 <span class="tag r">日清层</span></h3>
+    <ul>
+      <li>uncertain_items[] — 不确定的内容标记出来（类型、内容、原因、状态）</li>
+      <li>每晚10点自动扫描 → 给你日清清单</li>
+      <li>4个板块：待确认 / 紧急待办 / 高风险 / 数据过期</li>
+      <li>什么都没有 → 也会说"没有需要清理的内容"</li>
+    </ul>
+    <div class="why">日清日结——每天睡前扫一遍，把不确定的确认掉，信息越来越准</div>
+  </div>
+</div>
+
+<!-- 触发词 -->
+<div class="sec">
+  <div class="sec-t">触发词 · 你说什么我就做什么</div>
+  <div class="trigger-grid">
+    <div class="trigger"><div class="kw">"查人力挂账"</div><div class="act">秒出完整信息+源文件+不确定项</div></div>
+    <div class="trigger"><div class="kw">"项目风险"</div><div class="act">跨项目风险汇总表</div></div>
+    <div class="trigger"><div class="kw">"本周重点"</div><div class="act">所有项目紧急待办清单</div></div>
+    <div class="trigger"><div class="kw">"S级项目"</div><div class="act">按优先级筛选输出</div></div>
+    <div class="trigger"><div class="kw">"复盘XX项目"</div><div class="act">项目复盘+产出使用频次+优化方向</div></div>
+    <div class="trigger"><div class="kw">"标记不确定"</div><div class="act">写入uncertain_items[]</div></div>
+    <div class="trigger"><div class="kw">"确认了/推翻了"</div><div class="act">更新uncertain_items状态</div></div>
+    <div class="trigger"><div class="kw">"新项目"</div><div class="act">立项→创建JSON条目</div></div>
+    <div class="trigger"><div class="kw">"刷新看板"</div><div class="act">同步脚本+部署公网</div></div>
+    <div class="trigger"><div class="kw">"日清"</div><div class="act">手动触发日清扫描</div></div>
+  </div>
+</div>
+
+<!-- 数据文件 -->
+<div class="sec">
+  <div class="sec-t b">数据文件 · 三种读取方式</div>
+  <table class="tbl">
+    <tr><th>文件</th><th>说明</th><th>读取方式</th></tr>
+    <tr><td class="g">projects-data.json</td><td>统一数据源（核心）</td><td>本地文件 / 公网URL / 对话中直接问</td></tr>
+    <tr><td>monitor-data.json</td><td>AI监控数据</td><td>本地文件 / 公网URL</td></tr>
+    <tr><td>project-registry.json</td><td>项目注册+skill映射</td><td>本地文件</td></tr>
+    <tr><td>.md 卡片（10个）</td><td>人类可读的衍生品</td><td>本地文件（未来由JSON生成）</td></tr>
+  </table>
+
+  <div class="card">
+    <h3>公网地址</h3>
+    <ul>
+      <li>📊 监控看板：https://jiangjincai85-sys.github.io/mario-pm-infra/</li>
+      <li>📋 方案页面：https://jiangjincai85-sys.github.io/mario-pm-infra/project-plan.html</li>
+      <li>📦 项目数据：https://jiangjincai85-sys.github.io/mario-pm-infra/projects-data.json</li>
+      <li>📈 监控数据：https://jiangjincai85-sys.github.io/mario-pm-infra/monitor-data.json</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 脚本 -->
+<div class="sec">
+  <div class="sec-t o">自动化脚本</div>
+  <table class="tbl">
+    <tr><th>脚本</th><th>功能</th><th>运行方式</th></tr>
+    <tr><td>sync_projects_data.py</td><td class="g">核心同步（合并skill使用+监控数据）</td><td>python3 scripts/sync_projects_data.py</td></tr>
+    <tr><td>gen_monitor_dashboard.py</td><td>监控看板+JSON API生成</td><td>python3 scripts/gen_monitor_dashboard.py</td></tr>
+    <tr><td>generate_kanban.py</td><td>项目管理看板生成</td><td>python3 projects/generate_kanban.py</td></tr>
+    <tr><td>日清定时任务</td><td class="r">每晚22:00自动扫描不确定+紧急+风险</td><td>自动（CodeFlicker定时任务）</td></tr>
+  </table>
+</div>
+
+<!-- 前后对比 -->
+<div class="sec">
+  <div class="sec-t">旧版 vs 新版</div>
+  <table class="tbl">
+    <tr><th>维度</th><th>旧版（v1.0）</th><th>新版（v2.0）</th></tr>
+    <tr><td>数据存储</td><td class="o">10个.md文件散落</td><td class="g">1个projects-data.json统一</td></tr>
+    <tr><td>查询方式</td><td class="o">手动翻文件拼凑</td><td class="g">秒查秒出</td></tr>
+    <tr><td>源文件追溯</td><td class="r">❌ 没有</td><td class="g">✅ source_materials</td></tr>
+    <tr><td>不确定标记</td><td class="r">❌ 没有</td><td class="g">✅ uncertain_items</td></tr>
+    <tr><td>日清机制</td><td class="r">❌ 没有</td><td class="g">✅ 每晚10点</td></tr>
+    <tr><td>产出追踪</td><td class="o">只有skill使用</td><td class="g">6类全覆盖</td></tr>
+    <tr><td>上游采集</td><td class="r">❌ 信息随会话丢失</td><td class="g">✅ 写入协议</td></tr>
+    <tr><td>共享层</td><td class="r">❌ 本地只有</td><td class="g">✅ 公网JSON API</td></tr>
+  </table>
+</div>
+
+<!-- A -->
+<div class="sec">
+  <div class="sec-t">✅ Skill 已更新为 v2.0</div>
+  <div class="card">
+    <h3>SKILL.md 已同步 <span class="tag g">已完成</span></h3>
+    <ul>
+      <li>SKILL.md 从 v1.0 升级为 v2.0</li>
+      <li>包含：项目知识流水线、上游写入协议、中台三层、不确定标记、日清机制、产出追踪</li>
+      <li>触发词已扩展：新增"标记不确定"、"确认了/推翻了"、"日清"等</li>
+    </ul>
+  </div>
+</div>
+
+<div class="foot">
+  项目管理 Skill · v2.0 能力全景<br>
+  上游采集 → 中台沉淀 → 下游秒出 → 不确定标记 → 每晚日清 → 产出追踪 → 复盘迭代<br>
+  2026-05-18 · Mario Claw
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,6628 @@
+{
+  "meta": {
+    "version": "1.0",
+    "description": "项目知识流水线 · 统一数据源。所有项目信息在这里，任何skill/会话/人都可以读取。",
+    "last_updated": "2026-06-08",
+    "total_projects": 26,
+    "query_guide": "读取本文件即可获取所有项目信息。支持模糊匹配query_keywords字段。"
+  },
+  "projects": [
+    {
+      "project_id": "project-expansion-headcount",
+      "name": "人力挂账推动专项",
+      "priority": "S+",
+      "status": "进行中",
+      "owner": "贾婕 / 张津闻",
+      "start_date": "2026-05-01",
+      "deadline": "2026-08-31",
+      "last_updated": "2026-06-02",
+      "definition": "推动Q2/Q3人力挂账，从预算划转转为邮件挂账策略，目标是Q2挂账4个人力、Q3挂账12个人力。通过统一费用科目（其他业务费用_项目外包服务费）和术语（运营资源替代人力），降低审批层级（L4+财务审批→L3老板确认），实现跨部门运营资源的高效统筹。",
+      "source_materials": [
+        {
+          "id": "src-docs_link-01",
+          "type": "docs_link",
+          "url": "https://docs.corp.kuaishou.com/meeting/fcACzwjlcBqs3E0XgNRtRgbXK",
+          "title": "人力挂账会议纪要",
+          "date_accessed": "2026-05-17",
+          "key_info": "外呼和社群整合走一封邮件、费用科目统一"
+        },
+        {
+          "id": "src-docs_link-02",
+          "type": "docs_link",
+          "url": "https://docs.corp.kuaishou.com/d/home/fcAD27pXAMCZqFnhTi3d3d6Tu",
+          "title": "人力挂账共识文档",
+          "date_accessed": "2026-05-17",
+          "key_info": "Q2挂账2.5人力、Q3目标12人力"
+        },
+        {
+          "id": "src-local_file-03",
+          "type": "local_file",
+          "path": "knowledge-base/挂账邮件/社群运营预算外运营资源挂账流程.md",
+          "title": "挂账邮件模板（修正版）",
+          "key_info": "费用科目：其他业务费用_项目外包服务费；术语：运营资源替代人力"
+        },
+        {
+          "id": "src-conversation-04",
+          "type": "conversation",
+          "date": "2026-05-17",
+          "key_info": "预算划转→邮件挂账策略转变、术语统一为运营资源"
+        }
+      ],
+      "three_layer_value": {
+        "l1_see": "人力挂账推动专项：将跨部门运营资源（人力）通过邮件挂账机制统筹调配，目标Q2挂账4人力、Q3挂账12人力。由贾婕和张津闻共同负责，S+优先级，截止2026-08-31。核心策略：从预算划转（需L4+财务审批）降级为邮件挂账（仅需L3老板确认），大幅降低推进阻力。涵盖特效师（2.68人力已达成）、影视综（预计7人力）、户外主播（预计1.6人力）、游戏主播等品类。",
+        "l2_understand": {
+          "health": "🟢 整体推进顺利",
+          "progress_q2": "Q2目标4个人力，特效师2.68人力已达成共识（✅），影视综7人力6月发邮件、户外主播1.6人力6月中旬共识，两笔合计超4人力目标",
+          "progress_q3": "Q3目标12人力，目前盘点确认8个（外呼5+社群3），缺口4个拟从泛知识和新业务拓展补足，进度66.7%",
+          "strategy_upgrade": "预算划转（L4+财务审批）→邮件挂账（L3老板确认），审批层级从4级降为3级，打通卡点",
+          "key_decisions": "外呼和社群整合走一封邮件（同L4成本部门）；费用科目统一为「其他业务费用_项目外包服务费」；术语统一为「运营资源」"
+        },
+        "l3_foresee": {
+          "most_urgent": "影视综挂账邮件6月发送（预计7人力）— 这是Q2目标超额达成的关键一击",
+          "in_progress": "户外主播挂账共识推进（6月中旬，预计1.6人力）；游戏主播需求共识（6月）",
+          "pending": "Q3缺口4人力从泛知识和新业务拓展补足（7-8月）；原计划6/3找胡学辉聊好主播，现需等新负责人对齐",
+          "critical_path": "影视综挂账邮件发送 → 户外主播共识达成 → 游戏主播需求锁定 → Q3缺口补足方案确认 → 全年16人力目标达成"
+        },
+        "details": {
+          "current_result": "Q2已完成特效师挂账2.68人力/32.1万元，邮件模板已修正并发送；Q3盘点确认8个（外呼5+社群3），缺口4个待补足",
+          "cost_standard": "费用科目统一为「其他业务费用_项目外包服务费」，术语统一为「运营资源」替代「人力」，避免敏感性",
+          "org_strategy": "同一L4成本部门（如外呼+社群）整合走一封邮件，减少审批次数；不同L4成本部门分别发邮件",
+          "q3_gap_plan": "缺口4人力拟从泛知识（好主播联动规划）和新业务拓展中补足，需等好主播新负责人（胡学辉+姚海源）对齐后评估"
+        }
+      },
+      "milestones": [
+        {
+          "id": "M0",
+          "name": "项目定义",
+          "status": "completed",
+          "content": "人力挂账推动专项正式立项：从预算划转策略转为邮件挂账策略，目标Q2挂账4人力、Q3挂账12人力。owner贾婕/张津闻，S+优先级，deadline 2026-08-31。核心突破：降低审批层级（L4+→L3），统一费用科目和术语。",
+          "completed_at": "2026-05-01"
+        },
+        {
+          "id": "M1",
+          "name": "来源材料与调研",
+          "status": "completed",
+          "content": "完成人力挂账会议纪要（2026-05-17，确认费用科目统一和外呼社群整合策略）、共识文档（Q2挂账2.5人力→Q3目标12人力）、挂账邮件模板修正（费用科目+术语统一）、策略转变对话记录（预算划转→邮件挂账）。",
+          "completed_at": "2026-05-17",
+          "refs": [
+            "src-docs_link-01",
+            "src-docs_link-02",
+            "src-local_file-03",
+            "src-conversation-04"
+          ]
+        },
+        {
+          "id": "M2",
+          "name": "关键决策",
+          "status": "completed",
+          "content": "决策1：特效师挂账策略从预算划转→邮件挂账（L4+财务审批→L3老板确认，大幅降低阻力）。决策2：外呼和社群整合走一封邮件（同一L4成本部门，避免两次审批）。决策3：Q3缺口4人力从泛知识和新业务拓展补足（原计划好主播+新业务）。",
+          "completed_at": "2026-05-中",
+          "refs": [
+            "src-docs_link-01",
+            "src-docs_link-02",
+            "src-conversation-04"
+          ]
+        },
+        {
+          "id": "M3",
+          "name": "执行推进",
+          "status": "in_progress",
+          "content": "5项待办中：1项已完成（特效师挂账邮件已发送✅，2.68人力/32.1万元），2项进行中（影视综挂账邮件6月发送、户外主播挂账邮件6月中旬共识），2项待启动（游戏主播需求共识6月、Q3项目挂账推进7-8月）。",
+          "completion": "1/5（20%）"
+        },
+        {
+          "id": "M4",
+          "name": "风险识别与应对",
+          "status": "in_progress",
+          "content": "2项风险：🔴游戏合伙人人力卡点（需解决准出问题腾出人力，推进准出流程中）；🟡Q3缺口4个人力（泛知识+新业务能否补足待定，持续寻找新业务合作方）。",
+          "risk_count": 2
+        },
+        {
+          "id": "M5",
+          "name": "产出物沉淀",
+          "status": "in_progress",
+          "content": "已产出1个Skill：scrapling-agent（智能网页信息采集）。挂账邮件模板已沉淀至 knowledge-base/挂账邮件/。",
+          "output_count": 1
+        },
+        {
+          "id": "M6",
+          "name": "KPI达成",
+          "status": "in_progress",
+          "content": "Q2目标4人力：特效师2.68人力✅已完成，影视综预计7人力+户外主播预计1.6人力进行中，合计有望超目标。Q3目标12人力：盘点确认8个（66.7%），缺口4个待补足。",
+          "completion_rate_q2": "67%+（超额可期）",
+          "completion_rate_q3": "66.7%"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-中",
+          "content": "缺口4个人力拟从泛知识和新业务拓展补足",
+          "background": "Q3盘点仅确认8个，差4个",
+          "refs": [
+            "src-docs_link-02",
+            "src-conversation-04"
+          ]
+        },
+        {
+          "date": "2026-05-中",
+          "content": "特效师挂账策略从预算划转→邮件挂账",
+          "background": "预算划转阻力大（L4+财务审批），邮件挂账仅需L3老板确认",
+          "refs": [
+            "src-docs_link-01",
+            "src-conversation-04"
+          ]
+        },
+        {
+          "date": "2026-05-中",
+          "content": "外呼和社群整合走一封邮件",
+          "background": "同一L4成本部门，避免发两次邮件",
+          "refs": [
+            "src-docs_link-01"
+          ]
+        }
+      ],
+      "risks": [
+        {
+          "risk": "🔴 游戏合伙人人力卡点",
+          "impact": "需要解决准出问题腾出人力",
+          "mitigation": "推进准出流程",
+          "refs": [
+            "src-conversation-04"
+          ]
+        },
+        {
+          "risk": "🟡 Q3缺口4个人力",
+          "impact": "泛知识+新业务能否补足待定",
+          "mitigation": "持续寻找新业务合作方",
+          "refs": [
+            "src-docs_link-02",
+            "src-conversation-04"
+          ]
+        }
+      ],
+      "todos": [
+        {
+          "content": "✅ 特效师挂账邮件已发送，实际共识2.68人力/32.1万元",
+          "status": "completed",
+          "refs": [
+            "src-docs_link-01",
+            "src-docs_link-02",
+            "src-local_file-03"
+          ]
+        },
+        {
+          "content": "影视综挂账邮件（6月发送，预计7人力）",
+          "status": "in_progress",
+          "refs": [
+            "src-docs_link-02"
+          ]
+        },
+        {
+          "content": "户外主播挂账邮件（6月中旬共识，预计1.6人力）",
+          "status": "in_progress",
+          "refs": [
+            "src-docs_link-02"
+          ]
+        },
+        {
+          "content": "游戏主播需求共识（6月）",
+          "status": "pending",
+          "refs": [
+            "src-docs_link-02"
+          ]
+        },
+        {
+          "content": "Q3项目挂账推进（7-8月）",
+          "status": "pending",
+          "refs": [
+            "src-docs_link-02",
+            "src-conversation-04"
+          ]
+        }
+      ],
+      "kpi": {
+        "Q2老业务挂账": {
+          "特效师": "✅ 已完成共识：2.68人力/32.1万元",
+          "影视综": "进行中：预计7人力，6月发邮件"
+        },
+        "Q2新业务挂账": {
+          "户外主播": "进行中：预计1.6人力，6月中旬共识"
+        },
+        "Q3项目挂账": {
+          "已盘点": "8个人力（外呼5+社群3）",
+          "缺口": "4个人力（拟从泛知识+新业务补足）",
+          "目标": "12个人力"
+        }
+      },
+      "skills_produced": [
+        "scrapling-agent"
+      ],
+      "output_tracking": [],
+      "analysis_records": [],
+      "deployment_history": [],
+      "uncertain_items": [
+        {
+          "type": "todo",
+          "content": "特效师挂账邮件5/22前发出",
+          "reason": "已重新拉会，5/19 10:30再对邮件内容，争取加到张翔预期的3个人力；需给L3负责人准备社群价值截屏话术",
+          "flagged_at": "2026-05-18",
+          "status": "推进中 ✅",
+          "refs": [
+            "src-docs_link-01",
+            "src-local_file-03"
+          ]
+        },
+        {
+          "type": "data",
+          "content": "Q3缺口4个人力的来源尚未确定",
+          "reason": "原计划6/3后找胡学辉聊好主播项目补齐，现好主播负责人已变更为胡学辉+姚海源，需与新负责人对齐后再评估",
+          "flagged_at": "2026-05-19",
+          "status": "待确认（需等好主播联动规划对齐后再评估）",
+          "refs": [
+            "src-docs_link-02",
+            "src-conversation-04"
+          ]
+        }
+      ],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": null
+      },
+      "query_keywords": [
+        "人力挂账",
+        "挂账邮件",
+        "特效师",
+        "运营资源",
+        "预算外",
+        "贾婕",
+        "张津闻",
+        "Q2",
+        "Q3"
+      ]
+    },
+    {
+      "project_id": "business-scale-doubling",
+      "name": "业务规模翻倍专项",
+      "priority": "高",
+      "status": "进行中",
+      "owner": "张津闻",
+      "start_date": "2026-05-01",
+      "deadline": "2026-06-30",
+      "last_updated": "2026-06-02",
+      "definition": "直播类型项目规模翻倍（用户3,884→10,500人，产出2,077→4,754万/月），加上打开理由类型项目翻倍。含A方向（直播品类扩量，9个子项目）和B方向（打开理由类型翻倍，含好主播/短职专项合并O4）。",
+      "source_materials": [
+        {
+          "id": "src-conversation-01",
+          "type": "conversation",
+          "date": "2026-05-17",
+          "key_info": "各项目数据明细、A/B方向规划"
+        },
+        {
+          "id": "src-meeting_note-02",
+          "type": "meeting_note",
+          "date": "2026-06-01",
+          "key_info": "与胡学辉（情感+教育垂类负责人）沟通好主播项目进展与组织架构调整"
+        }
+      ],
+      "three_layer_value": {
+        "l1_see": "业务规模翻倍专项：目标将直播类型项目用户规模从3,884人翻倍至10,500人，月产出从2,077万翻倍至4,754万。由张津闻负责，高优先级，截止2026-06-30。含两大方向：A方向为9个直播品类子项目扩量（音乐/舞蹈/传统文化/大舞台/剧情直播/户外主播/游戏单主机/泛知识好主播/游戏RPG），B方向为打开理由类型项目翻倍（好主播与短职专项在OKR层面合并为O4统一推进）。",
+        "l2_understand": {
+          "health": "🟡 略低于时序",
+          "progress": "Q2目标覆盖率 6,353/10,500（60.50%），时间进度 63.33%，略落后约3个百分点",
+          "sub_projects_completed": "4/9 子项目已完成建联（户外主播✅、游戏单主机✅、音乐94.5%、传统文化90.13%），5个进行中",
+          "week_new": "本周新增建联 391人（无锡190+淮安134）",
+          "key_risks": "B方向（好主播）刚完成负责人交接（胡学辉→姚海源），泛知识翻倍方案待定；直播侧架构调整（欢哥转快手联盟→张一帆升L4）"
+        },
+        "l3_foresee": {
+          "most_urgent": "好主播-社群联动规划对齐会议（本周或下周初）— 这是B方向解锁的关键节点",
+          "in_progress": "定期剔除非目标用户缩短建联Gap；Q2外呼留资626人已下发添加；游戏RPG准入判断中（预计规模1k）",
+          "pending": "6月底户外主播挂账邮件；好主播联动规划确认后推进泛知识准入",
+          "critical_path": "好主播联动规划对齐 → 泛知识翻倍规模确认 → B方向全面推进 → Q2目标10500达成"
+        },
+        "details": {
+          "direction_A": "直播品类扩量：9个子项目，合计目标10,500人覆盖，当前6,353人（60.50%）。已完成建联的子项目持续运营中，未完成子项目（大舞台72.4%、剧情直播38.14%、好主播待启动、RPG准入中）为Q2剩余增量来源。",
+          "direction_B": "打开理由类型翻倍：好主播与短职专项合并为O4，情感垂类为核心抓手（占60%+）。通过姚海源与社群团队共建的短期项目模式推进。泛知识翻倍具体规模待好主播联动规划对齐后确认。",
+          "organization_change": "直播侧欢哥转至快手联盟业务部，张一帆升L4。内容品类中心与好主播存在耦合点，需关注默默一笑级别是否调整。"
+        }
+      },
+      "milestones": [
+        {
+          "id": "M0",
+          "name": "项目定义",
+          "status": "completed",
+          "content": "业务规模翻倍专项正式立项：A方向直播品类扩量（9子项目）+ B方向打开理由类型翻倍（好主播+短职合并O4）。owner张津闻，高优先级，deadline 2026-06-30。",
+          "completed_at": "2026-05-01"
+        },
+        {
+          "id": "M1",
+          "name": "来源材料与调研",
+          "status": "completed",
+          "content": "完成各项目数据明细梳理和A/B方向规划（2026-05-17）。与胡学辉沟通好主播项目进展，确认好主播与短职合并为O4、通过姚海源社群共建（2026-06-01）。",
+          "completed_at": "2026-06-01",
+          "refs": [
+            "src-conversation-01",
+            "src-meeting_note-02"
+          ]
+        },
+        {
+          "id": "M2",
+          "name": "关键决策",
+          "status": "completed",
+          "content": "决策1：好主播与短职专项在OKR层面合并为O4，统一推进，避免资源分散。决策2：好主播项目通过姚海源与社群团队共建（短期项目模式），情感等垂类通过社群实现规模化运营。",
+          "completed_at": "2026-06-01",
+          "refs": [
+            "src-meeting_note-02"
+          ]
+        },
+        {
+          "id": "M3",
+          "name": "执行推进",
+          "status": "in_progress",
+          "content": "8项待办中：2项已完成（户外主播建联5/28✅、游戏单主机建联5/29✅），4项进行中（剔除非目标用户、Q2留资626人添加、好主播等待联动规划、游戏RPG准入判断），2项待启动（6月底户外挂账邮件、好主播联动规划会议）。",
+          "completion": "2/8（25%）"
+        },
+        {
+          "id": "M4",
+          "name": "风险识别与应对",
+          "status": "in_progress",
+          "content": "3项🟡风险：好主播需求梳理中（负责人刚交接，本周内启动联动规划）；泛知识翻倍方案待定（等好主播联动规划对齐后确认规模）；直播侧架构调整（欢哥转快手联盟、张一帆升L4，关注默默一笑级别是否调整）。",
+          "risk_count": 3
+        },
+        {
+          "id": "M5",
+          "name": "产出物沉淀",
+          "status": "in_progress",
+          "content": "已产出10个Skill：liubei-weekly-report、weekly-report-visualization、liubei-roi-calc、community-roi-report、community-output-calculation、operation-weekly-report、auto-data-report、kwaibi-data-query、liubei-daily-intel、weekly-meeting-data-builder。覆盖经营周报、ROI计算、社群产出、自动取数、数据查询、日报生成等能力。",
+          "output_count": 10
+        },
+        {
+          "id": "M6",
+          "name": "KPI达成",
+          "status": "in_progress",
+          "content": "Q2目标覆盖总量10,500人，当前6,353人（60.50%），时间进度63.33%，略落后。本周新增建联391人。目标6月底前完成全量覆盖。",
+          "completion_rate": "60.50%"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-06-01",
+          "content": "好主播与短职专项在OKR层面合并为O4，统一推进",
+          "background": "避免资源分散，实现视频优质创作者引导做直播、好直播引导做视频的协同",
+          "refs": [
+            "src-meeting_note-02"
+          ]
+        },
+        {
+          "date": "2026-06-01",
+          "content": "好主播项目通过姚海源与社群团队共建（短期项目）",
+          "background": "情感等垂类需通过社群模式实现规模化运营，无法依赖1v1垂类运营",
+          "refs": [
+            "src-meeting_note-02"
+          ]
+        }
+      ],
+      "risks": [
+        {
+          "risk": "🟡 好主播项目需求尚在梳理，负责人刚交接",
+          "impact": "方向B推进节奏不确定",
+          "mitigation": "胡学辉当晚与姚海源交接，本周内启动联动规划，最晚下周明确配合事项",
+          "refs": [
+            "src-meeting_note-02"
+          ]
+        },
+        {
+          "risk": "🟡 泛知识翻倍方案待定",
+          "impact": "方向B规模未知",
+          "mitigation": "等好主播联动规划对齐后明确规模目标",
+          "refs": [
+            "src-meeting_note-02"
+          ]
+        },
+        {
+          "risk": "🟡 直播侧架构调整（欢哥转至快手联盟业务部→张一帆升L4），内容品类中心与好主播存在耦合点",
+          "impact": "对接人层级暂未变动，预计不影响项目推进",
+          "mitigation": "关注默默一笑级别是否调整",
+          "refs": [
+            "src-meeting_note-02"
+          ]
+        }
+      ],
+      "todos": [
+        {
+          "content": "户外主播—5月28日开始建联",
+          "status": "completed",
+          "refs": [
+            "src-conversation-01"
+          ]
+        },
+        {
+          "content": "游戏单主机—5月29日开始建联",
+          "status": "completed",
+          "refs": [
+            "src-conversation-01"
+          ]
+        },
+        {
+          "content": "定期剔除非目标用户，缩短建联Gap",
+          "priority": "🟡",
+          "status": "in_progress",
+          "refs": [
+            "src-conversation-01"
+          ],
+          "verification_method": "对比剔除前后的建联Gap天数变化"
+        },
+        {
+          "content": "梳理Q2外呼留资但未添加用户（626人），已下发添加",
+          "priority": "🟡",
+          "status": "in_progress",
+          "refs": [
+            "src-conversation-01"
+          ],
+          "verification_method": "626人添加完成率统计"
+        },
+        {
+          "content": "泛知识·好主播—等待姚海源交接完成+联动规划确认后推进准入",
+          "priority": "🔴",
+          "status": "in_progress",
+          "refs": [
+            "src-meeting_note-02"
+          ],
+          "verification_method": "联动规划对齐会议纪要确认 + 准入规则文档产出"
+        },
+        {
+          "content": "游戏-RPG—准入判断中，预计规模1k",
+          "priority": "🟡",
+          "status": "in_progress",
+          "refs": [
+            "src-conversation-01"
+          ],
+          "verification_method": "李沛津准入判断结论书面确认"
+        },
+        {
+          "content": "6月底 户外主播挂账邮件",
+          "priority": "🔴",
+          "deadline": "2026-06-30",
+          "status": "pending",
+          "refs": [
+            "src-conversation-01"
+          ],
+          "verification_method": "挂账邮件发送记录 + 财务确认回执"
+        },
+        {
+          "content": "等待好主播-社群联动规划对齐会议（本周或下周初）",
+          "priority": "🔴",
+          "deadline": "2026-06-09",
+          "status": "pending",
+          "refs": [
+            "src-meeting_note-02"
+          ],
+          "verification_method": "会议纪要产出 + 联动规划方案文档"
+        }
+      ],
+      "kpi": {
+        "Q2目标覆盖总量": {
+          "目标": "10500",
+          "当前": "6353",
+          "完成率": "60.50%"
+        },
+        "Q2时间进度": "63.33%",
+        "本周新增建联": "391人（无锡190+淮安134）",
+        "数据来源": "才艺建联表 + 社群好友明细看板(dashboardId=2116355)",
+        "扩量负责人": "张津闻"
+      },
+      "skills_produced": [
+        "liubei-weekly-report",
+        "weekly-report-visualization",
+        "liubei-roi-calc",
+        "community-roi-report",
+        "community-output-calculation",
+        "operation-weekly-report",
+        "auto-data-report",
+        "kwaibi-data-query",
+        "liubei-daily-intel",
+        "weekly-meeting-data-builder"
+      ],
+      "output_tracking": [],
+      "analysis_records": [
+        {
+          "id": "anl-01",
+          "date": "2026-06-02",
+          "method": "完成率vs时序对比分析",
+          "conclusion": "Q2目标覆盖率60.50% vs 时序63.33%，略落后约3pp。9个子项目中4个已完成建联、5个进行中。B方向（好主播）为最大不确定因素，需本周联动规划对齐后重新评估。",
+          "refs": [
+            "src-conversation-01",
+            "src-meeting_note-02"
+          ]
+        }
+      ],
+      "deployment_history": [],
+      "uncertain_items": [
+        {
+          "type": "decision",
+          "content": "泛知识翻倍方案尚未制定",
+          "reason": "主要通过引入好主播项目来实现翻倍，6/1会议确认好主播已与短职专项合并为O4，但具体规模目标和社群联动方案需等待接下来一周的规划对齐会议确认",
+          "flagged_at": "2026-05-19",
+          "status": "待确认（等好主播联动规划对齐会议后更新）",
+          "refs": [
+            "src-meeting_note-02"
+          ]
+        }
+      ],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": null
+      },
+      "query_keywords": [
+        "业务翻倍",
+        "规模翻倍",
+        "直播扩量",
+        "好主播",
+        "泛知识翻倍",
+        "张津闻",
+        "523→1047",
+        "胡学辉",
+        "姚海源",
+        "短职专项",
+        "O4",
+        "情感垂类"
+      ],
+      "sub_projects": [
+        {
+          "id": "sub-01",
+          "name": "音乐",
+          "size": "3000人",
+          "owner": "温舒婷",
+          "completion": "94.50%",
+          "status": "进行中",
+          "definition": "音乐品类直播创作者扩量，目标覆盖3000人，当前完成94.50%"
+        },
+        {
+          "id": "sub-02",
+          "name": "舞蹈",
+          "size": "2500人",
+          "owner": "高凤",
+          "completion": "86.72%",
+          "status": "进行中",
+          "definition": "舞蹈品类直播创作者扩量，目标覆盖2500人，当前完成86.72%"
+        },
+        {
+          "id": "sub-03",
+          "name": "传统文化",
+          "size": "800人",
+          "owner": "成睿晨",
+          "completion": "90.13%",
+          "status": "进行中",
+          "definition": "传统文化品类直播创作者扩量，目标覆盖800人，当前完成90.13%"
+        },
+        {
+          "id": "sub-04",
+          "name": "大舞台",
+          "size": "500人",
+          "owner": "马阔",
+          "completion": "72.40%",
+          "status": "进行中",
+          "definition": "大舞台品类直播创作者扩量，目标覆盖500人，当前完成72.40%"
+        },
+        {
+          "id": "sub-05",
+          "name": "剧情直播",
+          "size": "700人",
+          "owner": "莫怡",
+          "completion": "38.14%",
+          "status": "进行中",
+          "definition": "剧情直播品类创作者扩量，目标覆盖700人，当前完成仅38.14%，需重点推进"
+        },
+        {
+          "id": "sub-06",
+          "name": "户外主播",
+          "size": "~2000人",
+          "owner": "宋月",
+          "completion": "已完成（5月28日开始建联）",
+          "status": "已完成",
+          "definition": "户外主播品类创作者扩量，目标覆盖约2000人，5月28日已完成建联启动"
+        },
+        {
+          "id": "sub-07",
+          "name": "游戏-单主机",
+          "size": "~1000人",
+          "owner": "张艳/宋奕",
+          "completion": "已完成（5月29日开始建联）",
+          "status": "已完成",
+          "definition": "游戏单主机品类创作者扩量，目标覆盖约1000人，5月29日已完成建联启动"
+        },
+        {
+          "id": "sub-08",
+          "name": "泛知识·好主播",
+          "size": "1000+人（情感占600+）",
+          "owner": "胡学辉（情感+教育垂类负责人）→ 姚海源执行",
+          "completion": "6/1完成交接，本周内启动联动规划",
+          "status": "进行中",
+          "definition": "泛知识品类通过好主播项目实现扩量，目标1000+人，情感垂类为核心抓手（占60%+）。好主播与短职专项在OKR层面合并为O4，通过姚海源与社群团队共建的短期项目模式推进。",
+          "note": "好主播与短职专项在OKR层面合并为O4，情感垂类为核心抓手（占60%+）"
+        },
+        {
+          "id": "sub-09",
+          "name": "游戏-RPG",
+          "size": "~1k",
+          "owner": "李沛津",
+          "completion": "准入判断中",
+          "status": "进行中",
+          "definition": "游戏RPG品类创作者扩量，预计规模约1000人，目前处于准入判断阶段"
+        }
+      ]
+    },
+    {
+      "project_id": "project-optimization",
+      "name": "项目优化专项",
+      "priority": "高",
+      "status": "进行中",
+      "owner": "贾婕",
+      "start_date": "2026-05-01",
+      "deadline": "2026-06-30",
+      "last_updated": "2026-06-02",
+      "definition": "释放人力4.5个以上，通过准出、优化、风险处置等方式让低效项目释放资源。",
+      "source_materials": [
+        {
+          "id": "src-conversation-01",
+          "type": "conversation",
+          "date": "2026-05-17",
+          "key_info": "各项目优化方案明细表"
+        }
+      ],
+      "three_layer_value": {
+        "l1_see": {
+          "summary": "人力释放专项，目标释放4.5个编制，通过准出/优化/风险处置让低效项目释放资源",
+          "details": "涉及AI创想家（2人）、企微客服（1人）、金条医疗（1.5人）、影视综（3人）四个子项，owner贾婕，5/1启动，6/30截止"
+        },
+        "l2_understand": {
+          "summary": "⚠️ AI创想家逾期14天未确认 + 企微客服/金条医疗逾期2天 + 影视综6月初已到期；🟡3个中风险；数据已刷新至6/2",
+          "details": [
+            "进度：AI创想家2人准出(5/18截止，⚠️逾期14天未确认)、企微客服方案落地中(5月底截止，⚠️逾期2天)、金条医疗风险处置中(5月底截止，⚠️逾期2天)、影视综方案决策(6月初，🔴已到期)",
+            "风险：3项🟡中风险——企微客服推进中/金条医疗1.5人力待定/影视综3人力无处置方案",
+            "数据新鲜度：✅ last_updated已从5/17刷新至6/2（本次治理完成），但所有子项进度均来源于5/17源材料，实际状态可能已变化"
+          ]
+        },
+        "l3_foresee": {
+          "summary": "🔴 紧急：AI创想家逾期14天+企微客服逾期2天，需立即确认实际状态；金条医疗/影视综持续推进",
+          "details": [
+            "🔴 确认AI创想家准出状态（5/18截止，⚠️已逾期14天！需立即核实是否已完成释放，所有项目中逾期最严重的待办）",
+            "🔴 跟进企微客服方案落地（5月底截止，⚠️已逾期2天，张咏琪已回复，企微测试端口阶段，卡点松动但需确认最终状态）",
+            "🟡 金条医疗：引导业务优化，失败则停止合作",
+            "🟡 影视综：三步走方案已明确，6月初决策"
+          ]
+        }
+      },
+      "milestones": [
+        {
+          "id": "M0",
+          "name": "项目定义",
+          "status": "completed",
+          "content": "人力释放优化项目立项：目标释放4.5个编制，通过准出/优化/风险处置让低效项目释放资源",
+          "deadline": "2026-05-01",
+          "completion_criteria": "definition/owner/priority/start_date/deadline 已定义"
+        },
+        {
+          "id": "M1",
+          "name": "来源材料",
+          "status": "completed",
+          "content": "各项目优化方案明细表（5/17），明确AI创想家/企微客服/金条医疗/影视综四个子项",
+          "refs": [
+            "src-conversation-01"
+          ],
+          "deadline": "2026-05-17",
+          "completion_criteria": "优化方案明细表已获取"
+        },
+        {
+          "id": "M2",
+          "name": "关键决策",
+          "status": "pending",
+          "content": "暂无正式决策记录，需补充：AI创想家准出决策、企微客服处置方向、金条医疗判定结论",
+          "refs": [
+            "src-conversation-01"
+          ],
+          "completion_criteria": "每个子项至少一条决策记录，带refs追溯"
+        },
+        {
+          "id": "M3",
+          "name": "待办事项",
+          "status": "in_progress",
+          "content": "4项待办：AI创想家准出(5/18，⚠️逾期14天)/企微客服落地(5月底，⚠️逾期2天)/金条医疗处置(5月底，⚠️逾期2天)/影视综决策(6月初，🔴已到期)",
+          "progress": "0/4 已确认完成 | 3项已逾期 | 1项已到期",
+          "completion_criteria": "全部待办完成或重新评估截止时间"
+        },
+        {
+          "id": "M4",
+          "name": "风险管理",
+          "status": "in_progress",
+          "content": "3项🟡中风险：企微客服推进中/金条医疗1.5人力待定/影视综3人力无方案",
+          "completion_criteria": "所有风险降级为🟢或关闭"
+        },
+        {
+          "id": "M5",
+          "name": "产出物",
+          "status": "pending",
+          "content": "暂无产出物记录",
+          "completion_criteria": "至少产出：准出确认邮件/优化方案文档/决策纪要"
+        },
+        {
+          "id": "M6",
+          "name": "KPI 达标",
+          "status": "in_progress",
+          "content": "Q2释放人力4.5个：当前AI创想家2人即将准出，影视综2人+金条医疗1.5人推进中",
+          "progress": "2/4.5 即将确认",
+          "deadline": "2026-06-30",
+          "completion_criteria": "累计释放人力 ≥ 4.5个"
+        }
+      ],
+      "decisions": [],
+      "risks": [
+        {
+          "risk": "🟡 企微客服推进中（张咏琪已回复，流程继续）",
+          "impact": "进展中，暂不阻塞",
+          "mitigation": "继续跟进，本周内确认方案",
+          "refs": [
+            "src-conversation-01"
+          ]
+        },
+        {
+          "risk": "🟡 金条-医疗判定有风险",
+          "impact": "1.5个人力待定",
+          "mitigation": "引导业务优化，失败则停止合作",
+          "refs": [
+            "src-conversation-01"
+          ]
+        },
+        {
+          "risk": "🟡 影视综-版权无方案",
+          "impact": "3个人力释放空间未被利用",
+          "mitigation": "需评估最佳处置路径",
+          "refs": [
+            "src-conversation-01"
+          ]
+        }
+      ],
+      "todos": [
+        {
+          "content": "5月18日 AI创想家正式准出（释放2人）",
+          "priority": "🔴",
+          "deadline": "5月18日",
+          "status": "⚠️ 逾期14天（5/18截止，待确认是否已完成释放）",
+          "refs": [
+            "src-conversation-01"
+          ]
+        },
+        {
+          "content": "5月底 企微客服方案落地",
+          "priority": "🔴",
+          "deadline": "5月底",
+          "status": "⚠️ 逾期2天（5月底截止，张咏琪已回复，企微测试端口阶段）",
+          "refs": [
+            "src-conversation-01"
+          ]
+        },
+        {
+          "content": "5月底 金条-医疗风险处置完成",
+          "priority": "🟡",
+          "deadline": "5月底",
+          "status": "⚠️ 逾期2天（5月底截止）",
+          "refs": [
+            "src-conversation-01"
+          ]
+        },
+        {
+          "content": "6月初 影视综方案决策",
+          "priority": "🟡",
+          "deadline": "6月初",
+          "status": "🔴 已到期（6月初，需立即启动方案决策）",
+          "refs": [
+            "src-conversation-01"
+          ]
+        }
+      ],
+      "kpi": {
+        "Q2释放人力总数": {
+          "目标": "4.5个",
+          "当前": "AI创想家2人即将准出"
+        },
+        "已确认释放": "AI创想家2人（5/18准出）",
+        "推进中": "影视综2人 + 金条医疗1.5人",
+        "有卡点": "企微客服1人（张咏琪无响应）"
+      },
+      "skills_produced": [],
+      "output_tracking": [],
+      "uncertain_items": [
+        {
+          "type": "todo",
+          "content": "企微客服1人释放——张咏琪无响应（延迟高优推进中）",
+          "reason": "延迟高优推进，目前企微正在测试端口中，卡点开始松动",
+          "flagged_at": "2026-05-19",
+          "status": "推进中（企微测试端口阶段）",
+          "refs": [
+            "src-conversation-01"
+          ]
+        },
+        {
+          "type": "decision",
+          "content": "影视综优化方案：明确业务价值+业务方邮件挂账+说明社群价值情况",
+          "reason": "优化方案已明确三步走：明确业务价值 → 业务方邮件挂账 → 说明社群价值情况，6月初决策",
+          "flagged_at": "2026-05-19",
+          "status": "方案已明确（6月初决策）",
+          "refs": [
+            "src-conversation-01"
+          ]
+        }
+      ],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": null
+      },
+      "query_keywords": [
+        "项目优化",
+        "人力释放",
+        "准出",
+        "创想家",
+        "企微客服",
+        "金条医疗",
+        "影视综",
+        "贾婕"
+      ]
+    },
+    {
+      "project_id": "claude-monitor",
+      "name": "ClaudeCode监控",
+      "priority": "中",
+      "status": "进行中",
+      "owner": "Mario Claw",
+      "start_date": "2026-05-17",
+      "deadline": null,
+      "last_updated": "2026-05-18",
+      "definition": "让Claude Code监控AI自身行为并汇报工作，搭建监控基础设施（hook→JSONL→SQLite→看板→JSON API）。",
+      "source_materials": [
+        {
+          "type": "conversation",
+          "date": "2026-05-17",
+          "key_info": "poammgoflb4i5w10xbxb会话中设计并实现整套监控系统"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-17",
+          "content": "PostToolUse hook + JSONL + aggregate.py + SQLite架构",
+          "background": "需要持久化存储和可查询的监控数据"
+        },
+        {
+          "date": "2026-05-18",
+          "content": "JSON API分离架构：monitor-data.json + 动态HTML",
+          "background": "其他skill/app需要直接读取数据"
+        },
+        {
+          "date": "2026-05-18",
+          "content": "30秒自动刷新看板",
+          "background": "实时性需求"
+        }
+      ],
+      "risks": [],
+      "todos": [
+        {
+          "content": "监控数据持续积累和验证",
+          "priority": "🟡",
+          "deadline": null,
+          "status": "持续进行"
+        }
+      ],
+      "kpi": {
+        "会话数": "183",
+        "工具调用数": "931",
+        "错误率": "0.5%",
+        "今日调用": "30"
+      },
+      "skills_produced": [],
+      "output_tracking": [
+        {
+          "output_type": "script",
+          "output_name": "gen_monitor_dashboard.py",
+          "output_path": "scripts/gen_monitor_dashboard.py",
+          "usage_count": 5,
+          "last_used": "2026-05-18",
+          "usage_source": "monitor-db:execute_command",
+          "usage_trend": "高频",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 5
+            },
+            {
+              "date": "2026-05-21",
+              "count": 5
+            },
+            {
+              "date": "2026-05-24",
+              "count": 5
+            },
+            {
+              "date": "2026-05-25",
+              "count": 5
+            },
+            {
+              "date": "2026-05-26",
+              "count": 5
+            },
+            {
+              "date": "2026-05-27",
+              "count": 5
+            },
+            {
+              "date": "2026-05-31",
+              "count": 5
+            },
+            {
+              "date": "2026-06-01",
+              "count": 5
+            },
+            {
+              "date": "2026-06-02",
+              "count": 5
+            },
+            {
+              "date": "2026-06-03",
+              "count": 5
+            },
+            {
+              "date": "2026-06-04",
+              "count": 5
+            },
+            {
+              "date": "2026-06-05",
+              "count": 5
+            },
+            {
+              "date": "2026-06-07",
+              "count": 5
+            },
+            {
+              "date": "2026-06-08",
+              "count": 5
+            }
+          ]
+        },
+        {
+          "output_type": "script",
+          "output_name": "aggregate.py",
+          "output_path": "~/.claude/hooks/aggregate.py",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "hook触发自动运行",
+          "usage_trend": "自动",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "script",
+          "output_name": "log_event.py",
+          "output_path": "~/.claude/hooks/log_event.py",
+          "usage_count": 931,
+          "last_used": "2026-05-18",
+          "usage_source": "hook触发每次工具调用",
+          "usage_trend": "高频",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 931
+            },
+            {
+              "date": "2026-05-21",
+              "count": 931
+            },
+            {
+              "date": "2026-05-24",
+              "count": 931
+            },
+            {
+              "date": "2026-05-25",
+              "count": 931
+            },
+            {
+              "date": "2026-05-26",
+              "count": 931
+            },
+            {
+              "date": "2026-05-27",
+              "count": 931
+            },
+            {
+              "date": "2026-05-31",
+              "count": 931
+            },
+            {
+              "date": "2026-06-01",
+              "count": 931
+            },
+            {
+              "date": "2026-06-02",
+              "count": 931
+            },
+            {
+              "date": "2026-06-03",
+              "count": 931
+            },
+            {
+              "date": "2026-06-04",
+              "count": 931
+            },
+            {
+              "date": "2026-06-05",
+              "count": 931
+            },
+            {
+              "date": "2026-06-07",
+              "count": 931
+            },
+            {
+              "date": "2026-06-08",
+              "count": 931
+            }
+          ]
+        },
+        {
+          "output_type": "dashboard",
+          "output_name": "AI监控实时看板",
+          "output_path": "output/monitor-dashboard.html",
+          "public_url": "https://jiangjincai85-sys.github.io/mario-pm-infra/",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "公网访问（暂无法追踪）",
+          "usage_trend": "待追踪"
+        },
+        {
+          "output_type": "knowledge_doc",
+          "output_name": "monitor-data.json（JSON API）",
+          "output_path": "output/monitor-data.json",
+          "public_url": "https://jiangjincai85-sys.github.io/mario-pm-infra/monitor-data.json",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "monitor-db:read_file（暂无调用）",
+          "usage_trend": "已产出",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        }
+      ],
+      "uncertain_items": [],
+      "monitor_stats": {
+        "calls": 17,
+        "errors": 1,
+        "last_activity": "2026-05-18"
+      },
+      "query_keywords": [
+        "监控",
+        "Claude监控",
+        "monitor",
+        "hook",
+        "看板",
+        "AI监控"
+      ]
+    },
+    {
+      "project_id": "vista-content",
+      "name": "内容呈现优化（VISTA）",
+      "priority": "高",
+      "status": "已完成",
+      "owner": "蒋金才 + Mario Claw",
+      "start_date": "2026-05-17",
+      "deadline": "2026-05-17",
+      "last_updated": "2026-05-17",
+      "definition": "基于VISTA方法论（视觉钩子→信息骨架→结构展开→叙事支撑→行动收口），打造可复用的内容呈现方法。",
+      "source_materials": [
+        {
+          "type": "conversation",
+          "date": "2026-05-17",
+          "key_info": "深度对齐来意背景愿景后，设计并封装VISTA Skill"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-17",
+          "content": "对齐先行：先深度对齐来意背景愿景，再执行",
+          "background": "后续所有工作默认遵守"
+        },
+        {
+          "date": "2026-05-17",
+          "content": "项目管理基建从「8张项目卡片」起步",
+          "background": "最小可行单元，不搞系统"
+        },
+        {
+          "date": "2026-05-17",
+          "content": "小白友好原则：所有输出必须让不懂的人也能看懂",
+          "background": "避免专家诅咒"
+        }
+      ],
+      "risks": [],
+      "todos": [
+        {
+          "content": "已完结",
+          "priority": null,
+          "deadline": null,
+          "status": "已完成"
+        }
+      ],
+      "kpi": {
+        "耗时": "1天",
+        "Skill文件数": "5（1入口+3参考+1模板）",
+        "迭代版本": "V1→V2→V3→V4",
+        "公网地址": "✅可访问"
+      },
+      "skills_produced": [
+        "vista-presentation",
+        "svg-flowchart-designer",
+        "web-online"
+      ],
+      "output_tracking": [
+        {
+          "output_type": "skill",
+          "output_name": "vista-presentation",
+          "output_path": "~/.codeflicker/skills/vista-presentation/",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "monitor-db:use_skill",
+          "usage_trend": "新上线",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "skill",
+          "output_name": "svg-flowchart-designer",
+          "output_path": "~/.codeflicker/skills/svg-flowchart-designer/",
+          "usage_count": 1,
+          "last_used": "2026-06-08",
+          "usage_source": "monitor-db:use_skill",
+          "usage_trend": "新上线",
+          "runtime_health": {
+            "total_calls": 1,
+            "total_errors": 0,
+            "error_rate": 0.0,
+            "health_status": "✅正常",
+            "last_used": "2026-05-15"
+          },
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 1
+            },
+            {
+              "date": "2026-05-21",
+              "count": 1
+            },
+            {
+              "date": "2026-05-24",
+              "count": 1
+            },
+            {
+              "date": "2026-05-25",
+              "count": 1
+            },
+            {
+              "date": "2026-05-26",
+              "count": 1
+            },
+            {
+              "date": "2026-05-27",
+              "count": 1
+            },
+            {
+              "date": "2026-05-31",
+              "count": 1
+            },
+            {
+              "date": "2026-06-01",
+              "count": 1
+            },
+            {
+              "date": "2026-06-02",
+              "count": 1
+            },
+            {
+              "date": "2026-06-03",
+              "count": 1
+            },
+            {
+              "date": "2026-06-04",
+              "count": 1
+            },
+            {
+              "date": "2026-06-05",
+              "count": 1
+            },
+            {
+              "date": "2026-06-07",
+              "count": 1
+            },
+            {
+              "date": "2026-06-08",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "output_type": "skill",
+          "output_name": "web-online",
+          "output_path": "~/.codeflicker/skills/web-online/",
+          "usage_count": 1,
+          "last_used": "2026-06-08",
+          "usage_source": "monitor-db:use_skill",
+          "usage_trend": "新上线",
+          "runtime_health": {
+            "total_calls": 1,
+            "total_errors": 0,
+            "error_rate": 0.0,
+            "health_status": "✅正常",
+            "last_used": "2026-05-13"
+          },
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 1
+            },
+            {
+              "date": "2026-05-21",
+              "count": 1
+            },
+            {
+              "date": "2026-05-24",
+              "count": 1
+            },
+            {
+              "date": "2026-05-25",
+              "count": 1
+            },
+            {
+              "date": "2026-05-26",
+              "count": 1
+            },
+            {
+              "date": "2026-05-27",
+              "count": 1
+            },
+            {
+              "date": "2026-05-31",
+              "count": 1
+            },
+            {
+              "date": "2026-06-01",
+              "count": 1
+            },
+            {
+              "date": "2026-06-02",
+              "count": 1
+            },
+            {
+              "date": "2026-06-03",
+              "count": 1
+            },
+            {
+              "date": "2026-06-04",
+              "count": 1
+            },
+            {
+              "date": "2026-06-05",
+              "count": 1
+            },
+            {
+              "date": "2026-06-07",
+              "count": 1
+            },
+            {
+              "date": "2026-06-08",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "output_type": "dashboard",
+          "output_name": "项目管理研究HTML",
+          "output_path": "output/project-management-infra-research.html",
+          "public_url": "https://jiangjincai85-sys.github.io/mario-pm-infra/",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "公网访问",
+          "usage_trend": "待追踪"
+        }
+      ],
+      "uncertain_items": [],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": null
+      },
+      "query_keywords": [
+        "VISTA",
+        "内容呈现",
+        "优化呈现",
+        "可视化",
+        "小白友好",
+        "降级呈现"
+      ]
+    },
+    {
+      "project_id": "ai-avatar",
+      "name": "AI分身体系",
+      "priority": "高",
+      "status": "进行中",
+      "owner": "蒋金才 + Mario Claw",
+      "start_date": "2026-05-17",
+      "deadline": null,
+      "last_updated": "2026-05-17",
+      "definition": "打造AI分身，每个分身有独立角色、知识体系和输出风格。已有刘备（用户运营）、boss-perspective（老板视角）、data-validator（数据审查）、jiangjincai-mentor（能力导师）。",
+      "source_materials": [
+        {
+          "type": "conversation",
+          "date": "2026-05-17",
+          "key_info": "W20方向之三，列为整体方向"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-17",
+          "content": "列为W20方向之三",
+          "background": "作为整体方向"
+        },
+        {
+          "date": "2026-05-17",
+          "content": "分身定义在 ~/.codeflicker/agents/",
+          "background": "CodeFlicker标准位置"
+        }
+      ],
+      "risks": [],
+      "todos": [
+        {
+          "content": "梳理还需哪些新分身",
+          "priority": "🟡",
+          "deadline": null,
+          "status": "待启动"
+        },
+        {
+          "content": "为每个分身完善知识库",
+          "priority": "🟡",
+          "deadline": null,
+          "status": "待启动"
+        }
+      ],
+      "kpi": {
+        "已有分身": "4",
+        "覆盖场景": "用户运营 / 汇报审查 / 数据验证 / 能力诊断"
+      },
+      "skills_produced": [
+        "boss-perspective",
+        "data-validator",
+        "jiangjincai-mentor"
+      ],
+      "output_tracking": [
+        {
+          "output_type": "subagent",
+          "output_name": "boss-perspective",
+          "output_path": "~/.codeflicker/agents/boss-perspective.md",
+          "usage_count": 0,
+          "last_used": null,
+          "usage_source": "monitor-db:use_subagent",
+          "usage_trend": "未使用",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "subagent",
+          "output_name": "data-validator",
+          "output_path": "~/.codeflicker/agents/data-validator.md",
+          "usage_count": 0,
+          "last_used": null,
+          "usage_source": "monitor-db:use_subagent",
+          "usage_trend": "未使用",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "subagent",
+          "output_name": "jiangjincai-mentor",
+          "output_path": "~/.codeflicker/agents/jiangjincai-mentor.md",
+          "usage_count": 0,
+          "last_used": null,
+          "usage_source": "monitor-db:use_subagent",
+          "usage_trend": "未使用",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        }
+      ],
+      "uncertain_items": [],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": null
+      },
+      "query_keywords": [
+        "AI分身",
+        "boss-perspective",
+        "data-validator",
+        "jiangjincai-mentor",
+        "刘备",
+        "能力导师"
+      ]
+    },
+    {
+      "project_id": "ai-learning",
+      "name": "AI知识学习",
+      "priority": "高",
+      "status": "已取消（被AI向外看取代）",
+      "owner": "Mario Claw",
+      "start_date": "2026-05-17",
+      "deadline": null,
+      "last_updated": "2026-05-21",
+      "definition": "【已取消】原计划系统性摄入AI最新理论和实践，已被AI向外看研究简报（ai-outlook）取代。",
+      "source_materials": [
+        {
+          "type": "reference",
+          "date": "2026-05-21",
+          "key_info": "被AI向外看研究简报取代，详见knowledge-base/ai-outlook/"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-17",
+          "content": "列为W20方向之二，待启动",
+          "background": "三个方向之一"
+        },
+        {
+          "date": "2026-05-21",
+          "content": "项目已取消，被AI向外看研究简报（ai-outlook）取代",
+          "background": "已有更成熟的AI前沿跟踪体系（AI向外看简报+研究简报线上化），不需要单独的知识学习项目"
+        }
+      ],
+      "risks": [],
+      "todos": [
+        {
+          "content": "确定学习的节奏和深度",
+          "priority": "🟡",
+          "deadline": null,
+          "status": "已取消（被AI向外看取代）"
+        },
+        {
+          "content": "确定需要关注的领域",
+          "priority": "🟡",
+          "deadline": null,
+          "status": "已取消（被AI向外看取代）"
+        },
+        {
+          "content": "启动第一期学习",
+          "priority": "🟡",
+          "deadline": null,
+          "status": "已取消（被AI向外看取代）"
+        }
+      ],
+      "kpi": {
+        "状态": "已取消",
+        "取代项目": "AI向外看研究简报（ai-outlook）",
+        "来源覆盖": "已有AI向外看研究简报线上版"
+      },
+      "skills_produced": [
+        "clawbook",
+        "clawbook-daily-summary",
+        "github-skillhub",
+        "deep-thinking",
+        "kstack-reader"
+      ],
+      "output_tracking": [
+        {
+          "output_type": "skill",
+          "output_name": "clawbook",
+          "output_path": "~/.codeflicker/skills/clawbook/",
+          "usage_count": 3,
+          "last_used": "2026-06-08",
+          "usage_source": "monitor-db:use_skill",
+          "usage_trend": "稳定",
+          "runtime_health": {
+            "total_calls": 3,
+            "total_errors": 0,
+            "error_rate": 0.0,
+            "health_status": "✅正常",
+            "last_used": "2026-05-13"
+          },
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 3
+            },
+            {
+              "date": "2026-05-21",
+              "count": 3
+            },
+            {
+              "date": "2026-05-24",
+              "count": 3
+            },
+            {
+              "date": "2026-05-25",
+              "count": 3
+            },
+            {
+              "date": "2026-05-26",
+              "count": 3
+            },
+            {
+              "date": "2026-05-27",
+              "count": 3
+            },
+            {
+              "date": "2026-05-31",
+              "count": 3
+            },
+            {
+              "date": "2026-06-01",
+              "count": 3
+            },
+            {
+              "date": "2026-06-02",
+              "count": 3
+            },
+            {
+              "date": "2026-06-03",
+              "count": 3
+            },
+            {
+              "date": "2026-06-04",
+              "count": 3
+            },
+            {
+              "date": "2026-06-05",
+              "count": 3
+            },
+            {
+              "date": "2026-06-07",
+              "count": 3
+            },
+            {
+              "date": "2026-06-08",
+              "count": 3
+            }
+          ]
+        },
+        {
+          "output_type": "skill",
+          "output_name": "clawbook-daily-summary",
+          "output_path": "~/.codeflicker/skills/clawbook-daily-summary/",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "monitor-db:use_skill",
+          "usage_trend": "新上线",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "skill",
+          "output_name": "github-skillhub",
+          "output_path": "~/.codeflicker/skills/github-skillhub/",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "monitor-db:use_skill",
+          "usage_trend": "未使用",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "skill",
+          "output_name": "deep-thinking",
+          "output_path": "~/.claude/skills/deep-thinking/",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "monitor-db:use_skill",
+          "usage_trend": "未使用",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "skill",
+          "output_name": "kstack-reader",
+          "output_path": "~/.codeflicker/remote-personal-skills/kstack-reader/",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "monitor-db:use_skill",
+          "usage_trend": "未使用",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        }
+      ],
+      "uncertain_items": [],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": null
+      },
+      "query_keywords": [
+        "AI学习",
+        "知识摄入",
+        "GitHub Trending",
+        "KStack",
+        "前沿动态",
+        "ClawBook"
+      ]
+    },
+    {
+      "project_id": "scrapling-research",
+      "name": "Scrapling爬虫研究",
+      "priority": "高",
+      "status": "已完成",
+      "owner": "Mario Claw",
+      "start_date": "2026-05-17",
+      "deadline": null,
+      "last_updated": "2026-05-19",
+      "definition": "系统学习Scrapling → 从爬虫工具→AI信息查找助手（v2.0）→置信度三层评估体系（v3.0）→按场景分级L1/L2/L3（v3.1）→半自动/全自动模式选择（v3.2）。已沉淀为爬虫信息查找skill。 ✅ 已完成——v3.2版本已沉淀为scrapling-agent skill，半自动/全自动模式可选。",
+      "source_materials": [
+        {
+          "type": "web_url",
+          "url": "https://github.com/D4V1D-0M4R/scrapling",
+          "title": "Scrapling GitHub仓库",
+          "date_accessed": "2026-05-17",
+          "key_info": "近9K stars，自适应元素追踪，三种Fetcher，Spider框架"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-17",
+          "key_info": "系统学习+实战Demo+文档沉淀"
+        },
+        {
+          "type": "memory_ref",
+          "memory_id": "353eea7f4d14dbb0",
+          "title": "Scrapling学习报告记忆",
+          "date_accessed": "2026-05-19",
+          "key_info": "包含15章学习笔记+2个Demo+API差异（css_first不存在等）"
+        },
+        {
+          "type": "local_file",
+          "path": ".codeflicker/skills/scrapling-agent/SKILL.md",
+          "title": "scrapling-agent SKILL.md v3.2",
+          "date_accessed": "2026-05-19",
+          "key_info": "AI信息查找助手，置信度三层评估，半自动/全自动模式"
+        },
+        {
+          "type": "local_file",
+          "path": ".codeflicker/skills/scrapling-agent/references/confidence-rating.md",
+          "title": "置信度评估方案 v3.1",
+          "date_accessed": "2026-05-19",
+          "key_info": "三层评估体系（来源30%+内容40%+共识30%）+ 按价值分层 + 模式选择"
+        },
+        {
+          "type": "local_file",
+          "path": ".codeflicker/skills/scrapling-agent/references/optimization-plan.html",
+          "title": "技术方案可视化页面 v3.2",
+          "date_accessed": "2026-05-19",
+          "key_info": "VISTA方法论呈现：含层级卡、流程图、成本收益表、案例对比、模式选择"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-18",
+          "key_info": "三次关键对话：设计三层评估体系（来源+内容+共识）+ 方法论依据讨论 + 分层优化 + 模式选择"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-17",
+          "content": "启动Scrapling系统学习",
+          "background": "自适应特性有独特价值"
+        },
+        {
+          "date": "2026-05-17",
+          "content": "创建基础+进阶Demo验证",
+          "background": "确保实操可用"
+        },
+        {
+          "date": "2026-05-17",
+          "content": "从爬虫工具→AI信息查找助手（v2.0）",
+          "background": "用户明确不要爬虫工具，要AI自动找信息"
+        },
+        {
+          "date": "2026-05-18",
+          "content": "设计三层置信度评估体系（来源+内容+共识）",
+          "background": "用户要求可追责的评估方案，引用法院"
+        },
+        {
+          "date": "2026-05-18",
+          "content": "按场景价值分层（L1快速/L2标准/L3深度）",
+          "background": "18秒增量换准确度优化，60%走L2"
+        },
+        {
+          "date": "2026-05-18",
+          "content": "设计内容权重最高40%",
+          "background": "有数据的百家号不该被死刑，内容好>来源强"
+        },
+        {
+          "date": "2026-05-19",
+          "content": "半自动/全自动模式选择",
+          "background": "用户要求先确认再执行，而不是直接跑"
+        },
+        {
+          "date": "2026-05-19",
+          "content": "默认半自动模式归档完成",
+          "background": "用户确认先给计划再执行"
+        },
+        {
+          "date": "2026-05-19",
+          "content": "Scrapling项目核心目标已完成——从爬虫研究→AI信息查找skill全链路闭环",
+          "background": "v3.2版本半自动/全自动模式选择已完成，skill可正常调用"
+        }
+      ],
+      "risks": [],
+      "todos": [
+        {
+          "content": "挖掘实际应用场景（粉条日报/社群数据/竞品监控）",
+          "priority": "🟡",
+          "deadline": null,
+          "status": "进行中（粉条日报已在用）"
+        },
+        {
+          "content": "基于实际场景做端到端Demo",
+          "priority": "🟡",
+          "deadline": null,
+          "status": "待启动"
+        },
+        {
+          "content": "沉淀为可复用的skill或模板",
+          "priority": "✅",
+          "deadline": null,
+          "status": "已完成 ✅ scrapling-agent skill v3.2"
+        }
+      ],
+      "kpi": {
+        "学习文档": "1篇（15章）",
+        "Demo脚本": "2个（全部通过）",
+        "迭代版本": "v1.0→v2.0→v3.0→v3.1→v3.2",
+        "评估体系": "三层（来源30%+内容40%+共识30%）",
+        "评估分层": "L1~28s / L2~36s / L3~46s",
+        "操作模式": "半自动（默认）/ 全自动",
+        "可视化页面": "optimization-plan.html（VISTA）",
+        "置信度方法论文档": "confidence-rating.md v3.1"
+      },
+      "skills_produced": [
+        "scrapling-agent"
+      ],
+      "output_tracking": [
+        {
+          "output_type": "knowledge_doc",
+          "output_name": "Scrapling学习笔记（15章）",
+          "output_path": "memory/daily_discoveries/2026-05-17.md",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "monitor-db:read_file（暂无调用）",
+          "usage_trend": "已产出",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "knowledge_doc",
+          "output_name": "置信度评估方案 v3.1",
+          "output_path": ".codeflicker/skills/scrapling-agent/references/confidence-rating.md",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "monitor-db:read_file（暂无调用）",
+          "usage_trend": "已产出",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "dashboard",
+          "output_name": "优化方案可视化HTML",
+          "output_path": ".codeflicker/skills/scrapling-agent/references/optimization-plan.html",
+          "local_url": "http://localhost:8766/.codeflicker/skills/scrapling-agent/references/optimization-plan.html",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "本地预览",
+          "usage_trend": "新上线"
+        },
+        {
+          "output_type": "skill",
+          "output_name": "scrapling-agent（v3.2）",
+          "output_path": ".codeflicker/skills/scrapling-agent/",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "monitor-db:use_skill",
+          "usage_trend": "已迭代",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "memory",
+          "output_name": "scrapling-agent半自动模式偏好",
+          "memory_id": "9d96cdc5fa3de6e2",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "monitor-db:search_memory（暂无调用）",
+          "usage_trend": "已录入",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        }
+      ],
+      "uncertain_items": [
+        {
+          "type": "decision",
+          "content": "Scrapling最终沉淀为skill还是模板尚未确定",
+          "reason": "取决于实际应用场景的挖掘结果",
+          "flagged_at": "2026-05-18",
+          "status": "已确认 ✅ 沉淀为scrapling-agent skill"
+        }
+      ],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": null
+      },
+      "query_keywords": [
+        "Scrapling",
+        "爬虫",
+        "自适应",
+        "Fetcher",
+        "Spider",
+        "数据采集",
+        "竞品监控",
+        "置信度",
+        "评估体系",
+        "三层评估",
+        "L1",
+        "L2",
+        "L3",
+        "半自动",
+        "全自动",
+        "模式选择",
+        "来源评估",
+        "内容评估",
+        "共识验证",
+        "VISTA",
+        "优化方案"
+      ]
+    },
+    {
+      "project_id": "team-org",
+      "name": "团队组织架构（完整版）",
+      "priority": "高",
+      "status": "已完成（完整版）",
+      "owner": "蒋金才",
+      "start_date": "2026-05-17",
+      "deadline": "2026-05-18",
+      "last_updated": "2026-05-18",
+      "definition": "团队从13人2组扩展为28人5组，涵盖五个运营组和一个项目管理组。",
+      "source_materials": [
+        {
+          "type": "conversation",
+          "date": "2026-05-17",
+          "key_info": "张翔给出的完整组织架构表"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-18",
+          "key_info": "HR正式名单比对待完成"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-17",
+          "content": "按张翔给出的完整版28人5组组织架构执行",
+          "background": "之前13人2组信息不完整"
+        }
+      ],
+      "risks": [
+        {
+          "risk": "🟡 HR正式名单尚未比对完成",
+          "impact": "无法确认架构表100%准确",
+          "mitigation": "5/19到HR名单后比对"
+        }
+      ],
+      "todos": [
+        {
+          "content": "5/19 HR正式名单比对",
+          "priority": "🟡",
+          "deadline": "5月19日",
+          "status": "待启动"
+        }
+      ],
+      "kpi": {
+        "总人数": "28人",
+        "组数": "5组 + 1项目管理",
+        "源数据": "张翔提供",
+        "HR比对": "待完成"
+      },
+      "skills_produced": [],
+      "output_tracking": [],
+      "uncertain_items": [],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": null
+      },
+      "query_keywords": [
+        "组织架构",
+        "团队架构",
+        "HR比对",
+        "张翔",
+        "28人",
+        "5组"
+      ]
+    },
+    {
+      "project_id": "wangjian-handover",
+      "name": "经营管理会基建交接——王坚专项",
+      "priority": "高",
+      "status": "进行中",
+      "owner": "蒋金才 / 王坚",
+      "start_date": "2026-05-18",
+      "deadline": "2026-05-31",
+      "last_updated": "2026-05-18",
+      "definition": "将项目经营管理会的完整基建内容交接给王坚，包括流程执行、数据操作、呈现方法三块核心能力。",
+      "source_materials": [
+        {
+          "type": "meeting_link",
+          "url": "https://docs.corp.kuaishou.com/meeting/fcADP5HS9Gf5f50PEbHbO6Hlg",
+          "title": "经营管理会交接会议纪要（5/18）",
+          "date_accessed": "2026-05-18",
+          "key_info": "周报先瘦身、取消PMO角色、王坚负责OKR与周会运营"
+        },
+        {
+          "type": "docs_link",
+          "url": "https://docs.corp.kuaishou.com/d/home/fcABb-_l3lySn2zJcMVhpT-OQ",
+          "title": "流程文档",
+          "date_accessed": "2026-05-18",
+          "key_info": "7步流程（周五起跑→周一周二跑数→周三预验收→周四经营周会）"
+        },
+        {
+          "type": "docs_link",
+          "url": "https://docs.corp.kuaishou.com/t/home/VDKguRw4uqrI/fcABbgeL5EO_i3s-ICrueSk2B",
+          "title": "出勤考勤表",
+          "date_accessed": "2026-05-18",
+          "key_info": "4个sheet（一组/二组/三组/综合组人力）"
+        },
+        {
+          "type": "docs_link",
+          "url": "https://docs.corp.kuaishou.com/d/home/fcAD_OB4r5_DgoqjLAxPYAy7L",
+          "title": "沟通文档",
+          "date_accessed": "2026-05-18",
+          "key_info": "交接进度与沟通记录"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-18",
+          "key_info": "与王坚+张翔沟通确认交接方案"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-18",
+          "content": "周报先瘦身，取消独立PMO角色",
+          "background": "张翔+王坚会议决策，PMO人员下沉项目一线"
+        },
+        {
+          "date": "2026-05-18",
+          "content": "王坚负责OKR与经营周会整体运营",
+          "background": "承接TODO管理、数据监控、流程执行监督"
+        }
+      ],
+      "risks": [
+        {
+          "risk": "🟡 王坚5/19开始学做数据，时间紧",
+          "impact": "交接时间窗口短",
+          "mitigation": "5/19蒋金才带王坚跑一遍完整流程"
+        }
+      ],
+      "todos": [
+        {
+          "content": "🔴 5/19 教王坚学做数据（带跑完整流程）",
+          "priority": "🔴",
+          "deadline": "5月19日",
+          "status": "进行中"
+        },
+        {
+          "content": "🔴 做周报瘦身版字段清单",
+          "priority": "🔴",
+          "deadline": "本周",
+          "status": "待启动"
+        },
+        {
+          "content": "🟡 发数据口径文档给王坚",
+          "priority": "🟡",
+          "deadline": "本周",
+          "status": "待启动"
+        },
+        {
+          "content": "🟡 安排流程图更新",
+          "priority": "🟡",
+          "deadline": "本周",
+          "status": "待启动"
+        }
+      ],
+      "kpi": {
+        "交接完成度": "流程文档✅ / 操作手册✅ / 数据口径🟡 / 周报瘦身🔴"
+      },
+      "skills_produced": [],
+      "output_tracking": [
+        {
+          "output_type": "knowledge_doc",
+          "output_name": "王坚交接操作手册 v1.1",
+          "output_path": "knowledge-base/经营管理会交接/王坚交接操作手册.md",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "monitor-db:read_file（暂无调用）",
+          "usage_trend": "已产出",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "knowledge_doc",
+          "output_name": "经营管理会交接项目卡片",
+          "output_path": "projects/wangjian-handover.md",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "monitor-db:read_file（暂无调用）",
+          "usage_trend": "已产出",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        }
+      ],
+      "uncertain_items": [],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": null
+      },
+      "query_keywords": [
+        "王坚",
+        "经营管理会",
+        "交接",
+        "周报瘦身",
+        "PMO取消",
+        "出勤数据",
+        "价值产出"
+      ]
+    },
+    {
+      "project_id": "wangjian-wednesday-handover",
+      "name": "经营管理会基建交接——王坚专项（周三版）",
+      "priority": "高",
+      "status": "进行中",
+      "owner": "蒋金才 / 王坚",
+      "start_date": "2026-05-18",
+      "deadline": "2026-05-31",
+      "last_updated": "2026-05-18",
+      "definition": "【已废弃】经营管理会基建交接的周三独立版本，与wangjian-handover合并。",
+      "source_materials": [
+        {
+          "type": "conversation",
+          "date": "2026-05-25",
+          "key_info": "WK19-21 合作运营项目数据采集：16个项目零失败，使用KESS+Data Agent+OLAP三种方案取数，生成HTML周报看板（83x2b15lf3djrzcn8q12）"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-25",
+          "key_info": "合作运营项目SQL数据源汇总：整理18个项目的SQL语句、OLAP链接、数据表，产出汇总文档（88z2smfzkrcliembkkev）"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-26",
+          "key_info": "KESS SQL取数实战：粉条C端付费用户统计、客户类型分布分析，验证KESS链路可用性（rsrvmx2v9imnpd8bjp0u）"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-26",
+          "key_info": "分析报告输出规范确立：所有分析必须附带数据字段说明+SQL附件（rsrvmx2v9imnpd8bjp0u）"
+        },
+        {
+          "type": "skill",
+          "date": "2026-05-25",
+          "key_info": "kess-sql-query Skill 封装完成：KESS Agent + OneAPI + Java JAR 程序化执行ClickHouse SQL，含自动清洗/健康检查/3种输出格式"
+        },
+        {
+          "type": "memory",
+          "date": "2026-05-25",
+          "key_info": "Data Agent 默认使用 GLM-5.1 模型配置完成"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-25",
+          "content": "KESS Agent + OneAPI + Java JAR 作为 ClickHouse SQL 取数管道",
+          "background": "从内部KESS工具封装为Skill，支持SQL自动清洗（移除SETTINGS/LIMIT偏移转换等）"
+        },
+        {
+          "date": "2026-05-25",
+          "content": "取数方案优先级：SQL直跑 > Data Agent自然语言 > Playwright模拟浏览器",
+          "background": "SQL直跑最快最稳，Data Agent有认证bug待修"
+        },
+        {
+          "date": "2026-05-26",
+          "content": "所有分析输出必须附带数据字段说明+SQL附件文件",
+          "background": "提升分析可追溯性和可复用性"
+        },
+        {
+          "date": "2026-05-26",
+          "content": "合作运营项目SQL数据源文档标准化：18个项目的SQL/OLAP/数据表统一汇总",
+          "background": "避免每次取数重复查找数据表"
+        }
+      ],
+      "risks": [
+        {
+          "risk": "🟡 Data Agent认证bug未修复",
+          "impact": "get_username()失败导致Data Agent自然语言取数不可用",
+          "mitigation": "暂用KESS SQL直跑替代，待丁好修复",
+          "severity": "🟡中"
+        },
+        {
+          "risk": "🟡 项目1-11 SQL未录入汇总文档",
+          "impact": "SQL数据源汇总文档不完整，部分项目取数需从旧会话查找",
+          "mitigation": "待补录完整SQL",
+          "severity": "🟡中"
+        },
+        {
+          "risk": "🟡 美妆电商中小商家和泛知识项目数据源待补充",
+          "impact": "部分项目的取数链路不完整",
+          "mitigation": "模板已定，补充SQL即可",
+          "severity": "🟡中"
+        },
+        {
+          "risk": "🟡 不同项目取数方式不同（Hudi跨域/KwaiBI OLAP/SQL直跑），需统一",
+          "impact": "技术栈碎片化，难以做到丁好的全量字段自动覆盖",
+          "mitigation": "统一走KESS SQL+标准化SQL模板，丁好补全技术链路",
+          "severity": "🟡中"
+        }
+      ],
+      "todos": [
+        {
+          "content": "【已废弃】合并到wangjian-handover项目",
+          "priority": null,
+          "deadline": null,
+          "status": "已完成"
+        }
+      ],
+      "kpi": {},
+      "skills_produced": [],
+      "output_tracking": [],
+      "uncertain_items": [],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": null
+      },
+      "query_keywords": [
+        "王坚",
+        "经营管理会",
+        "交接",
+        "已废弃"
+      ]
+    },
+    {
+      "project_id": "bp-cooperation",
+      "name": "BP共建专项",
+      "priority": "高",
+      "status": "进行中",
+      "owner": "蒋金才 + 肖阳",
+      "start_date": "2026-05-17",
+      "deadline": "2026-06-15",
+      "last_updated": "2026-05-29",
+      "real_proxy_test_completed": "2026-05-21",
+      "definition": "与BP（商业伙伴）推进合作共建，目标是完成准入规则、案例网页、发送口径、天台共建问题list、新业务方拓展、5/25对齐会议6项任务。",
+      "source_materials": [
+        {
+          "type": "conversation",
+          "date": "2026-05-18",
+          "key_info": "BP共建专项进度更新，移除非BP项"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-18",
+          "content": "移除非BP项（周报对齐不属于本专项）",
+          "background": "精简范围"
+        },
+        {
+          "date": "2026-05-20",
+          "content": "马越的项目已暂停合作，不再继续推进",
+          "background": "合作方不靠谱或资源不匹配"
+        }
+      ],
+      "risks": [],
+      "todos": [
+        {
+          "content": "准入规则——已完成",
+          "status": "completed"
+        },
+        {
+          "content": "案例网页（业务篇+反馈篇）——已部署",
+          "status": "completed"
+        },
+        {
+          "content": "发送口径——已完成",
+          "status": "completed"
+        },
+        {
+          "content": "小纸条优化：设计问卷，社群宣发填写",
+          "status": "in_progress"
+        },
+        {
+          "content": "外呼社群给BP补充两层视角（沉默痛点+用户预期）",
+          "status": "in_progress"
+        },
+        {
+          "content": "找新业务方（双周）",
+          "status": "pending"
+        }
+      ],
+      "kpi": {
+        "总任务": "6项",
+        "已完成": "3项",
+        "进行中": "2项（小纸条问卷+BP视角补充）",
+        "完成率": "50%",
+        "最新进展": "WK22周会: 小纸条优化方案讨论（P0/P1/P2计划），现状：产品侧进展不符合预期"
+      },
+      "skills_produced": [],
+      "output_tracking": [
+        {
+          "output_type": "dashboard",
+          "output_name": "BP案例页面（业务篇）",
+          "output_path": null,
+          "public_url": "https://bp-case-business.frontend-cloud.corp.kuaishou.com",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "公网访问",
+          "usage_trend": "已部署"
+        },
+        {
+          "output_type": "dashboard",
+          "output_name": "BP案例页面（反馈篇）",
+          "output_path": null,
+          "public_url": "https://bp-case-feedback.frontend-cloud.corp.kuaishou.com",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "公网访问",
+          "usage_trend": "已部署"
+        }
+      ],
+      "uncertain_items": [
+        {
+          "type": "todo",
+          "content": "体验共建问题list，周四（5/22）下班前做好和张翔对齐",
+          "reason": "内容已准备好，明天找张翔review对齐",
+          "flagged_at": "2026-05-19",
+          "status": "内容已准备好，明日5/22对齐"
+        }
+      ],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": null
+      },
+      "query_keywords": [
+        "BP共建",
+        "肖阳",
+        "案例网页",
+        "准入规则",
+        "发送口径",
+        "天台共建",
+        "对齐会议"
+      ],
+      "progress_notes": [
+        {
+          "date": "2026-05-29",
+          "source": "WK22经营周会",
+          "content": "小纸条优化：弹窗关闭后无法回溯→设计问卷收集痛点；外呼社群给BP补充沉默痛点和用户预期两层视角"
+        }
+      ]
+    },
+    {
+      "project_id": "fentiao-active-calculation",
+      "name": "粉条活跃数据计算专项",
+      "priority": "高",
+      "status": "进行中",
+      "owner": "刘备",
+      "start_date": "2026-05-19",
+      "deadline": null,
+      "last_updated": "2026-05-20",
+      "definition": "每天自动计算粉条用户的发言活跃和产出活跃两个维度数据，沉淀到本地并推送到KIM群。发言活跃=单位周期内用户在群里发了≥1条消息；产出活跃=当天有粉条消耗。 在此之前已完成粉条日报周报自动化流程：每天9:00自动从KwaiBI取数→生成HTML报告→deploy frontend-cloud→推KIM群@all。线上地址：https://fentiao-daily-report.frontend-cloud.corp.kuaishou.com",
+      "source_materials": [
+        {
+          "type": "memory_ref",
+          "id": "ab7ebd7a377d2119",
+          "title": "粉条日报周报自动化流程",
+          "date_accessed": "2026-05-19",
+          "key_info": "现有粉条日报使用KwaiBI dashboardId=2132296, Data Agent 515"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-19",
+          "key_info": "对齐口径：发言活跃=群里发≥1条消息，产出活跃=当天有粉条消耗"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-04-01",
+          "key_info": "粉条日报周报自动化流程搭建全过程"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-19",
+          "content": "两个活跃维度都用'有就算'阈值，先不看程度",
+          "background": "先建基础版，后续优化"
+        },
+        {
+          "date": "2026-05-19",
+          "content": "每日自动计算→存本地→推KIM群",
+          "background": "用户要求全自动"
+        },
+        {
+          "date": "2026-04-01",
+          "content": "使用Data Agent 515 + KwaiBI dashboard 2132296",
+          "background": "已有看板数据直接可用"
+        },
+        {
+          "date": "2026-04-01",
+          "content": "日报对比当月1日到当日 vs 上月1日到同日",
+          "background": "不能用整月对比"
+        }
+      ],
+      "risks": [
+        {
+          "risk": "数据源看板链接尚未确认",
+          "impact": "无法完成脚本和数据链路联调",
+          "mitigation": "等待用户提供KwaiBI看板链接"
+        }
+      ],
+      "todos": [
+        {
+          "content": "确认数据源看板链接（发言+产出两个看板）",
+          "priority": "🔴",
+          "deadline": "尽快",
+          "status": "进行中"
+        },
+        {
+          "content": "编写计算脚本并联调跑通",
+          "priority": "🔴",
+          "deadline": "看板链接确认后",
+          "status": "待启动"
+        },
+        {
+          "content": "设置定时任务自动执行",
+          "priority": "🟡",
+          "deadline": "脚本跑通后",
+          "status": "待启动"
+        },
+        {
+          "content": "✅ 自动化流程已正常运行中",
+          "priority": null,
+          "deadline": null,
+          "status": "已完成"
+        }
+      ],
+      "kpi": {
+        "日报": "每天9:00自动运行 ✅",
+        "KIM群ID": "6247182661653760",
+        "线上地址": "https://fentiao-daily-report.frontend-cloud.corp.kuaishou.com",
+        "看板ID": "2132296"
+      },
+      "skills_produced": [
+        "auto-data-report"
+      ],
+      "output_tracking": [
+        {
+          "output_type": "dashboard",
+          "output_name": "粉条日报线上页面",
+          "output_path": null,
+          "public_url": "https://fentiao-daily-report.frontend-cloud.corp.kuaishou.com",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "公网访问",
+          "usage_trend": "每日运行"
+        },
+        {
+          "output_type": "knowledge_doc",
+          "output_name": "粉条日报周报自动化流程记忆",
+          "output_path": "memory（记忆系统）",
+          "usage_count": null,
+          "last_used": null,
+          "usage_source": "monitor-db:read_file（暂无调用）",
+          "usage_trend": "已产出",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        }
+      ],
+      "uncertain_items": [
+        {
+          "type": "source",
+          "content": "发言活跃数据来源看板尚未确认",
+          "reason": "用户在查找看板链接中",
+          "flagged_at": "2026-05-19",
+          "status": "本周推进中"
+        },
+        {
+          "type": "source",
+          "content": "粉条消耗数据看板链接尚未确认",
+          "reason": "用户在查找看板链接中",
+          "flagged_at": "2026-05-19",
+          "status": "本周推进中"
+        }
+      ],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": null
+      },
+      "query_keywords": [
+        "粉条",
+        "活跃数据",
+        "发言活跃",
+        "产出活跃",
+        "消耗活跃",
+        "每日自动化",
+        "KIM推送",
+        "日报",
+        "周报",
+        "自动化",
+        "Data Agent",
+        "动漫2期",
+        "导师天团"
+      ]
+    },
+    {
+      "project_id": "wuxi-migration",
+      "name": "无锡高价值四组迁移专项",
+      "priority": "S+",
+      "status": "进行中",
+      "owner": "蒋金才（统筹）、谈娟（接口人）、南雪妮（无锡承接）",
+      "start_date": "2026-05-18",
+      "deadline": "2026-06",
+      "last_updated": "2026-05-20",
+      "definition": "无锡原快成长/二次元共建暂停（马跃转做策略），将谈娟组的美妆项目和大服饰项目整体迁移至无锡南雪妮组。分步实施：先美妆后大服饰，仅迁移有价值新用户。当前处于交接+培训落地阶段。",
+      "source_materials": [
+        {
+          "type": "conversation",
+          "date": "2026-05-18",
+          "key_info": "盘点商业化项目，确定美妆+大服饰整体迁移"
+        },
+        {
+          "type": "meeting",
+          "date": "2026-05-18",
+          "key_info": "和南雪妮沟通纪要",
+          "url": "https://docs.corp.kuaishou.com/meeting/fcADcJWz-xz4zyhtcGUlyoY7w"
+        },
+        {
+          "type": "meeting",
+          "date": "2026-05-18",
+          "key_info": "和谈娟组沟通纪要",
+          "url": "https://docs.corp.kuaishou.com/meeting/fcABwil85gdUQq1HhnrVowoAM"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-18",
+          "content": "美妆+大服饰整体迁移至无锡南雪妮组，优先交接美妆",
+          "background": "原二次元共建暂停，需补新项目"
+        },
+        {
+          "date": "2026-05-18",
+          "content": "仅迁移有价值新用户，长期沉默老用户不迁",
+          "background": "原运营脱节"
+        },
+        {
+          "date": "2026-05-18",
+          "content": "二次元项目已准出，群通知已发",
+          "background": "释放人力"
+        },
+        {
+          "date": "2026-05-19",
+          "content": "谈娟作为交接培训主要责任人，需出培训规划",
+          "background": "在经营管理会上说明背书"
+        }
+      ],
+      "risks": [
+        {
+          "risk": "南雪妮组人力不足（现有2人+南雪妮，难保双休）",
+          "impact": "运营质量下降",
+          "mitigation": "需至少补1人，最好补2人",
+          "level": "🔴"
+        },
+        {
+          "risk": "交接规划尚未拿到，时间不确定",
+          "impact": "迁移节奏延后",
+          "mitigation": "明天找谈娟要，明确时间点",
+          "level": "🟡"
+        },
+        {
+          "risk": "商业化知识门槛高，新人需1-2周学习期",
+          "impact": "短期服务质量波动",
+          "mitigation": "培训+验收+兜底方案",
+          "level": "🟡"
+        },
+        {
+          "risk": "企微账号频繁被限（单号日加约30人即触发风控）",
+          "impact": "建联效率低",
+          "mitigation": "推动短信+二维码方案试跑",
+          "level": "🟡"
+        }
+      ],
+      "todos": [
+        {
+          "content": "谈娟出交接+培训规划（含交接内容、培训方案、验收标准、兜底）",
+          "priority": "🔴",
+          "deadline": "尽快",
+          "status": "进行中"
+        },
+        {
+          "content": "蒋金才线下核实南雪妮组排班与职责口径",
+          "priority": "🟡",
+          "deadline": "本周",
+          "status": "待启动"
+        },
+        {
+          "content": "收到交接规划后，与南雪妮团队拉通交接会",
+          "priority": "🟡",
+          "deadline": "交接规划后",
+          "status": "待启动"
+        },
+        {
+          "content": "协调申请商业化C4运营权限",
+          "priority": "🔵",
+          "deadline": "交接前",
+          "status": "待启动"
+        }
+      ],
+      "kpi": {
+        "二次元项目": "✅ 已准出",
+        "美妆交接": "🔄 进行中",
+        "大服饰交接": "⏳ 待美妆完成后启动"
+      },
+      "skills_produced": [],
+      "output_tracking": [
+        {
+          "output_type": "knowledge_doc",
+          "output_name": "wuxi-migration-project.md（项目文件）",
+          "output_path": "projects/wuxi-migration-project.md",
+          "usage_source": "monitor-db:read_file（暂无调用）",
+          "usage_trend": "已产出",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "memory",
+          "output_name": "谈娟组→无锡高价值四组迁移专项（记忆）",
+          "output_path": "memory（记忆系统）",
+          "output_name_for_match": "谈娟组→无锡高价值四组迁移",
+          "usage_source": "monitor-db:search_memory（暂无调用）",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        }
+      ],
+      "uncertain_items": [
+        {
+          "type": "schedule",
+          "content": "谈娟交接规划何时交付",
+          "reason": "刚沟通，时间未定",
+          "flagged_at": "2026-05-19",
+          "status": "本周推进中"
+        },
+        {
+          "type": "resource",
+          "content": "无锡侧人力补充时间未知",
+          "reason": "招聘进度不确定",
+          "flagged_at": "2026-05-19",
+          "status": "跟进中"
+        }
+      ],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": null
+      },
+      "query_keywords": [
+        "无锡",
+        "迁移",
+        "南雪妮",
+        "谈娟",
+        "美妆",
+        "大服饰",
+        "高价值四组",
+        "交接",
+        "二次元准出"
+      ]
+    },
+    {
+      "project_id": "project-management-system",
+      "name": "项目管理体系",
+      "priority": "中",
+      "status": "进行中",
+      "owner": "蒋金才",
+      "start_date": "2026-05-17",
+      "deadline": null,
+      "last_updated": "2026-05-20",
+      "definition": "建立完整的项目管理基础设施：项目注册表→数据统一源→看板可视化→定时同步→产出追踪→健康监控→Skill封装。实现14个项目全生命周期管理，通过GitHub Pages公网可访问。",
+      "source_materials": [
+        {
+          "type": "conversation",
+          "date": "2026-05-17",
+          "key_info": "看板+组织架构图从零搭建，GitHub Pages部署"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-17",
+          "key_info": "数据流水线设计：registry→sync→projects-data→看板"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-18",
+          "key_info": "项目注册表+分类器+自动归类机制"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-19",
+          "key_info": "输出追踪体系+时序历史+Skill封装v2.1.0"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-17",
+          "content": "用单一projects-data.json作为统一数据源，sync脚本负责合并多源",
+          "background": "避免多文件数据不一致"
+        },
+        {
+          "date": "2026-05-17",
+          "content": "用GitHub Pages部署公网可访问",
+          "background": "无需服务器，免费托管"
+        },
+        {
+          "date": "2026-05-18",
+          "content": "采用三维分类器（关键词+多数派+工具分布）自动归类",
+          "background": "手动归类不可持续"
+        },
+        {
+          "date": "2026-05-18",
+          "content": "新增usage_history时间序列，覆盖6类产出中的5类追踪",
+          "background": "支持未来复盘趋势分析"
+        },
+        {
+          "date": "2026-05-19",
+          "content": "封装为project-management Skill v2.1.0，发布内网CDN",
+          "background": "可复用、可安装"
+        }
+      ],
+      "risks": [],
+      "todos": [
+        {
+          "content": "看板标签语义升级（三级标签替代不可追踪）",
+          "priority": "🟡",
+          "deadline": "本周",
+          "status": "待启动"
+        }
+      ],
+      "kpi": {},
+      "skills_produced": [
+        "project-management"
+      ],
+      "output_tracking": [
+        {
+          "output_type": "dashboard",
+          "output_name": "项目管理看板",
+          "output_path": "output/kanban.html",
+          "public_url": "https://jiangjincai85-sys.github.io/mario-pm-infra/"
+        },
+        {
+          "output_type": "dashboard",
+          "output_name": "监控看板",
+          "output_path": "output/monitor-dashboard.html"
+        },
+        {
+          "output_type": "dashboard",
+          "output_name": "新人介绍页",
+          "output_path": "knowledge-base/project-management-for-newcomers/index.html",
+          "public_url": "https://jiangjincai85-sys.github.io/mario-pm-infra/pm-intro.html"
+        },
+        {
+          "output_type": "dashboard",
+          "output_name": "追踪诊断页",
+          "output_path": "knowledge-base/output-tracking-diagnosis/index.html",
+          "public_url": "https://jiangjincai85-sys.github.io/mario-pm-infra/tracking-diagnosis.html"
+        },
+        {
+          "output_type": "dashboard",
+          "output_name": "追踪战略页",
+          "output_path": "knowledge-base/output-tracking-strategy/index.html",
+          "public_url": "https://jiangjincai85-sys.github.io/mario-pm-infra/tracking-strategy.html"
+        },
+        {
+          "output_type": "dashboard",
+          "output_name": "数据流水线介绍",
+          "output_path": "knowledge-base/project-data-pipeline/index.html",
+          "public_url": "https://jiangjincai85-sys.github.io/mario-pm-infra/project-plan.html"
+        },
+        {
+          "output_type": "dashboard",
+          "output_name": "Skill介绍页",
+          "output_path": "knowledge-base/project-management-skill-vista/index.html",
+          "public_url": "https://jiangjincai85-sys.github.io/mario-pm-infra/skill-vista.html"
+        },
+        {
+          "output_type": "script",
+          "output_name": "sync_projects_data.py",
+          "output_path": "scripts/sync_projects_data.py",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "script",
+          "output_name": "gen_project_stats.py",
+          "output_path": "scripts/gen_project_stats.py",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "script",
+          "output_name": "gen_monitor_dashboard.py",
+          "output_path": "scripts/gen_monitor_dashboard.py",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "script",
+          "output_name": "classify_tool_calls.py",
+          "output_path": "scripts/classify_tool_calls.py",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "knowledge_doc",
+          "output_name": "projects-data.json（统一数据源）",
+          "output_path": "output/projects-data.json",
+          "usage_source": "monitor-db:read_file（暂无调用）",
+          "usage_trend": "已产出",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "knowledge_doc",
+          "output_name": "project-management-for-newcomers（新人介绍）",
+          "output_path": "knowledge-base/project-management-for-newcomers/",
+          "usage_count": 1,
+          "last_used": "2026-05-14",
+          "usage_source": "monitor-db:read_file",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 1
+            },
+            {
+              "date": "2026-05-21",
+              "count": 1
+            },
+            {
+              "date": "2026-05-24",
+              "count": 1
+            },
+            {
+              "date": "2026-05-25",
+              "count": 1
+            },
+            {
+              "date": "2026-05-26",
+              "count": 1
+            },
+            {
+              "date": "2026-05-27",
+              "count": 1
+            },
+            {
+              "date": "2026-05-31",
+              "count": 1
+            },
+            {
+              "date": "2026-06-01",
+              "count": 1
+            },
+            {
+              "date": "2026-06-02",
+              "count": 1
+            },
+            {
+              "date": "2026-06-03",
+              "count": 1
+            },
+            {
+              "date": "2026-06-04",
+              "count": 1
+            },
+            {
+              "date": "2026-06-05",
+              "count": 1
+            },
+            {
+              "date": "2026-06-07",
+              "count": 1
+            },
+            {
+              "date": "2026-06-08",
+              "count": 1
+            }
+          ],
+          "usage_trend": "低频"
+        },
+        {
+          "output_type": "knowledge_doc",
+          "output_name": "data-structure.md（数据结构参考）",
+          "output_path": "~/.codeflicker/skills/project-management/references/data-structure.md",
+          "usage_source": "monitor-db:read_file（暂无调用）",
+          "usage_trend": "已产出",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        }
+      ],
+      "uncertain_items": [
+        {
+          "type": "design",
+          "content": "看板标签语义升级方案待确认",
+          "reason": "阶段2待推进",
+          "flagged_at": "2026-05-20",
+          "status": "本周推进中"
+        }
+      ],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": null
+      },
+      "query_keywords": [
+        "项目管理",
+        "看板",
+        "sync",
+        "部署",
+        "产出追踪",
+        "健康监控",
+        "project-management",
+        "注册表"
+      ]
+    },
+    {
+      "project_id": "weekly-report-dashboard",
+      "name": "经营周报看板体系",
+      "priority": "高",
+      "status": "进行中",
+      "owner": "蒋金才（即将交接王坚）",
+      "start_date": "2026-05-06",
+      "deadline": null,
+      "last_updated": "2026-05-20",
+      "definition": "每周生成经营周报HTML可视化看板：4个KPI卡片+17个图表+桥图归因+TOP5/BOTTOM5+连续趋势表格+项目复盘。从Excel原始数据→JS数据数组→ECharts渲染→frontend-cloud部署。WK18起持续迭代至WK20，累积12条踩坑经验，建立数据校验函数+配色层级体系+下钻标准模板+衍生指标全量扫描规范。即将交接王坚。",
+      "source_materials": [
+        {
+          "type": "conversation",
+          "date": "2026-05-06",
+          "key_info": "WK18看板首次搭建"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-12",
+          "key_info": "WK19看板更新+人效公式修正"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-19",
+          "key_info": "WK20看板更新+人天产出计算"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-06",
+          "content": "用ECharts+纯HTML实现，不依赖React框架",
+          "background": "降低依赖、快速迭代"
+        },
+        {
+          "date": "2026-05-19",
+          "content": "人效公式修正为组级口径：各组总产出÷各组总挂靠人力",
+          "background": "旧公式用项目级口径导致人效虚高"
+        },
+        {
+          "date": "2026-05-19",
+          "content": "建立衍生指标全量引用扫描清单（11处检查点）",
+          "background": "WK19人效修正后遗漏5处引用导致线上数据不一致"
+        }
+      ],
+      "risks": [
+        {
+          "risk": "王坚接手后可能出现数据更新遗漏",
+          "impact": "周报数据错误",
+          "mitigation": "操作手册+数据校验清单+周二11:00前检查",
+          "level": "🟡"
+        }
+      ],
+      "todos": [
+        {
+          "content": "周报瘦身：梳理高价值指标，低价值指标下沉/砍掉",
+          "priority": "🔴",
+          "deadline": "本周",
+          "status": "进行中"
+        },
+        {
+          "content": "王坚跟学做数据（周二实操）",
+          "priority": "🔴",
+          "deadline": "2026-05-20",
+          "status": "进行中"
+        }
+      ],
+      "kpi": {
+        "每周更新": "✅ WK18-20持续运行",
+        "图表数量": "17个",
+        "KPI卡片": "4个（含双口径Coverage）",
+        "踩坑经验": "12条（WK19 8条 + WK20 6条）"
+      },
+      "skills_produced": [
+        "weekly-report-visualization",
+        "operation-weekly-report"
+      ],
+      "output_tracking": [
+        {
+          "output_type": "skill",
+          "output_name": "weekly-report-visualization",
+          "output_path": "~/.codeflicker/skills/weekly-report-visualization",
+          "usage_count": 1,
+          "last_used": "2026-06-08",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 1
+            },
+            {
+              "date": "2026-05-21",
+              "count": 1
+            },
+            {
+              "date": "2026-05-24",
+              "count": 1
+            },
+            {
+              "date": "2026-05-25",
+              "count": 1
+            },
+            {
+              "date": "2026-05-26",
+              "count": 1
+            },
+            {
+              "date": "2026-05-27",
+              "count": 1
+            },
+            {
+              "date": "2026-05-31",
+              "count": 1
+            },
+            {
+              "date": "2026-06-01",
+              "count": 1
+            },
+            {
+              "date": "2026-06-02",
+              "count": 1
+            },
+            {
+              "date": "2026-06-03",
+              "count": 1
+            },
+            {
+              "date": "2026-06-04",
+              "count": 1
+            },
+            {
+              "date": "2026-06-05",
+              "count": 1
+            },
+            {
+              "date": "2026-06-07",
+              "count": 1
+            },
+            {
+              "date": "2026-06-08",
+              "count": 1
+            }
+          ],
+          "usage_trend": "新上线",
+          "runtime_health": {
+            "total_calls": 1,
+            "total_errors": 0,
+            "error_rate": 0.0,
+            "health_status": "✅正常",
+            "last_used": "2026-05-14"
+          }
+        },
+        {
+          "output_type": "skill",
+          "output_name": "operation-weekly-report",
+          "output_path": "~/.codeflicker/skills/operation-weekly-report",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "knowledge_doc",
+          "output_name": "weekly-report-optimization（优化文档）",
+          "output_path": "knowledge-base/weekly-report-optimization/",
+          "usage_count": 1,
+          "last_used": "2026-05-14",
+          "usage_source": "monitor-db:read_file",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 1
+            },
+            {
+              "date": "2026-05-21",
+              "count": 1
+            },
+            {
+              "date": "2026-05-24",
+              "count": 1
+            },
+            {
+              "date": "2026-05-25",
+              "count": 1
+            },
+            {
+              "date": "2026-05-26",
+              "count": 1
+            },
+            {
+              "date": "2026-05-27",
+              "count": 1
+            },
+            {
+              "date": "2026-05-31",
+              "count": 1
+            },
+            {
+              "date": "2026-06-01",
+              "count": 1
+            },
+            {
+              "date": "2026-06-02",
+              "count": 1
+            },
+            {
+              "date": "2026-06-03",
+              "count": 1
+            },
+            {
+              "date": "2026-06-04",
+              "count": 1
+            },
+            {
+              "date": "2026-06-05",
+              "count": 1
+            },
+            {
+              "date": "2026-06-07",
+              "count": 1
+            },
+            {
+              "date": "2026-06-08",
+              "count": 1
+            }
+          ],
+          "usage_trend": "低频"
+        },
+        {
+          "output_type": "memory",
+          "output_name": "WK19周报踩坑经验（8条）",
+          "output_path": "memory（记忆系统）",
+          "output_name_for_match": "WK19修复,数组错位,饼图标签,人服务比,衍生指标",
+          "usage_source": "monitor-db:search_memory（暂无调用）",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "memory",
+          "output_name": "WK20周报踩坑经验（6条）",
+          "output_path": "memory（记忆系统）",
+          "output_name_for_match": "WK20复盘,桥图,饼图下钻,数据校验,配色层级",
+          "usage_source": "monitor-db:search_memory（暂无调用）",
+          "usage_history": [
+            {
+              "date": "2026-05-20",
+              "count": 0
+            },
+            {
+              "date": "2026-05-21",
+              "count": 0
+            },
+            {
+              "date": "2026-05-24",
+              "count": 0
+            },
+            {
+              "date": "2026-05-25",
+              "count": 0
+            },
+            {
+              "date": "2026-05-26",
+              "count": 0
+            },
+            {
+              "date": "2026-05-27",
+              "count": 0
+            },
+            {
+              "date": "2026-05-31",
+              "count": 0
+            },
+            {
+              "date": "2026-06-01",
+              "count": 0
+            },
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        }
+      ],
+      "uncertain_items": [],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": null
+      },
+      "query_keywords": [
+        "周报",
+        "看板",
+        "经营周会",
+        "WK",
+        "人效",
+        "桥图",
+        "饼图",
+        "ECharts",
+        "趋势",
+        "前端部署",
+        "王坚"
+      ]
+    },
+    {
+      "project_id": "ai-guard-forge",
+      "name": "AI监工（Forge）",
+      "priority": "高",
+      "status": "进行中",
+      "owner": "Mario Claw",
+      "start_date": "2026-05-20",
+      "deadline": "2026-06-20",
+      "last_updated": "2026-05-20",
+      "definition": "引进 Forge 护栏系统，为 AI 配一个监工。5层护栏机制（提醒重来、绕过卡点、步骤强制、乱输出纠正、内存腾挪），让便宜 AI（8B 模型）做 100 件事只错不到 1 件，超过没用监工的贵 AI。有零改动 Proxy 模式，放在 AI 外面就能用，不碰原代码。",
+      "source_materials": [
+        {
+          "type": "web_url",
+          "url": "https://github.com/antoinezambelli/forge",
+          "title": "Forge GitHub 仓库",
+          "date_accessed": "2026-05-20",
+          "key_info": "5层护栏架构，Ministral 8B 从 53%→99.3%，ACM CAIS '26 论文"
+        },
+        {
+          "type": "local_file",
+          "path": "knowledge-base/ai-outlook/repos/forge/",
+          "title": "Forge 本地代码仓库（已安装）",
+          "key_info": "pip install 完成，venv 位于 .venv/，Python 3.12 环境"
+        },
+        {
+          "type": "web_url",
+          "url": "https://ai-outlook-vista.frontend-cloud.corp.kuaishou.com",
+          "title": "AI向外看研究简报",
+          "date_accessed": "2026-05-20",
+          "key_info": "含 Forge 人话版解读+技术对照翻译"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-20",
+          "content": "采用 Proxy 零改动模式做初次尝试",
+          "background": "不碰现有代码，放在 AI 外层做防护"
+        },
+        {
+          "date": "2026-05-20",
+          "content": "先本地测试，验证效果后再考虑生产环境集成",
+          "background": "需要实测中文场景和快手业务环境下的表现"
+        }
+      ],
+      "risks": [
+        {
+          "risk": "🟡 中文场景适配未知",
+          "impact": "Forge 论文和测试以英文为主，中文业务场景需要验证",
+          "mitigation": "本地测试时重点关注中文提示和快手工具链"
+        },
+        {
+          "risk": "🟡 Proxy 模式增加一层延迟",
+          "impact": "每个 AI 调用多经过一层代理，可能影响响应速度",
+          "mitigation": "实测通过！Forge Proxy 延迟低于纯 Ollama（retry nudge 帮助更快收敛）",
+          "status": "已验证风险解除 ✅"
+        }
+      ],
+      "todos": [
+        {
+          "content": "部署 Proxy 模式，接入本地 AI 工具链做验证",
+          "priority": "🔴",
+          "deadline": "5月27日前",
+          "status": "已完成 ✅（qwen2.5:1.5b + Forge Proxy 真实联调成功，工具调用率33%→100%）"
+        },
+        {
+          "content": "实测中文场景：用快手业务典型任务跑一遍，看护栏是否有效",
+          "priority": "🔴",
+          "deadline": "5月30日前",
+          "status": "已完成 ✅（5层护栏测试完成，71%中文救回率，报告已出）"
+        },
+        {
+          "content": "评估是否值得投入生产环境",
+          "priority": "🟡",
+          "deadline": "6月10日前",
+          "status": "进行中（真实Proxy测试成功！工具调用率1/3→3/3。结论：值得投入，但需3个中文适配改动）"
+        },
+        {
+          "content": "如果效果好：写一份接入文档，让团队其他人也能用",
+          "priority": "🟡",
+          "deadline": "6月20日前",
+          "status": "待启动"
+        }
+      ],
+      "kpi": {
+        "目标": "验证 Forge 在中文/快手场景的效果",
+        "Proxy模式状态": "已部署（端口8081，已用qwen2.5:1.5b实测通过）",
+        "Python环境": "3.12 ✅",
+        "pip安装": "已完成 ✅",
+        "模拟测试": "已完成 ✅（5层护栏全测）",
+        "护栏1识别率": "100%",
+        "护栏2+3正确率": "100%",
+        "护栏4中文救回率": "71%（模拟测试）",
+        "真实Proxy测试": "已完成 ✅（qwen2.5:1.5b, 3场景）",
+        "纯Ollama工具调用率": "1/3 (33%)",
+        "Forge Proxy工具调用率": "3/3 (100%)",
+        "护栏提升效果": "+67%",
+        "关键发现": "Forge护栏在真实Proxy模式下有效提升小模型工具调用成功率，且无明显额外延迟",
+        "错误预算": "有效 ✅",
+        "内存腾挪": "有效 ✅"
+      },
+      "skills_produced": [],
+      "output_tracking": [],
+      "uncertain_items": [
+        {
+          "type": "data",
+          "content": "Forge 在中文场景下的准确率尚未验证",
+          "reason": "论文数据全是英文基准，中文效果待实测",
+          "flagged_at": "2026-05-20",
+          "status": "待确认"
+        },
+        {
+          "type": "decision",
+          "content": "是否值得长期投入维护 Forge？",
+          "reason": "需要看实测效果再决定，一个月后用数据说话",
+          "flagged_at": "2026-05-20",
+          "status": "待确认（6月20日前评估）"
+        }
+      ],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": null
+      },
+      "query_keywords": [
+        "Forge",
+        "forge",
+        "护栏",
+        "监工",
+        "guard",
+        "guardrail",
+        "AI准确率",
+        "AI防错",
+        "AI容错"
+      ]
+    },
+    {
+      "project_id": "ai-agent-handbook",
+      "name": "AI员工手册（agents-best-practices）",
+      "priority": "中",
+      "status": "进行中",
+      "owner": "Mario Claw",
+      "start_date": "2026-05-20",
+      "deadline": null,
+      "last_updated": "2026-05-21",
+      "definition": "引进 agents-best-practices：一套给 AI 助手用的员工手册。16 篇参考文档覆盖全流程：从 AI 循环怎么做到什么操作能自己做、什么要审批、什么绝对不能碰。核心价值：把操作按危险程度分成 7 级（只读→草稿→写内部→发外部→花钱→删东西→管理员权限），每级配不同规则。弥补我们目前「危险的别干」这种模糊约束。",
+      "source_materials": [
+        {
+          "type": "web_url",
+          "url": "https://github.com/DenisSergeevitch/agents-best-practices",
+          "title": "agents-best-practices GitHub 仓库",
+          "date_accessed": "2026-05-20",
+          "key_info": "874⭐，7条循环铁律，16篇参考文档，7级风险分类"
+        },
+        {
+          "type": "local_file",
+          "path": "knowledge-base/ai-outlook/repos/agents-best-practices/",
+          "title": "本地代码仓库",
+          "key_info": "含 SKILL.md + references/ 目录，可作为 CodeFlicker Skill 安装"
+        },
+        {
+          "type": "web_url",
+          "url": "https://ai-outlook-vista.frontend-cloud.corp.kuaishou.com",
+          "title": "AI向外看研究简报",
+          "date_accessed": "2026-05-20",
+          "key_info": "含对比表：手册规矩 vs 我们现状"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-20",
+          "content": "作为 CodeFlicker Skill 安装到系统",
+          "background": "SKILL.md 格式兼容，直接放入 ~/.codeflicker/skills/"
+        },
+        {
+          "date": "2026-05-20",
+          "content": "手册内容作为参考，不强制执行——每次设计新 AI 功能时翻一翻",
+          "background": "适合作为规范参考而非硬性规则"
+        }
+      ],
+      "risks": [],
+      "todos": [
+        {
+          "content": "把仓库内容复制到 ~/.codeflicker/skills/agents-best-practices/",
+          "priority": "🔴",
+          "deadline": "5月21日",
+          "status": "已完成 ✅（5/20已克隆至skill目录，内容一致）"
+        },
+        {
+          "content": "提取 7 级风险分类表，做成一页纸速查卡",
+          "priority": "🟡",
+          "deadline": "5月25日前",
+          "status": "待启动"
+        },
+        {
+          "content": "下次给 AI 设计新能力时，用这个手册做安全检查",
+          "priority": "🟡",
+          "deadline": null,
+          "status": "持续"
+        }
+      ],
+      "kpi": {
+        "覆盖章节": "16篇",
+        "风险分级": "7级",
+        "现状对标": "我们目前3项缺明确规则"
+      },
+      "skills_produced": [],
+      "output_tracking": [],
+      "uncertain_items": [],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": null
+      },
+      "query_keywords": [
+        "员工手册",
+        "best-practices",
+        "最佳实践",
+        "AI规范",
+        "风险分级",
+        "操作权限",
+        "权限矩阵",
+        "AI安全"
+      ]
+    },
+    {
+      "project_id": "one-click-html",
+      "name": "一键出图（html-anything）",
+      "priority": "中",
+      "status": "进行中",
+      "owner": "Mario Claw",
+      "start_date": "2026-05-20",
+      "deadline": null,
+      "last_updated": "2026-05-20",
+      "definition": "研究 html-anything：一个 AI 驱动的页面生成工具。说「做个周报」就直接出成品页面，75种模板覆盖 9 种场景（数据报告、海报、小红书卡片等）。一键推送到微信/朋友圈/知乎。零 API Key，复用本机已登录的 AI 工具。对我们最有价值的是「一键推送工作群」模式——这是我们简报下一步的方向。",
+      "source_materials": [
+        {
+          "type": "web_url",
+          "url": "https://github.com/nexu-io/html-anything",
+          "title": "html-anything GitHub 仓库",
+          "date_accessed": "2026-05-20",
+          "key_info": "4.1K⭐，75种模板，9种场景，nexu-io 团队（背后是 Open Design 4万星项目）"
+        },
+        {
+          "type": "local_file",
+          "path": "knowledge-base/ai-outlook/repos/html-anything/",
+          "title": "本地代码仓库",
+          "key_info": "TypeScript/Next.js 项目，含中文 CONTRIBUTING.zh-CN.md"
+        },
+        {
+          "type": "web_url",
+          "url": "https://ai-outlook-vista.frontend-cloud.corp.kuaishou.com",
+          "title": "AI向外看研究简报",
+          "date_accessed": "2026-05-20",
+          "key_info": "含 html-anything 人话版解读"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-20",
+          "content": "先不部署生产，仅提取设计模式借鉴",
+          "background": "我们已有 VISTA + frontend-cloud 体系，暂时不需要换工具"
+        },
+        {
+          "date": "2026-05-20",
+          "content": "重点研究它的一键推送工作群模式，作为我们简报下一版本方向",
+          "background": "目前简报部署到公网但没推送到 Kim 群的能力"
+        }
+      ],
+      "risks": [],
+      "todos": [
+        {
+          "content": "安装依赖（pnpm install），本地跑起来看效果",
+          "priority": "🟡",
+          "deadline": "5月25日前",
+          "status": "待启动"
+        },
+        {
+          "content": "提取它的一键推送设计模式，写一份借鉴清单",
+          "priority": "🟡",
+          "deadline": "5月28日前",
+          "status": "待启动"
+        },
+        {
+          "content": "评估是否把一键推 Kim 群能力加进我们的简报系统",
+          "priority": "🟡",
+          "deadline": null,
+          "status": "待规划"
+        }
+      ],
+      "kpi": {
+        "模板数": "75种",
+        "场景覆盖": "9种",
+        "中文支持": "✅（含中文贡献指南）"
+      },
+      "skills_produced": [],
+      "output_tracking": [],
+      "uncertain_items": [],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": null
+      },
+      "query_keywords": [
+        "html-anything",
+        "一键出图",
+        "页面生成",
+        "AI出图",
+        "推送",
+        "一键推送",
+        "卡片生成",
+        "模板"
+      ]
+    },
+    {
+      "project_id": "ai-native-lang",
+      "name": "AI专属语言（zerolang）",
+      "priority": "低",
+      "status": "跟踪观察",
+      "owner": "Mario Claw",
+      "start_date": "2026-05-20",
+      "deadline": null,
+      "last_updated": "2026-05-20",
+      "definition": "跟踪 zerolang：Vercel Labs 推出的 AI 原生编程语言。设计理念：语法极规律（规则少、例外少）、AI 看例子就能学会、报错不但说哪里错还说什么怎么修、同一种事只有一种写法（不用纠结选哪种）。目前 Pre-1.0，实验阶段，不适合生产——但设计哲学值得记住。",
+      "source_materials": [
+        {
+          "type": "web_url",
+          "url": "https://github.com/vercel-labs/zerolang",
+          "title": "zerolang GitHub 仓库",
+          "date_accessed": "2026-05-20",
+          "key_info": "3.7K⭐，Vercel Labs，Pre-1.0，C 编写，结构化诊断信息"
+        },
+        {
+          "type": "local_file",
+          "path": "knowledge-base/ai-outlook/repos/zerolang/",
+          "title": "本地代码仓库",
+          "key_info": "含 AGENTS.md（给 AI 看的说明）、conformance 测试套件、80+ 示例"
+        },
+        {
+          "type": "web_url",
+          "url": "https://ai-outlook-vista.frontend-cloud.corp.kuaishou.com",
+          "title": "AI向外看研究简报",
+          "date_accessed": "2026-05-20",
+          "key_info": "含 zerolang 人话版解读——日语 vs 普通话比喻"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-20",
+          "content": "仅观察跟踪，不做任何投入",
+          "background": "Pre-1.0 实验阶段，随时可能大改，不适合任何实际使用"
+        },
+        {
+          "date": "2026-05-20",
+          "content": "记住设计哲学：简单规律、错了给提示",
+          "background": "可以作为我们设计 AI 工具时的指导原则"
+        }
+      ],
+      "risks": [],
+      "todos": [
+        {
+          "content": "每 2-4 周检查一次更新（关注是否进入 Beta/1.0）",
+          "priority": "🟢",
+          "deadline": null,
+          "status": "持续"
+        },
+        {
+          "content": "如果进入 1.0：重新评估是否值得尝试",
+          "priority": "🟢",
+          "deadline": null,
+          "status": "等待"
+        }
+      ],
+      "kpi": {
+        "当前版本": "Pre-1.0",
+        "关注度": "3.7K⭐",
+        "团队": "Vercel Labs"
+      },
+      "skills_produced": [],
+      "output_tracking": [],
+      "uncertain_items": [],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": null
+      },
+      "query_keywords": [
+        "zerolang",
+        "zero",
+        "AI语言",
+        "编程语言",
+        "Vercel",
+        "AI原生",
+        "智能体语言",
+        "agent语言"
+      ]
+    },
+    {
+      "project_id": "pm-agent",
+      "name": "项目管理 Agent",
+      "category": "基础设施",
+      "priority": "S级",
+      "status": "进行中",
+      "owner": "PMAgent（自主运行） + 蒋金才（监督）",
+      "start_date": "2026-05-24",
+      "deadline": "持续运行",
+      "last_updated": "2026-05-24",
+      "description": "从 project-management skill 进化而来的自主项目管理 Agent。每30分钟自动巡检项目健康度，Level 1 级别执行低风险自动修复。",
+      "definition": "项目管理 Agent 是 project-management skill 的进化版本。Skill 是被动的——你说什么它做什么；Agent 是主动的——自己判断时机，在规则允许范围内自主行动。当前运行在 trust_level=1（低风险自动修复），包括：sync链路重试、产出退化诊断、系统健康巡检。未来逐级放权到 Level 2（自动标记+Kim告警）和 Level 3（跨项目协调）。",
+      "source_materials": [
+        {
+          "type": "local_file",
+          "date": "2026-05-24",
+          "key_info": "scripts/pm_agent.py — Agent 主脚本（感知→决策→行动→自检）"
+        },
+        {
+          "type": "local_file",
+          "date": "2026-05-24",
+          "key_info": "output/pm_agent_config.json — 规则配置+信任级别"
+        },
+        {
+          "type": "local_file",
+          "date": "2026-05-24",
+          "key_info": "scripts/scheduler_daemon.py — 挂载Agent到30分钟周期"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-24",
+          "key_info": "设计讨论：Skill→Agent进化、感知层/推理层/行动层架构、信任阶梯、自我指涉"
+        }
+      ],
+      "design_principles": [
+        "观察者模式：不替代现有系统，只在上面加一层眼和手",
+        "信任阶梯：Level 0(观察)→1(低风险修复)→2(中风险处置)→3(自主决策)",
+        "自我指涉：Agent 代码本身也是一个项目，受自己管理",
+        "可审计：所有行动记录到 JSONL，任何时间可回溯"
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-24",
+          "content": "启动 Agent 进化：从 skill 到 Level 1 agent",
+          "background": "基建就绪度评估 82%，0 失败项，满足介入条件"
+        },
+        {
+          "date": "2026-05-24",
+          "content": "trust_level 设为 1：允许 sync 重试和诊断收集",
+          "background": "首跑验证成功，自动重试 sync 链路"
+        },
+        {
+          "date": "2026-05-24",
+          "content": "Agent 作为第21个项目注册，实现自我管理",
+          "background": "自我指涉设计原则"
+        }
+      ],
+      "risks": [
+        {
+          "risk": "Agent 误报",
+          "impact": "打扰注意力",
+          "mitigation": "信任阶梯逐级放权，误报率<5%后才升级",
+          "severity": "🟢低"
+        },
+        {
+          "risk": "JSON 写入冲突",
+          "impact": "Agent 和 sync 脚本同时写 projects-data.json",
+          "mitigation": "Agent 只追加 uncertain_items/decisions，不碰核心字段",
+          "severity": "🟢低"
+        }
+      ],
+      "todos": [
+        {
+          "content": "稳定运行一周，观察误报/漏报率",
+          "priority": "高",
+          "deadline": "2026-05-31",
+          "status": "进行中"
+        },
+        {
+          "content": "误报率<5%后，升级 trust_level 到 2",
+          "priority": "中",
+          "deadline": "2026-06-07",
+          "status": "待启动"
+        },
+        {
+          "content": "Agent 运行周报自动生成",
+          "priority": "低",
+          "deadline": "2026-06-14",
+          "status": "待启动"
+        },
+        {
+          "content": "Level 3 跨项目冲突检测",
+          "priority": "低",
+          "deadline": "2026-06-30",
+          "status": "待启动"
+        }
+      ],
+      "kpi": {
+        "巡检频率": "每30分钟",
+        "首跑耗时": "4.2s",
+        "目标误报率": "<5%",
+        "目标自愈率": ">80%"
+      },
+      "skills_produced": [],
+      "output_tracking": [
+        {
+          "output_name": "pm_agent_health.json",
+          "output_type": "数据文件",
+          "description": "每次巡检的健康报告",
+          "usage_frequency": "每30分钟更新",
+          "runtime_health": {
+            "health_status": "✅正常",
+            "last_check": "2026-05-24"
+          }
+        },
+        {
+          "output_name": "pm_agent_audit.jsonl",
+          "output_type": "审计日志",
+          "description": "所有Agent行动的追加式审计记录",
+          "usage_frequency": "每次行动追加",
+          "runtime_health": {
+            "health_status": "✅正常",
+            "last_check": "2026-05-24"
+          }
+        }
+      ],
+      "uncertain_items": []
+    },
+    {
+      "project_id": "persona-exploration",
+      "name": "人格化探索专项",
+      "priority": "高",
+      "status": "进行中",
+      "owner": "刘备",
+      "start_date": "2026-04-28",
+      "deadline": "2026-08-31",
+      "last_updated": "2026-05-26",
+      "definition": "推动泛知识品类无人格化作者向真人出镜+真人声音转型，建立内容调优体系并规模化复制到全品类。已完成情感品类验证（2d4k供稿+309%），正在扩量至戏曲、财经、军事、法律等P0品类。",
+      "source_materials": [
+        {
+          "type": "docs_link",
+          "url": "https://docs.corp.kuaishou.com/d/home/fcAAzampAtxWp4ZShsecHDzxr",
+          "title": "泛知识人格化转型-进展&规划",
+          "date_accessed": "2026-05-15",
+          "key_info": "情感品类首期验证+309%供稿增长，预算从促波向人格化长期覆盖倾斜"
+        },
+        {
+          "type": "docs_link",
+          "url": "https://docs.corp.kuaishou.com/d/home/fcAAh1pd3tqaog8BGzEsI80P1",
+          "title": "人格化定义及标准",
+          "key_info": "三级分层+五维判定+剔除规则"
+        },
+        {
+          "type": "docs_link",
+          "url": "https://docs.corp.kuaishou.com/d/home/fcACxi5IzqbGtwBtAA-l2_hWL",
+          "title": "进展&规划 26.5",
+          "key_info": "5月进展更新"
+        },
+        {
+          "type": "docs_link",
+          "url": "https://docs.corp.kuaishou.com/d/home/fcADEnCqk9STJa2KS6lCngm2S",
+          "title": "规模化规划 26.4",
+          "key_info": "全品类复制路径"
+        },
+        {
+          "type": "docs_link",
+          "url": "https://docs.corp.kuaishou.com/d/home/fcABgKh6lOFtYLgm6owRYyIEH",
+          "title": "执行SOP",
+          "key_info": "闯关手册+实战大全+全套话术"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-15",
+          "key_info": "首次阅读人格化转型文档，理解全貌（5s4k59pq2ydmbai26qwo）"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-22",
+          "key_info": "生成客服总监汇报材料：Markdown+Word+HTML（vhhu0xmovurfu4xti7zt）"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-25",
+          "key_info": "创建VISTA一屏看板，30秒理解项目价值（EB9B3842-9D59-4D38-8BBD）"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-26",
+          "key_info": "修复VISTA看板数据展示，用真实实验数据替换模糊描述（vyy46y4f53k8h4zyd6bq）"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-04-28",
+          "content": "首期选择情感品类试跑",
+          "background": "P0最优+376人+人格化率仅17.6%"
+        },
+        {
+          "date": "2026-05-中",
+          "content": "预算从促波策略向人格化长期覆盖倾斜",
+          "background": "人格化转型月预算→20w现金，促波策略权重降低至5w以下"
+        },
+        {
+          "date": "2026-05-中",
+          "content": "5关渐进式内容调优体系确立",
+          "background": "人设→主页→促活→首条→持续，先易后难逐关递进"
+        },
+        {
+          "date": "2026-05-中",
+          "content": "内容标准确立：三级分层+五维判定+剔除规则",
+          "background": "解决'什么内容算好'的定义问题"
+        }
+      ],
+      "risks": [
+        {
+          "risk": "🟡 人工审核是规模化瓶颈",
+          "impact": "品类多了审核跟不上",
+          "mitigation": "培养审核标准可外包，探索自动化判定工具",
+          "severity": "🟡中"
+        },
+        {
+          "risk": "🟡 作者意愿分化",
+          "impact": "不是所有作者都愿意真人出镜",
+          "mitigation": "接受自然转化率衰减，聚焦有意愿的作者",
+          "severity": "🟡中"
+        },
+        {
+          "risk": "🟡 规模化后调优深度不足",
+          "impact": "每人能获得的运营关注减少",
+          "mitigation": "SOP标准化程度越高，对人工依赖越低",
+          "severity": "🟡中"
+        },
+        {
+          "risk": "🟡 20人部分转型作者回退风险",
+          "impact": "拿完奖励又发老内容",
+          "mitigation": "单独触达，不愿改则剔除",
+          "severity": "🟡中"
+        }
+      ],
+      "todos": [
+        {
+          "content": "🔴 6月扩量：戏曲品类",
+          "priority": "🔴",
+          "deadline": "6月",
+          "status": "待启动"
+        },
+        {
+          "content": "🔴 6月扩量：财经品类",
+          "priority": "🔴",
+          "deadline": "6月",
+          "status": "待启动"
+        },
+        {
+          "content": "🔴 6月扩量：军事品类",
+          "priority": "🔴",
+          "deadline": "6月",
+          "status": "待启动"
+        },
+        {
+          "content": "🔴 6月扩量：法律品类",
+          "priority": "🔴",
+          "deadline": "6月",
+          "status": "待启动"
+        },
+        {
+          "content": "🟡 6-7月 教育、健康品类（视资源）",
+          "priority": "🟡",
+          "deadline": "7月",
+          "status": "待启动"
+        },
+        {
+          "content": "🟡 Q3 全部高优品类覆盖",
+          "priority": "🟡",
+          "deadline": "Q3",
+          "status": "待启动"
+        },
+        {
+          "content": "🟡 Q3+ 已调优品类二次推进（普通→优质跃迁）",
+          "priority": "🟡",
+          "deadline": "Q3+",
+          "status": "待启动"
+        },
+        {
+          "content": "🔴 20人部分转型作者确认去留意向",
+          "priority": "🔴",
+          "deadline": "近期",
+          "status": "待启动"
+        }
+      ],
+      "kpi": {
+        "首期验证人数": {
+          "目标": "200人",
+          "实际": "119人"
+        },
+        "2d4k供稿提升": {
+          "调优组": "+309%",
+          "未调优组（对照组）": "+22.1%"
+        },
+        "2d4k转化率": {
+          "调优前": "5.8%",
+          "调优后": "14.8%",
+          "提升": "+9.1pp"
+        },
+        "日均作品供给": {
+          "调优前": "2.2篇",
+          "调优后": "3.6篇"
+        },
+        "零到一成功率": "88.4%（从二创/AI成功转型真人出镜）",
+        "扩量一期（6月）": {
+          "品类数": "5个",
+          "预期调优人数": "~500人"
+        },
+        "扩量二期（Q3）": {
+          "品类数": "10+",
+          "预期调优人数": "~1500人"
+        }
+      },
+      "skills_produced": [],
+      "output_tracking": [
+        {
+          "output_name": "客服总监汇报-人格化转型价值案例.md",
+          "output_type": "汇报文档",
+          "output_path": "docs_output/人格化转型汇报/客服总监汇报-人格化转型价值案例.md",
+          "description": "5章节完整汇报：问题分析→调优体系→效果验证→规模化路径→总结",
+          "usage_frequency": "定期汇报",
+          "runtime_health": {
+            "health_status": "✅正常",
+            "last_used": "2026-05-26"
+          }
+        },
+        {
+          "output_name": "客服总监汇报-人格化转型价值案例.docx",
+          "output_type": "Word文档",
+          "output_path": "docs_output/人格化转型汇报/客服总监汇报-人格化转型价值案例.docx",
+          "description": "Word格式汇报文档，与MD同步",
+          "usage_frequency": "正式汇报",
+          "runtime_health": {
+            "health_status": "✅正常",
+            "last_used": "2026-05-22"
+          }
+        },
+        {
+          "output_name": "VISTA一屏看板",
+          "output_type": "HTML可视化",
+          "output_path": "knowledge-base/人格化转型汇报/index.html",
+          "description": "30秒理解的VISTA仪表盘：+309%优质内容提升、119人完成调优等核心KPI",
+          "usage_frequency": "汇报展示",
+          "runtime_health": {
+            "health_status": "✅正常",
+            "last_used": "2026-05-26"
+          }
+        }
+      ],
+      "uncertain_items": [],
+      "query_keywords": [
+        "人格化",
+        "人格化转型",
+        "内容调优",
+        "真人出镜",
+        "无人格化",
+        "情感品类",
+        "2d4k",
+        "内容质量",
+        "客服总监汇报",
+        "泛知识人格化",
+        "VISTA看板",
+        "扩量"
+      ]
+    },
+    {
+      "project_id": "zhanghongyu-newmedia-adgrowth",
+      "name": "新媒体线索获客协作专项（磁力智投）",
+      "priority": "高",
+      "status": "进行中",
+      "owner": "张洪瑜",
+      "co_owner": "蒋金才",
+      "start_date": "2026-05-26",
+      "deadline": "2026-08-31",
+      "last_updated": "2026-06-03",
+      "definition": "磁力智投（DSP自助广告）新媒体获客专项。通过抖音、小红书、视频号等多平台内容分发获取有效商户线索，驱动平台广告消耗增长。分精品官号（高质量内容孵化单号）和非精品（大批量泛内容多号分发）两条路径。甲方（张洪瑜团队）负责策略、培训SOP、素材和投放资金；蒋金才团队负责账号运营、内容分发执行和线索回传。商业模型已验证：日耗百万，上门线索占比超37%，线索转化率和UP值可推算30日/季度ROI。",
+      "source_materials": [
+        {
+          "type": "docx",
+          "name": "会议录制_ 对下新媒体的事儿.docx",
+          "path": "/Users/jiangjincai/Desktop/会议录制_ 对下新媒体的事儿.docx",
+          "description": "完整会议录音转写稿，包含业务全貌、角色分工、商业化逻辑、风险澄清等详细内容"
+        },
+        {
+          "type": "docx",
+          "name": "纪要_新媒体线索合作项目沟通.docx",
+          "path": "/Users/jiangjincai/Desktop/纪要_新媒体线索合作项目沟通.docx",
+          "description": "AI生成的会议纪要，含结构化摘要、合作模式、风险分析和待办事项"
+        },
+        {
+          "type": "docx",
+          "name": "原文_新媒体线索合作项目沟通.docx",
+          "path": "/Users/jiangjincai/Desktop/原文_新媒体线索合作项目沟通.docx",
+          "description": "会议逐句转写原文（带时间戳）"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-06-03",
+          "content": "合作模式确认：甲方提供培训+素材+投放资金，蒋金才团队负责账号分发+线索回传",
+          "status": "初步共识"
+        },
+        {
+          "date": "2026-06-03",
+          "content": "核心指标锁定为新增有效线索量，不再细抠后链路转化细节",
+          "status": "已确认"
+        },
+        {
+          "date": "2026-06-03",
+          "content": "风险责任归属：后链路风险由甲方销售和优化师承担，线索提供方不承担风控责任",
+          "status": "已确认"
+        },
+        {
+          "date": "2026-06-03",
+          "content": "行业范围：聚焦生活服务类自助广告主，不做电商与本地团购",
+          "status": "已确认"
+        }
+      ],
+      "risks": [
+        {
+          "type": "风险",
+          "content": "医疗/医美等行业后链路风险（类魏则西事件）",
+          "mitigation": "风险行业不开户；线索仅提供初步触达，后由销售+优化师审核准入，第一责任人非线索提供方",
+          "severity": "中"
+        },
+        {
+          "type": "风险",
+          "content": "账号封号风险（自建团队起号后被平台封禁）",
+          "mitigation": "多账号分发降低单点风险；培训SOP规范养号操作",
+          "severity": "中"
+        },
+        {
+          "type": "待评估",
+          "content": "合作方（蒋金才团队）内部评估价值与风险后才能确认合作意向",
+          "mitigation": "周三前提供白皮书和测算模型，周四内部会议决策",
+          "severity": "高"
+        }
+      ],
+      "todos": [
+        {
+          "content": "🔴 甲方提供项目白皮书/整体策略文档",
+          "status": "pending",
+          "deadline": "周三前",
+          "assignee": "张洪瑜"
+        },
+        {
+          "content": "🔴 甲方提供线索价值测算模型（转化率、UP值、30日ROI）",
+          "status": "pending",
+          "deadline": "周三前",
+          "assignee": "张洪瑜"
+        },
+        {
+          "content": "🔴 蒋金才整理汇报材料，周四内部会议向老板汇报",
+          "status": "in_progress",
+          "deadline": "周四",
+          "assignee": "蒋金才"
+        },
+        {
+          "content": "🟡 甲方内部评估合作价值与风险，周五前反馈合作意向",
+          "status": "pending",
+          "deadline": "周五前",
+          "assignee": "蒋金才团队老板"
+        },
+        {
+          "content": "🟡 提供增长规划、测算模型与行业数据给对方",
+          "status": "pending",
+          "deadline": "周三前",
+          "assignee": "蒋金才"
+        },
+        {
+          "content": "🟡 确定内容分发协同机制（素材分配表格、绩效约束）",
+          "status": "pending",
+          "assignee": "双方共建"
+        },
+        {
+          "content": "🟢 明确专项目标和衡量指标（核心指标=有效线索量）",
+          "status": "completed"
+        }
+      ],
+      "kpi": {
+        "primary": "新增有效线索量",
+        "secondary": [
+          "线索转化率",
+          "UP值（用户平均消耗）",
+          "30日ROI",
+          "季度ROI"
+        ],
+        "baseline": {
+          "daily_spend": "百万级",
+          "lead_contribution": "上门线索占比超37%",
+          "conversion_verified": true,
+          "since": "2025-07（去年7月0到1启动）"
+        },
+        "roi_model": "线索量 × 转化率 × UP值 = 预估30日/季度消耗贡献"
+      },
+      "skills_produced": [],
+      "output_tracking": [],
+      "uncertain_items": [
+        {
+          "type": "decision",
+          "content": "蒋金才团队是否正式参与合作，取决于周四内部会议老板决策",
+          "reason": "需评估团队能力匹配度、风险承受度和资源投入产出比",
+          "flagged_at": "2026-06-03",
+          "status": "待决策"
+        },
+        {
+          "type": "scope",
+          "content": "蒋金才团队具体做到哪一步（仅线索获取 or 延伸到转化）",
+          "reason": "甲方表示可根据能力灵活划分边界",
+          "flagged_at": "2026-06-03",
+          "status": "待确认"
+        }
+      ],
+      "query_keywords": [
+        "张洪瑜",
+        "新媒体投流",
+        "投流增长",
+        "外部新媒体",
+        "新媒体投放",
+        "投流专项",
+        "增长专项",
+        "磁力智投",
+        "DSP",
+        "线索获客",
+        "内容分发",
+        "新媒体线索",
+        "蒋金才"
+      ],
+      "progress_notes": [
+        {
+          "date": "2026-05-29",
+          "source": "WK22经营周会",
+          "content": "生活服务事业部共建，需求沟通中，预计本周完成了解，下周汇报业务逻辑"
+        },
+        {
+          "date": "2026-06-03",
+          "source": "新媒体线索合作沟通会",
+          "content": "完成业务全貌对齐：两条路径（精品官号+非精品批量分发）、三类角色（电销BPO自建号/MCN/达人个人号）、商业化模型已验证（日耗百万、线索占比37%+）。确认合作框架：甲方出策略+培训+素材+资金，我方出账号+分发+线索回传。风险澄清完毕，后链路责任归甲方。下一步：甲方周三前提供白皮书和测算模型，蒋金才周四内部汇报，周五前反馈合作意向。"
+        }
+      ],
+      "business_model": {
+        "product": "磁力智投（DSP自助广告产品）",
+        "target_users": "生活服务类商户（排除电商和本地团购）",
+        "priority_industries": [
+          "商务服务（线上履约，高UP，全国通投）",
+          "教育培训（线上履约，高UP，全国通投）",
+          "汽车（线下履约，高UP，地域性强）",
+          "医疗/医美（线下履约，高UP，需注意风控）"
+        ],
+        "conversion_support": [
+          "新客折扣政策",
+          "专属优化师兜底服务",
+          "内置激励产品（省镜头/神经投）"
+        ],
+        "content_strategy": {
+          "premium": "精品官号：高质量内容孵化单账号，服务商运营",
+          "volume": "非精品：大批量泛内容，多账号分发，追求规模覆盖"
+        },
+        "three_roles": [
+          "电销BPO自建号（已在做，熟悉产品但缺素材）",
+          "MCN机构（有人力和内容能力，可沉淀SOP）",
+          "达人个人号分发（后续拓展，需匹配ToB达人画像）"
+        ]
+      }
+    },
+    {
+      "project_id": "smart-data-pipeline",
+      "name": "智能跑数分析专项",
+      "priority": "高",
+      "status": "进行中",
+      "owner": "刘备 / 丁好",
+      "start_date": "2026-05-26",
+      "deadline": "2026-08-31",
+      "last_updated": "2026-05-26",
+      "definition": "建立自动取数+分析能力。全取到：通过 KESS Agent + Data Agent 自动取数，丁好补足技术卡点实现全量字段覆盖；有分析：刘备和督导拉齐分析逻辑，定期产出分析内容。",
+      "source_materials": [],
+      "decisions": [],
+      "risks": [],
+      "todos": [
+        {
+          "content": "🔴 通过 KESS Agent + Data Agent 跑通自动取数链路",
+          "priority": "🔴",
+          "deadline": "近期",
+          "status": "进行中"
+        },
+        {
+          "content": "🔴 拉丁好解决技术卡点（Data Agent认证bug等），实现全量字段覆盖取数",
+          "priority": "🔴",
+          "deadline": "近期",
+          "status": "待启动"
+        },
+        {
+          "content": "🔴 补录项目1-11的SQL到汇总文档",
+          "priority": "🔴",
+          "deadline": "近期",
+          "status": "待启动"
+        },
+        {
+          "content": "🟡 和督导拉齐分析逻辑和口径",
+          "priority": "🟡",
+          "deadline": "近期",
+          "status": "待启动"
+        },
+        {
+          "content": "🟡 建立定期分析产出机制（频率/格式/分发渠道）",
+          "priority": "🟡",
+          "deadline": "近期",
+          "status": "待启动"
+        },
+        {
+          "content": "🟡 补充美妆电商中小商家和泛知识项目的数据源到汇总文档",
+          "priority": "🟡",
+          "deadline": "近期",
+          "status": "待启动"
+        }
+      ],
+      "kpi": {
+        "取数方案已验证": "KESS SQL直跑 ✅ / OLAP分享链接 ✅ / Hudi跨域 ✅",
+        "已有取数产出": "WK19-21周报看板（16项目）✅ / 粉条C端分析 ✅",
+        "技能产出": "kess-sql-query Skill ✅ / 合作运营SQL数据源汇总文档 ✅"
+      },
+      "skills_produced": [
+        "kess-sql-query",
+        "ks-kwaibi-sql-exec"
+      ],
+      "output_tracking": [
+        {
+          "output_name": "合作运营项目SQL数据源汇总.md",
+          "output_type": "文档",
+          "output_path": "knowledge-base/合作运营项目SQL数据源汇总.md",
+          "description": "18个泛知识社群合作运营项目的SQL语句、OLAP链接、数据表汇总",
+          "usage_frequency": "取数参考",
+          "runtime_health": {
+            "health_status": "✅正常",
+            "last_used": "2026-05-26"
+          }
+        },
+        {
+          "output_name": "WK19-21 合作运营周报看板",
+          "output_type": "HTML看板",
+          "description": "16个项目WK19-21数据采集+产出计算+对比分析，零失败",
+          "usage_frequency": "周报",
+          "runtime_health": {
+            "health_status": "✅正常",
+            "last_used": "2026-05-25"
+          }
+        },
+        {
+          "output_name": "kess-sql-query Skill",
+          "output_type": "Skill工具",
+          "output_path": "~/.codeflicker/skills/kess-sql-query/",
+          "description": "KESS Agent + OneAPI ClickHouse SQL取数Skill，含自动清洗/健康检查/3种输出格式/SQL指纹追踪",
+          "usage_frequency": "日常取数",
+          "runtime_health": {
+            "health_status": "✅正常",
+            "last_used": "2026-05-26"
+          }
+        }
+      ],
+      "uncertain_items": [
+        {
+          "type": "todo",
+          "content": "丁好的技术卡点具体是什么、需要他做什么尚未明确",
+          "reason": "已知需要丁好补足，但具体卡点和技术方案未拉齐",
+          "flagged_at": "2026-05-26",
+          "status": "待确认"
+        },
+        {
+          "type": "todo",
+          "content": "取数的口径、涉及的字段列表尚未明确",
+          "reason": "需要和督导拉齐后才能确定全量取数的字段范围",
+          "flagged_at": "2026-05-26",
+          "status": "待确认"
+        },
+        {
+          "type": "todo",
+          "content": "分析逻辑和输出格式尚未定义",
+          "reason": "需要和督导拉齐分析逻辑后才能确定定期输出的内容形式",
+          "flagged_at": "2026-05-26",
+          "status": "待确认"
+        }
+      ],
+      "query_keywords": [
+        "智能跑数",
+        "自动取数",
+        "KESS取数",
+        "Data Agent",
+        "全量取数",
+        "丁好",
+        "跑数分析",
+        "自动跑数",
+        "全量覆盖",
+        "分析逻辑"
+      ]
+    },
+    {
+      "project_id": "personality-transform",
+      "name": "泛知识人格化转型",
+      "priority": "S",
+      "status": "已完成",
+      "owner": "社群团队（cd-jiangjincai03）",
+      "start_date": "2026-05-21",
+      "deadline": "2026-05-26",
+      "last_updated": "2026-05-27",
+      "definition": "情感品类人格化转型可行性验证项目。通过闯关任务体系引导非人格化作者转型，验证人格化作者在2d4k产量和关注页打开理由上是否显著优于对照组。结论：已验证有效（人均日2d4k 3.7倍领先、关注页打开理由 3.6倍领先），汇报已通过，进入规模化复制下一阶段。",
+      "source_materials": [
+        {
+          "type": "local_file",
+          "path": "~/Desktop/人格化定义及标准.docx",
+          "title": "人格化定义及标准",
+          "date_accessed": "2026-05-22",
+          "key_info": "人格化三级分类、飞姐111案例、1.9万人非关注页强势、10倍收入差距"
+        },
+        {
+          "type": "local_file",
+          "path": "~/Desktop/人格化转型计划-闯关手册.docx",
+          "title": "闯关手册",
+          "date_accessed": "2026-05-22",
+          "key_info": "闯关任务设计、审核标准、执行流程"
+        },
+        {
+          "type": "local_file",
+          "path": "~/Desktop/泛知识人格化项目.docx",
+          "title": "项目初始文档",
+          "date_accessed": "2026-05-22",
+          "key_info": "项目背景和初始结构"
+        },
+        {
+          "type": "local_file",
+          "path": "~/Desktop/泛知识人格化转型-进展&规划26.5.docx",
+          "title": "进展与规划 26.5",
+          "date_accessed": "2026-05-22",
+          "key_info": "项目当前进展和后续规划"
+        },
+        {
+          "type": "local_file",
+          "path": "~/Desktop/泛知识人格化特征二级类目拆分-26.3.docx",
+          "title": "特征二级类目拆分",
+          "date_accessed": "2026-05-22",
+          "key_info": "泛知识品类人格化特征分布"
+        },
+        {
+          "type": "local_file",
+          "path": "~/Desktop/泛知识中台组&社群运营组 Q2共建规划.docx",
+          "title": "Q2共建规划",
+          "date_accessed": "2026-05-22",
+          "key_info": "中台+社群Q2协作规划"
+        },
+        {
+          "type": "local_file",
+          "path": "~/Desktop/泛知识人格化转型数据/kwaiBI_供稿 已完成 126人_export.xlsx",
+          "title": "已完成组供稿数据",
+          "date_accessed": "2026-05-22",
+          "key_info": "126人供稿量明细（早期数据）"
+        },
+        {
+          "type": "local_file",
+          "path": "~/Desktop/泛知识人格化转型数据/kwaiBI_打开理由-已完成126人 _export.xlsx",
+          "title": "已完成组打开理由数据",
+          "date_accessed": "2026-05-22",
+          "key_info": "126人打开理由明细（早期数据）"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-21~0522",
+          "thread": "EB9B3842",
+          "key_info": "三阶段实验数据取数：基期→活动期→跟踪期所有对比数据"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-22",
+          "thread": "opsoc2ywtb2",
+          "key_info": "泛知识深度分析看板：126人vs358人，2d4k率19.2%→11.6% vs 7.6%→6.5%"
+        },
+        {
+          "type": "conversation",
+          "date": "2026-05-22~0527",
+          "thread": "vvyy46y4",
+          "key_info": "全流程迭代打磨：9轮修改→v1→v2阅读体验优化→老板4条建议落地→汇报通过"
+        },
+        {
+          "type": "web_url",
+          "url": "https://tc.corp.kuaishou.com/portal/348?dashboardId=2126842&filterConfig=43924170",
+          "title": "KwaiBI看板-供稿已完成组",
+          "key_info": "供稿明细（粉丝分层），ads_ks_content_op_author_all表"
+        },
+        {
+          "type": "web_url",
+          "url": "https://tc.corp.kuaishou.com/pc/dashboard/preview?dashboardId=2115589",
+          "title": "KwaiBI看板-对照组",
+          "key_info": "供稿+打开理由，crt_content_1d_author_detail_session + session_intention_1d_author_detail"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-05-22",
+          "content": "两份报告分工：项目主页用峰值数据（+68%/+312%），验证报告用跟踪期数据（+62%/+206%）",
+          "background": "峰值证明'调优有效'，跟踪期证明'效果持续'——两个不同论证目标不能混在一页"
+        },
+        {
+          "date": "2026-05-22",
+          "content": "对照组从358人修正为444人（563人邀请池-119人完成）",
+          "background": "早期opsoc2ywtb2用了粗略分组，最终汇报改为更准确的对照设计"
+        },
+        {
+          "date": "2026-05-22~0526",
+          "content": "术语统一：Base期→基期、干预期→活动期、跟踪期→跟踪改善期、优质作品→2d4k",
+          "background": "中文汇报需要精准术语体系，不另起指标别名"
+        },
+        {
+          "date": "2026-05-26",
+          "content": "从pp百分比改为倍数对比（3.7倍/3.6倍）",
+          "background": "倍数比pp更直观更有冲击力"
+        },
+        {
+          "date": "2026-05-26",
+          "content": "口径说明从底部集中改为原位小字",
+          "background": "读者看到数字同时需要看到口径，不会翻到页底对口径"
+        },
+        {
+          "date": "2026-05-26",
+          "content": "加未来规划章节+每章一句话结论",
+          "background": "张翔建议：汇报终点是下一步行动，不是历史成绩"
+        }
+      ],
+      "risks": [],
+      "todos": [
+        {
+          "content": "制定选人标准方案（效率优先/覆盖优先）",
+          "priority": "🟡",
+          "deadline": "待定",
+          "status": "框架已出"
+        },
+        {
+          "content": "泛知识其他品类复制（戏曲/财经/教育/健康）",
+          "priority": "🟡",
+          "deadline": "待下一批",
+          "status": "待启动"
+        },
+        {
+          "content": "解决'干完就退'持续性问题",
+          "priority": "🟡",
+          "deadline": "进行中",
+          "status": "进行中"
+        }
+      ],
+      "kpi": {
+        "人均日2d4k量（已完成 vs 对照）": {
+          "值": "0.40 vs 0.11篇",
+          "倍数": "3.7倍"
+        },
+        "人均日关注页打开理由（已完成 vs 对照）": {
+          "值": "129 vs 36次",
+          "倍数": "3.6倍"
+        },
+        "人均总打开理由（已完成 vs 对照）": {
+          "值": "296 vs 112次",
+          "倍数": "2.6倍"
+        },
+        "活动期发文增幅（vs基期）": {
+          "值": "+68%（高于对照组78pp）"
+        },
+        "活动期2d4k增幅（vs基期）": {
+          "值": "+312%（高于对照组297pp）"
+        }
+      },
+      "skills_produced": [],
+      "output_tracking": [
+        {
+          "type": "webpage",
+          "name": "泛知识人格化项目.html",
+          "url": "https://personality-transform-report.frontend-cloud.corp.kuaishou.com",
+          "description": "主汇报页面，v2定稿，含完整叙事链+数据验证+截图"
+        },
+        {
+          "type": "webpage",
+          "name": "效果验证报告.html",
+          "url": "https://personality-verify-report.frontend-cloud.corp.kuaishou.com",
+          "description": "验证报告，跟踪期数据版"
+        },
+        {
+          "type": "knowledge_doc",
+          "name": "项目完整脉络分析.md",
+          "path": "docs_output/人格化转型汇报/项目完整脉络分析.md",
+          "description": "12节完整复盘手册：11轮认知迭代+数据全景+踩坑+方法论"
+        },
+        {
+          "type": "data_file",
+          "name": "data_archive_links_sql.md",
+          "path": "docs_output/人格化转型汇报/data_archive_links_sql.md",
+          "description": "SQL存档：三张核心表+KwaiBI看板链接"
+        }
+      ],
+      "uncertain_items": [
+        {
+          "type": "decision",
+          "content": "选人方案用效率优先还是覆盖优先",
+          "reason": "老板要求团队更多参与选人，但目标尚未明确",
+          "flagged_at": "2026-05-27",
+          "status": "待确认"
+        }
+      ],
+      "query_keywords": [
+        "人格化",
+        "泛知识",
+        "2d4k",
+        "打开理由",
+        "关注页",
+        "飞姐111",
+        "闯关",
+        "人设",
+        "情感品类",
+        "选人方案",
+        "personality-transform"
+      ]
+    },
+    {
+      "project_id": "token-saving-myflicker-claude",
+      "name": "Token 节省专项",
+      "priority": "S+",
+      "status": "进行中",
+      "owner": "蒋金才",
+      "start_date": "2026-06-01",
+      "deadline": null,
+      "last_updated": "2026-06-02",
+      "definition": "MyFlicker token 稀缺 → 代码任务外包给 Claude Code（$25/月）→ 省 80% token + 产出翻倍。打造「人 + AI 军团」协作范式，重新定义一个人能做什么。",
+      "source_materials": [
+        {
+          "id": "src-conversation-01",
+          "type": "conversation",
+          "date": "2026-06-01",
+          "key_info": "用户明确公司 MyFlicker token 获取困难，需要建立协作机制节省 token"
+        },
+        {
+          "id": "src-local-01",
+          "type": "local_file",
+          "path": "cq-school-demo/TOKEN-SAVING.md",
+          "title": "Token 节省专项立项报告（完整 10 章）",
+          "key_info": "包含：立项依据+L3向外看+经济模型+三层价值+五条路径+里程碑(逐方案损益)+损益分析+行动规则+命令参考+外部来源"
+        },
+        {
+          "id": "src-conversation-02",
+          "type": "conversation",
+          "date": "2026-06-01",
+          "key_info": "L3深度向外看调研：Anthropic Prompt Caching、OpenAI Swarm、LangGraph 三源交叉验证"
+        },
+        {
+          "id": "src-conversation-03",
+          "type": "conversation",
+          "date": "2026-06-01",
+          "key_info": "逐方案损益分析：16 个方案各自带收益/风险/应对/验收标准"
+        },
+        {
+          "id": "src-web-01",
+          "type": "web_url",
+          "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching",
+          "title": "Anthropic Prompt Caching 官方文档",
+          "key_info": "Cache Read = 10% base input price，行业 Token 优化金标准"
+        },
+        {
+          "id": "src-web-02",
+          "type": "web_url",
+          "url": "https://github.com/openai/swarm",
+          "title": "OpenAI Swarm - 21.6k star",
+          "key_info": "Agent handoff 模式，和我们 MyFlicker→Claude Code 逻辑一致"
+        },
+        {
+          "id": "src-web-03",
+          "type": "web_url",
+          "url": "https://github.com/langchain-ai/langgraph",
+          "title": "LangGraph - 33.5k star",
+          "key_info": "子 Agent 编排、持久化执行、Klarna/Replit/Elastic 在用"
+        },
+        {
+          "id": "src-local-02",
+          "type": "local_file",
+          "path": "cq-school-demo/TOKEN-SAVING.md",
+          "title": "VISTA 视觉化看板",
+          "key_info": "立项报告 HTML 可视化版本"
+        },
+        {
+          "id": "src-local-bailian-01",
+          "type": "local_file",
+          "path": "scripts/bailian_agent.py",
+          "title": "百炼 Coding Plan 桥接工具（17KB）",
+          "key_info": "9模型验证通过、5预设、自动JSONL日志、tag标记、代码提取+自动写入+运行"
+        },
+        {
+          "id": "src-local-bailian-02",
+          "type": "local_file",
+          "path": "scripts/bailian_report.py",
+          "title": "百炼使用统计报告（7KB）",
+          "key_info": "日/周/全部统计、模型分布、任务分类、ROI估算"
+        },
+        {
+          "id": "src-local-bailian-03",
+          "type": "local_file",
+          "path": "scripts/bailian_daily_check.py",
+          "title": "每日百炼任务提醒（7KB）",
+          "key_info": "6条触发规则+5个预设、排除清单、今日使用次数"
+        },
+        {
+          "id": "src-local-bailian-04",
+          "type": "local_file",
+          "path": "scripts/daily_project_insight.py",
+          "title": "项目诊断仪表盘（213行，glm-5生成）",
+          "key_info": "端到端验证产出：26项目健康评分、S+/S统计、逾期统计"
+        },
+        {
+          "id": "src-local-bailian-05",
+          "type": "local_file",
+          "path": "knowledge-base/bailian-coding-plan/index.html",
+          "title": "VISTA 全项目展示页",
+          "key_info": "HERO动画、4KPI卡片、9模型基准测试表、7场景矩阵、ROI分析"
+        }
+      ],
+      "decisions": [
+        {
+          "date": "2026-06-02",
+          "content": "百炼 Coding Plan Pro（200元/月，9模型）嵌入 MyFlicker 执行闭环，场景矩阵+五段闭环",
+          "background": "MyFlicker token 稀缺，百炼提供自有额度。9模型各有专长，按场景路由到最优模型。",
+          "refs": [
+            "src-local-bailian-01",
+            "src-local-bailian-02",
+            "src-local-bailian-03"
+          ]
+        },
+        {
+          "date": "2026-06-01",
+          "content": "MyFlicker 定位为调度层，Claude Code 定位为执行层",
+          "background": "MyFlicker token 有限且获取困难，Claude Code 用 Claude 自己的 token",
+          "refs": [
+            "src-conversation-01"
+          ]
+        },
+        {
+          "date": "2026-06-01",
+          "content": "所有不涉内网资源的代码任务，默认派 Claude Code，不经过 MyFlicker",
+          "background": "最大化节省 token，建立派单优先规则",
+          "refs": [
+            "src-conversation-01",
+            "src-local-01"
+          ]
+        },
+        {
+          "date": "2026-06-01",
+          "content": "必须 L3 向外看后再做分析，建立 Rule 0 - 先搜再做",
+          "background": "第一次分析没做向外看，用户指出后建立了规则的规则",
+          "refs": [
+            "src-conversation-02"
+          ]
+        },
+        {
+          "date": "2026-06-01",
+          "content": "立项报告必须包含完整的损益分析（好处+风险+成本+净收益）",
+          "background": "用户要求看到风险和收益的完整图景，不能只列好处",
+          "refs": [
+            "src-conversation-03"
+          ]
+        },
+        {
+          "date": "2026-06-01",
+          "content": "每个里程碑要拆到具体方案的颗粒度，每个方案独立列出收益和风险",
+          "background": "用户认为粗颗粒度的 P&L 不够，要求 16 个方案各自带收益/风险/应对",
+          "refs": [
+            "src-conversation-03"
+          ]
+        },
+        {
+          "date": "2026-06-01",
+          "content": "派任务必须加 --permission-mode bypassPermissions，否则卡死在权限审批",
+          "background": "M1 首次实战发现的坑，后续所有派单必须遵守",
+          "refs": [
+            "src-local-01"
+          ]
+        }
+      ],
+      "risks": [
+        {
+          "risk": "bypassPermissions 安全风险",
+          "impact": "Claude Code 获得全局文件写入权限，误操作可能影响系统文件",
+          "mitigation": "限工作目录 + M3 建立危险操作白名单"
+        },
+        {
+          "risk": "代码质量不可控",
+          "impact": "Claude Code 写的代码可能有问题，需要返工",
+          "mitigation": "build 必须通过 + 关键逻辑抽检"
+        },
+        {
+          "risk": "派单沟通误差",
+          "impact": "描述不清导致 Claude Code 产出不对，浪费 token",
+          "mitigation": "用任务模板 + 验收清单 + 交付格式"
+        },
+        {
+          "risk": "Claude Code 可用性依赖",
+          "impact": "Claude Code 服务宕机或网络问题影响交付",
+          "mitigation": "保留手动兆底路径，紧急任务不依赖"
+        },
+        {
+          "risk": "上下文丢失",
+          "impact": "续接对话时忘记上下文，导致决策错误",
+          "mitigation": "任务描述附关键上下文 + M3 建立 CLAUDE.md"
+        },
+        {
+          "risk": "验收仍消耗 token",
+          "impact": "虽然是 200-500 token 的小开销，但毕竟是公司 token",
+          "mitigation": "设计成必要成本，和节省比可以忽略"
+        },
+        {
+          "risk": "过度外包导致 MyFlicker 技能退化",
+          "impact": "长期不做代码任务，MyFlicker 编码能力生疏",
+          "mitigation": "关键模块自己写 + M4 定期复盘"
+        },
+        {
+          "risk": "精简过度导致 MyFlicker 缺少上下文",
+          "impact": "M2 瘦身后删掉的信息需要用时找不到，执行出错",
+          "mitigation": "被删内容挪 REFERENCE.md 按需读取"
+        }
+      ],
+      "query_keywords": [
+        "Token节省",
+        "token",
+        "Claude Code",
+        "MyFlicker",
+        "协作",
+        "调度",
+        "代码外包",
+        "Mario Claw",
+        "token不够",
+        "节省token",
+        "外包执行",
+        "上下文瘦身",
+        "模型降级",
+        "知识外置",
+        "流程提效"
+      ],
+      "todos": [
+        {
+          "content": "M0 筑基：打通 MyFlicker ↔ Claude Code 通信链路",
+          "status": "completed",
+          "verification_method": "claude -p 返回正常，任务可派发"
+        },
+        {
+          "content": "M1 验证：重庆学区房月供计算器（173行 CalculatorPage.tsx）",
+          "status": "completed",
+          "verification_method": "pnpm build 通过，git commit f46a449"
+        },
+        {
+          "content": "2.1 精简 AGENTS.md（6KB→2KB）",
+          "priority": "🔴",
+          "deadline": "6/7",
+          "status": "completed",
+          "verification_method": "read_file AGENTS.md 确认 ≤ 2KB",
+          "completed_at": "2026-06-02",
+          "actual_saving": "~500 token/对话"
+        },
+        {
+          "content": "2.2 project-wiki 只保留 PROJECT_OVERVIEW.md",
+          "priority": "🔴",
+          "deadline": "6/7",
+          "status": "blocked",
+          "blocked_reason": "wiki文件由系统自动生成，非磁盘文件，用户层无法控制加载列表",
+          "verification_method": "确认自动加载 wiki 文件数从 4 到 1"
+        },
+        {
+          "content": "2.3 养成刻立写文件习惯",
+          "priority": "🟡",
+          "deadline": "6/7",
+          "status": "in_progress",
+          "verification_method": "续接对话 token ≤ 当前 50%"
+        },
+        {
+          "content": "2.4 简单操作用小模型",
+          "priority": "🟡",
+          "deadline": "6/7",
+          "status": "pending",
+          "verification_method": "简单操作 80% 走小模型"
+        },
+        {
+          "content": "3.1 外包标准化：任务模板 + 验收清单 + SOP",
+          "priority": "🔴",
+          "deadline": "6/30",
+          "status": "pending",
+          "verification_method": "≥5 个任务模板 + SOP 文件存在"
+        },
+        {
+          "content": "3.2 Token 计量仪表盘",
+          "priority": "🔴",
+          "deadline": "6/30",
+          "status": "pending",
+          "verification_method": "仪表盘展示周消耗趋势 + 按类型分拆 + 节能比例"
+        },
+        {
+          "content": "3.3 多项目覆盖（≥3 个项目走协作）",
+          "priority": "🟡",
+          "deadline": "6/30",
+          "status": "pending",
+          "verification_method": "≥3 个项目各有 CLAUDE.md 并完成至少 1 次派单"
+        },
+        {
+          "content": "3.4 周报自动生成",
+          "priority": "🟢",
+          "deadline": "6/30",
+          "status": "pending",
+          "verification_method": "连续 4 周有周报记录"
+        },
+        {
+          "content": "4.1 一次理解到位：减少来回确认",
+          "priority": "🟡",
+          "deadline": "9/30",
+          "status": "pending",
+          "verification_method": "单次对话减少 1 轮以上无效往返"
+        },
+        {
+          "content": "4.2 双 Agent 定期复盘",
+          "priority": "🟢",
+          "deadline": "9/30",
+          "status": "pending",
+          "verification_method": "连续 3 个月有复盘记录"
+        },
+        {
+          "content": "4.3 知识回流闭环",
+          "priority": "🟡",
+          "deadline": "9/30",
+          "status": "pending",
+          "verification_method": "CLAUDE.md 有持续更新记录"
+        },
+        {
+          "content": "4.4 模式推广",
+          "priority": "🟢",
+          "deadline": "9/30",
+          "status": "pending",
+          "verification_method": "≥1 个同事成功用起来 + 1 次内部分享"
+        }
+      ],
+      "kpi": {
+        "目标": {
+          "token节省率": "80%+",
+          "月省token": "~8 万",
+          "个人月成本": "$25",
+          "协作模式": "MyFlicker调度 + Claude Code执行"
+        },
+        "当前进度": {
+          "通信验证": "✅ 已通",
+          "协议建立": "✅ 已建（10章立项报告）",
+          "实战验证": "✅ M1 已完成（CalculatorPage.tsx）",
+          "L3向外看": "✅ 已完成（3源交叉验证）",
+          "逐方案损益": "✅ 已完成（16方案）",
+          "百炼M4": "已完成（3脚本+9模型验证+五段闭环+端到端验证+VISTA展示页）",
+          "bailian_agent": "已完成 17KB，桥接+5预设+自动日志+tag标记+代码提取+自动写入+自动运行"
+        },
+        "L1效率目标": "今天见效：代码任务省 95%",
+        "L2能力目标": "本月见效：产出翻倍，≥3 项目并行",
+        "L3范式目标": "半年见效：模式推广到团队"
+      },
+      "skills_produced": [
+        "vista-presentation",
+        "svg-flowchart-designer"
+      ],
+      "output_tracking": [
+        {
+          "output_type": "script",
+          "output_name": "bailian_agent.py",
+          "output_path": "scripts/bailian_agent.py",
+          "description": "百炼桥接工具（17KB），9模型+5预设+自动日志",
+          "last_used": "2026-06-02",
+          "usage_trend": "M4 核心工具",
+          "usage_history": [
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "script",
+          "output_name": "bailian_report.py",
+          "output_path": "scripts/bailian_report.py",
+          "description": "百炼使用统计报告（7KB），终端彩色日报/周报",
+          "last_used": "2026-06-02",
+          "usage_trend": "M4 监控工具",
+          "usage_history": [
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "script",
+          "output_name": "bailian_daily_check.py",
+          "output_path": "scripts/bailian_daily_check.py",
+          "description": "每日百炼任务提醒（7KB），6条触发规则",
+          "last_used": "2026-06-02",
+          "usage_trend": "M4 触发工具",
+          "usage_history": [
+            {
+              "date": "2026-06-02",
+              "count": 0
+            },
+            {
+              "date": "2026-06-03",
+              "count": 0
+            },
+            {
+              "date": "2026-06-04",
+              "count": 0
+            },
+            {
+              "date": "2026-06-05",
+              "count": 0
+            },
+            {
+              "date": "2026-06-07",
+              "count": 0
+            },
+            {
+              "date": "2026-06-08",
+              "count": 0
+            }
+          ]
+        },
+        {
+          "output_type": "dashboard",
+          "output_name": "VISTA 展示页",
+          "output_path": "knowledge-base/bailian-coding-plan/index.html",
+          "description": "全项目可视化展示页",
+          "last_used": "2026-06-02",
+          "usage_trend": "已部署"
+        }
+      ],
+      "analysis_records": [
+        {
+          "id": "anl-01",
+          "date": "2026-06-01",
+          "method": "L3 深度向外看：3源交叉验证（Anthropic + OpenAI + LangChain）",
+          "conclusion": "方向全对但工具原始。Swarm handoff 证明方向，Prompt Caching 验证 Context 瘦身价值，LangGraph 启示自动化方向",
+          "refs": [
+            "src-web-01",
+            "src-web-02",
+            "src-web-03"
+          ]
+        },
+        {
+          "id": "anl-02",
+          "date": "2026-06-01",
+          "method": "逐方案损益分析（5路径×16方案，每个独立计算收益/风险/应对）",
+          "conclusion": "总节省 80% token + $25/月；8 项风险都有应对方案；净收益显著",
+          "refs": [
+            "src-conversation-03",
+            "src-local-01"
+          ]
+        },
+        {
+          "id": "anl-03",
+          "date": "2026-06-02",
+          "method": "M2 执行验证：逐项执行 2.1-2.4",
+          "conclusion": "2.1 完成（AGENTS.md 精简✅），2.2 阻塞（wiki由系统托管不可控），2.3 进行中（本次已实践写文件），2.4 未启动。实际节省未达目标 40%+（因 2.2 阻塞）",
+          "key_findings": [
+            "wiki 文件加载机制由 MyFlicker 系统层控制，用户层无法修改",
+            "AGENTS.md 精简可行，被删内容挪 REFERENCE.md 按需读取",
+            "写文件习惯已开始实践，本次对话即验证"
+          ],
+          "refs": [
+            "src-local-01"
+          ]
+        },
+        {
+          "id": "anl-02",
+          "date": "2026-06-02",
+          "method": "百炼 Coding Plan 9模型端到端基准测试 + 五段闭环验证",
+          "conclusion": "9模型全部通过验证。qwen3-max 编码冠军（7.5s），glm-5 中文分析专长。3次调用 100% 成功率，0.0067元费用，省 ~4.7K token。ROI 极高。",
+          "refs": [
+            "src-local-bailian-01",
+            "src-local-bailian-04"
+          ]
+        }
+      ],
+      "deployment_history": [
+        {
+          "date": "2026-06-02",
+          "type": "local_preview",
+          "port": 8766,
+          "title": "VISTA 百炼 Coding Plan 展示页",
+          "description": "本地 HTTP 服务器预览全项目 VISTA 展示页"
+        }
+      ],
+      "uncertain_items": [
+        {
+          "type": "data",
+          "content": "M2 瘦身后 token 的实际节省量能否达到预期（6000→2000 token/对话）",
+          "reason": "理论计算 vs 实际效果需要 M2 执行后验证",
+          "flagged_at": "2026-06-01",
+          "status": "待验证"
+        },
+        {
+          "type": "process",
+          "content": "多项目覆盖时 bypassPermissions 安全风险面到底多大",
+          "reason": "目前只有单项目经验，多项目安全面扩大但缺乏实测量化",
+          "flagged_at": "2026-06-01",
+          "status": "待验证"
+        },
+        {
+          "type": "kpi",
+          "content": "横向推广到同事是否真的有价值",
+          "reason": "可能模式只适合技术背景强的人，普通运营同事学不会",
+          "flagged_at": "2026-06-01",
+          "status": "待确认"
+        }
+      ],
+      "monitor_stats": {
+        "calls": 0,
+        "errors": 0,
+        "last_activity": "2026-06-01T20:09:00+08:00"
+      },
+      "three_layer_value": {
+        "l1_see": "Token 节省专项 M4：百炼 Coding Plan（200元/月，9模型）嵌入 MyFlicker 执行闭环。通过 bailian_agent.py 桥接 9 个私有模型（qwen3-max 编码7.5s冠军、glm-5 中文分析、kimi-k2.5 创意），将 MyFlicker token 消耗从 Claude 模型转移到自有百炼额度。实现「实现 -> 监控 -> 触发 -> 验证 -> 复盘」五段闭环。",
+        "l2_understand": {
+          "health": "M4 已完成，系统就绪",
+          "progress": "9 模型全部通过验证，qwen3-max 编码冠军（7.5s），glm-5 中文分析专长，kimi-k2.5 创意任务。bailian_agent.py（17KB）已增强自动日志+tag标记，bailian_report.py（7KB）日/周统计，bailian_daily_check.py（7KB）每日提醒。端到端验证通过（glm-5 生成 213 行项目诊断脚本并成功运行）。",
+          "closed_loop": "实现(bailian_agent.py) -> 监控(JSONL自动记录) -> 触发(daily_check) -> 验证(--output --run) -> 复盘(weekly/monthly report)，全部打通",
+          "tokens_saved": "3 次调用验证，100% 成功率，0.0067元费用，4.7K token 省下",
+          "vista_presentation": "VISTA 全项目展示页已部署至 knowledge-base/bailian-coding-plan/index.html"
+        },
+        "l3_foresee": {
+          "most_urgent": "持续使用 bailian_daily_check.py 每日触发，养成先想能不能用百炼的习惯",
+          "in_progress": "积累 1-2 周使用数据后跑 bailian_report.py --week 看效果趋势",
+          "pending": "考虑将 bailian_agent.py 封装为 MyFlicker Skill，用自然语言即可调用",
+          "critical_path": "持续积累使用 -> 周报验证 -> 确认 ROI -> 封装 Skill -> 推广团队"
+        }
+      },
+      "milestones": [
+        {
+          "id": "M0",
+          "name": "筑基：通信链路",
+          "status": "completed",
+          "content": "打通 MyFlicker <-> Claude Code 通信链路，建立派单协议。",
+          "completed_at": "2026-06-01"
+        },
+        {
+          "id": "M1",
+          "name": "验证：首次实战",
+          "status": "completed",
+          "content": "重庆学区房月供计算器（173行），pnpm build 通过，git commit f46a449。",
+          "completed_at": "2026-06-01"
+        },
+        {
+          "id": "M2",
+          "name": "瘦身：上下文精简",
+          "status": "in_progress",
+          "content": "AGENTS.md 6KB->2KB 已完成（省~500 token/对话）；wiki 缩减 blocked；简单操作用小模型 pending。",
+          "completion": "2/4（50%）"
+        },
+        {
+          "id": "M3",
+          "name": "精装：标准化+监控",
+          "status": "in_progress",
+          "content": "外包标准化（任务模板+SOP）pending；Token 计量仪表盘 pending；多项目覆盖 pending。预计 6/30 前完成。",
+          "completion": "0/4（0%）"
+        },
+        {
+          "id": "M4",
+          "name": "百炼 Coding Plan 私有模型镶嵌",
+          "status": "completed",
+          "content": "200元/月百炼 Coding Plan Pro 嵌入 MyFlicker。9模型验证通过，3脚本产出，五段闭环打通，端到端验证通过，VISTA展示页部署。",
+          "completed_at": "2026-06-02"
+        },
+        {
+          "id": "M5",
+          "name": "KPI 达成",
+          "status": "in_progress",
+          "content": "L1 效率目标: 已实现；L2 能力目标: 待 M3 完成后验证；L3 范式目标: 待推广。",
+          "completion_rate": "M4 工具链 100% | 整体 40%"
+        }
+      ]
+    }
+  ]
+}

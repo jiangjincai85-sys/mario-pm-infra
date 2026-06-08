@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>项目管理 · PMAgent</title>
+<style>
+:root{--bg:#080810;--card:#111119;--border:#1e1e30;--text:#c8c8d0;--dim:#6a6a7a;--g:#00c853;--y:#ffb300;--r:#ff3d3d;--a:#6c5ce7;--a2:#00b894}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"SF Pro Display","Segoe UI",sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:16px}
+.container{max-width:960px;margin:0 auto}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+.header h1{font-size:20px;font-weight:700}
+.live{display:inline-flex;align-items:center;gap:6px;background:#00c85315;color:var(--g);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
+.live-dot{width:6px;height:6px;background:var(--g);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.signal-bar{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.signal{font-size:11px;padding:3px 8px;border-radius:8px;background:var(--card);border:1px solid var(--border)}
+.signal.r{border-color:#ff3d3d30;color:var(--r)}.signal.y{border-color:#ffb30030;color:var(--y)}.signal.g{border-color:#00c85330;color:var(--g)}
+.summary-bar{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;margin-bottom:14px}
+@media(max-width:600px){.summary-bar{grid-template-columns:1fr 1fr}}
+.summary-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.summary-card .big{font-size:26px;font-weight:800}
+.summary-card .label{font-size:11px;color:var(--dim)}
+.summary-card.avg .big{color:var(--a2)}
+.toolbar{display:flex;gap:8px;margin-bottom:12px;align-items:center;flex-wrap:wrap}
+.tabs{display:flex;gap:3px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:3px}
+.tab{padding:6px 14px;border-radius:6px;cursor:pointer;border:none;background:none;color:var(--dim);font-size:12px;font-weight:600;transition:.15s}
+.tab.active{background:var(--a);color:#fff}
+.sort-btn{margin-left:auto;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:6px 14px;color:var(--dim);cursor:pointer;font-size:12px}
+.project-list{display:flex;flex-direction:column;gap:4px}
+.project-row{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:.15s}
+.project-row:hover{border-color:#6c5ce740}
+.project-row.expanded{border-color:var(--a)}
+.project-row.hidden{display:none}
+.row-main{display:flex;align-items:center;padding:10px 16px;gap:12px;font-size:13px}
+.col-name{flex:3;min-width:0}
+.col-name .title{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.col-name .hint{font-size:11px;color:var(--dim);margin-top:2px}
+.col-bar{flex:2;display:flex;align-items:center}
+.bar-track{flex:1;height:5px;background:#1e1e30;border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;transition:width .5s ease}
+.bar-fill.g{background:var(--g)}.bar-fill.y{background:var(--y)}.bar-fill.r{background:var(--r)}
+.col-score{flex:0 0 48px;text-align:right;font-size:15px;font-weight:700}
+.col-status{flex:0 0 70px;text-align:center}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600}
+.tag.active{background:#6c5ce720;color:#9d8fff}
+.tag.done{background:#00c85315;color:#00e676}
+.row-detail{display:none;padding:0 16px 12px;font-size:12px;border-top:1px solid var(--border)}
+.project-row.expanded .row-detail{display:block}
+.detail-section{margin-top:10px}
+.detail-section .sec-title{font-weight:600;color:var(--dim);margin-bottom:6px;font-size:11px}
+.detail-item{padding:3px 0;display:flex;gap:8px;align-items:flex-start}
+.detail-item .badge{padding:1px 6px;border-radius:8px;font-size:10px;font-weight:600;white-space:nowrap}
+.badge.red{background:#ff3d3d15;color:var(--r)}.badge.yellow{background:#ffb30015;color:var(--y)}
+.badge.green{background:#00c85315;color:var(--g)}.badge.purple{background:#6c5ce720;color:#9d8fff}.badge.dim{background:#6a6a7a15;color:var(--dim)}
+.footer{text-align:center;margin-top:18px;font-size:10px;color:var(--dim)}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>📊 项目管理看板</h1>
+<div class="live"><span class="live-dot"></span>PMAgent 巡检中 · 13:04</div>
+</div>
+<div class="signal-bar"><span class="signal r">🔴 sync链路 324.5 小时无产出，可能中断</span>
+<span class="signal g">🟢 GitHub Pages 部署正常 (200)</span>
+<span class="signal g">🟢 projects-data.json 可读: 25个项目</span>
+<span class="signal y">🟡 12个进行中项目>7天未更新: 项目优化专项(14天), ClaudeCode监</span>
+<span class="signal g">🟢 无产出退化</span></div>
+<div class="summary-bar">
+<div class="summary-card avg"><div class="big">79.7</div><div class="label">均分</div></div>
+<div class="summary-card"><div class="big" style="color:var(--g)">12</div><div class="label">🟢 健康</div></div>
+<div class="summary-card"><div class="big" style="color:var(--y)">11</div><div class="label">🟡 关注</div></div>
+<div class="summary-card"><div class="big">25</div><div class="label">总项目</div></div>
+</div>
+<div class="toolbar">
+<div class="tabs">
+<button class="tab active" onclick="filterBy('all',this)">全部</button>
+<button class="tab" onclick="filterBy('active',this)">进行中</button>
+<button class="tab" onclick="filterBy('done',this)">已完成</button>
+</div>
+<button class="sort-btn" onclick="toggleSort()">⇅ 按分数</button>
+</div>
+<div class="project-list" id="project-list">
+<div class="project-row" data-status="进行中" data-score="86" data-name="人力挂账推动专项" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">人力挂账推动专项</div><div class="hint">5个待办 (-5) · 2个风险 (-4) · 无产出记录 (-5)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill g" style="width:86%"></div></div></div>
+<div class="col-score" style="color:var(--g)">86</div>
+<div class="col-status"><span class="tag active">进行中</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (5)</div><div class="detail-item"><span class="badge yellow">completed</span><span>✅ 特效师挂账邮件已发送，实际共识2.68人力/32.1万元</span></div><div class="detail-item"><span class="badge yellow">in_progress</span><span>影视综挂账邮件（6月发送，预计7人力）</span></div><div class="detail-item"><span class="badge yellow">in_progress</span><span>户外主播挂账邮件（6月中旬共识，预计1.6人力）</span></div><div class="detail-item"><span class="badge yellow">pending</span><span>游戏主播需求共识（6月）</span></div><div class="detail-item"><span class="badge yellow">pending</span><span>Q3项目挂账推进（7-8月）</span></div></div><div class="detail-section"><div class="sec-title">⚠️ 风险 (2)</div><div class="detail-item"><span class="badge yellow">?</span><span>🔴 游戏合伙人人力卡点</span></div><div class="detail-item"><span class="badge yellow">?</span><span>🟡 Q3缺口4个人力</span></div></div></div>
+</div>
+<div class="project-row" data-status="进行中" data-score="84" data-name="业务规模翻倍专项" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">业务规模翻倍专项</div><div class="hint">7个待办 (-7) · 2个风险 (-4) · 无产出记录 (-5)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill g" style="width:84%"></div></div></div>
+<div class="col-score" style="color:var(--g)">84</div>
+<div class="col-status"><span class="tag active">进行中</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (7)</div><div class="detail-item"><span class="badge yellow">completed</span><span>户外主播—5月28日开始建联</span></div><div class="detail-item"><span class="badge yellow">completed</span><span>游戏单主机—5月29日开始建联</span></div><div class="detail-item"><span class="badge yellow">in_progress</span><span>定期剔除非目标用户，缩短建联Gap</span></div><div class="detail-item"><span class="badge yellow">in_progress</span><span>梳理Q2外呼留资但未添加用户（626人），已下发添加</span></div><div class="detail-item"><span class="badge yellow">in_progress</span><span>泛知识·好主播—内容调优，下周准入判断</span></div></div><div class="detail-section"><div class="sec-title">⚠️ 风险 (2)</div><div class="detail-item"><span class="badge yellow">?</span><span>🟡 好主播项目需求尚在梳理</span></div><div class="detail-item"><span class="badge yellow">?</span><span>🟡 泛知识翻倍方案待定</span></div></div></div>
+</div>
+<div class="project-row" data-status="进行中" data-score="70" data-name="项目优化专项" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">项目优化专项</div><div class="hint">过期14天 (-15) · 4个待办 (-4) · 3个风险 (-6) · 无产出记录 (-5)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill y" style="width:70%"></div></div></div>
+<div class="col-score" style="color:var(--y)">70</div>
+<div class="col-status"><span class="tag active">进行中</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (4)</div><div class="detail-item"><span class="badge yellow">即将完成</span><span>5月18日 AI创想家正式准出（释放2人）</span></div><div class="detail-item"><span class="badge yellow">进行中</span><span>5月底 企微客服方案落地</span></div><div class="detail-item"><span class="badge yellow">推进中</span><span>5月底 金条-医疗风险处置完成</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>6月初 影视综方案决策</span></div></div><div class="detail-section"><div class="sec-title">⚠️ 风险 (3)</div><div class="detail-item"><span class="badge yellow">?</span><span>🟡 企微客服推进中（张咏琪已回复，流程继续）</span></div><div class="detail-item"><span class="badge yellow">?</span><span>🟡 金条-医疗判定有风险</span></div><div class="detail-item"><span class="badge yellow">?</span><span>🟡 影视综-版权无方案</span></div></div></div>
+</div>
+<div class="project-row" data-status="进行中" data-score="84" data-name="ClaudeCode监控" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">ClaudeCode监控</div><div class="hint">过期13天 (-15) · 1个待办 (-1)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill g" style="width:84%"></div></div></div>
+<div class="col-score" style="color:var(--g)">84</div>
+<div class="col-status"><span class="tag active">进行中</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (1)</div><div class="detail-item"><span class="badge yellow">持续进行</span><span>监控数据持续积累和验证</span></div></div><div class="detail-section"><div class="sec-title">📦 产出 (5)</div><div class="detail-item"><span class="badge dim">未追踪</span><span>gen_monitor_dashboard.py</span></div><div class="detail-item"><span class="badge dim">未追踪</span><span>aggregate.py</span></div><div class="detail-item"><span class="badge dim">未追踪</span><span>log_event.py</span></div></div></div>
+</div>
+<div class="project-row" data-status="已完成" data-score="80" data-name="内容呈现优化（VISTA）" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">内容呈现优化（VISTA）</div><div class="hint">2项产出无追踪 (-20)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill g" style="width:80%"></div></div></div>
+<div class="col-score" style="color:var(--g)">80</div>
+<div class="col-status"><span class="tag done">已完成</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📦 产出 (4)</div><div class="detail-item"><span class="badge dim">未追踪</span><span>vista-presentation</span></div><div class="detail-item"><span class="badge green">✅正常</span><span>svg-flowchart-designer</span></div><div class="detail-item"><span class="badge green">✅正常</span><span>web-online</span></div></div></div>
+</div>
+<div class="project-row" data-status="进行中" data-score="83" data-name="AI分身体系" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">AI分身体系</div><div class="hint">过期14天 (-15) · 2个待办 (-2)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill g" style="width:83%"></div></div></div>
+<div class="col-score" style="color:var(--g)">83</div>
+<div class="col-status"><span class="tag active">进行中</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (2)</div><div class="detail-item"><span class="badge yellow">待启动</span><span>梳理还需哪些新分身</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>为每个分身完善知识库</span></div></div><div class="detail-section"><div class="sec-title">📦 产出 (3)</div><div class="detail-item"><span class="badge dim">未追踪</span><span>boss-perspective</span></div><div class="detail-item"><span class="badge dim">未追踪</span><span>data-validator</span></div><div class="detail-item"><span class="badge dim">未追踪</span><span>jiangjincai-mentor</span></div></div></div>
+</div>
+<div class="project-row" data-status="已取消（被AI向外看取代）" data-score="999" data-name="AI知识学习" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">AI知识学习</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill r" style="width:0%"></div></div></div>
+<div class="col-score" style="color:var(--dim)">–</div>
+<div class="col-status"><span class="tag active">已取消（被AI向外看取代）</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (3)</div><div class="detail-item"><span class="badge yellow">已取消（被AI向外看取代）</span><span>确定学习的节奏和深度</span></div><div class="detail-item"><span class="badge yellow">已取消（被AI向外看取代）</span><span>确定需要关注的领域</span></div><div class="detail-item"><span class="badge yellow">已取消（被AI向外看取代）</span><span>启动第一期学习</span></div></div><div class="detail-section"><div class="sec-title">📦 产出 (5)</div><div class="detail-item"><span class="badge green">✅正常</span><span>clawbook</span></div><div class="detail-item"><span class="badge dim">未追踪</span><span>clawbook-daily-summary</span></div><div class="detail-item"><span class="badge dim">未追踪</span><span>github-skillhub</span></div></div></div>
+</div>
+<div class="project-row" data-status="已完成" data-score="70" data-name="Scrapling爬虫研究" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">Scrapling爬虫研究</div><div class="hint">5项产出全部无追踪 (-30)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill y" style="width:70%"></div></div></div>
+<div class="col-score" style="color:var(--y)">70</div>
+<div class="col-status"><span class="tag done">已完成</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (3)</div><div class="detail-item"><span class="badge yellow">进行中（粉条日报已在用）</span><span>挖掘实际应用场景（粉条日报/社群数据/竞品监控）</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>基于实际场景做端到端Demo</span></div><div class="detail-item"><span class="badge yellow">已完成 ✅ scrapling-agent skill v3.2</span><span>沉淀为可复用的skill或模板</span></div></div><div class="detail-section"><div class="sec-title">📦 产出 (5)</div><div class="detail-item"><span class="badge dim">未追踪</span><span>Scrapling学习笔记（15章）</span></div><div class="detail-item"><span class="badge dim">未追踪</span><span>置信度评估方案 v3.1</span></div><div class="detail-item"><span class="badge dim">未追踪</span><span>优化方案可视化HTML</span></div></div></div>
+</div>
+<div class="project-row" data-status="已完成（完整版）" data-score="85" data-name="团队组织架构（完整版）" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">团队组织架构（完整版）</div><div class="hint">无产出记录 (-15)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill g" style="width:85%"></div></div></div>
+<div class="col-score" style="color:var(--g)">85</div>
+<div class="col-status"><span class="tag done">已完成（完整版）</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (1)</div><div class="detail-item"><span class="badge yellow">待启动</span><span>5/19 HR正式名单比对</span></div></div><div class="detail-section"><div class="sec-title">⚠️ 风险 (1)</div><div class="detail-item"><span class="badge yellow">?</span><span>🟡 HR正式名单尚未比对完成</span></div></div></div>
+</div>
+<div class="project-row" data-status="进行中" data-score="79" data-name="经营管理会基建交接——王坚专项" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">经营管理会基建交接——王坚专项</div><div class="hint">过期13天 (-15) · 4个待办 (-4) · 1个风险 (-2)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill y" style="width:79%"></div></div></div>
+<div class="col-score" style="color:var(--y)">79</div>
+<div class="col-status"><span class="tag active">进行中</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (4)</div><div class="detail-item"><span class="badge yellow">进行中</span><span>🔴 5/19 教王坚学做数据（带跑完整流程）</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>🔴 做周报瘦身版字段清单</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>🟡 发数据口径文档给王坚</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>🟡 安排流程图更新</span></div></div><div class="detail-section"><div class="sec-title">⚠️ 风险 (1)</div><div class="detail-item"><span class="badge yellow">?</span><span>🟡 王坚5/19开始学做数据，时间紧</span></div></div><div class="detail-section"><div class="sec-title">📦 产出 (2)</div><div class="detail-item"><span class="badge dim">未追踪</span><span>王坚交接操作手册 v1.1</span></div><div class="detail-item"><span class="badge dim">未追踪</span><span>经营管理会交接项目卡片</span></div></div></div>
+</div>
+<div class="project-row" data-status="进行中" data-score="72" data-name="经营管理会基建交接——王坚专项（周三版）" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">经营管理会基建交接——王坚专项（周三版）</div><div class="hint">过期13天 (-15) · 4个风险 (-8) · 无产出记录 (-5)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill y" style="width:72%"></div></div></div>
+<div class="col-score" style="color:var(--y)">72</div>
+<div class="col-status"><span class="tag active">进行中</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">⚠️ 风险 (4)</div><div class="detail-item"><span class="badge yellow">🟡中</span><span>🟡 Data Agent认证bug未修复</span></div><div class="detail-item"><span class="badge yellow">🟡中</span><span>🟡 项目1-11 SQL未录入汇总文档</span></div><div class="detail-item"><span class="badge yellow">🟡中</span><span>🟡 美妆电商中小商家和泛知识项目数据源待补充</span></div></div></div>
+</div>
+<div class="project-row" data-status="进行中" data-score="94" data-name="BP共建专项" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">BP共建专项</div><div class="hint">6个待办 (-6)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill g" style="width:94%"></div></div></div>
+<div class="col-score" style="color:var(--g)">94</div>
+<div class="col-status"><span class="tag active">进行中</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (6)</div><div class="detail-item"><span class="badge yellow">completed</span><span>准入规则——已完成</span></div><div class="detail-item"><span class="badge yellow">completed</span><span>案例网页（业务篇+反馈篇）——已部署</span></div><div class="detail-item"><span class="badge yellow">completed</span><span>发送口径——已完成</span></div><div class="detail-item"><span class="badge yellow">in_progress</span><span>小纸条优化：设计问卷，社群宣发填写</span></div><div class="detail-item"><span class="badge yellow">in_progress</span><span>外呼社群给BP补充两层视角（沉默痛点+用户预期）</span></div></div><div class="detail-section"><div class="sec-title">📦 产出 (2)</div><div class="detail-item"><span class="badge dim">未追踪</span><span>BP案例页面（业务篇）</span></div><div class="detail-item"><span class="badge dim">未追踪</span><span>BP案例页面（反馈篇）</span></div></div></div>
+</div>
+<div class="project-row" data-status="进行中" data-score="80" data-name="粉条活跃数据计算专项" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">粉条活跃数据计算专项</div><div class="hint">过期11天 (-15) · 3个待办 (-3) · 1个风险 (-2)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill g" style="width:80%"></div></div></div>
+<div class="col-score" style="color:var(--g)">80</div>
+<div class="col-status"><span class="tag active">进行中</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (3)</div><div class="detail-item"><span class="badge yellow">进行中</span><span>确认数据源看板链接（发言+产出两个看板）</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>编写计算脚本并联调跑通</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>设置定时任务自动执行</span></div></div><div class="detail-section"><div class="sec-title">⚠️ 风险 (1)</div><div class="detail-item"><span class="badge yellow">?</span><span>数据源看板链接尚未确认</span></div></div><div class="detail-section"><div class="sec-title">📦 产出 (2)</div><div class="detail-item"><span class="badge dim">未追踪</span><span>粉条日报线上页面</span></div><div class="detail-item"><span class="badge dim">未追踪</span><span>粉条日报周报自动化流程记忆</span></div></div></div>
+</div>
+<div class="project-row" data-status="进行中" data-score="73" data-name="无锡高价值四组迁移专项" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">无锡高价值四组迁移专项</div><div class="hint">过期11天 (-15) · 4个待办 (-4) · 4个风险 (-8)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill y" style="width:73%"></div></div></div>
+<div class="col-score" style="color:var(--y)">73</div>
+<div class="col-status"><span class="tag active">进行中</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (4)</div><div class="detail-item"><span class="badge yellow">进行中</span><span>谈娟出交接+培训规划（含交接内容、培训方案、验收标准、兜底）</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>蒋金才线下核实南雪妮组排班与职责口径</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>收到交接规划后，与南雪妮团队拉通交接会</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>协调申请商业化C4运营权限</span></div></div><div class="detail-section"><div class="sec-title">⚠️ 风险 (4)</div><div class="detail-item"><span class="badge yellow">?</span><span>南雪妮组人力不足（现有2人+南雪妮，难保双休）</span></div><div class="detail-item"><span class="badge yellow">?</span><span>交接规划尚未拿到，时间不确定</span></div><div class="detail-item"><span class="badge yellow">?</span><span>商业化知识门槛高，新人需1-2周学习期</span></div></div><div class="detail-section"><div class="sec-title">📦 产出 (2)</div><div class="detail-item"><span class="badge dim">未追踪</span><span>wuxi-migration-project.md（项目文件）</span></div><div class="detail-item"><span class="badge dim">未追踪</span><span>谈娟组→无锡高价值四组迁移专项（记忆）</span></div></div></div>
+</div>
+<div class="project-row" data-status="进行中" data-score="84" data-name="项目管理体系" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">项目管理体系</div><div class="hint">过期11天 (-15) · 1个待办 (-1)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill g" style="width:84%"></div></div></div>
+<div class="col-score" style="color:var(--g)">84</div>
+<div class="col-status"><span class="tag active">进行中</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (1)</div><div class="detail-item"><span class="badge yellow">待启动</span><span>看板标签语义升级（三级标签替代不可追踪）</span></div></div><div class="detail-section"><div class="sec-title">📦 产出 (14)</div><div class="detail-item"><span class="badge dim">未追踪</span><span>项目管理看板</span></div><div class="detail-item"><span class="badge dim">未追踪</span><span>监控看板</span></div><div class="detail-item"><span class="badge dim">未追踪</span><span>新人介绍页</span></div></div></div>
+</div>
+<div class="project-row" data-status="进行中" data-score="76" data-name="经营周报看板体系" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">经营周报看板体系</div><div class="hint">过期11天 (-15) · 2个待办 (-2) · 其中1个逾期 (-5) · 1个风险 (-2)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill y" style="width:76%"></div></div></div>
+<div class="col-score" style="color:var(--y)">76</div>
+<div class="col-status"><span class="tag active">进行中</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (2)</div><div class="detail-item"><span class="badge yellow">进行中</span><span>周报瘦身：梳理高价值指标，低价值指标下沉/砍掉</span></div><div class="detail-item"><span class="badge yellow">进行中</span><span>王坚跟学做数据（周二实操）</span></div></div><div class="detail-section"><div class="sec-title">⚠️ 风险 (1)</div><div class="detail-item"><span class="badge yellow">?</span><span>王坚接手后可能出现数据更新遗漏</span></div></div><div class="detail-section"><div class="sec-title">📦 产出 (5)</div><div class="detail-item"><span class="badge green">✅正常</span><span>weekly-report-visualization</span></div><div class="detail-item"><span class="badge dim">未追踪</span><span>operation-weekly-report</span></div><div class="detail-item"><span class="badge dim">未追踪</span><span>weekly-report-optimization（优化文档）</span></div></div></div>
+</div>
+<div class="project-row" data-status="进行中" data-score="67" data-name="AI监工（Forge）" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">AI监工（Forge）</div><div class="hint">过期11天 (-15) · 4个待办 (-4) · 2个风险 (-4) · 1个待确认 (-5) · 无产出记录 (-5)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill y" style="width:67%"></div></div></div>
+<div class="col-score" style="color:var(--y)">67</div>
+<div class="col-status"><span class="tag active">进行中</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (4)</div><div class="detail-item"><span class="badge yellow">已完成 ✅（qwen2.5:1.5b + Forge Proxy 真实联调成功，工具调用率33%→100%）</span><span>部署 Proxy 模式，接入本地 AI 工具链做验证</span></div><div class="detail-item"><span class="badge yellow">已完成 ✅（5层护栏测试完成，71%中文救回率，报告已出）</span><span>实测中文场景：用快手业务典型任务跑一遍，看护栏是否有效</span></div><div class="detail-item"><span class="badge yellow">进行中（真实Proxy测试成功！工具调用率1/3→3/3。结论：值得投入，但需3个中文适配改动）</span><span>评估是否值得投入生产环境</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>如果效果好：写一份接入文档，让团队其他人也能用</span></div></div><div class="detail-section"><div class="sec-title">⚠️ 风险 (2)</div><div class="detail-item"><span class="badge yellow">?</span><span>🟡 中文场景适配未知</span></div><div class="detail-item"><span class="badge yellow">?</span><span>🟡 Proxy 模式增加一层延迟</span></div></div><div class="detail-section"><div class="sec-title">❓ 待确认 (1)</div><div class="detail-item"><span class="badge purple">data</span><span>Forge 在中文场景下的准确率尚未验证</span></div></div></div>
+</div>
+<div class="project-row" data-status="进行中" data-score="77" data-name="AI员工手册（agents-best-practices）" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">AI员工手册（agents-best-practices）</div><div class="hint">过期10天 (-15) · 3个待办 (-3) · 无产出记录 (-5)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill y" style="width:77%"></div></div></div>
+<div class="col-score" style="color:var(--y)">77</div>
+<div class="col-status"><span class="tag active">进行中</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (3)</div><div class="detail-item"><span class="badge yellow">已完成 ✅（5/20已克隆至skill目录，内容一致）</span><span>把仓库内容复制到 ~/.codeflicker/skills/agents-best-practices/</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>提取 7 级风险分类表，做成一页纸速查卡</span></div><div class="detail-item"><span class="badge yellow">持续</span><span>下次给 AI 设计新能力时，用这个手册做安全检查</span></div></div></div>
+</div>
+<div class="project-row" data-status="进行中" data-score="77" data-name="一键出图（html-anything）" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">一键出图（html-anything）</div><div class="hint">过期11天 (-15) · 3个待办 (-3) · 无产出记录 (-5)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill y" style="width:77%"></div></div></div>
+<div class="col-score" style="color:var(--y)">77</div>
+<div class="col-status"><span class="tag active">进行中</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (3)</div><div class="detail-item"><span class="badge yellow">待启动</span><span>安装依赖（pnpm install），本地跑起来看效果</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>提取它的一键推送设计模式，写一份借鉴清单</span></div><div class="detail-item"><span class="badge yellow">待规划</span><span>评估是否把一键推 Kim 群能力加进我们的简报系统</span></div></div></div>
+</div>
+<div class="project-row" data-status="跟踪观察" data-score="999" data-name="AI专属语言（zerolang）" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">AI专属语言（zerolang）</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill r" style="width:0%"></div></div></div>
+<div class="col-score" style="color:var(--dim)">–</div>
+<div class="col-status"><span class="tag active">跟踪观察</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (2)</div><div class="detail-item"><span class="badge yellow">持续</span><span>每 2-4 周检查一次更新（关注是否进入 Beta/1.0）</span></div><div class="detail-item"><span class="badge yellow">等待</span><span>如果进入 1.0：重新评估是否值得尝试</span></div></div></div>
+</div>
+<div class="project-row" data-status="进行中" data-score="92" data-name="项目管理 Agent" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">项目管理 Agent</div><div class="hint">4个待办 (-4) · 2个风险 (-4)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill g" style="width:92%"></div></div></div>
+<div class="col-score" style="color:var(--g)">92</div>
+<div class="col-status"><span class="tag active">进行中</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (4)</div><div class="detail-item"><span class="badge yellow">进行中</span><span>稳定运行一周，观察误报/漏报率</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>误报率<5%后，升级 trust_level 到 2</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>Agent 运行周报自动生成</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>Level 3 跨项目冲突检测</span></div></div><div class="detail-section"><div class="sec-title">⚠️ 风险 (2)</div><div class="detail-item"><span class="badge yellow">🟢低</span><span>Agent 误报</span></div><div class="detail-item"><span class="badge yellow">🟢低</span><span>JSON 写入冲突</span></div></div><div class="detail-section"><div class="sec-title">📦 产出 (2)</div><div class="detail-item"><span class="badge green">✅正常</span><span>pm_agent_health.json</span></div><div class="detail-item"><span class="badge green">✅正常</span><span>pm_agent_audit.jsonl</span></div></div></div>
+</div>
+<div class="project-row" data-status="进行中" data-score="84" data-name="人格化探索专项" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">人格化探索专项</div><div class="hint">8个待办 (-8) · 4个风险 (-8)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill g" style="width:84%"></div></div></div>
+<div class="col-score" style="color:var(--g)">84</div>
+<div class="col-status"><span class="tag active">进行中</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (8)</div><div class="detail-item"><span class="badge yellow">待启动</span><span>🔴 6月扩量：戏曲品类</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>🔴 6月扩量：财经品类</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>🔴 6月扩量：军事品类</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>🔴 6月扩量：法律品类</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>🟡 6-7月 教育、健康品类（视资源）</span></div></div><div class="detail-section"><div class="sec-title">⚠️ 风险 (4)</div><div class="detail-item"><span class="badge yellow">🟡中</span><span>🟡 人工审核是规模化瓶颈</span></div><div class="detail-item"><span class="badge yellow">🟡中</span><span>🟡 作者意愿分化</span></div><div class="detail-item"><span class="badge yellow">🟡中</span><span>🟡 规模化后调优深度不足</span></div></div><div class="detail-section"><div class="sec-title">📦 产出 (3)</div><div class="detail-item"><span class="badge green">✅正常</span><span>客服总监汇报-人格化转型价值案例.md</span></div><div class="detail-item"><span class="badge green">✅正常</span><span>客服总监汇报-人格化转型价值案例.docx</span></div><div class="detail-item"><span class="badge green">✅正常</span><span>VISTA一屏看板</span></div></div></div>
+</div>
+<div class="project-row" data-status="进行中" data-score="86" data-name="张洪瑜新媒体外部新媒体投流增长专项" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">张洪瑜新媒体外部新媒体投流增长专项</div><div class="hint">4个待办 (-4) · 1个待确认 (-5) · 无产出记录 (-5)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill g" style="width:86%"></div></div></div>
+<div class="col-score" style="color:var(--g)">86</div>
+<div class="col-status"><span class="tag active">进行中</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (4)</div><div class="detail-item"><span class="badge yellow">in_progress</span><span>🔴 明确专项目标和衡量指标</span></div><div class="detail-item"><span class="badge yellow">pending</span><span>🟡 拉齐投流策略和预算规划</span></div><div class="detail-item"><span class="badge yellow">pending</span><span>🟡 确定外部新媒体平台和投放渠道</span></div><div class="detail-item"><span class="badge yellow">in_progress</span><span>WK22: 需求沟通中，本周完成业务了解，下周汇报逻辑判断是否深入</span></div></div><div class="detail-section"><div class="sec-title">❓ 待确认 (1)</div><div class="detail-item"><span class="badge purple">todo</span><span>专项定义、目标、指标、策略均待补充</span></div></div></div>
+</div>
+<div class="project-row" data-status="进行中" data-score="79" data-name="智能跑数分析专项" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">智能跑数分析专项</div><div class="hint">6个待办 (-6) · 3个待确认 (-15)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill y" style="width:79%"></div></div></div>
+<div class="col-score" style="color:var(--y)">79</div>
+<div class="col-status"><span class="tag active">进行中</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (6)</div><div class="detail-item"><span class="badge yellow">进行中</span><span>🔴 通过 KESS Agent + Data Agent 跑通自动取数链路</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>🔴 拉丁好解决技术卡点（Data Agent认证bug等），实现全量字段覆盖取数</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>🔴 补录项目1-11的SQL到汇总文档</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>🟡 和督导拉齐分析逻辑和口径</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>🟡 建立定期分析产出机制（频率/格式/分发渠道）</span></div></div><div class="detail-section"><div class="sec-title">❓ 待确认 (3)</div><div class="detail-item"><span class="badge purple">todo</span><span>丁好的技术卡点具体是什么、需要他做什么尚未明确</span></div><div class="detail-item"><span class="badge purple">todo</span><span>取数的口径、涉及的字段列表尚未明确</span></div><div class="detail-item"><span class="badge purple">todo</span><span>分析逻辑和输出格式尚未定义</span></div></div><div class="detail-section"><div class="sec-title">📦 产出 (3)</div><div class="detail-item"><span class="badge green">✅正常</span><span>合作运营项目SQL数据源汇总.md</span></div><div class="detail-item"><span class="badge green">✅正常</span><span>WK19-21 合作运营周报看板</span></div><div class="detail-item"><span class="badge green">✅正常</span><span>kess-sql-query Skill</span></div></div></div>
+</div>
+<div class="project-row" data-status="已完成" data-score="70" data-name="泛知识人格化转型" onclick="this.classList.toggle('expanded')">
+<div class="row-main">
+<div class="col-name"><div class="title">泛知识人格化转型</div><div class="hint">4项产出全部无追踪 (-30)</div></div>
+<div class="col-bar"><div class="bar-track"><div class="bar-fill y" style="width:70%"></div></div></div>
+<div class="col-score" style="color:var(--y)">70</div>
+<div class="col-status"><span class="tag done">已完成</span></div>
+</div>
+<div class="row-detail"><div class="detail-section"><div class="sec-title">📋 待办 (3)</div><div class="detail-item"><span class="badge yellow">框架已出</span><span>制定选人标准方案（效率优先/覆盖优先）</span></div><div class="detail-item"><span class="badge yellow">待启动</span><span>泛知识其他品类复制（戏曲/财经/教育/健康）</span></div><div class="detail-item"><span class="badge yellow">进行中</span><span>解决'干完就退'持续性问题</span></div></div><div class="detail-section"><div class="sec-title">❓ 待确认 (1)</div><div class="detail-item"><span class="badge purple">decision</span><span>选人方案用效率优先还是覆盖优先</span></div></div><div class="detail-section"><div class="sec-title">📦 产出 (4)</div><div class="detail-item"><span class="badge dim">未追踪</span><span></span></div><div class="detail-item"><span class="badge dim">未追踪</span><span></span></div><div class="detail-item"><span class="badge dim">未追踪</span><span></span></div></div></div>
+</div>
+</div>
+<div class="footer">PMAgent v1.2 · 2026-05-31 13:04 · 每30分钟自动更新</div>
+</div>
+<script>
+var sortByScore=true;
+function filterBy(type,btn){
+document.querySelectorAll(".tab").forEach(function(t){t.classList.remove("active")});
+btn.classList.add("active");
+var rows=document.querySelectorAll(".project-row"),g=0,y=0,total=0,sum=0,c=0;
+for(var i=0;i<rows.length;i++){
+var r=rows[i],s=r.dataset.status||"";
+var show=type==="all"||(type==="active"&&s.indexOf("\u8fdb\u884c\u4e2d")>=0)||(type==="done"&&s.indexOf("\u5b8c\u6210")>=0);
+r.classList.toggle("hidden",!show);
+if(show){total++;var sc=parseInt(r.dataset.score);if(!isNaN(sc)){sum+=sc;c++;if(sc>=85)g++;else if(sc>=70)y++;}}
+}
+document.querySelector(".summary-card.avg .big").textContent=c?(sum/c).toFixed(1):0;
+document.querySelector(".summary-card:nth-child(2) .big").textContent=g;
+document.querySelector(".summary-card:nth-child(3) .big").textContent=y;
+document.querySelector(".summary-card:nth-child(4) .big").textContent=total;
+}
+function toggleSort(){
+sortByScore=!sortByScore;
+document.querySelector(".sort-btn").textContent=sortByScore?"\u21c5 \u6309\u5206\u6570":"\u21c5 \u6309\u540d\u79f0";
+var list=document.getElementById("project-list");
+var rows=Array.prototype.slice.call(list.querySelectorAll(".project-row"));
+rows.sort(function(a,b){
+if(sortByScore)return parseInt(a.dataset.score)-parseInt(b.dataset.score);
+return (a.dataset.name||"").localeCompare(b.dataset.name||"","zh");
+});
+for(var i=0;i<rows.length;i++)list.appendChild(rows[i]);
+}
+</script>
+</body>
+</html>

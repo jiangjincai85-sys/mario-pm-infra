@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mario Claw 实时监控</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{--bg:#0a0a12;--bg-card:#14141f;--text:#e8e8f5;--text-dim:#7878a0;--accent:#ff6b35;--accent2:#ff2d55;--accent3:#ffb100;--accent4:#2196f3;--accent5:#30d158;--border:#22223a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:56px;display:flex;align-items:center;padding:0 24px;background:linear-gradient(135deg,rgba(10,10,18,0.94),rgba(20,20,31,0.94));backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-brand{font-weight:800;font-size:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-time{font-size:12px;color:var(--text-dim);margin-left:auto}
+.nav-pulse{width:8px;height:8px;border-radius:50%;background:var(--accent5);margin-right:8px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.container{max-width:1200px;margin:0 auto;padding:72px 24px 48px}
+.kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:20px 0}
+@media(max-width:768px){.kpi-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.kpi-grid{grid-template-columns:1fr}}
+.kpi-card{background:linear-gradient(135deg,var(--bg-card),#1a1a2e);border:1px solid rgba(255,255,255,0.04);border-radius:12px;padding:18px 14px;text-align:center;transition:all 0.3s}
+.kpi-card:hover{transform:translateY(-3px);border-color:var(--accent)}
+.kpi-num{font-size:2rem;font-weight:800;line-height:1}
+.kpi-label{font-size:0.72rem;color:var(--text-dim);margin-top:4px}
+.kpi-sub{font-size:0.65rem;color:var(--text-dim);opacity:0.6}
+.c-orange{color:var(--accent)}.c-blue{color:var(--accent4)}.c-green{color:var(--accent5)}.c-red{color:var(--accent2)}.c-yellow{color:var(--accent3)}
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+@media(max-width:768px){.chart-grid{grid-template-columns:1fr}}
+.chart-card{background:var(--bg-card);border:1px solid rgba(255,255,255,0.04);border-radius:12px;padding:16px}
+.chart-card h3{font-size:0.82rem;font-weight:600;color:var(--text-dim);margin-bottom:8px}
+.chart-box{width:100%;height:260px}
+.section-title{font-size:1rem;font-weight:700;margin:24px 0 12px;display:flex;align-items:center;gap:8px}
+.data-wrap{background:var(--bg-card);border:1px solid rgba(255,255,255,0.04);border-radius:12px;overflow:hidden}
+.data-table{width:100%;border-collapse:collapse;font-size:0.78rem}
+.data-table th{text-align:left;padding:10px 16px;background:rgba(255,255,255,0.02);border-bottom:2px solid var(--border);font-weight:600;color:var(--text-dim);font-size:0.72rem}
+.data-table td{padding:8px 16px;border-bottom:1px solid rgba(255,255,255,0.03)}
+.data-table tr:hover td{background:rgba(255,255,255,0.02)}
+.badge{display:inline-block;padding:2px 8px;border-radius:100px;font-size:10px;font-weight:600}
+.badge-live{background:rgba(48,209,88,0.12);color:var(--accent5)}
+.badge-done{background:rgba(255,255,255,0.06);color:var(--text-dim)}
+.tag{display:inline-block;padding:1px 6px;border-radius:4px;font-size:9px;font-weight:600}
+.proj-grid{display:grid;grid-template-columns:1fr 2fr;gap:14px;margin:18px 0}
+@media(max-width:768px){.proj-grid{grid-template-columns:1fr}}
+.proj-card{background:var(--bg-card);border:1px solid rgba(255,255,255,0.04);border-radius:12px;padding:16px}
+.proj-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.proj-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.proj-name{font-size:0.78rem;min-width:70px}
+.proj-bar{flex:1;height:4px;background:rgba(255,255,255,0.04);border-radius:2px;overflow:hidden}
+.proj-fill{height:100%;border-radius:2px}
+.proj-cnt{font-size:0.7rem;color:var(--text-dim);min-width:36px;text-align:right}
+.api-box{background:linear-gradient(135deg,rgba(255,177,0,0.06),rgba(255,107,53,0.04));border:1px solid rgba(255,177,0,0.12);border-radius:12px;padding:16px;margin:18px 0}
+.api-box h3{font-size:0.82rem;font-weight:600;color:var(--accent3);margin-bottom:8px}
+.api-code{background:rgba(255,255,255,0.06);border-radius:8px;padding:12px;font-family:monospace;font-size:0.72rem;color:var(--text);line-height:1.6;margin-top:8px}
+.footer{text-align:center;padding:24px;color:var(--text-dim);font-size:0.72rem;border-top:1px solid var(--border)}
+</style>
+</head>
+<body>
+<div class="nav">
+  <div class="nav-pulse"></div>
+  <div class="nav-brand">Mario Claw 实时监控</div>
+  <div class="nav-time" id="navTime">加载中...</div>
+</div>
+<div class="container">
+  <!-- KPI -->
+  <div class="kpi-grid" id="kpiGrid"></div>
+
+  <!-- 项目归属 -->
+  <div class="section-title">📊 项目归属</div>
+  <div class="proj-grid">
+    <div class="chart-card"><h3>项目 vs 非项目</h3><div class="chart-box" id="chartProject"></div></div>
+    <div class="proj-card"><h3>各项目调用分布</h3><div id="projBars"></div></div>
+  </div>
+
+  <!-- 图表 -->
+  <div class="section-title">📈 工具 & 趋势</div>
+  <div class="chart-grid">
+    <div class="chart-card"><h3>工具使用分布</h3><div class="chart-box" id="chartTools"></div></div>
+    <div class="chart-card"><h3>近 7 天趋势</h3><div class="chart-box" id="chartTrend"></div></div>
+  </div>
+
+  <!-- 会话明细 -->
+  <div class="section-title">👥 会话明细（含序号）</div>
+  <div class="data-wrap">
+    <table class="data-table">
+      <thead><tr><th>序号</th><th>会话ID</th><th>模型</th><th>开始时间</th><th>调用数</th><th>报错</th><th>状态</th></tr></thead>
+      <tbody id="sessionTable"></tbody>
+    </table>
+  </div>
+
+  <!-- 最近操作 -->
+  <div class="section-title">🕐 最近操作</div>
+  <div class="data-wrap">
+    <table class="data-table">
+      <thead><tr><th>时间</th><th>工具</th><th>项目</th><th>摘要</th><th>耗时</th><th>状态</th></tr></thead>
+      <tbody id="callTable"></tbody>
+    </table>
+  </div>
+
+  <!-- API 说明 -->
+  <div class="api-box">
+    <h3>🔌 其他 Skill / 应用如何调用此数据</h3>
+    <p style="font-size:0.78rem;color:var(--text-dim)">本看板的数据来自 <code>monitor-data.json</code>，任何 skill 或应用可直接读取：</p>
+    <div class="api-code">
+# 方式1：本地文件读取（skill 调用）
+import json
+data = json.load(open("output/monitor-data.json"))
+
+# 方式2：HTTP fetch（网页/前端）
+fetch("monitor-data.json").then(r => r.json())
+
+# 方式3：公网 URL
+https://jiangjincai85-sys.github.io/mario-pm-infra/monitor-data.json
+
+# 可用字段：meta | kpi | sessions | tools | projects | trend_7d | recent_calls | project_cards | project_registry
+    </div>
+  </div>
+</div>
+<div class="footer">Mario Claw 监控系统 · 每 30 秒自动刷新 · 数据来源: ~/.claude/monitor.db</div>
+
+<script>
+let lastData = null;
+
+function fetchData() {
+  fetch('monitor-data.json?t=' + Date.now())
+    .then(r => r.json())
+    .then(data => {
+      lastData = data;
+      renderAll(data);
+    })
+    .catch(err => console.error('fetch error:', err));
+}
+
+function renderAll(data) {
+  document.getElementById('navTime').textContent = '更新于 ' + data.meta.generated_at.slice(11,19);
+  renderKPI(data.kpi);
+  renderProjectBars(data.projects, data.kpi);
+  renderProjectChart(data.projects, data.kpi);
+  renderToolChart(data.tools);
+  renderTrendChart(data.trend_7d);
+  renderSessions(data.sessions);
+  renderCalls(data.recent_calls, data.project_registry);
+}
+
+function renderKPI(kpi) {
+  const grid = document.getElementById('kpiGrid');
+  const errColor = kpi.today_error_rate > 5 ? 'c-red' : 'c-green';
+  const totalErrColor = kpi.total_error_rate > 5 ? 'c-red' : 'c-green';
+  grid.innerHTML = `
+    <div class="kpi-card"><div class="kpi-num c-orange">${kpi.today_sessions}</div><div class="kpi-label">今日会话</div><div class="kpi-sub">累计 ${kpi.total_sessions}</div></div>
+    <div class="kpi-card"><div class="kpi-num c-blue">${kpi.today_calls}</div><div class="kpi-label">今日调用</div><div class="kpi-sub">累计 ${kpi.total_calls}</div></div>
+    <div class="kpi-card"><div class="kpi-num ${errColor}">${kpi.today_error_rate}%</div><div class="kpi-label">今日错误率</div><div class="kpi-sub">累计 ${kpi.total_error_rate}%</div></div>
+    <div class="kpi-card"><div class="kpi-num c-yellow">${kpi.today_hot_tool}</div><div class="kpi-label">今日最活跃</div><div class="kpi-sub">${kpi.today_hot_count} 次</div></div>
+    <div class="kpi-card"><div class="kpi-num ${totalErrColor}">${kpi.total_errors}</div><div class="kpi-label">总报错</div><div class="kpi-sub">项目内 ${kpi.project_calls} / 非项目 ${kpi.non_project_calls}</div></div>
+  `;
+}
+
+function renderProjectBars(projects, kpi) {
+  const total = kpi.total_calls || 1;
+  const maxCalls = Math.max(...projects.map(p => p.calls), 1);
+  const container = document.getElementById('projBars');
+  let html = '';
+  for (const p of projects) {
+    const pct = (p.calls / total * 100).toFixed(1);
+    const barPct = (p.calls / maxCalls * 100).toFixed(0);
+    html += `<div class="proj-row">
+      <div class="proj-dot" style="background:${p.color}"></div>
+      <div class="proj-name">${p.name}</div>
+      <div class="proj-bar"><div class="proj-fill" style="width:${barPct}%;background:${p.color}"></div></div>
+      <div class="proj-cnt">${p.calls} 次</div>
+    </div>`;
+  }
+  container.innerHTML = html;
+}
+
+function renderProjectChart(projects, kpi) {
+  const pieData = projects.map(p => ({value: p.calls, name: p.name, itemStyle: {color: p.color}}));
+  const uncategorized = kpi.uncategorized_calls;
+  if (uncategorized > 0) {
+    pieData.push({value: uncategorized, name: '未分类', itemStyle: {color: '#4a5470'}});
+  }
+  echarts.init(document.getElementById('chartProject')).setOption({
+    tooltip:{trigger:'item', formatter:'{b}: {c} 次 ({d}%)'},
+    series:[{type:'pie', radius:['35%','58%'], avoidLabelOverlap:true,
+      label:{show:true, formatter:'{b}\n{d}%', color:'#e8e8f5'},
+      data: pieData}]
+  });
+}
+
+function renderToolChart(tools) {
+  echarts.init(document.getElementById('chartTools')).setOption({
+    tooltip:{trigger:'item', formatter:'{b}: {c} 次 ({d}%)'},
+    series:[{type:'pie', radius:['35%','58%'], avoidLabelOverlap:true,
+      label:{show:true, formatter:'{b}\n{d}%', color:'#e8e8f5'},
+      data: tools.map(t => ({value: t.count, name: t.name_zh, itemStyle: {color: t.color}}))}]
+  });
+}
+
+function renderTrendChart(trend) {
+  echarts.init(document.getElementById('chartTrend')).setOption({
+    tooltip:{trigger:'axis'},
+    legend:{data:['调用','报错','会话'], textStyle:{color:'#7878a0'}},
+    grid:{left:'3%',right:'4%',bottom:'3%',containLabel:true},
+    xAxis:{type:'category', data:trend.map(d=>d.date.slice(5).replace('-','月')+'日'), axisLabel:{color:'#7878a0'}},
+    yAxis:{type:'value', splitLine:{lineStyle:{color:'#1e1e30'}}, axisLabel:{color:'#7878a0'}},
+    series:[
+      {name:'调用',type:'bar',barWidth:'28%',data:trend.map(d=>d.calls),itemStyle:{color:'#2196f3',borderRadius:[4,4,0,0]}},
+      {name:'报错',type:'bar',barWidth:'14%',data:trend.map(d=>d.errors),itemStyle:{color:'#ff2d55',borderRadius:[4,4,0,0]}},
+      {name:'会话',type:'line',data:trend.map(d=>d.sessions),lineStyle:{color:'#ffb100',width:2},symbol:'circle',symbolSize:6}
+    ]
+  });
+}
+
+function renderSessions(sessions) {
+  const tbody = document.getElementById('sessionTable');
+  let html = '';
+  sessions.forEach((s, i) => {
+    const badge = s.status === '进行中' ? '<span class="badge badge-live">进行中</span>' : '<span class="badge badge-done">已完成</span>';
+    const shortId = s.session_id.slice(0, 12) + '...';
+    html += `<tr>
+      <td style="font-weight:700;color:var(--accent3)">#${i+1}</td>
+      <td style="font-family:monospace;font-size:0.7rem">${shortId}</td>
+      <td>${s.model}</td>
+      <td>${s.started_at.slice(0,19)}</td>
+      <td>${s.tool_calls} 次</td>
+      <td>${s.errors}</td>
+      <td>${badge}</td>
+    </tr>`;
+  });
+  tbody.innerHTML = html;
+}
+
+function renderCalls(calls, registry) {
+  const tbody = document.getElementById('callTable');
+  let html = '';
+  calls.slice(0, 20).forEach(c => {
+    const projName = registry[c.project_id] || c.project_id;
+    const projColor = {'claude-monitor':'#2196f3','vista-content':'#9c27b0','ai-avatar':'#ff9800',
+      'ai-learning':'#00bcd4','double-business':'#ff5722','non-project':'#888',
+      'uncategorized':'#4a5470','project-unknown':'#607d8b','scrapling-research':'#00e676'}[c.project_id] || '#888';
+    const failTag = c.status === 'failure' ? '<span class="tag" style="background:rgba(255,45,85,0.12);color:#ff6b8a">失败</span>' : '';
+    html += `<tr>
+      <td style="white-space:nowrap;font-size:0.72rem">${c.timestamp.slice(11,19)}</td>
+      <td><span class="tag" style="background:${c.tool === 'failure' ? 'rgba(255,45,85,0.12)' : 'rgba(33,150,243,0.1)'};color:${projColor}">${c.tool_zh}</span>${failTag}</td>
+      <td><span class="tag" style="border:1px solid ${projColor};color:${projColor}">${projName}</span></td>
+      <td style="max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:0.72rem">${c.summary}</td>
+      <td style="font-size:0.72rem">${c.duration_ms > 0 ? c.duration_ms + 'ms' : '-'}</td>
+      <td style="font-size:0.72rem">${c.status === 'success' ? '✅' : '❌'}</td>
+    </tr>`;
+  });
+  tbody.innerHTML = html;
+}
+
+// 初始加载
+fetchData();
+
+// 每30秒自动刷新
+setInterval(fetchData, 30000);
+</script>
+</body>
+</html>

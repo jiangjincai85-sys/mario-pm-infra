@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>项目管理助手 · 给新人的介绍</title>
+<style>
+:root{--bg:#0a0e17;--s:#131b2e;--s2:#1a2540;--b:#253555;--bl:#3a5080;--t:#eaf0fa;--t2:#8899b3;--t3:#4a5578;--green:#34d399;--blue:#5b8af7;--yellow:#fbbf24;--orange:#f97316;--red:#f87171;--cyan:#22d3ee;--purple:#a78bfa;--pink:#f472b6;--r:12px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Noto Sans SC',sans-serif;background:var(--bg);color:var(--t);min-height:100vh;line-height:1.7}
+
+/* Hero */
+.hero{position:relative;padding:60px 40px;text-align:center;background:linear-gradient(135deg,rgba(26,37,64,.6),rgba(10,14,23,1));overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 40%,rgba(91,138,247,.08),transparent 60%);animation:pulse 8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:.8}}
+.hero h1{font-size:2.4em;font-weight:900;margin-bottom:8px;letter-spacing:-.02em}
+.hero .sub{font-size:1.1em;color:var(--t2);max-width:640px;margin:0 auto}
+.hero .badge{display:inline-block;font-size:.7rem;padding:4px 14px;border-radius:999;background:var(--green);color:#000;font-weight:700;margin-top:16px}
+
+/* KPI Cards */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:32px 40px;max-width:900px;margin:0 auto}
+.kpi{background:var(--s);border:1px solid var(--b);border-radius:var(--r);padding:16px;text-align:center;transition:transform .2s}
+.kpi:hover{transform:translateY(-3px);border-color:var(--bl)}
+.kpi .n{font-size:2em;font-weight:900;line-height:1}
+.kpi .l{font-size:.75rem;color:var(--t2);margin-top:4px}
+.kpi .d{font-size:.6rem;color:var(--t3);margin-top:2px}
+
+/* Section */
+.section{padding:32px 40px;max-width:900px;margin:0 auto}
+.section h2{font-size:1.4em;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.section h2 .icon{font-size:1.2em}
+.section p{font-size:.9rem;color:var(--t2);margin-bottom:12px}
+.section .highlight{color:var(--t);font-weight:600;background:rgba(91,138,247,.1);padding:2px 8px;border-radius:4px}
+
+/* Problem Card */
+.problem{background:var(--s);border:1px solid var(--b);border-radius:var(--r);padding:20px;margin-bottom:12px}
+.problem .emoji{font-size:1.5em;margin-bottom:8px}
+.problem .title{font-size:.9em;font-weight:700;margin-bottom:6px}
+.problem .desc{font-size:.8rem;color:var(--t2);line-height:1.6}
+.problem .tag{display:inline-block;font-size:.55rem;padding:2px 8px;border-radius:4px;margin-top:8px;border:1px solid}
+
+/* Flow */
+.flow{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0;align-items:center}
+.flow-item{background:var(--s2);border:1px solid var(--b);border-radius:var(--r);padding:10px 14px;text-align:center;font-size:.75rem;min-width:100px;position:relative;transition:transform .15s}
+.flow-item:hover{transform:translateY(-2px);border-color:var(--bl)}
+.flow-item .icon{font-size:1.3em;margin-bottom:4px}
+.flow-item .label{font-weight:700;color:var(--t)}
+.flow-item .sublabel{color:var(--t3);font-size:.6rem}
+.flow-arrow{font-size:.8em;color:var(--t3)}
+
+/* Compare Table */
+.compare{width:100%;border-collapse:collapse;margin:16px 0;font-size:.8rem}
+.compare th{text-align:left;padding:10px 12px;background:var(--s2);border:1px solid var(--b);font-weight:700;font-size:.75rem;color:var(--t2)}
+.compare td{padding:10px 12px;border:1px solid var(--b);color:var(--t2)}
+.compare td.yes{color:var(--green);font-weight:600}
+.compare td.no{color:var(--red)}
+.compare td.new{color:var(--blue);font-weight:600}
+
+/* Layer Cards */
+.layers{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:16px 0}
+.layer{background:var(--s);border:1px solid var(--b);border-radius:var(--r);padding:16px;transition:transform .15s}
+.layer:hover{transform:translateY(-2px);border-color:var(--bl)}
+.layer .num{font-size:.6rem;color:var(--t3);margin-bottom:4px}
+.layer .title{font-size:.85em;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.layer .desc{font-size:.7rem;color:var(--t2);line-height:1.5}
+.layer .example{font-size:.6rem;color:var(--t3);margin-top:6px;padding:6px 8px;background:rgba(0,0,0,.3);border-radius:6px}
+
+/* Demo */
+.demo{background:var(--s);border:2px solid var(--green);border-radius:var(--r);padding:20px;margin:16px 0}
+.demo .label{font-size:.7rem;color:var(--green);font-weight:700;margin-bottom:8px}
+.demo .input{background:rgba(0,0,0,.3);padding:8px 12px;border-radius:6px;margin-bottom:6px;font-size:.8rem;color:var(--yellow)}
+.demo .output{background:rgba(0,0,0,.3);padding:8px 12px;border-radius:6px;font-size:.8rem;color:var(--green)}
+.demo .note{font-size:.6rem;color:var(--t3);margin-top:8px}
+
+/* Timeline */
+.timeline{margin:16px 0}
+.tl-item{display:flex;gap:12px;margin-bottom:10px;align-items:flex-start}
+.tl-time{font-size:.7rem;font-weight:700;color:var(--blue);min-width:80px;text-align:right}
+.tl-content{font-size:.8rem;color:var(--t2)}
+.tl-content .act{color:var(--t);font-weight:600}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,var(--s2),var(--s));border:1px solid var(--green);border-radius:var(--r);padding:24px;margin:16px 0;text-align:center}
+.cta h3{font-size:1.1em;font-weight:800;margin-bottom:8px}
+.cta p{font-size:.85rem;color:var(--t2);max-width:500px;margin:0 auto 12px}
+.cta .cmd{background:rgba(0,0,0,.4);padding:10px 16px;border-radius:8px;font-size:.9rem;color:var(--green);font-weight:700;display:inline-block;margin:4px}
+
+/* Footer */
+.footer{text-align:center;padding:24px;font-size:.65rem;color:var(--t3);border-top:1px solid var(--b)}
+
+@media(max-width:768px){
+  .hero{padding:40px 20px}
+  .hero h1{font-size:1.6em}
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+  .section{padding:24px 20px}
+  .layers{grid-template-columns:1fr}
+  .flow-item{min-width:80px;padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<!-- V · 视觉钩子 -->
+<div class="hero">
+  <h1>🛠 项目管理助手</h1>
+  <div class="sub">一个帮你记住所有项目信息、每天提醒你该做什么的 AI 小助手<br>——不需要你做什么，你正常聊天就行，它自动帮你整理</div>
+  <div class="badge">给没用过的人看的 · 通俗版介绍</div>
+</div>
+
+<!-- I · 信息骨架 -->
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="n" style="color:var(--t)">14</div>
+    <div class="l">项目同时管</div>
+    <div class="d">不用脑子记任何一个</div>
+  </div>
+  <div class="kpi">
+    <div class="n" style="color:var(--green)">秒出</div>
+    <div class="l">查项目信息</div>
+    <div class="d">说一句话就行，不用翻文件</div>
+  </div>
+  <div class="kpi">
+    <div class="n" style="color:var(--orange)">22:00</div>
+    <div class="l">每晚自动提醒</div>
+    <div class="d">哪些事没确认、哪些要到期</div>
+  </div>
+  <div class="kpi">
+    <div class="n" style="color:var(--blue)">不会丢</div>
+    <div class="l">信息永留存</div>
+    <div class="d">聊完天信息就自动存下来了</div>
+  </div>
+</div>
+
+<!-- S · 结构展开 -->
+
+<div class="section">
+  <h2><span class="icon">🤔</span> 为什么需要这个？</h2>
+  <p>你在公司管好几个项目，每个项目都有决策、风险、待办、数据……平时靠脑子记、靠微信翻、靠笔记本写。</p>
+  <p>问题是：<span class="highlight">信息随聊天丢失、项目做完没沉淀、不确定的事没人盯</span>。</p>
+
+  <div class="problem">
+    <div class="emoji">🕳️</div>
+    <div class="title">信息黑洞</div>
+    <div class="desc">你在微信群里说了"企微客服有卡点"，第二天忘了，第三天没人跟进。一周后发现卡点还在。</div>
+    <div class="tag" style="border-color:var(--red);color:var(--red)">传统方式：靠人记，容易丢</div>
+  </div>
+
+  <div class="problem">
+    <div class="emoji">🫠</div>
+    <div class="title">做完就没了</div>
+    <div class="desc">项目做完了，产出了几个工具和方法，但没记录。下次做类似项目时从头摸索，重复踩坑。</div>
+    <div class="tag" style="border-color:var(--orange);color:var(--orange)">传统方式：做完不沉淀</div>
+  </div>
+
+  <div class="problem">
+    <div class="emoji">❓</div>
+    <div class="title">不确定没人盯</div>
+    <div class="desc">"Q3缺口4个人力的来源还没确定"——说过就过了，没人每天提醒你，直到Q3来了才发现缺口没补。</div>
+    <div class="tag" style="border-color:var(--yellow);color:var(--yellow)">传统方式：不确定的没人盯</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2><span class="icon">💡</span> 这个助手怎么解决？</h2>
+  <p>一句话总结：<span class="highlight">你正常聊天，它自动帮你存、帮你整理、帮你提醒</span>。</p>
+
+  <div class="flow">
+    <div class="flow-item">
+      <div class="icon">💬</div>
+      <div class="label">你聊天</div>
+      <div class="sublabel">正常说就行</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <div class="icon">📝</div>
+      <div class="label">AI自动存</div>
+      <div class="sublabel">不用你手动</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <div class="icon">📋</div>
+      <div class="label">按需秒出</div>
+      <div class="sublabel">一句话查</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <div class="icon">❓</div>
+      <div class="label">标记不确定</div>
+      <div class="sublabel">不会忘</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <div class="icon">🔔</div>
+      <div class="label">每晚提醒</div>
+      <div class="sublabel">自动日清</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">
+      <div class="icon">📊</div>
+      <div class="label">产出追踪</div>
+      <div class="sublabel">做完也记</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2><span class="icon">🏗️</span> 信息的4层保护</h2>
+  <p>就像盖房子一样，每一层都有明确的作用。不会出现"信息没有出处"的情况。</p>
+
+  <div class="layers">
+    <div class="layer">
+      <div class="num">第一层 · 源文件追溯</div>
+      <div class="title">📎 哪来的？</div>
+      <div class="desc">每个信息都记录了出处：Docs链接、会议纪要、聊天记录。不存在"数据无根"。</div>
+      <div class="example">例子："人力挂账邮件模板" → 来源是 knowledge-base/挂账邮件/模板.md</div>
+    </div>
+    <div class="layer">
+      <div class="num">第二层 · 结构化字段</div>
+      <div class="title">🧱 什么内容？</div>
+      <div class="desc">把零散的信息变成4个标准字段：决策、风险、待办、指标。一看就清楚。</div>
+      <div class="example">例子：🔴 企微客服卡点（张咏琪无响应） → 影响：1人力无法释放 → 对策：升级沟通渠道</div>
+    </div>
+    <div class="layer">
+      <div class="num">第三层 · 产出追踪</div>
+      <div class="title">🛠 做完了呢？</div>
+      <div class="desc">项目做完后产出的工具、文档、脚本都记录在这里，还带使用频次和健康状态。</div>
+      <div class="example">例子：scrapling-agent skill → ✅正常 · 调用15次 · 错误0次</div>
+    </div>
+    <div class="layer">
+      <div class="num">第四层 · 不确定标记</div>
+      <div class="title">❓ 还不确定的？</div>
+      <div class="desc">没确认的信息单独标记，每晚10点自动提醒你确认或推翻。信息越来越准。</div>
+      <div class="example">例子："Q3缺口4人力来源" → 标记日期5/18 → 状态：待确认 → 6/3后找胡学辉聊</div>
+    </div>
+  </div>
+</div>
+
+<!-- T · 叙事支撑 -->
+
+<div class="section">
+  <h2><span class="icon">🎭</span> 使用场景演示</h2>
+  <p>你不需要学任何操作，正常说话就行。下面是几个真实场景：</p>
+
+  <div class="demo">
+    <div class="label">场景1 · 开完会，自动记录</div>
+    <div class="input">你说："开完会了，决定先找生产FT做具体项目"</div>
+    <div class="output">AI自动做3件事：<br>① 写入决策：先找生产FT做具体项目（背景：生产FT老板靠谱）<br>② 写入源文件：会议纪要链接<br>③ 更新项目 last_updated = 今天</div>
+    <div class="note">你不需要做任何额外操作，说完就自动存了</div>
+  </div>
+
+  <div class="demo">
+    <div class="label">场景2 · 随口提了个风险</div>
+    <div class="input">你说："企微客服那个卡点，张咏琪一直没回复"</div>
+    <div class="output">AI自动做2件事：<br>① 写入风险：🔴 企微客服卡点（张咏琪无响应）<br>② 写入影响：1个人力无法按时释放</div>
+    <div class="note">第二天你问"项目优化有什么风险"，秒出这条风险</div>
+  </div>
+
+  <div class="demo">
+    <div class="label">场景3 · 不确定的事，自动提醒</div>
+    <div class="input">你说："Q3缺口4个人力，还没确定来源"</div>
+    <div class="output">AI自动做2件事：<br>① 写入不确定：Q3缺口4人力来源（原因：待确定）<br>② 每晚22:00自动提醒你"Q3缺口还没确认"<br>③ 你确认后 → 标记"已确认"，不再提醒</div>
+    <div class="note">不确定的事不会忘，每晚自动提醒，确认了就不再打扰</div>
+  </div>
+
+  <div class="demo">
+    <div class="label">场景4 · 一句话查项目</div>
+    <div class="input">你说："查下人力挂账"</div>
+    <div class="output">秒出完整信息：<br>📌 人力挂账推动专项 | S+优先级 | 进行中<br>📋 4个源文件 | 9条决策 | 2个风险 | 8条待办<br>❓ 2条不确定（邮件已发·等审批 / Q3缺口待确认）<br>🛠 1个产出skill</div>
+    <div class="note">不用翻10个文件，一句话全部出来</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2><span class="icon">🔄</span> 每天自动做什么？</h2>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">09:00</div>
+      <div class="tl-content"><span class="act">自动同步</span> — 把最新的监控数据合并到项目数据里，部署到网页</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">你聊天时</div>
+      <div class="tl-content"><span class="act">自动采集</span> — 你说了决策、风险、待办，AI自动写入项目数据</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">21:00</div>
+      <div class="tl-content"><span class="act">再次同步</span> — 确保日清前数据是最新的</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">22:00</div>
+      <div class="tl-content"><span class="act">日清提醒</span> — 自动扫描4个板块：❓待确认 + ⏰紧急待办 + 🔴高风险 + ⚠️可能过期</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">你说"确认了"</div>
+      <div class="tl-content"><span class="act">闭环</span> — 不确定项标记为已确认，信息越来越准确</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2><span class="icon">📊</span> 对比：有它 vs 没它</h2>
+
+  <table class="compare">
+    <tr>
+      <th>你遇到的场景</th>
+      <th>没有这个助手</th>
+      <th>有这个助手</th>
+    </tr>
+    <tr>
+      <td>开完会要记录决策</td>
+      <td class="no">手动写笔记，可能忘了</td>
+      <td class="yes">说完就自动存了</td>
+    </tr>
+    <tr>
+      <td>查项目风险</td>
+      <td class="no">翻10个文件拼信息</td>
+      <td class="yes">一句话秒出</td>
+    </tr>
+    <tr>
+      <td>不确定的事没人盯</td>
+      <td class="no">说了就过了，没人提醒</td>
+      <td class="yes">每晚自动提醒，确认后不再打扰</td>
+    </tr>
+    <tr>
+      <td>项目做完没沉淀</td>
+      <td class="no">下次从头摸索</td>
+      <td class="yes">产出+使用频次都记着</td>
+    </tr>
+    <tr>
+      <td>多人协作信息同步</td>
+      <td class="no">微信翻聊天记录</td>
+      <td class="new">公网看板，密码保护，30秒刷新</td>
+    </tr>
+    <tr>
+      <td>信息来源追溯</td>
+      <td class="no">数据无根，说不清哪来的</td>
+      <td class="yes">每条信息都带出处</td>
+    </tr>
+  </table>
+</div>
+
+<!-- A · 行动收口 -->
+
+<div class="section">
+  <h2><span class="icon">🎯</span> 怎么开始用？</h2>
+
+  <div class="cta">
+    <h3>你不需要学任何操作</h3>
+    <p>就是正常聊天。你说决策、风险、待办，AI自动帮你存。你问项目信息，AI秒出。你确认了不确定的事，AI帮你标记。</p>
+    <div class="cmd">💬 "查下人力挂账" → 秒出完整信息</div>
+    <div class="cmd">❓ "标记不确定：Q3缺口还没定" → 自动写入+每晚提醒</div>
+    <div class="cmd">✅ "确认了：邮件已发了" → 不确定项标记已确认</div>
+    <div class="cmd">📊 "打开看板" → 网页实时看所有项目状态</div>
+  </div>
+
+  <div style="margin-top:20px;background:var(--s);border-radius:var(--r);padding:16px;border:1px solid var(--b)">
+    <div style="font-size:.8em;font-weight:700;margin-bottom:8px;color:var(--blue)">📌 三个关键概念（一分钟记住）</div>
+    <div style="font-size:.8rem;color:var(--t2);line-height:1.8">
+      <strong style="color:var(--t)">1. 自动采集</strong> — 你正常聊天，AI帮你存信息。不需要手动操作。<br>
+      <strong style="color:var(--t)">2. 不确定标记</strong> — 没确认的事单独标出来，每晚提醒你确认。信息越来越准。<br>
+      <strong style="color:var(--t)">3. 一句话秒出</strong> — 查项目、查风险、查待办，说一句话就行。不用翻文件。
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  项目管理助手 v2.0 · 给新人的通俗版介绍 · 2026-05-20<br>
+  自动采集 → 按需秒出 → 不确定标记 → 每晚日清 → 产出追踪 → 复盘迭代
+</div>
+
+</body>
+</html>
